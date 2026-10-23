@@ -167,3 +167,17 @@ for (const [path,names] of [
 const compactCss=fs.readFileSync("site/assets/css/styles.css","utf8");
 assert.match(compactCss,/\.nav-inner\{align-items:center;justify-content:space-between/);
 assert.match(compactCss,/\.nav-inner button\{flex:0 0 auto;white-space:nowrap/);
+
+/* Biblioteca: acesso em Estudos e referência à coleção de 26 trabalhos. */
+const libraryHTML = fs.readFileSync("site/biblioteca.html","utf8");
+const libraryEntries=[...libraryHTML.matchAll(/<article class="library-entry" id="([^"]+)">/g)];
+assert.equal(libraryEntries.length,26,"Quantidade atual de estudos");
+assert.equal(new Set(libraryEntries.map(x=>x[1])).size,26);
+const libraryLinks=[...libraryHTML.matchAll(/<a class="library-source" href="([^"]+)"/g)].map(x=>x[1]);
+assert.equal(libraryLinks.length,26);
+assert.ok(libraryLinks.every(url=>url.startsWith("https://")));
+for(const [page,href] of [["site/index.html","biblioteca.html"],["site/en/index.html","../biblioteca.html"]]){
+ const html=fs.readFileSync(page,"utf8");
+ assert.ok(html.includes('class="study-link" href="'+href+'"'),page+": falta link para biblioteca");
+ assert.match(html,/class="study-count"/);
+}
