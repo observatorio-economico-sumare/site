@@ -74,6 +74,13 @@ def inspect(out):
                     wb = load_workbook(io.BytesIO(content), read_only=True, data_only=True)
                     for sheet in wb:
                         record["sheets"].append({"workbook":filename,"sheet":sheet.title})
+                        if label == "rais_tabelas_2025":
+                            preview = []
+                            for preview_row in sheet.iter_rows(min_row=1, max_row=14,
+                                                               max_col=35, values_only=True):
+                                preview.append([str(v)[:120] if v is not None else ""
+                                                for v in preview_row])
+                            record["sheets"][-1]["header_preview"] = preview
                         if len(record["sheets"])>250:
                             break
                         for row_index, row in enumerate(sheet.iter_rows(values_only=True),start=1):
