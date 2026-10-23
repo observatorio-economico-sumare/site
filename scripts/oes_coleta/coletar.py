@@ -150,6 +150,8 @@ def collect(out):
     direct_queries = [
         ("sidra_direto_10061", "https://apisidra.ibge.gov.br/values/t/10061/n6/3552403/p/2022/v/2667/c1568/all?formato=json"),
         ("sidra_direto_10261", "https://apisidra.ibge.gov.br/values/t/10261/n6/3552403/p/2022/v/4090/c11913/all?formato=json"),
+        ("sidra_direto_5938_2021", "https://apisidra.ibge.gov.br/values/t/5938/n6/3552403/p/2021/v/all?formato=json"),
+        ("sidra_direto_5938_pib_2023", "https://apisidra.ibge.gov.br/values/t/5938/n6/3552403/p/2023/v/37?formato=json"),
     ]
     for key, url in direct_queries:
         payload, row = capture(rows, out, key, url)
