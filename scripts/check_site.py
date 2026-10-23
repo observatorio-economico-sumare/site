@@ -55,11 +55,12 @@ def read_page(name):
     assert doc.inline_scripts == 0, f"{name}: JavaScript inline não permitido"
     assert len(doc.ids) == len(set(doc.ids)), f"{name}: IDs HTML duplicados"
     assert "Content-Security-Policy" in html, f"{name}: CSP ausente"
-    assert "assets/css/styles.css" in doc.css, f"{name}: CSS principal ausente"
+    assert any(asset.endswith("assets/css/styles.css") for asset in doc.css), f"{name}: CSS principal ausente"
     for asset in doc.scripts + doc.css:
         assert asset and not asset.startswith(("http:", "https:", "/")), (
             f"{name}: recurso não local: {asset}")
-        assert (SITE / asset).is_file(), f"{name}: recurso ausente: {asset}"
+        assert (path.parent / asset).resolve().is_relative_to(SITE.resolve()), f"{name}: recurso fora de site/: {asset}"
+        assert (path.parent / asset).is_file(), f"{name}: recurso ausente: {asset}"
     return doc
 
 
@@ -71,7 +72,7 @@ def check_links(name, doc, pages):
         if uri.scheme or uri.netloc:
             continue
         local = unquote(uri.path)
-        target = (SITE / local).resolve() if local else SITE / name
+        target = ((SITE / name).parent / local).resolve() if local else SITE / name
         assert target.is_relative_to(SITE.resolve()) and target.is_file(), (
             f"{name}: link interno inexistente: {href}")
         if uri.fragment and target.suffix == ".html":
@@ -82,7 +83,7 @@ def check_links(name, doc, pages):
 
 
 def main():
-    pages = {name: read_page(name) for name in ("index.html", "governanca.html")}
+    pages = {name: read_page(name) for name in ("index.html", "governanca.html", "en/index.html", "en/governanca.html")}
     index = pages["index.html"]
     assert {"assets/js/app.js", "assets/js/indicators.js"}.issubset(index.scripts)
     assert {"sourceDialog", "sourceDialogTitle", "sourceDialogBody",
@@ -91,10 +92,15 @@ def main():
             "pib-per-capita-2023"}.issubset(index.indicator_ids)
     assert len(index.tabs) == len(set(index.tabs)), "Abas com nomes repetidos"
     assert set(index.tabs) == set(index.panels), "Abas sem painéis correspondentes"
+    english = pages["en/index.html"]
+    assert set(english.tabs) == set(index.tabs), "Abas divergentes entre idiomas"
+    assert set(english.indicator_ids) == set(index.indicator_ids), "Indicadores divergentes entre idiomas"
+    assert '<html lang="en"' in (SITE / "en/index.html").read_text(encoding="utf-8"), "Idioma EN ausente"
     governance = pages["governanca.html"]
     assert {"politica-editorial", "declaracao-de-independencia",
             "sobre-a-fundadora"}.issubset(governance.ids)
 
+    assert set(pages["en/governanca.html"].ids) == set(governance.ids), "Governança divergente"
     for name, doc in pages.items():
         check_links(name, doc, pages)
 

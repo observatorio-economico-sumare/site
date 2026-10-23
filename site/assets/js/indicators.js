@@ -1,8 +1,20 @@
 "use strict";
-const DATA_URL = "data/indicators.json";
+const indicatorsEnglish = document.documentElement?.lang === "en";
+const DATA_URL = indicatorsEnglish ? "../data/indicators.json" : "data/indicators.json";
+const enIndicatorText = {"populacao-censo-2022":{"name":"Resident population (2022 Census)","definition":"Total residents counted in the 2022 Census.","unit":"people","dataset":"Population Census","method":"The number of residents recorded in the 2022 Population Census, as displayed by IBGE for Sumaré.","limitations":"2022 census count. It is not the current population.","revisions":"First added on October 23, 2026; no subsequent OES revision recorded."},"populacao-estimada":{"name":"Estimated population","definition":"Official resident population estimate, subject to verification of its release and reference period.","unit":"people","dataset":"Population Estimates","method":"Official IBGE estimate for July 1, 2026, reproduced without additional calculations by the OES. IBGE's AiBi method applies.","limitations":"Statistical estimate, not a census count. Differences from the census must not automatically be interpreted as observed population growth.","revisions":"First added on October 23, 2026; no subsequent OES revision recorded."},"pib-per-capita-2023":{"name":"GDP per capita","definition":"Municipal gross domestic product divided by the reference population, at current prices.","unit":"R$","dataset":"Municipal GDP","method":"2023 current-price municipal GDP per capita, reproduced from IBGE's Sumaré page without additional calculation by the OES.","limitations":"Not a measure of average personal income or income distribution. The reference year is 2023, and the figure is not adjusted for inflation.","revisions":"First added on October 23, 2026; no subsequent OES revision recorded."}};
+const enFieldLabels = {"Valor":"Value","Definição":"Definition","Município":"Municipality","Período":"Reference period","Fonte primária":"Primary source","Identificador da consulta":"Original source query identifier","Metodologia":"Methodology","Limitações":"Limitations","Coleta pelo OES":"Collected by the OES","Última atualização no OES":"Last updated by the OES","Revisão técnica":"Technical review","Histórico de revisões":"Revision history","Evidência":"Evidence record","SHA-256 da evidência":"Evidence SHA-256","Natureza da evidência":"Nature of evidence","Endereço da fonte":"Source URL","Arquivo original preservado":"Original source file preserved","Registro estruturado da fonte, sem arquivo original preservado":"Structured record; original source file not preserved","Fonte e metodologia":"Source and methodology","Ver ficha completa":"View technical details","Endereço inválido":"Invalid URL","Não informado":"Not available"};
+const localizeLabel = label => indicatorsEnglish ? (enFieldLabels[label] || label) : label;
+function localizedIndicator(item) {
+  if (!indicatorsEnglish || !enIndicatorText[item.id]) return item;
+  const words = enIndicatorText[item.id];
+  return {...item, name:words.name, definition:words.definition, unit:words.unit,
+    method:words.method, limitations:words.limitations, revisions:words.revisions,
+    reviewed_by:"OES-assisted technical verification (no independent human review)",
+    source:{...item.source,dataset:words.dataset}};
+}
 
-const numberFormatter = new Intl.NumberFormat("pt-BR", { maximumFractionDigits: 2 });
-const currencyFormatter = new Intl.NumberFormat("pt-BR", {
+const numberFormatter = new Intl.NumberFormat(indicatorsEnglish ? "en-US" : "pt-BR", { maximumFractionDigits: 2 });
+const currencyFormatter = new Intl.NumberFormat(indicatorsEnglish ? "en-US" : "pt-BR", {
   style: "currency", currency: "BRL",
   minimumFractionDigits: 2, maximumFractionDigits: 2
 });
@@ -20,7 +32,7 @@ function formatIndicatorValue(item, includeUnit = false) {
 function formatRecordDate(value) {
   if (typeof value !== "string" || !/^\d{4}-\d{2}-\d{2}$/.test(value)) return value;
   const [year, month, day] = value.split("-");
-  return day + "/" + month + "/" + year;
+  return indicatorsEnglish ? month + "/" + day + "/" + year : day + "/" + month + "/" + year;
 }
 
 function appendField(parent, title, value, url) {
@@ -40,10 +52,10 @@ function appendField(parent, title, value, url) {
       link.textContent = value;
       content.append(link);
     } else {
-      content.textContent = "Endereço inválido";
+      content.textContent = localizeLabel("Endereço inválido");
     }
   } else {
-    content.textContent = String(value ?? "Não informado");
+    content.textContent = String(value ?? localizeLabel("Não informado"));
   }
   row.append(label, content);
   parent.append(row);
@@ -51,30 +63,31 @@ function appendField(parent, title, value, url) {
 
 function openIndicatorDetail(item) {
   const dialog = document.getElementById("sourceDialog");
-  document.getElementById("sourceDialogTitle").textContent = item.name;
+  const localized = localizedIndicator(item);
+  document.getElementById("sourceDialogTitle").textContent = localized.name;
   const body = document.getElementById("sourceDialogBody");
   body.replaceChildren();
   const list = document.createElement("dl");
   list.className = "indicator-detail";
   const info = [
-    ["Valor", formatIndicatorValue(item, true)],
-    ["Definição", item.definition],
+    ["Valor", formatIndicatorValue(localized, true)],
+    ["Definição", localized.definition],
     ["Município", "Sumaré (SP), IBGE " + item.municipality_code],
     ["Período", item.reference_period],
-    ["Fonte primária", item.source.institution + " · " + item.source.dataset],
+    ["Fonte primária", item.source.institution + " · " + localized.source.dataset],
     ["Identificador da consulta", item.source.query_id],
-    ["Metodologia", item.method],
-    ["Limitações", item.limitations],
+    ["Metodologia", localized.method],
+    ["Limitações", localized.limitations],
     ["Coleta pelo OES", formatRecordDate(item.collected_at)],
     ["Última atualização no OES", formatRecordDate(item.updated_at)],
-    ["Revisão técnica", formatRecordDate(item.reviewed_at) + " · " + item.reviewed_by],
-    ["Histórico de revisões", item.revisions],
+    ["Revisão técnica", formatRecordDate(item.reviewed_at) + " · " + localized.reviewed_by],
+    ["Histórico de revisões", localized.revisions],
     ["Evidência", item.evidence.raw_path],
     ["SHA-256 da evidência", item.evidence.sha256],
-    ["Natureza da evidência", item.evidence.original_file_preserved === true ? "Arquivo original preservado" : "Registro estruturado da fonte, sem arquivo original preservado"]
+    ["Natureza da evidência", item.evidence.original_file_preserved === true ? localizeLabel("Arquivo original preservado") : localizeLabel("Registro estruturado da fonte, sem arquivo original preservado")]
   ];
-  for (const [key, value] of info) appendField(list, key, value);
-  appendField(list, "Endereço da fonte", item.source.url, item.source.url);
+  for (const [key, value] of info) appendField(list, localizeLabel(key), value);
+  appendField(list, localizeLabel("Endereço da fonte"), item.source.url, item.source.url);
   body.append(list);
   dialog.showModal();
 }
@@ -110,11 +123,11 @@ function renderItem(item, cardsById) {
 
     const line = document.createElement("span");
     line.textContent = item.source.institution + " · " + item.reference_period +
-      " · atualizado no OES em " + formatRecordDate(item.updated_at);
+      (indicatorsEnglish ? " · last updated by the OES on " : " · atualizado no OES em ") + formatRecordDate(item.updated_at);
     const detail = document.createElement("button");
     detail.type = "button";
     detail.className = "source-detail";
-    detail.textContent = "Fonte e metodologia";
+    detail.textContent = localizeLabel("Fonte e metodologia");
     detail.addEventListener("click", () => openIndicatorDetail(item));
     provenance.append(line, detail);
   }
@@ -139,7 +152,7 @@ async function renderIndicators() {
       row.className = "source source--catalog";
       const left = document.createElement("div");
       const name = document.createElement("strong");
-      name.textContent = item.name;
+      name.textContent = localizedIndicator(item).name;
       const period = document.createElement("p");
       period.textContent = item.source.institution + " · " + item.reference_period +
         " · " + formatIndicatorValue(item, true);
@@ -147,18 +160,18 @@ async function renderIndicators() {
       const button = document.createElement("button");
       button.type = "button";
       button.className = "source-detail";
-      button.textContent = "Ver ficha completa";
+      button.textContent = localizeLabel("Ver ficha completa");
       button.addEventListener("click", () => openIndicatorDetail(item));
       row.append(left, button);
       list.append(row);
     });
-    if (!payload.indicators.length) list.textContent = "Ainda não há indicadores certificados.";
+    if (!payload.indicators.length) list.textContent = indicatorsEnglish ? "No indicators have been verified yet." : "Ainda não há indicadores certificados.";
     if (status) status.textContent = payload.indicators.length +
-      " indicadores com fonte e documentação disponíveis. Os demais seguem em validação.";
+      (indicatorsEnglish ? " indicators with documented sources. Others are pending validation." : " indicadores com fonte e documentação disponíveis. Os demais seguem em validação.");
   } catch (error) {
     console.error("OES: não foi possível carregar os indicadores.", error);
-    list.textContent = "Indicadores indisponíveis nesta consulta. Os valores não validados não são exibidos.";
-    if (status) status.textContent = "Falha ao consultar os dados publicados. Nenhum valor foi presumido.";
+    list.textContent = indicatorsEnglish ? "Indicators are unavailable. Unverified values are not shown." : "Indicadores indisponíveis nesta consulta. Os valores não validados não são exibidos.";
+    if (status) status.textContent = indicatorsEnglish ? "Could not load published data. No values have been inferred." : "Falha ao consultar os dados publicados. Nenhum valor foi presumido.";
   }
 }
 document.getElementById("closeSourceDialog").addEventListener("click", () =>
