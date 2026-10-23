@@ -33,6 +33,14 @@ class BibliotecaTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "não confirmado"):
             library.public_records(catalog)
 
+    def test_display_title_does_not_modify_original(self):
+        record = next(r for r in library.public_records(self.catalog)
+                      if r["id"] == "OES-018")
+        self.assertTrue(record["titulo_original"].startswith("CONTAMINAÇÃO"))
+        self.assertTrue(record["titulo_exibicao"].startswith("Contaminação"))
+        self.assertIn("<h2>Contaminação", library.render_article(record))
+        self.assertNotIn("<h2>CONTAMINAÇÃO", library.render_article(record))
+
     def test_markup_is_escaped(self):
         record = dict(library.public_records(self.catalog)[0])
         record["titulo_original"] = '<img src=x onerror=alert(1)>'

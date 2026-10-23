@@ -44,9 +44,10 @@ def public_records(catalog):
 
 def render_article(record):
     e = lambda field: escape(str(record[field]), quote=True)
+    title = escape(str(record.get("titulo_exibicao") or record["titulo_original"]), quote=True)
     return (
         f'<article class="library-entry" id="{escape(record["id"].lower(), quote=True)}">\n'
-        f'  <h2>{e("titulo_original")}</h2>\n'
+        f'  <h2>{title}</h2>\n'
         f'  <p class="library-meta">{e("autores")} · {e("instituicao_responsavel")} · '
         f'{e("ano_publicacao")} · {e("tipo_documento")}</p>\n'
         f'  <p class="library-summary">{e("descricao_objetiva")}</p>\n'
