@@ -8,16 +8,17 @@ import time
 from datetime import datetime, timezone
 from pathlib import Path
 from urllib.error import HTTPError, URLError
-from urllib.parse import urlencode, urlparse
+from urllib.parse import urlparse
 from urllib.request import Request, urlopen
 
 CITY = "3552403"
-HOSTS = {"servicodados.ibge.gov.br", "apisidra.ibge.gov.br", "www.gov.br",
+HOSTS = {"apisidra.ibge.gov.br", "www.gov.br",
          "sumare.atende.net"}
-TABLES = [
-    (10061, "2022", 2667, "nível de instrução", "escolaridade e ensino medio"),
-    (10261, "2022", 4090, "posição na ocupação", "autonomos e sem carteira"),
-    (5938, "2021", None, "", "valor adicionado por setor"),
+DIRECT_QUERIES = [
+    ("sidra_10061_escolaridade_2022", "https://apisidra.ibge.gov.br/values/t/10061/n6/3552403/p/2022/v/2667/c1568/all?formato=json"),
+    ("sidra_10261_ocupacao_2022", "https://apisidra.ibge.gov.br/values/t/10261/n6/3552403/p/2022/v/4090/c11913/all?formato=json"),
+    ("sidra_5938_setores_2021", "https://apisidra.ibge.gov.br/values/t/5938/n6/3552403/p/2021/v/all?formato=json"),
+    ("sidra_5938_pib_2023", "https://apisidra.ibge.gov.br/values/t/5938/n6/3552403/p/2023/v/37?formato=json"),
 ]
 PAGES = [
     ("rais_2025", "https://www.gov.br/trabalho-e-emprego/pt-br/assuntos/estatisticas-trabalho/rais/rais-2025"),
@@ -82,87 +83,28 @@ def capture(rows, directory, key, url, json_expected=True):
     rows.append(row)
     return payload, row
 
-def extract(data, variable_id, table_id, output, key):
+def select_sidra_rows(data):
+    """Mantem somente observacoes identificadas com o IBGE municipal de Sumare."""
     if not isinstance(data, list):
-        return 0
-    extracted = []
-    for var in data:
-        if not isinstance(var, dict) or str(var.get("id")) != str(variable_id):
-            continue
-        for result in var.get("resultados", []):
-            cl = result.get("classificacoes", [])
-            for series in result.get("series", []):
-                if str(series.get("localidade", {}).get("id")) != CITY:
-                    continue
-                for period, value in series.get("serie", {}).items():
-                    extracted.append({
-                        "table_id": table_id, "variable_id": variable_id,
-                        "municipality_ibge": CITY, "period": period,
-                        "value_as_received": value, "unit": var.get("unidade", ""),
-                        "classifications_json": json.dumps(cl, ensure_ascii=False)})
-    if extracted:
-        path = output / "candidates" / (key + ".csv")
-        path.parent.mkdir(parents=True, exist_ok=True)
-        with path.open("w", encoding="utf-8", newline="") as f:
-            writer = csv.DictWriter(f, fieldnames=list(extracted[0]))
-            writer.writeheader()
-            writer.writerows(extracted)
-    return len(extracted)
+        return []
+    return [row for row in data if isinstance(row, dict) and
+            str(row.get("D1C")) == CITY and "V" in row]
+
 
 def collect(out):
     out.mkdir(parents=True, exist_ok=True)
     rows = []
-    _, ibge_ping = capture(rows, out, "ibge_localidade", "https://servicodados.ibge.gov.br/api/v1/localidades/municipios/" + CITY)
-    for table, period, target, label, purpose in TABLES:
-        if ibge_ping["status"] == "error" and "timed out" in ibge_ping.get("error", "").lower():
-            rows.append(dict(id="sidra_%s_metadados" % table, url="https://servicodados.ibge.gov.br/api/v3/agregados/%s/metadados" % table,
-                             status="skipped_host_timeout", collected_at_utc=now(), sha256="", raw_path="",
-                             bytes=0, candidate_rows=0, error="Host IBGE expirou no teste de conectividade"))
-            continue
-        metadata, _ = capture(rows, out, "sidra_%s_metadados" % table,
-                              "https://servicodados.ibge.gov.br/api/v3/agregados/%s/metadados" % table)
-        if not isinstance(metadata, dict):
-            continue
-        options = {str(v["id"]): v for v in metadata.get("variaveis", [])
-                   if isinstance(v, dict) and "id" in v}
-        if target is not None and str(target) not in options:
-            rows.append(dict(id="sidra_%s_variable" % table, url="", status="metadata_mismatch",
-                             collected_at_utc=now(), sha256="", raw_path="", bytes=0,
-                             candidate_rows=0, error="Variavel %s ausente" % target))
-            continue
-        variables = [target] if target is not None else [int(x) for x in options][:16]
-        selected = next((str(c["id"]) for c in metadata.get("classificacoes", [])
-                         if label and label in c.get("nome", "").casefold()), None)
-        for var in variables:
-            query = {"localidades": "N6[%s]" % CITY}
-            if selected:
-                query["classificacao"] = "%s[all]" % selected
-            url = "https://servicodados.ibge.gov.br/api/v3/agregados/%s/periodos/%s/variaveis/%s?%s" % (
-                table, period, var, urlencode(query))
-            key = "sidra_%s_v%s_%s_sumare" % (table, var, period)
-            payload, row = capture(rows, out, key, url)
-            if payload is not None:
-                row["candidate_rows"] = extract(payload, var, table, out, key)
-                if row["candidate_rows"] == 0:
-                    row["status"] = "no_municipal_rows"
-                    row["error"] = "Nenhuma serie N6 3552403; conferir recorte e metadados"
-    # Endpoint alternativo OFICIAL do SIDRA; independente de servicodados.ibge.gov.br
-    direct_queries = [
-        ("sidra_direto_10061", "https://apisidra.ibge.gov.br/values/t/10061/n6/3552403/p/2022/v/2667/c1568/all?formato=json"),
-        ("sidra_direto_10261", "https://apisidra.ibge.gov.br/values/t/10261/n6/3552403/p/2022/v/4090/c11913/all?formato=json"),
-        ("sidra_direto_5938_2021", "https://apisidra.ibge.gov.br/values/t/5938/n6/3552403/p/2021/v/all?formato=json"),
-        ("sidra_direto_5938_pib_2023", "https://apisidra.ibge.gov.br/values/t/5938/n6/3552403/p/2023/v/37?formato=json"),
-    ]
-    for key, url in direct_queries:
+    # SIDRA direto funcionou no GitHub Actions; remover consultas ao host
+    # alternativo que repetidamente expirou, sem descartar seus logs historicos.
+    for key, url in DIRECT_QUERIES:
         payload, row = capture(rows, out, key, url)
         if isinstance(payload, list):
-            filtered = [x for x in payload if isinstance(x, dict) and
-                        str(x.get("D1C")) == CITY and "V" in x]
+            filtered = select_sidra_rows(payload)
             row["candidate_rows"] = len(filtered)
             if filtered:
                 target = out / "candidates" / (key + ".csv")
                 target.parent.mkdir(parents=True, exist_ok=True)
-                fields = list(dict.fromkeys(k for x in filtered for k in x))
+                fields = list(dict.fromkeys(column for item in filtered for column in item))
                 with target.open("w", encoding="utf-8", newline="") as fp:
                     writer = csv.DictWriter(fp, fieldnames=fields)
                     writer.writeheader()
