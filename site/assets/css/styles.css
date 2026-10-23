@@ -1,252 +1,285 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600&family=Source+Serif+4:wght@400;500&display=swap');
 
-:root{--ink:#17252f;--muted:#5a6570;--line:#d9dedc;--paper:#fafaf7;--white:#fff;--accent:#176d66}*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 Arial,Helvetica,sans-serif}a{color:var(--accent);text-underline-offset:3px}.wrap{max-width:1100px;padding:0 28px;margin:auto}.mast{border-bottom:1px solid var(--ink);background:#fff}.mast-inner{display:flex;justify-content:space-between;align-items:center;padding:25px 0;gap:16px}.identity{display:flex;gap:16px;align-items:center}.monogram{font-family:Georgia,serif;border:1px solid var(--ink);width:51px;height:51px;display:grid;place-items:center;font-size:19px;letter-spacing:-2px}.identity strong{font-family:Georgia,serif;font-weight:500;display:block;font-size:22px;line-height:1.16;letter-spacing:-.02em}.identity span{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}.independent{font-size:12px;border-left:2px solid var(--accent);padding-left:11px;color:#44565b}nav{background:#fff;border-bottom:1px solid var(--line)}.nav-inner{display:flex;gap:32px;overflow:auto}.nav-inner button{background:none;border:0;border-bottom:2px solid transparent;padding:16px 0 13px;font:600 13px Arial;cursor:pointer;color:#687078;white-space:nowrap}.nav-inner button.active{border-color:var(--accent);color:var(--ink)}.intro{padding:66px 0 40px;display:grid;grid-template-columns:1.5fr .8fr;gap:55px;align-items:end}.kicker{font-size:11px;color:var(--accent);font-weight:bold;letter-spacing:.16em;text-transform:uppercase}.intro h1{font:normal clamp(37px,5.8vw,65px)/1.06 Georgia,serif;letter-spacing:-.045em;margin:18px 0 17px;max-width:730px}.intro p{font-size:16px;color:#4e5b64;max-width:680px;margin:0}.aside{border-top:2px solid var(--ink);padding-top:15px;font-size:13px;color:var(--muted)}.aside strong{display:block;color:var(--ink);font-size:13px;margin-bottom:8px}.section-title{display:flex;justify-content:space-between;align-items:end;gap:10px;border-top:1px solid var(--ink);padding-top:17px;margin:24px 0 18px}.section-title h2{font:normal 28px/1.2 Georgia,serif;margin:0}.section-title span{font-size:12px;color:var(--muted)}.metrics{display:grid;grid-template-columns:repeat(4,1fr);background:#fff;border:1px solid var(--line)}.metric{padding:23px 20px;border-right:1px solid var(--line)}.metric:last-child{border-right:0}.metric label{display:block;font-size:12px;min-height:43px;color:#475760}.number{font-family:Georgia,serif;font-size:35px;letter-spacing:-.04em;margin:8px 0 6px}.origin{color:var(--muted);font-size:11px}.cols{display:grid;grid-template-columns:1.6fr 1fr;gap:45px;padding-top:15px}h3{font-size:16px;margin:0 0 15px}.sector{display:grid;grid-template-columns:145px 1fr 75px;gap:13px;align-items:center;font-size:13px;border-bottom:1px solid var(--line);padding:13px 0}.bar{height:8px;background:#e7ebe8}.bar i{display:block;background:var(--accent);height:100%}.sector b{text-align:right;font-variant-numeric:tabular-nums}.explain{border-left:2px solid var(--accent);padding:1px 0 1px 20px}.explain p{font-size:14px;color:#46555b;margin:0 0 12px}.explain strong{font-size:14px}.explain button,.glossary button{font:inherit;color:var(--accent);background:none;border:0;padding:0;text-decoration:underline;text-underline-offset:3px;cursor:pointer}.footnote{font-size:11px;color:var(--muted);margin:18px 0 38px}.tab[hidden]{display:none}.prose{max-width:750px;font-size:15px}.prose p{color:#495861}.data-table{border-collapse:collapse;width:100%;background:white}.data-table th,.data-table td{padding:17px;border-bottom:1px solid var(--line);text-align:left;font-size:13px;vertical-align:top}.data-table th{font-size:11px;text-transform:uppercase;letter-spacing:.09em;color:#57636b;background:#f0f2ef}.data-table td:nth-child(2){font-weight:bold;font-size:17px;font-family:Georgia,serif}.data-table td small{display:block;font:12px/1.5 Arial;color:var(--muted)}.glossary{display:grid;grid-template-columns:repeat(2,1fr);gap:0 40px}.term{padding:17px 0;border-bottom:1px solid var(--line)}.term b{display:block;font-size:15px}.term p{font-size:13px;color:#52616a;margin:5px 0}.source{display:flex;justify-content:space-between;gap:24px;padding:18px 0;border-bottom:1px solid var(--line)}.source strong{font-size:14px}.source p{font-size:12px;color:var(--muted);margin:4px 0 0}.source a{white-space:nowrap;font-size:12px}.note{border-left:2px solid var(--ink);padding:10px 0 10px 18px;font-size:13px;color:#50606a;margin:25px 0}.footer{margin-top:85px;border-top:1px solid var(--ink);padding:25px 0 45px;font-size:12px;color:var(--muted)}dialog{border:1px solid #b8c2be;max-width:490px;width:calc(100% - 30px);padding:25px;background:white;color:var(--ink);box-shadow:0 16px 55px #0002}dialog::backdrop{background:#15272b88}dialog h3{font:normal 26px Georgia,serif}dialog p{font-size:14px}dialog .close{float:right;border:0;background:none;font-size:22px;cursor:pointer}button:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:4px}@media(max-width:800px){.intro{grid-template-columns:1fr;gap:25px;padding-top:40px}.metrics{grid-template-columns:repeat(2,1fr)}.metric:nth-child(2){border-right:0}.metric:nth-child(-n+2){border-bottom:1px solid var(--line)}.cols{grid-template-columns:1fr;gap:25px}.independent{display:none}.glossary{grid-template-columns:1fr}}@media(max-width:480px){.wrap{padding:0 18px}.identity strong{font-size:17px}.identity span{font-size:9px}.monogram{width:42px;height:42px;font-size:16px}.nav-inner{gap:18px}.number{font-size:29px}.metric{padding:16px 12px}.sector{grid-template-columns:105px 1fr 60px;gap:8px;font-size:11px}.section-title h2{font-size:24px}}
+/* OES | Estilos consolidados. Ordem de cascata e responsividade preservadas. */
+*{box-sizing: border-box}
+body{margin: 0; font: 16px/1.55 Arial,Helvetica,sans-serif}
+a{text-underline-offset: 3px}
+.wrap{padding: 0 28px; margin: auto}
+.mast-inner{display: flex; justify-content: space-between; align-items: center; gap: 16px}
+.identity{display: flex; align-items: center}
+.monogram{display: grid; place-items: center}
+.identity strong{display: block}
+.identity span{text-transform: uppercase}
+.independent{border-left: 2px solid var(--accent); padding-left: 11px}
+nav{border-bottom: 1px solid var(--line)}
+.nav-inner{display: flex; overflow: auto}
+.nav-inner button{background: none; border: 0; border-bottom: 2px solid transparent; cursor: pointer; white-space: nowrap}
+.intro{display: grid}
+.kicker{text-transform: uppercase}
+.intro h1{font: normal clamp(37px,5.8vw,65px)/1.06 Georgia,serif}
+.intro p{margin: 0}
+.aside strong{display: block; color: var(--ink); margin-bottom: 8px}
+.section-title{display: flex; justify-content: space-between; align-items: end; gap: 10px}
+.section-title h2{margin: 0}
+.section-title span{color: var(--muted)}
+.metrics{display: grid; grid-template-columns: repeat(4,1fr)}
+.metric{border-right: 1px solid var(--line)}
+.metric:last-child{border-right: 0}
+.metric label{display: block}
+.number{font-size: 35px}
+.cols{display: grid; grid-template-columns: 1.6fr 1fr}
+h3{margin: 0 0 15px}
+.explain{border-left: 2px solid var(--accent)}
+.explain p{font-size: 14px; margin: 0 0 12px}
+.explain strong{font-size: 14px}
+.explain button{font: inherit; background: none; border: 0; padding: 0; text-decoration: underline; text-underline-offset: 3px; cursor: pointer}
+.glossary button{font: inherit; background: none; border: 0; padding: 0; text-decoration: underline; text-underline-offset: 3px; cursor: pointer}
+.footnote{font-size: 11px; color: var(--muted); margin: 18px 0 38px}
+.tab[hidden]{display: none}
+.prose{font-size: 15px}
+.data-table{border-collapse: collapse; width: 100%; background: white}
+.data-table th{padding: 17px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top}
+.data-table td{padding: 17px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top}
+.data-table th{text-transform: uppercase; letter-spacing: .09em}
+.data-table td:nth-child(2){font-size: 17px}
+.data-table td small{display: block; font: 12px/1.5 Arial; color: var(--muted)}
+.glossary{display: grid; grid-template-columns: repeat(2,1fr); gap: 0 40px}
+.term{border-bottom: 1px solid var(--line)}
+.term b{display: block}
+.term p{margin: 5px 0}
+.source{display: flex; justify-content: space-between; gap: 24px; padding: 18px 0; border-bottom: 1px solid var(--line)}
+.source p{font-size: 12px; color: var(--muted); margin: 4px 0 0}
+.source a{white-space: nowrap; font-size: 12px}
+.note{font-size: 13px; margin: 25px 0}
+.footer{border-top: 1px solid var(--ink); font-size: 12px}
+dialog{border: 1px solid #b8c2be; max-width: 490px; width: calc(100% - 30px); padding: 25px; background: white; color: var(--ink); box-shadow: 0 16px 55px #0002}
+dialog::backdrop{background: #15272b88}
+dialog p{font-size: 14px}
+dialog .close{float: right; border: 0; background: none; font-size: 22px; cursor: pointer}
+button:focus-visible{outline: 2px solid var(--accent); outline-offset: 4px}
+a:focus-visible{outline: 2px solid var(--accent); outline-offset: 4px}
 
-/* OES V4 | identidade editorial: Montserrat + Open Sans */
-
-:root{--ink:#142D47;--muted:#516274;--line:#dce4e9;--paper:#f8f9fa;--white:#fff;--accent:#142D47;--yellow:#F3C443}
-body{font-family:'Open Sans',Arial,sans-serif;font-size:15px;line-height:1.65;background:var(--paper)}
-.identity strong,.intro h1,.section-title h2,.number,dialog h3,.data-table td:nth-child(2){font-family:'Montserrat',Arial,sans-serif}
-.identity strong{font-weight:750;letter-spacing:-.035em}
-.intro h1{font-weight:800;letter-spacing:-.053em;line-height:1.12;font-size:clamp(38px,4.8vw,64px)}
-.section-title h2{font-weight:700;letter-spacing:-.035em}
-.number{font-weight:700;letter-spacing:-.045em}
-.nav-inner button{font-family:'Open Sans',Arial,sans-serif;font-weight:700}
-.monogram{font-family:'Montserrat',Arial,sans-serif;background:var(--yellow);color:var(--ink);font-weight:800;border-radius:2px}
-.kicker{color:#39536b}
-.nav-inner button.active{border-color:var(--yellow);color:var(--ink)}
-.metric{border-top:3px solid transparent}.metric:first-child{border-top-color:var(--yellow)}
-.bar i{background:#476d8e}.explain{border-left-color:var(--yellow)}
-.data-table th{background:var(--ink)}.mast{border-bottom:1px solid var(--line)}
-.source a,.explain button,.glossary button,a{color:#205d87}
-.independent{border-left-color:var(--yellow)}
-::selection{background:#f7df90;color:#142D47}
-
-
-/* OES editorial redesign, 2026 */
-:root{--ink:#10213d;--muted:#59677b;--line:#dce3e9;--paper:#f6f8fa;--white:#fff;--accent:#1162cb}
-body{background:var(--paper);color:var(--ink);font-family:Arial,"Helvetica Neue",Helvetica,sans-serif;font-size:15px;line-height:1.57;-webkit-font-smoothing:antialiased}
-.wrap{max-width:1220px;padding-left:38px;padding-right:38px}
-.mast{background:#10213d;color:#fff;border:0}
-.mast-inner{padding:22px 0}
-.identity{gap:18px}
-.monogram{font-family:Arial,Helvetica,sans-serif;font-weight:900;font-size:21px;letter-spacing:-2px;width:57px;height:57px;background:#f0c843;color:#10213d;border:0;border-radius:3px}
-.identity strong{font-family:Arial,Helvetica,sans-serif;font-weight:800;font-size:22px;line-height:1.12;letter-spacing:-.045em;max-width:380px}
-.identity span{color:#c9d4e2;letter-spacing:.075em;font-weight:700;font-size:10px;margin-top:7px;display:block}
-.independent{color:#e3edf6;border-left-color:#f0c843;font-size:12px;max-width:245px}
-nav{background:#fff;box-shadow:0 1px 0 var(--line)}
-.nav-inner{gap:36px}.nav-inner button{color:#48576c;font:700 13px Arial,Helvetica,sans-serif;padding:16px 0 15px}.nav-inner button.active{color:var(--ink);border-color:#e4b622;border-bottom-width:3px}
-.intro{padding:75px 0 56px;grid-template-columns:1.9fr .65fr;gap:70px;align-items:start}
-.kicker{color:var(--accent);font-size:11px;font-weight:800;letter-spacing:.10em}
-.intro h1{font-family:Arial,"Helvetica Neue",Helvetica,sans-serif;font-weight:850;font-size:clamp(40px,5.1vw,70px);line-height:1.05;letter-spacing:-.064em;margin:18px 0 19px;max-width:850px}
-.intro p{color:#4c5e72;font-size:17px;line-height:1.55;max-width:735px}
-.aside{border-top:4px solid #e4b622;color:#5d697c;font-size:13px;padding-top:18px}.aside strong{font-size:14px}
-.section-title{border-top:2px solid var(--ink);padding-top:19px;margin:24px 0 22px}.section-title h2{font:800 29px/1.2 Arial,Helvetica,sans-serif;letter-spacing:-.04em}.section-title span{font-size:12px}
-.metrics{gap:1px;background:var(--line);border:1px solid var(--line);box-shadow:0 10px 35px #17274208}
-.metric{background:#fff;padding:26px 22px 25px;border:0}.metric label{font-size:12px;color:#596678;font-weight:700;min-height:43px}
-.number{font:800 clamp(27px,2.9vw,39px)/1.1 Arial,Helvetica,sans-serif;letter-spacing:-.055em;margin:15px 0 10px;font-variant-numeric:tabular-nums}
-.origin{color:#687689;font-size:11px}
-.cols{gap:60px;padding-top:26px}
-h3{font-size:18px;letter-spacing:-.025em}
-.sector{font-size:13px;grid-template-columns:145px 1fr 82px;padding:15px 0}
-.bar{height:10px;background:#e2eaf1;border-radius:2px;overflow:hidden}.bar i{background:#1769c7;border-radius:2px}
-.explain{background:#fff;border:1px solid var(--line);border-top:4px solid #e4b622;padding:23px 26px;box-shadow:0 5px 22px #17274208}
-.explain p{color:#4f6073}.explain button,.glossary button{color:#0c5cbe;font-weight:700;text-decoration-thickness:1px}
-.prose{max-width:800px}.prose p{color:#47586d}
-.data-table{border:1px solid var(--line)}.data-table th{background:#10213d;color:#fff;font-size:11px;font-weight:800}.data-table td{font-size:13px}.data-table td:nth-child(2){font:800 19px Arial,Helvetica,sans-serif;letter-spacing:-.03em}
-.term{padding:20px 0}.term b{font-size:16px}.term p{font-size:13px;color:#55657a}
-.source{background:transparent}.source strong{font-size:15px}.source a{font-weight:700}
-.note{background:#fff;border-left:4px solid #e4b622;padding:17px 20px;color:#516173}
-.footer{background:#10213d;color:#d6e0ea;margin-top:90px;border:0;padding:27px 0 42px}
-.footer a{color:#fff}a{color:#115ebc}dialog{border-radius:5px;border-color:var(--line)}dialog h3{font:800 25px Arial,Helvetica,sans-serif}
-@media(max-width:800px){.wrap{padding-left:22px;padding-right:22px}.intro{grid-template-columns:1fr;gap:22px;padding:44px 0 36px}.intro h1{font-size:clamp(36px,8vw,57px)}.metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.metric{border:0}.metric:nth-child(-n+2){border-bottom:0}.cols{grid-template-columns:1fr;gap:30px}.independent{display:none}}
-@media(max-width:480px){.wrap{padding:0 18px}.mast-inner{padding:16px 0}.identity strong{font-size:17px}.identity span{font-size:9px}.monogram{width:44px;height:44px;font-size:16px}.nav-inner{gap:23px}.intro h1{font-size:37px}.intro p{font-size:15px}.number{font-size:27px}.metric{padding:19px 13px}.section-title h2{font-size:23px}.sector{grid-template-columns:100px 1fr 63px;gap:9px}}
-
-/* OES: identidade institucional consolidada */
-:root{--ink:#142D47;--muted:#516274;--paper:#F7F7F5;--accent:#142D47;--yellow:#F3C443}
-body{background:var(--paper);color:#333B44;font-family:'Open Sans',Arial,sans-serif}
-.identity strong,.intro h1,.section-title h2,.number,dialog h3,.data-table td:nth-child(2){font-family:'Montserrat',Arial,sans-serif;font-weight:600}
-.mast,.footer{background:#142D47}
-.monogram{background:#F3C443;color:#142D47}
-.bar i{background:#142D47}
-button:focus-visible,a:focus-visible{outline-color:#142D47}
-.pending{font-weight:600;font-size:18px;color:#516274}
-
-
-/* OES | Etapa 2: refinamento editorial e leitura em telas pequenas */
-:root{--ink:#142D47;--paper:#F7F7F5;--muted:#516274;--yellow:#F3C443;--line:#dce3e9}
-body{font-family:"Open Sans",Arial,sans-serif;background:var(--paper);color:#333B44}
-.identity strong,.intro h1,.section-title h2,.number,dialog h3{font-family:Montserrat,Arial,sans-serif;font-weight:600}
-.identity span{font-family:"Open Sans",Arial,sans-serif}
-.mast,.footer{background:#142D47}
-.nav-inner button{font-family:"Open Sans",Arial,sans-serif}
-.nav-inner button[aria-selected="true"]{border-color:var(--yellow);color:var(--ink)}
-.intro h1{font-size:clamp(34px,4.7vw,63px);line-height:1.12;letter-spacing:-.045em}
-.intro{padding-top:58px;padding-bottom:40px}
-.metrics--two{grid-template-columns:repeat(2,minmax(0,1fr));margin:26px 0}
-.metrics--two .metric{border-top:3px solid var(--yellow)}
-.metric .number{overflow-wrap:anywhere;font-size:clamp(25px,2.9vw,38px)}
-.metric .number--verified{color:#142D47}
-.metric .origin{display:flex;flex-direction:column;align-items:flex-start;gap:9px;line-height:1.6}
-.status-line{font-size:12px;color:#516274;padding:12px 0 2px;margin:0}
-.source-detail{appearance:none;background:transparent;border:0;border-bottom:1px solid #205d87;color:#205d87;font:600 12px/1.45 "Open Sans",Arial,sans-serif;cursor:pointer;text-align:left;padding:1px 0}
-.source-detail:hover{border-bottom-color:#142D47;color:#142D47}
-.source-detail:focus-visible{outline:2px solid #142D47;outline-offset:3px}
-.source--catalog{align-items:center}
-.source--catalog .source-detail{flex-shrink:0}
-dialog#sourceDialog{max-width:680px;max-height:min(83vh,850px);overflow-y:auto;border-radius:3px;border:1px solid #cdd5db;padding:26px 28px}
-#sourceDialogTitle{padding-right:30px;font-size:22px}
-.indicator-detail{margin:0}
-.data-detail{border-top:1px solid var(--line);padding:11px 0;display:grid;grid-template-columns:145px 1fr;gap:18px}
-.data-detail dt{font-size:12px;font-weight:700;color:#516274}
-.data-detail dd{margin:0;font-size:13px;line-height:1.6;overflow-wrap:anywhere;color:#333B44}
-.data-detail dd a{overflow-wrap:anywhere}
 @media(max-width:800px){
-.intro{padding-top:40px}
-.metrics--two{grid-template-columns:repeat(2,minmax(0,1fr))}
-.nav-inner{scrollbar-width:thin}
+  .metric:nth-child(2){border-right: 0}
+  .glossary{grid-template-columns: 1fr}
 }
+
+.metric{border-top: 3px solid transparent}
+.metric:first-child{border-top-color: var(--yellow)}
+.explain{border-left-color: var(--yellow)}
+.mast{border-bottom: 1px solid var(--line)}
+.source a{color: #205d87}
+::selection{background: #f7df90; color: #142D47}
+:root{--white: #fff}
+body{font-size: 15px; -webkit-font-smoothing: antialiased}
+.wrap{max-width: 1220px; padding-left: 38px; padding-right: 38px}
+.mast{color: #fff; border: 0}
+.mast-inner{padding: 22px 0}
+.identity{gap: 18px}
+.monogram{font-size: 21px; width: 57px; height: 57px; border: 0; border-radius: 3px}
+.identity span{color: #c9d4e2; font-size: 10px; margin-top: 7px; display: block}
+.independent{color: #e3edf6; border-left-color: #f0c843; font-size: 12px; max-width: 245px}
+nav{background: #fff; box-shadow: 0 1px 0 var(--line)}
+.nav-inner{gap: 36px}
+.nav-inner button{color: #48576c; font: 700 13px Arial,Helvetica,sans-serif; padding: 16px 0 15px}
+.nav-inner button.active{color: var(--ink); border-color: #e4b622; border-bottom-width: 3px}
+.intro{padding: 75px 0 56px; grid-template-columns: 1.9fr .65fr; gap: 70px; align-items: start}
+.kicker{color: var(--accent); font-size: 11px; font-weight: 800; letter-spacing: .10em}
+.intro h1{margin: 18px 0 19px; max-width: 850px}
+.intro p{color: #4c5e72; font-size: 17px; max-width: 735px}
+.aside{border-top: 4px solid #e4b622; color: #5d697c; font-size: 13px; padding-top: 18px}
+.aside strong{font-size: 14px}
+.section-title{border-top: 2px solid var(--ink)}
+.section-title h2{font: 800 29px/1.2 Arial,Helvetica,sans-serif}
+.section-title span{font-size: 12px}
+.metrics{gap: 1px; background: var(--line); border: 1px solid var(--line); box-shadow: 0 10px 35px #17274208}
+.metric{background: #fff; padding: 26px 22px 25px; border: 0}
+.metric label{font-size: 12px; color: #596678; min-height: 43px}
+.number{font: 800 clamp(27px,2.9vw,39px)/1.1 Arial,Helvetica,sans-serif; margin: 15px 0 10px; font-variant-numeric: tabular-nums}
+.origin{color: #687689; font-size: 11px}
+.cols{gap: 60px; padding-top: 26px}
+h3{font-size: 18px}
+.explain{background: #fff; border: 1px solid var(--line); border-top: 4px solid #e4b622; padding: 23px 26px; box-shadow: 0 5px 22px #17274208}
+.explain p{color: #4f6073}
+.explain button{color: #0c5cbe; font-weight: 700; text-decoration-thickness: 1px}
+.glossary button{color: #0c5cbe; font-weight: 700; text-decoration-thickness: 1px}
+.prose{max-width: 800px}
+.prose p{color: #47586d}
+.data-table{border: 1px solid var(--line)}
+.data-table th{background: #10213d; color: #fff; font-size: 11px}
+.data-table td{font-size: 13px}
+.data-table td:nth-child(2){font: 800 19px Arial,Helvetica,sans-serif}
+.term{padding: 20px 0}
+.term b{font-size: 16px}
+.term p{font-size: 13px; color: #55657a}
+.source{background: transparent}
+.source strong{font-size: 15px}
+.source a{font-weight: 700}
+.note{background: #fff; border-left: 4px solid #e4b622; padding: 17px 20px; color: #516173}
+.footer{color: #d6e0ea; margin-top: 90px; border: 0; padding: 27px 0 42px}
+.footer a{color: #fff}
+a{color: #115ebc}
+dialog{border-radius: 5px; border-color: var(--line)}
+dialog h3{font: 800 25px Arial,Helvetica,sans-serif}
+
+@media(max-width:800px){
+  .wrap{padding-left: 22px; padding-right: 22px}
+  .intro{grid-template-columns: 1fr; gap: 22px; padding: 44px 0 36px}
+  .intro h1{font-size: clamp(36px,8vw,57px)}
+  .metrics{grid-template-columns: repeat(2,minmax(0,1fr))}
+  .metric{border: 0}
+  .metric:nth-child(-n+2){border-bottom: 0}
+  .cols{grid-template-columns: 1fr; gap: 30px}
+  .independent{display: none}
+}
+
 @media(max-width:480px){
-.metrics--two{grid-template-columns:1fr}
-.metrics--two .metric{border-right:0;border-bottom:1px solid var(--line)}
-.metric .origin{font-size:11px}
-.source--catalog{align-items:flex-start;flex-direction:column;gap:5px}
-.data-detail{grid-template-columns:1fr;gap:3px}
-dialog#sourceDialog{padding:20px 18px}
+  .wrap{padding: 0 18px}
+  .mast-inner{padding: 16px 0}
+  .identity strong{font-size: 17px}
+  .identity span{font-size: 9px}
+  .monogram{width: 44px; height: 44px; font-size: 16px}
+  .nav-inner{gap: 23px}
+  .intro h1{font-size: 37px}
+  .intro p{font-size: 15px}
+  .number{font-size: 27px}
+  .metric{padding: 19px 13px}
+  .section-title h2{font-size: 23px}
 }
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation-duration:0s!important;transition-duration:0s!important}}
 
-/* OES: apresentação institucional e políticas aprovadas */
-.institutional-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin:32px 0 18px}
-.institutional-block{border:1px solid var(--line);background:#fff;padding:25px 27px}
-.institutional-block h3{margin:0 0 10px;font:700 17px/1.3 Montserrat,Arial,sans-serif;color:var(--ink)}
-.institutional-block p{margin:0;font-size:14px;color:#485a68}
-.institutional-values{margin-bottom:35px}
-.institutional-cta{background:#fff;border-left:4px solid #f3c443;padding:23px 26px;margin:32px 0 0}
-.institutional-cta p{max-width:680px;margin:7px 0 10px;font-size:14px;color:#516274}
-.institutional-cta a{font-weight:700}
-.governance-wrap{padding-top:48px;padding-bottom:24px}
-.governance-wrap h1{font:700 clamp(30px,4vw,48px)/1.15 Montserrat,Arial,sans-serif;letter-spacing:-.04em;color:var(--ink);margin:16px 0}
-.governance-lead{max-width:740px;color:#516274;font-size:15px}
-.back-link a{font-size:13px;font-weight:700}
-.governance-index{display:flex;flex-wrap:wrap;gap:9px;margin:28px 0 46px;padding:20px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);box-shadow:none;background:transparent}
-.governance-index a{background:#fff;border:1px solid var(--line);padding:8px 12px;font-size:12px;font-weight:700;text-decoration:none}
-.governance-index a:hover,.governance-index a:focus-visible{border-color:var(--ink)}
-.governance-section{max-width:830px;padding:30px 0;border-top:2px solid var(--ink);scroll-margin-top:18px}
-.governance-section h2{font:700 24px/1.3 Montserrat,Arial,sans-serif;letter-spacing:-.025em;margin:0 0 20px;color:var(--ink)}
-.governance-section h3{font:700 16px Montserrat,Arial,sans-serif;margin:25px 0 12px;color:var(--ink)}
-.governance-section h4{font:700 15px Montserrat,Arial,sans-serif;margin:20px 0 10px}
-.governance-section p,.governance-section li{font-size:14px;line-height:1.8;color:#47586d}
-.governance-section ul,.governance-section ol{padding-left:23px}
-.governance-section li{margin-bottom:9px}
-.governance-note{max-width:830px;font-size:12px;color:var(--muted)}
-@media(max-width:680px){.institutional-grid{grid-template-columns:1fr}.institutional-block{padding:20px}.governance-wrap{padding-top:28px}.governance-index{margin-bottom:22px}.governance-section{padding:24px 0}}
+:root{--accent: #142D47}
+.monogram{background: #F3C443; color: #142D47}
+button:focus-visible{outline-color: #142D47}
+a:focus-visible{outline-color: #142D47}
+:root{--ink: #142D47; --paper: #F7F7F5; --muted: #516274; --yellow: #F3C443; --line: #dce3e9}
+body{background: var(--paper); color: #333B44}
+.mast{background: #142D47}
+.footer{background: #142D47}
+.nav-inner button[aria-selected="true"]{border-color: var(--yellow); color: var(--ink)}
+.metrics--two{grid-template-columns: repeat(2,minmax(0,1fr)); margin: 26px 0}
+.metrics--two .metric{border-top: 3px solid var(--yellow)}
+.metric .number{overflow-wrap: anywhere; font-size: clamp(25px,2.9vw,38px)}
+.metric .number--verified{color: #142D47}
+.metric .origin{display: flex; flex-direction: column; align-items: flex-start; gap: 9px; line-height: 1.6}
+.status-line{font-size: 12px; color: #516274; padding: 12px 0 2px; margin: 0}
+.source-detail{appearance: none; background: transparent; border: 0; border-bottom: 1px solid #205d87; color: #205d87; font: 600 12px/1.45 "Open Sans",Arial,sans-serif; cursor: pointer; text-align: left; padding: 1px 0}
+.source-detail:hover{border-bottom-color: #142D47; color: #142D47}
+.source-detail:focus-visible{outline: 2px solid #142D47; outline-offset: 3px}
+.source--catalog{align-items: center}
+.source--catalog .source-detail{flex-shrink: 0}
+dialog#sourceDialog{max-width: 680px; max-height: min(83vh,850px); overflow-y: auto; border-radius: 3px; border: 1px solid #cdd5db; padding: 26px 28px}
+#sourceDialogTitle{padding-right: 30px; font-size: 22px}
+.indicator-detail{margin: 0}
+.data-detail{border-top: 1px solid var(--line); padding: 11px 0; display: grid; grid-template-columns: 145px 1fr; gap: 18px}
+.data-detail dt{font-size: 12px; color: #516274}
+.data-detail dd{margin: 0; font-size: 13px; line-height: 1.6; overflow-wrap: anywhere; color: #333B44}
+.data-detail dd a{overflow-wrap: anywhere}
 
+@media(max-width:800px){
+  .intro{padding-top: 40px}
+  .metrics--two{grid-template-columns: repeat(2,minmax(0,1fr))}
+  .nav-inner{scrollbar-width: thin}
+}
 
-/* OES | Tipografia institucional 2026-10-23
- * Linguagem editorial de centro de pesquisa. Evitar pesos 700/800 nos títulos.
- * Mudança restrita a apresentação, sem alterações de dados, scripts ou paleta.
- */
-:root {
-  --font-editorial: 'Source Serif 4', Georgia, 'Times New Roman', serif;
-  --font-interface: 'Source Sans 3', 'Segoe UI', Arial, sans-serif;
+@media(max-width:480px){
+  .metrics--two{grid-template-columns: 1fr}
+  .metrics--two .metric{border-right: 0; border-bottom: 1px solid var(--line)}
+  .metric .origin{font-size: 11px}
+  .source--catalog{align-items: flex-start; flex-direction: column; gap: 5px}
+  .data-detail{grid-template-columns: 1fr; gap: 3px}
+  dialog#sourceDialog{padding: 20px 18px}
 }
-body {
-  font-family: var(--font-interface);
-  font-weight: 400;
-  line-height: 1.65;
+
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior: auto}
+  *{animation-duration: 0s!important; transition-duration: 0s!important}
 }
-.identity strong {
-  font-family: var(--font-editorial);
-  font-size: clamp(19px, 2.1vw, 25px);
-  font-weight: 500;
-  line-height: 1.15;
-  letter-spacing: -.025em;
-  max-width: 400px;
+
+.institutional-grid{display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 18px; margin: 32px 0 18px}
+.institutional-block{border: 1px solid var(--line); background: #fff}
+.institutional-block h3{margin: 0 0 10px; font: 700 17px/1.3 Montserrat,Arial,sans-serif; color: var(--ink)}
+.institutional-block p{margin: 0; font-size: 14px; color: #485a68}
+.institutional-values{margin-bottom: 35px}
+.institutional-cta{background: #fff; border-left: 4px solid #f3c443; padding: 23px 26px; margin: 32px 0 0}
+.institutional-cta p{max-width: 680px; margin: 7px 0 10px; font-size: 14px; color: #516274}
+.institutional-cta a{font-weight: 700}
+.governance-wrap{padding-top: 48px; padding-bottom: 24px}
+.governance-wrap h1{font: 700 clamp(30px,4vw,48px)/1.15 Montserrat,Arial,sans-serif; color: var(--ink); margin: 16px 0}
+.governance-lead{max-width: 740px; color: #516274; font-size: 15px}
+.back-link a{font-size: 13px; font-weight: 700}
+.governance-index{display: flex; flex-wrap: wrap; gap: 9px; margin: 28px 0 46px; padding: 20px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); box-shadow: none; background: transparent}
+.governance-index a{background: #fff; border: 1px solid var(--line); padding: 8px 12px; font-size: 12px; text-decoration: none}
+.governance-index a:hover{border-color: var(--ink)}
+.governance-index a:focus-visible{border-color: var(--ink)}
+.governance-section{max-width: 830px; padding: 30px 0; border-top: 2px solid var(--ink); scroll-margin-top: 18px}
+.governance-section h2{font: 700 24px/1.3 Montserrat,Arial,sans-serif; margin: 0 0 20px; color: var(--ink)}
+.governance-section h3{font: 700 16px Montserrat,Arial,sans-serif; margin: 25px 0 12px; color: var(--ink)}
+.governance-section h4{font: 700 15px Montserrat,Arial,sans-serif; margin: 20px 0 10px}
+.governance-section p{color: #47586d}
+.governance-section li{color: #47586d}
+.governance-section ul{padding-left: 23px}
+.governance-section ol{padding-left: 23px}
+.governance-section li{margin-bottom: 9px}
+.governance-note{max-width: 830px; font-size: 12px; color: var(--muted)}
+
+@media(max-width:680px){
+  .institutional-grid{grid-template-columns: 1fr}
+  .institutional-block{padding: 20px}
+  .governance-wrap{padding-top: 28px}
+  .governance-index{margin-bottom: 22px}
+  .governance-section{padding: 24px 0}
 }
-.identity span {
-  font-family: var(--font-interface);
-  font-weight: 500;
-  letter-spacing: .09em;
+
+:root{--font-editorial: 'Source Serif 4', Georgia, 'Times New Roman', serif; --font-interface: 'Source Sans 3', 'Segoe UI', Arial, sans-serif}
+body{font-family: var(--font-interface); font-weight: 400; line-height: 1.65}
+.identity strong{font-family: var(--font-editorial); font-size: clamp(19px, 2.1vw, 25px); font-weight: 500; line-height: 1.15; letter-spacing: -.025em; max-width: 400px}
+.identity span{font-family: var(--font-interface); font-weight: 500; letter-spacing: .09em}
+.monogram{font-family: var(--font-editorial); font-weight: 500; letter-spacing: -.065em}
+.intro h1{font-family: var(--font-editorial); font-size: clamp(42px, 5.0vw, 68px); font-weight: 400; letter-spacing: -.035em; line-height: 1.11}
+.intro p{font-family: var(--font-interface); font-weight: 400; line-height: 1.75}
+.section-title h2{font-family: var(--font-editorial); font-weight: 400; letter-spacing: -.025em; line-height: 1.2}
+.governance-wrap h1{font-family: var(--font-editorial); font-weight: 400; letter-spacing: -.025em; line-height: 1.2}
+.governance-section h2{font-family: var(--font-editorial); font-weight: 400; letter-spacing: -.025em; line-height: 1.2}
+dialog h3{font-family: var(--font-editorial); font-weight: 400; letter-spacing: -.025em; line-height: 1.2}
+.section-title h2{font-size: clamp(26px, 2.8vw, 33px)}
+.governance-wrap h1{font-size: clamp(36px, 4.4vw, 55px)}
+.governance-section h2{font-size: clamp(26px, 2.8vw, 34px)}
+dialog h3{font-size: 27px}
+.number{font-family: var(--font-interface); font-weight: 500; letter-spacing: -.035em}
+.metric .number{font-family: var(--font-interface); font-weight: 500; letter-spacing: -.035em}
+.data-table td:nth-child(2){font-family: var(--font-interface); font-weight: 500; letter-spacing: -.035em}
+.nav-inner button{font-family: var(--font-interface); font-weight: 500; letter-spacing: .005em}
+.nav-inner button.active{font-weight: 600}
+.nav-inner button[aria-selected="true"]{font-weight: 600}
+.metric label{font-family: var(--font-interface); font-weight: 500}
+.source-detail{font-family: var(--font-interface); font-weight: 500}
+.governance-index a{font-family: var(--font-interface); font-weight: 500}
+h3{font-family: var(--font-interface); font-weight: 600; letter-spacing: -.012em}
+.institutional-block h3{font-family: var(--font-interface); font-weight: 600; letter-spacing: -.012em}
+.governance-section h3{font-family: var(--font-interface); font-weight: 600; letter-spacing: -.012em}
+.governance-section h4{font-family: var(--font-interface); font-weight: 600; letter-spacing: -.012em}
+.source strong{font-weight: 600}
+.explain strong{font-weight: 600}
+.aside strong{font-weight: 600}
+.institutional-cta strong{font-weight: 600}
+.term b{font-weight: 600}
+.data-detail dt{font-weight: 600}
+.data-table th{font-family: var(--font-interface); font-weight: 600}
+.section-title{margin: 30px 0 21px; padding-top: 21px}
+.intro{padding-top: 66px; padding-bottom: 48px}
+.institutional-block{padding: 29px 30px}
+.governance-section{padding-top: 35px; padding-bottom: 35px}
+.governance-section p{font-size: 15px; line-height: 1.8}
+.governance-section li{font-size: 15px; line-height: 1.8}
+
+@media (max-width: 800px){
+  .intro{padding-top: 43px; padding-bottom: 34px}
+  .intro h1{font-size: clamp(38px, 7.3vw, 56px)}
 }
-.monogram {
-  font-family: var(--font-editorial);
-  font-weight: 500;
-  letter-spacing: -.065em;
-}
-.intro h1 {
-  font-family: var(--font-editorial);
-  font-size: clamp(42px, 5.0vw, 68px);
-  font-weight: 400;
-  letter-spacing: -.035em;
-  line-height: 1.11;
-}
-.intro p {
-  font-family: var(--font-interface);
-  font-weight: 400;
-  line-height: 1.75;
-}
-.section-title h2,
-.governance-wrap h1,
-.governance-section h2,
-dialog h3 {
-  font-family: var(--font-editorial);
-  font-weight: 400;
-  letter-spacing: -.025em;
-  line-height: 1.2;
-}
-.section-title h2 { font-size: clamp(26px, 2.8vw, 33px); }
-.governance-wrap h1 { font-size: clamp(36px, 4.4vw, 55px); }
-.governance-section h2 { font-size: clamp(26px, 2.8vw, 34px); }
-dialog h3 { font-size: 27px; }
-.number,
-.metric .number,
-.data-table td:nth-child(2) {
-  font-family: var(--font-interface);
-  font-weight: 500;
-  letter-spacing: -.035em;
-}
-.nav-inner button {
-  font-family: var(--font-interface);
-  font-weight: 500;
-  letter-spacing: .005em;
-}
-.nav-inner button.active,
-.nav-inner button[aria-selected="true"] { font-weight: 600; }
-.metric label,
-.source-detail,
-.governance-index a { font-family: var(--font-interface); font-weight: 500; }
-h3,
-.institutional-block h3,
-.governance-section h3,
-.governance-section h4 {
-  font-family: var(--font-interface);
-  font-weight: 600;
-  letter-spacing: -.012em;
-}
-.source strong,
-.explain strong,
-.aside strong,
-.institutional-cta strong,
-.term b,
-.data-detail dt { font-weight: 600; }
-.data-table th {
-  font-family: var(--font-interface);
-  font-weight: 600;
-}
-.section-title { margin: 30px 0 21px; padding-top: 21px; }
-.intro { padding-top: 66px; padding-bottom: 48px; }
-.institutional-block { padding: 29px 30px; }
-.governance-section { padding-top: 35px; padding-bottom: 35px; }
-.governance-section p,
-.governance-section li { font-size: 15px; line-height: 1.8; }
-@media (max-width: 800px) {
-  .intro { padding-top: 43px; padding-bottom: 34px; }
-  .intro h1 { font-size: clamp(38px, 7.3vw, 56px); }
-}
-@media (max-width: 480px) {
-  .identity strong { font-size: 18px; }
-  .intro h1 { font-size: 39px; }
-  .section-title h2 { font-size: 27px; }
-  .institutional-block { padding: 22px; }
+
+@media (max-width: 480px){
+  .identity strong{font-size: 18px}
+  .intro h1{font-size: 39px}
+  .section-title h2{font-size: 27px}
+  .institutional-block{padding: 22px}
 }
