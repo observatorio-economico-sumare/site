@@ -5,7 +5,7 @@ import csv
 from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import urljoin, urlparse
-from scripts.oes_coleta.coletar import get
+from coletar import get
 
 SOURCES = [
     ("inep_2025", "https://www.gov.br/inep/pt-br/acesso-a-informacao/dados-abertos/sinopses-estatisticas/educacao-basica"),
