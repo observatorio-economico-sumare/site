@@ -292,3 +292,12 @@ h3{font-family: var(--font-interface); font-weight: 600; letter-spacing: -.012em
 .language-switch .language-current{color:#fff;border-bottom:2px solid var(--yellow);font-weight:600}
 @media(max-width:800px){.language-switch{margin-left:auto}}
 @media(max-width:480px){.mast-inner{gap:10px}.identity{gap:10px}.language-switch{gap:5px;font-size:11px}}
+
+/* Glossário: leitura rápida e fichas detalhadas sob demanda. */
+.term .term-action{display:inline-block;margin-top:3px;font:500 13px/1.6 var(--font-interface);color:#205d87;text-decoration:underline;text-underline-offset:3px}
+.term .term-action:hover{color:#142d47}
+.term .term-action:focus-visible{outline:2px solid #142d47;outline-offset:3px}
+#termDialog{max-height:min(85vh,850px);overflow-y:auto}
+#termDialog .term-details{border-top:1px solid var(--line);padding-top:15px}
+#termDialog .term-source{margin-top:18px}
+#termDialog .term-source a{overflow-wrap:anywhere}

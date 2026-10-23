@@ -74,3 +74,27 @@ assert.deepEqual(cards.slice(0, 2).map(card => card.number.textContent),
 assert.equal(cards[2].number.textContent, "", "Indicadores diferentes permanecem intactos");
 assert.equal(cards[0].origin.children.length, 2);
 assert.equal(cards[0].origin.children[1].textContent, "Fonte e metodologia");
+
+
+/* Regressão PT/EN: cada verbete tem resumo, explicação adicional e fonte HTTPS. */
+const glossaryCode = fs.readFileSync("site/assets/js/app.js", "utf8");
+const glossaryMatch = glossaryCode.match(/const glossaryEntries = (\\{[\\s\\S]*?\\});\\nconst appEnglish/);
+assert.ok(glossaryMatch, "Glossário estruturado ausente");
+const glossaryEntries = JSON.parse(glossaryMatch[1]);
+assert.equal(Object.keys(glossaryEntries).length, 9);
+for (const entry of Object.values(glossaryEntries)) {
+  for (const locale of ["pt", "en"]) {
+    for (const property of ["title", "short", "detail"]) {
+      assert.ok(entry[locale]?.[property]?.length > 10, locale + " " + property);
+    }
+    assert.ok(entry.source[locale]?.length > 10);
+  }
+  assert.equal(new URL(entry.source.url).protocol, "https:");
+}
+for (const path of ["site/index.html", "site/en/index.html"]) {
+  const html = fs.readFileSync(path, "utf8");
+  assert.match(html, /id="termDetails"/);
+  assert.match(html, /id="termSource"/);
+  assert.match(html, /id="termDialog" aria-labelledby="termTitle"/);
+}
+console.log("Glossário PT/EN: definições, detalhes, fontes e acessibilidade OK");
