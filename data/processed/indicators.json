@@ -1,3 +1,70 @@
 {
-  "indicators": []
+  "indicators": [
+    {
+      "id": "populacao-censo-2022",
+      "name": "População residente (Censo 2022)",
+      "topic": "populacao",
+      "unit": "pessoas",
+      "reference_period": "2022",
+      "definition": "Total de residentes recenseados",
+      "source_institution": "IBGE",
+      "source_dataset": "Censo Demográfico",
+      "value": 279545,
+      "municipality_code": "3552403",
+      "status": "validated",
+      "source": {
+        "institution": "IBGE",
+        "dataset": "Censo Demográfico",
+        "url": "https://www.ibge.gov.br/cidades-e-estados/sp/sumare.html",
+        "query_id": "IBGE Cidades e Estados | Município 3552403 | População no último censo | 2022",
+        "release_date": null
+      },
+      "collected_at": "2026-10-23",
+      "updated_at": "2026-10-23",
+      "reviewed_at": "2026-10-23",
+      "reviewed_by": "Verificação técnica assistida do OES (sem revisão humana independente)",
+      "method": "Contagem de pessoas residentes no Censo Demográfico 2022, conforme total exibido pelo IBGE para Sumaré.",
+      "limitations": "Total censitário, com referência em 2022. Não equivale ao número atual de habitantes.",
+      "revisions": "Inclusão inicial em 23/10/2026; sem revisão posterior registrada no OES.",
+      "evidence": {
+        "raw_path": "data/raw/ibge_cidades_sumare_2026-10-23.json",
+        "sha256": "239f6a8a5706cf01cb6e061400ae1890b2f9442c477afa13cb9fc0597962dbda",
+        "capture_method": "transcricao_assistida_de_pagina_oficial",
+        "original_file_preserved": false
+      }
+    },
+    {
+      "id": "populacao-estimada",
+      "name": "População estimada",
+      "topic": "populacao",
+      "unit": "pessoas",
+      "reference_period": "2026",
+      "definition": "Estimativa oficial de residentes, sujeita à validação da divulgação e do período",
+      "source_institution": "IBGE",
+      "source_dataset": "Estimativas da População",
+      "value": 292307,
+      "municipality_code": "3552403",
+      "status": "validated",
+      "source": {
+        "institution": "IBGE",
+        "dataset": "Estimativas da População",
+        "url": "https://www.ibge.gov.br/cidades-e-estados/sp/sumare.html",
+        "query_id": "IBGE Cidades e Estados | Município 3552403 | População estimada | 2026",
+        "release_date": "2026-08-28"
+      },
+      "collected_at": "2026-10-23",
+      "updated_at": "2026-10-23",
+      "reviewed_at": "2026-10-23",
+      "reviewed_by": "Verificação técnica assistida do OES (sem revisão humana independente)",
+      "method": "Estimativa oficial do IBGE para 1º de julho de 2026, reproduzida sem cálculo adicional. Método AiBi, conforme documentação do IBGE.",
+      "limitations": "Estimativa demográfica, não contagem. Diferenças entre Censo e estimativa não devem ser tratadas automaticamente como crescimento observado.",
+      "revisions": "Inclusão inicial em 23/10/2026; sem revisão posterior registrada no OES.",
+      "evidence": {
+        "raw_path": "data/raw/ibge_cidades_sumare_2026-10-23.json",
+        "sha256": "239f6a8a5706cf01cb6e061400ae1890b2f9442c477afa13cb9fc0597962dbda",
+        "capture_method": "transcricao_assistida_de_pagina_oficial",
+        "original_file_preserved": false
+      }
+    }
+  ]
 }
