@@ -1,6 +1,5 @@
 "use strict";
 
-/* Glossário: usar texto, nunca HTML originado de dados dinâmicos. */
 const definitions={'Vínculo formal':'Registro de uma relação de trabalho formal contabilizada na base administrativa utilizada. Neste painel, o dado se refere ao local do estabelecimento, não necessariamente ao município de residência do trabalhador.','Pessoa ocupada':'Pessoa que exercia atividade remunerada ou outra atividade considerada trabalho segundo os critérios da pesquisa no período de referência.','Pessoa desocupada':'Pessoa sem trabalho que procurou uma ocupação e estava disponível para trabalhar, segundo os critérios da pesquisa.','CLT':'Trabalhador contratado sob as regras da Consolidação das Leis do Trabalho. Empregos com carteira não são equivalentes ao total de pessoas ocupadas.','MEI':'Microempreendedor individual: modalidade de formalização de um pequeno negócio. Um mesmo titular também pode ter outra atividade profissional.','Conta própria':'Pessoa que trabalha explorando seu próprio negócio ou atividade, sem necessariamente possuir CNPJ.','Saldo de empregos':'Diferença entre admissões e desligamentos no período. Não corresponde à quantidade total de empregos existentes.','Rendimento médio':'Média dos rendimentos do grupo definido pela pesquisa. Não é o salário de cada pessoa nem representa necessariamente a renda mediana.','Servidor público':'Pessoa que trabalha no setor público, sob regime estatutário ou outra forma de contratação. As bases estatísticas podem classificar vínculos de maneiras distintas.'};
 
 const termDialog = document.getElementById("termDialog");
@@ -35,7 +34,6 @@ document.querySelectorAll("[data-term]").forEach(button => {
 document.getElementById("closeDialog").addEventListener("click", () =>
   termDialog.close());
 
-/* Abas com navegação por teclado, hash de URL e marcação ARIA consistente. */
 const navButtons = [...document.querySelectorAll('nav button[data-tab]')];
 const tabPanels = [...document.querySelectorAll(".tab[role=tabpanel]")];
 const validTabs = new Set(navButtons.map(button => button.dataset.tab));
