@@ -134,7 +134,6 @@ function renderItem(item, cardsById) {
 }
 
 async function renderIndicators() {
-  const status = document.getElementById("updateState");
   const list = document.getElementById("indicator-sources");
   try {
     const result = await fetch(DATA_URL, {cache: "no-store"});
@@ -166,12 +165,11 @@ async function renderIndicators() {
       list.append(row);
     });
     if (!payload.indicators.length) list.textContent = indicatorsEnglish ? "No indicators have been verified yet." : "Ainda não há indicadores certificados.";
-    if (status) status.textContent = payload.indicators.length +
-      (indicatorsEnglish ? " indicators with documented sources. Others are pending validation." : " indicadores com fonte e documentação disponíveis. Os demais seguem em validação.");
+
   } catch (error) {
     console.error("OES: não foi possível carregar os indicadores.", error);
     list.textContent = indicatorsEnglish ? "Indicators are unavailable. Unverified values are not shown." : "Indicadores indisponíveis nesta consulta. Os valores não validados não são exibidos.";
-    if (status) status.textContent = indicatorsEnglish ? "Could not load published data. No values have been inferred." : "Falha ao consultar os dados publicados. Nenhum valor foi presumido.";
+
   }
 }
 document.getElementById("closeSourceDialog").addEventListener("click", () =>

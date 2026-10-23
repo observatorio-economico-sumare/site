@@ -125,3 +125,15 @@ for (const path of ["site/index.html", "site/en/index.html"]) {
   assert.doesNotMatch(html, /class="aside"/);
   assert.doesNotMatch(html, /Sobre esta versão|About this version/);
 }
+
+/* Resumo institucional objetivo e sem texto de bastidores na interface. */
+for(const language of ["", "en/"]){
+ const governance = fs.readFileSync("site/" + language + "governanca.html","utf8");
+ assert.equal((governance.match(/class="governance-section"/g)||[]).length,8);
+ assert.match(governance,/class="governance-grid"/);
+ assert.ok(governance.length < 8000, "Governança excessivamente longa");
+ const homepage = fs.readFileSync("site/" + language + "index.html","utf8");
+ assert.doesNotMatch(homepage,/id="updateState"|in phase of prototyping|fase de protótipo/);
+}
+assert.doesNotMatch(fs.readFileSync("site/assets/js/indicators.js","utf8"),
+ /indicadores com fonte e documentação disponíveis|indicators with documented sources/);
