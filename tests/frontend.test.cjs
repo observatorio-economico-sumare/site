@@ -78,7 +78,7 @@ assert.equal(cards[0].origin.children[1].textContent, "Fonte e metodologia");
 
 /* Regressão PT/EN: cada verbete tem resumo, explicação adicional e fonte HTTPS. */
 const glossaryCode = fs.readFileSync("site/assets/js/app.js", "utf8");
-const glossaryMatch = glossaryCode.match(/const glossaryEntries = (\\{[\\s\\S]*?\\});\\nconst appEnglish/);
+const glossaryMatch = glossaryCode.match(/const glossaryEntries = (\{[\s\S]*?\});\nconst appEnglish/);
 assert.ok(glossaryMatch, "Glossário estruturado ausente");
 const glossaryEntries = JSON.parse(glossaryMatch[1]);
 assert.equal(Object.keys(glossaryEntries).length, 9);
