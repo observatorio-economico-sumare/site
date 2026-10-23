@@ -250,3 +250,15 @@ for (const [path,titles] of [
  }
  assert.ok(section.includes('<section class="glossary-section" id="glossario"'));
 }
+
+/* Apresentação editorial dos três indicadores verificados. */
+for(const page of ["site/index.html","site/en/index.html"]){
+ const html=fs.readFileSync(page,"utf8");
+ const summary=html.slice(html.indexOf('<section class="tab" id="inicio" role="tabpanel">'),
+                          html.indexOf('<section class="tab" hidden="" id="populacao"'));
+ assert.doesNotMatch(summary,/Indicadores oficiais|Official indicators|Cada indicador apresenta sua fonte e metodologia|Each indicator provides its source and methodology/);
+}
+const editorialCss=fs.readFileSync("site/assets/css/styles.css","utf8");
+assert.match(editorialCss,/\.metrics--three\{grid-template-columns:repeat\(3,minmax\(0,1fr\)\);gap:0;border:0;background:transparent;box-shadow:none/);
+assert.match(editorialCss,/\.metrics--three \.metric:first-child\{padding-left:0;border-top:1px solid var\(--line\)\}/);
+assert.doesNotMatch(editorialCss,/\.metrics--three \.metric:first-child\{border-top:3px solid var\(--yellow\)\}/);

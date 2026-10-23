@@ -347,8 +347,24 @@ h3{font-family: var(--font-interface); font-weight: 600; letter-spacing: -.012em
 @media(max-width:760px){.nav-shell{gap:16px}.nav-library-link{font-size:13px}}
 
 /* Interface responsiva e leitura de dados. */
-.metrics--three{grid-template-columns:repeat(3,minmax(0,1fr));margin-bottom:12px}
-.metrics--three .metric:first-child{border-top:3px solid var(--yellow)}
+/* Indicadores com hierarquia editorial, sem cartões decorativos. */
+#inicio > .section-title{border:0;padding-top:0;margin:28px 0 22px}
+.metrics--three{grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border:0;background:transparent;box-shadow:none;margin:0}
+.metrics--three .metric{min-width:0;padding:26px clamp(20px,2.3vw,34px) 20px;background:transparent;border:0;border-top:1px solid var(--line);border-right:1px solid var(--line)}
+.metrics--three .metric:first-child{padding-left:0;border-top:1px solid var(--line)}
+.metrics--three .metric:last-child{border-right:0;padding-right:0}
+.metrics--three .metric label{font-size:14px;font-weight:500;line-height:1.4;min-height:40px;color:var(--ink)}
+.metrics--three .metric .number{font-size:clamp(30px,3.3vw,44px);font-weight:500;line-height:1.18;letter-spacing:-.04em;overflow-wrap:normal;margin:15px 0 17px}
+.metrics--three .metric .origin{font-size:13px;line-height:1.5;gap:8px;color:#596a79}
+.metrics--three .metric .source-detail{font-size:13px;color:#365b73;font-weight:500;border-color:#8a9daa}
+#inicio > .footnote{margin:12px 0 42px;color:#596a79;line-height:1.6}
+@media(max-width:900px){
+ .metrics--three{grid-template-columns:1fr}
+ .metrics--three .metric,.metrics--three .metric:first-child,.metrics--three .metric:last-child{padding:22px 0;border:0;border-bottom:1px solid var(--line)}
+ .metrics--three .metric:first-child{border-top:1px solid var(--line)}
+ .metrics--three .metric label{min-height:0}
+ .metrics--three .metric .number{font-size:clamp(31px,5vw,41px);margin:11px 0 13px}
+}
 .metric label{font-size:13px;min-height:41px}
 .metric .origin,.origin,.footnote,.source p,.source a,.data-table td small,.data-detail dt,.source-detail,.section-title span{font-size:13px}
 .mast-inner .independent-main,.mast-inner .independent-secondary{display:block}
@@ -358,7 +374,6 @@ h3{font-family: var(--font-interface); font-weight: 600; letter-spacing: -.012em
 .nav-library-link{display:inline-flex;align-items:center;flex:0 0 auto;white-space:nowrap;text-decoration:none;color:#48576c;font:500 13px/1.35 var(--font-interface);border-bottom:2px solid transparent}
 .nav-library-link:hover,.nav-library-link:focus-visible{color:var(--ink);border-color:var(--yellow)}
 @media(max-width:800px){
- .metrics--three{grid-template-columns:repeat(2,minmax(0,1fr))}
  .mast-inner{flex-wrap:wrap;row-gap:8px}
  .mast-inner .independent{display:block;order:3;flex-basis:100%;max-width:none;padding:0;border:0;font-size:12px;line-height:1.4}
  .mast-inner .independent-secondary{display:none}
@@ -368,7 +383,6 @@ h3{font-family: var(--font-interface); font-weight: 600; letter-spacing: -.012em
  .nav-library-link{padding:11px 0}
 }
 @media(max-width:480px){
- .metrics--three{grid-template-columns:1fr}
  .mast-inner .independent{font-size:12px}
  .nav-shell .nav-inner{gap:0 16px}
  .nav-shell .nav-inner button,.nav-library-link{font-size:13px}
