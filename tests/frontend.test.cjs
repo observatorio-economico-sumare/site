@@ -130,7 +130,13 @@ for (const path of ["site/index.html", "site/en/index.html"]) {
 for(const language of ["", "en/"]){
  const governance = fs.readFileSync("site/" + language + "governanca.html","utf8");
  assert.equal((governance.match(/class="governance-section"/g)||[]).length,8);
- assert.match(governance,/class="governance-grid"/);
+ assert.match(governance,/class="governance-layout"/);
+ assert.match(governance,/class="governance-toc"/);
+ assert.match(governance,/class="governance-content"/);
+ const ids=[...governance.matchAll(/<section class="governance-section" id="([^"]+)"/g)].map(m=>m[1]);
+ const links=[...governance.matchAll(/<a href="#([^"]+)"><span class="governance-toc-num"/g)].map(m=>m[1]);
+ assert.deepEqual(links,ids,"Índice e seções institucionais precisam corresponder");
+ assert.equal((governance.match(/class="governance-section-num"/g)||[]).length,8);
  assert.ok(governance.length < 8000, "Governança excessivamente longa");
  const homepage = fs.readFileSync("site/" + language + "index.html","utf8");
  assert.doesNotMatch(homepage,/id="updateState"|in phase of prototyping|fase de protótipo/);
