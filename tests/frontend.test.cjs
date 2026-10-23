@@ -219,3 +219,11 @@ for (const [page,expected] of [["site/index.html","Carregando…"],["site/en/ind
  assert.equal(home.split('<div class="number">'+expected+'</div>').length-1,3);
  assert.doesNotMatch(home,/class="number">Em validação|class="number">Pending validation/);
 }
+
+/* A biblioteca tem navegação independente da aba Análises. */
+{
+ const html=fs.readFileSync("site/biblioteca.html","utf8");
+ assert.ok(html.includes('<p class="library-back"><a href="index.html">← Voltar ao site</a></p>'));
+ assert.doesNotMatch(html,/href="index\.html#analises"|href="en\/index\.html#analises"/);
+ assert.ok(html.includes('hreflang="en" href="en/index.html"'));
+}
