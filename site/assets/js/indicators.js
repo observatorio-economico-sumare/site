@@ -169,7 +169,10 @@ async function renderIndicators() {
   } catch (error) {
     console.error("OES: não foi possível carregar os indicadores.", error);
     list.textContent = indicatorsEnglish ? "Indicators are unavailable. Unverified values are not shown." : "Indicadores indisponíveis nesta consulta. Os valores não validados não são exibidos.";
-
+    document.querySelectorAll("[data-indicator]").forEach(card => {
+      const number = card.querySelector(".number");
+      if (number) number.textContent = indicatorsEnglish ? "Unavailable" : "Indisponível";
+    });
   }
 }
 document.getElementById("closeSourceDialog").addEventListener("click", () =>

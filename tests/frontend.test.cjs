@@ -208,3 +208,12 @@ for(const page of ["site/index.html","site/en/index.html"]){
  assert.ok(html.includes('class="independent-secondary"'));
 }
 assert.doesNotMatch(glossaryCode,/getElementById\("sectors"\)/);
+
+/* Estados de carregamento não devem apresentar dados validados como pendentes. */
+for (const [page,expected] of [["site/index.html","Carregando…"],["site/en/index.html","Loading…"]]) {
+ const html=fs.readFileSync(page,"utf8");
+ const home=html.slice(html.indexOf('<section class="tab" id="inicio" role="tabpanel">'),
+                       html.indexOf('<section class="tab" hidden="" id="populacao"'));
+ assert.equal(home.split('<div class="number">'+expected+'</div>').length-1,3);
+ assert.doesNotMatch(home,/class="number">Em validação|class="number">Pending validation/);
+}
