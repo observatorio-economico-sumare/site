@@ -10,6 +10,9 @@ on:
   workflow_dispatch:
 permissions:
   contents: read
+concurrency:
+  group: oes-pesquisa-${{ github.ref }}
+  cancel-in-progress: true
 jobs:
   coleta-exploratoria:
     runs-on: ubuntu-latest
