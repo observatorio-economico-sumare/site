@@ -1,0 +1,26 @@
+{
+  "capture_method": "transcricao_assistida_de_pagina_oficial",
+  "source_institution": "IBGE",
+  "source_title": "Sumaré (SP) | Cidades e Estados | IBGE",
+  "source_url": "https://www.ibge.gov.br/cidades-e-estados/sp/sumare.html",
+  "captured_at": "2026-10-23",
+  "municipality_code": "3552403",
+  "original_file_preserved": false,
+  "note": "Registro estruturado e transcrito de página pública do IBGE para rastrear os valores. Não é o arquivo bruto original baixado do IBGE; conferir a página para revisões.",
+  "measurements": [
+    {
+      "id": "populacao-censo-2022",
+      "label_on_source": "População no último censo",
+      "value": 279545,
+      "period": "2022",
+      "unit": "pessoas"
+    },
+    {
+      "id": "populacao-estimada",
+      "label_on_source": "População estimada",
+      "value": 292307,
+      "period": "2026",
+      "unit": "pessoas"
+    }
+  ]
+}
