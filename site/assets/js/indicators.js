@@ -2,18 +2,20 @@
 /* Indicadores públicos: HTML inicial permanece neutro até o JSON ser verificado. */
 const DATA_URL = "data/indicators.json";
 
+/* Instâncias reutilizadas para evitar recriá-las a cada cartão. */
+const numberFormatter = new Intl.NumberFormat("pt-BR", { maximumFractionDigits: 2 });
+const currencyFormatter = new Intl.NumberFormat("pt-BR", {
+  style: "currency", currency: "BRL",
+  minimumFractionDigits: 2, maximumFractionDigits: 2
+});
+
 /* Formatação é determinada pela unidade oficial do indicador. */
 function formatIndicatorValue(item, includeUnit = false) {
   const value = item.value;
   if (item.unit === "R$") {
-    return new Intl.NumberFormat("pt-BR", {
-      style: "currency", currency: "BRL",
-      minimumFractionDigits: 2, maximumFractionDigits: 2
-    }).format(value);
+    return currencyFormatter.format(value);
   }
-  const number = new Intl.NumberFormat("pt-BR", {
-    maximumFractionDigits: 2
-  }).format(value);
+  const number = numberFormatter.format(value);
   if (item.unit === "%") return number + "%";
   return includeUnit ? number + " " + item.unit : number;
 }
@@ -90,24 +92,36 @@ function validDisplayItem(value) {
     value.evidence && typeof value.evidence.sha256 === "string";
 }
 
-function renderItem(item) {
+/* Indexar o DOM uma só vez: evita varrer todos os cartões para cada indicador. */
+function indexIndicatorCards() {
+  const index = new Map();
   document.querySelectorAll("[data-indicator]").forEach(card => {
-    if (card.dataset.indicator !== item.id) return;
+    const id = card.dataset.indicator;
+    if (!index.has(id)) index.set(id, []);
+    index.get(id).push(card);
+  });
+  return index;
+}
+
+function renderItem(item, cardsById) {
+  for (const card of cardsById.get(item.id) || []) {
     const number = card.querySelector(".number");
     const provenance = card.querySelector(".origin");
-    if (!number || !provenance) return;
+    if (!number || !provenance) continue;
     number.textContent = formatIndicatorValue(item);
     number.classList.add("number--verified");
     provenance.replaceChildren();
+
     const line = document.createElement("span");
-    line.textContent = item.source.institution + " · " + item.reference_period + " · atualizado no OES em " + formatRecordDate(item.updated_at);
+    line.textContent = item.source.institution + " · " + item.reference_period +
+      " · atualizado no OES em " + formatRecordDate(item.updated_at);
     const detail = document.createElement("button");
     detail.type = "button";
     detail.className = "source-detail";
     detail.textContent = "Fonte e metodologia";
     detail.addEventListener("click", () => openIndicatorDetail(item));
     provenance.append(line, detail);
-  });
+  }
 }
 
 async function renderIndicators() {
@@ -122,8 +136,9 @@ async function renderIndicators() {
       throw new Error("Estrutura de dados inválida");
     }
     list.replaceChildren();
+    const cardsById = indexIndicatorCards();
     payload.indicators.forEach(item => {
-      renderItem(item);
+      renderItem(item, cardsById);
       const row = document.createElement("div");
       row.className = "source source--catalog";
       const left = document.createElement("div");
