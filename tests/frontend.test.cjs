@@ -151,3 +151,19 @@ const governanceCss = fs.readFileSync("site/assets/css/styles.css","utf8");
 assert.match(governanceCss,/\.governance-grid\{display:grid;grid-template-columns:repeat\(2,minmax\(0,1fr\)\)/);
 assert.match(governanceCss,/@media\(max-width:760px\)\{\s*\.governance-grid\{grid-template-columns:minmax\(0,1fr\)/);
 assert.doesNotMatch(governanceCss,/\.governance-toc|\.governance-sidebar|\.governance-section-num/);
+
+/* Navegação compacta e responsiva, em ambos os idiomas. */
+for (const [path,names] of [
+ ["site/index.html",["Visão geral","População","Trabalho e renda","Economia","Estudos","Glossário","Fontes","Institucional"]],
+ ["site/en/index.html",["Overview","Population","Jobs & income","Economy","Research","Glossary","Sources","About"]]
+]){
+ const html=fs.readFileSync(path,"utf8");
+ const menu=(html.match(/<nav aria-label="(?:Navegação principal|Main navigation)">[\s\S]*?<\/nav>/)||[])[0];
+ assert.ok(menu,path+": missing nav");
+ const labels=[...menu.matchAll(/<button[^>]*data-tab="[^"]+"[^>]*>([^<]+)<\/button>/g)].map(x=>x[1]);
+ assert.deepEqual(labels,names,path+": nav labels");
+ assert.ok(menu.includes('class="nav-scroll-hint"'));
+}
+const compactCss=fs.readFileSync("site/assets/css/styles.css","utf8");
+assert.match(compactCss,/\.nav-inner\{align-items:center;justify-content:space-between/);
+assert.match(compactCss,/\.nav-inner button\{flex:0 0 auto;white-space:nowrap/);

@@ -83,7 +83,7 @@ def check_links(name, doc, pages):
 
 
 def main():
-    pages = {name: read_page(name) for name in ("index.html", "governanca.html", "en/index.html", "en/governanca.html")}
+    pages = {name: read_page(name) for name in ("index.html", "governanca.html", "biblioteca.html", "en/index.html", "en/governanca.html")}
     index = pages["index.html"]
     assert {"assets/js/app.js", "assets/js/indicators.js"}.issubset(index.scripts)
     assert {"sourceDialog", "sourceDialogTitle", "sourceDialogBody",

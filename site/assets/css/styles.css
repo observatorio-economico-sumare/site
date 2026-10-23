@@ -324,3 +324,14 @@ h3{font-family: var(--font-interface); font-weight: 600; letter-spacing: -.012em
  .governance-wrap .governance-hero h1{font-size:39px}
  .governance-wrap .governance-lead{font-size:15px}
 }
+
+/* Navegação: rótulos curtos, leitura em uma linha e descoberta do menu móvel. */
+.nav-inner{align-items:center;justify-content:space-between;gap:clamp(12px,1.8vw,25px);overflow-x:auto;overflow-y:hidden;scrollbar-width:thin}
+.nav-inner button{flex:0 0 auto;white-space:nowrap;line-height:1.35}
+.nav-scroll-hint{display:none}
+@media(max-width:760px){
+ .nav-inner{justify-content:flex-start;gap:24px;scroll-snap-type:x proximity}
+ .nav-inner button{scroll-snap-align:start}
+ .nav-scroll-hint{display:block;margin:0;padding:0 22px 7px;text-align:right;font:500 11px/1.4 var(--font-interface);color:#657589}
+}
+@media(max-width:480px){.nav-scroll-hint{padding-right:18px}}
