@@ -25,8 +25,6 @@ jobs:
         run: python -m unittest discover -s tests -p test_oes_coleta.py -v
       - name: Consultas oficiais (nao publicadas)
         run: python scripts/oes_coleta/coletar.py --output oes-resultado
-      - name: Descobrir links de arquivos oficiais
-        run: python scripts/oes_coleta/descobrir_fontes.py --output oes-resultado
       - name: Extrair planilhas municipais oficiais (agregadas)
         run: |
           python -m pip install --disable-pip-version-check openpyxl==3.1.5
