@@ -173,7 +173,7 @@ assert.match(compactCss,/\.metrics--three\{grid-template-columns:repeat\(3,minma
 const libraryCatalog=JSON.parse(fs.readFileSync("data/biblioteca/estudos.json","utf8"));
 const expectedStudies=libraryCatalog.registros.filter(entry=>entry.publicar_no_site==="SIM");
 const libraryHTML = fs.readFileSync("site/biblioteca.html","utf8");
-const libraryEntries=[...libraryHTML.matchAll(/<article class="library-entry" id="([^"]+)">/g)];
+const libraryEntries=[...libraryHTML.matchAll(/<article class="library-entry" id="([^"]+)" data-topic="([^"]+)">/g)];
 assert.equal(libraryEntries.length,expectedStudies.length,"Número de estudos divergente do catálogo");
 assert.equal(new Set(libraryEntries.map(x=>x[1])).size,expectedStudies.length);
 const libraryLinks=[...libraryHTML.matchAll(/<a class="library-source" href="([^"]+)"/g)].map(x=>x[1]);
@@ -192,7 +192,7 @@ for(const [page,href] of [["site/index.html","biblioteca.html"],["site/en/index.
 assert.match(glossaryCode,/hashTab === "glossario" \? "metodologia"/);
 
 /* Os títulos do acervo seguem capitalização editorial, sem caixa alta integral. */
-for(const [, title] of libraryHTML.matchAll(/<article class="library-entry" id="[^"]+">\s*<h2>([^<]+)<\/h2>/g)){
+for(const [, title] of libraryHTML.matchAll(/<article class="library-entry" id="[^"]+" data-topic="[^"]+">\s*<h2>([^<]+)<\/h2>/g)){
  const letters=title.replace(/[^A-Za-zÀ-ÿ]/g,"");
  assert.ok(letters!==letters.toUpperCase(),"Título integralmente em caixa alta: "+title);
 }
