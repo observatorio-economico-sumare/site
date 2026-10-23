@@ -301,3 +301,6 @@ h3{font-family: var(--font-interface); font-weight: 600; letter-spacing: -.012em
 #termDialog .term-details{border-top:1px solid var(--line);padding-top:15px}
 #termDialog .term-source{margin-top:18px}
 #termDialog .term-source a{overflow-wrap:anywhere}
+
+/* Exibir a apresentação apenas na aba Visão geral, em uma coluna. */
+.intro--overview{grid-template-columns:minmax(0,1fr)}

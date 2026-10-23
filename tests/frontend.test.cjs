@@ -111,3 +111,17 @@ for (const path of [
 }
 assert.match(glossaryCode, /appEnglish \? "Learn more" : "Saiba mais"/);
 console.log("Botões Saiba mais / Learn more e pontuação: OK");
+
+/* A apresentação pertence à aba Visão geral, não é repetida nas demais abas. */
+for (const path of ["site/index.html", "site/en/index.html"]) {
+  const html = fs.readFileSync(path, "utf8");
+  const overviewStart = html.indexOf('<section class="tab" id="inicio" role="tabpanel">');
+  const introStart = html.indexOf('<section class="intro intro--overview">');
+  const anotherTab = html.indexOf('<section class="tab" hidden="" id="populacao"');
+  assert.ok(overviewStart >= 0 && introStart > overviewStart && introStart < anotherTab,
+    path + ": apresentação deve aparecer somente na Visão geral");
+  assert.equal(html.split('class="intro intro--overview"').length, 2,
+    path + ": apresentação duplicada");
+  assert.doesNotMatch(html, /class="aside"/);
+  assert.doesNotMatch(html, /Sobre esta versão|About this version/);
+}
