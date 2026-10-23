@@ -4,7 +4,7 @@ import tempfile
 import unittest
 from pathlib import Path
 from unittest.mock import patch
-from scripts.oes_coleta.coletar import CITY, capture, collect, extract, get
+from scripts.oes_coleta.coletar import CITY, capture, collect, select_sidra_rows, get
 
 class TestCollector(unittest.TestCase):
     def test_safe_hosts(self):
@@ -24,15 +24,12 @@ class TestCollector(unittest.TestCase):
             self.assertEqual((Path(d) / row["raw_path"]).read_bytes(), raw)
 
     def test_candidate_filters_city(self):
-        with tempfile.TemporaryDirectory() as d:
-            data = [{"id": "4090", "unidade": "Pessoas", "resultados": [{
-                "classificacoes": [], "series": [
-                    {"localidade": {"id": CITY}, "serie": {"2022": "123"}},
-                    {"localidade": {"id": "3550308"}, "serie": {"2022": "999"}}]}]}]
-            self.assertEqual(extract(data, 4090, 10261, Path(d), "sample"), 1)
-            csv = (Path(d) / "candidates/sample.csv").read_text()
-            self.assertIn("123", csv)
-            self.assertNotIn("999", csv)
+        data = [{"D1C": CITY, "V": "123", "D2C": "2022"},
+                {"D1C": "3550308", "V": "999", "D2C": "2022"},
+                {"D1C": CITY}, {"D1C": CITY, "V": "-"}]
+        matched = select_sidra_rows(data)
+        self.assertEqual(len(matched), 2)
+        self.assertEqual([x["V"] for x in matched], ["123", "-"])
 
     def test_portal_html_not_archived_for_privacy(self):
         with tempfile.TemporaryDirectory() as d:
