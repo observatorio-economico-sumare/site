@@ -169,13 +169,15 @@ const compactCss=fs.readFileSync("site/assets/css/styles.css","utf8");
 assert.match(compactCss,/\.nav-shell \.nav-inner\{display:flex;align-items:stretch;justify-content:flex-start/);
 assert.match(compactCss,/\.metrics--three\{grid-template-columns:repeat\(3,minmax\(0,1fr\)\)/);
 
-/* Biblioteca: acesso em Estudos e referência à coleção de 26 trabalhos. */
+/* A biblioteca cresce a partir do catálogo, sem contagens fixas. */
+const libraryCatalog=JSON.parse(fs.readFileSync("data/biblioteca/estudos.json","utf8"));
+const expectedStudies=libraryCatalog.registros.filter(entry=>entry.publicar_no_site==="SIM");
 const libraryHTML = fs.readFileSync("site/biblioteca.html","utf8");
 const libraryEntries=[...libraryHTML.matchAll(/<article class="library-entry" id="([^"]+)">/g)];
-assert.equal(libraryEntries.length,26,"Quantidade atual de estudos");
-assert.equal(new Set(libraryEntries.map(x=>x[1])).size,26);
+assert.equal(libraryEntries.length,expectedStudies.length,"Número de estudos divergente do catálogo");
+assert.equal(new Set(libraryEntries.map(x=>x[1])).size,expectedStudies.length);
 const libraryLinks=[...libraryHTML.matchAll(/<a class="library-source" href="([^"]+)"/g)].map(x=>x[1]);
-assert.equal(libraryLinks.length,26);
+assert.equal(libraryLinks.length,expectedStudies.length);
 assert.ok(libraryLinks.every(url=>url.startsWith("https://")));
 for(const [page,href] of [["site/index.html","biblioteca.html"],["site/en/index.html","../biblioteca.html"]]){
  const html=fs.readFileSync(page,"utf8");

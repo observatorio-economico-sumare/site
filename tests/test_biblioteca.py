@@ -2,7 +2,6 @@
 import copy
 import json
 import unittest
-from pathlib import Path
 
 from scripts import build_biblioteca as library
 
