@@ -1,0 +1,87 @@
+{
+  "municipality_code": "3552403",
+  "municipality_name": "Sumaré (SP)",
+  "note": "Catálogo estrutural. Valores não certificados nesta etapa.",
+  "indicators": [
+    {
+      "id": "populacao-censo-2022",
+      "name": "População residente (Censo 2022)",
+      "topic": "populacao",
+      "unit": "pessoas",
+      "reference_period": "2022",
+      "definition": "Total de residentes recenseados",
+      "source_institution": "IBGE",
+      "source_dataset": "Censo Demográfico"
+    },
+    {
+      "id": "populacao-estimada",
+      "name": "População estimada",
+      "topic": "populacao",
+      "unit": "pessoas",
+      "reference_period": "2026",
+      "definition": "Estimativa oficial de residentes, sujeita à validação da divulgação e do período",
+      "source_institution": "IBGE",
+      "source_dataset": "Estimativas da População"
+    },
+    {
+      "id": "estoque-vinculos-formais",
+      "name": "Vínculos formais por estabelecimento",
+      "topic": "trabalho",
+      "unit": "vínculos",
+      "reference_period": "2026-08",
+      "definition": "Estoque de vínculos formais de estabelecimentos localizados em Sumaré",
+      "source_institution": "MTE",
+      "source_dataset": "Novo CAGED"
+    },
+    {
+      "id": "saldo-vinculos-formais",
+      "name": "Saldo de admissões e desligamentos",
+      "topic": "trabalho",
+      "unit": "vínculos",
+      "reference_period": "2026-01/2026-08",
+      "definition": "Admissões menos desligamentos no período de referência",
+      "source_institution": "MTE",
+      "source_dataset": "Novo CAGED"
+    },
+    {
+      "id": "pessoas-ocupadas",
+      "name": "Pessoas ocupadas",
+      "topic": "trabalho",
+      "unit": "pessoas",
+      "reference_period": "2022",
+      "definition": "Pessoas ocupadas conforme conceito da pesquisa de origem",
+      "source_institution": "IBGE",
+      "source_dataset": "Censo Demográfico"
+    },
+    {
+      "id": "pessoas-desocupadas",
+      "name": "Pessoas desocupadas",
+      "topic": "trabalho",
+      "unit": "pessoas",
+      "reference_period": "2022",
+      "definition": "Pessoas desocupadas conforme conceito da pesquisa de origem",
+      "source_institution": "IBGE",
+      "source_dataset": "Censo Demográfico"
+    },
+    {
+      "id": "previdencia-ocupados",
+      "name": "Ocupados contribuintes da Previdência",
+      "topic": "trabalho",
+      "unit": "%",
+      "reference_period": "2022",
+      "definition": "Participação entre ocupados conforme critérios da pesquisa",
+      "source_institution": "IBGE",
+      "source_dataset": "Censo Demográfico"
+    },
+    {
+      "id": "renda-media-ocupados",
+      "name": "Rendimento mensal médio de ocupados com renda",
+      "topic": "trabalho",
+      "unit": "R$",
+      "reference_period": "2022",
+      "definition": "Rendimento médio de ocupados com renda na população definida pela pesquisa",
+      "source_institution": "IBGE",
+      "source_dataset": "Censo Demográfico"
+    }
+  ]
+}
