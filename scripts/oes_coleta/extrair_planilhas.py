@@ -80,7 +80,7 @@ def inspect(out):
                             if row_index>100000:
                                 break
                             # Matches on municipality name, never personal name or ID.
-                            if any(re.search(r"\\bsumare\\b",norm(v)) for v in row if v is not None):
+                            if any("sumare" in norm(v) and len(str(v)) < 100 for v in row if v is not None):
                                 values = [str(v)[:150] if v is not None else "" for v in row[:100]]
                                 matches.append({"source":label,"workbook":filename,
                                                 "sheet":sheet.title,"row":row_index,
