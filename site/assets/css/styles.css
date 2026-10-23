@@ -207,10 +207,6 @@ dialog#sourceDialog{max-width: 680px; max-height: min(83vh,850px); overflow-y: a
 .governance-wrap h1{font: 700 clamp(30px,4vw,48px)/1.15 Montserrat,Arial,sans-serif; color: var(--ink); margin: 16px 0}
 .governance-lead{max-width: 740px; color: #516274; font-size: 15px}
 .back-link a{font-size: 13px; font-weight: 700}
-.governance-index{display: flex; flex-wrap: wrap; gap: 9px; margin: 28px 0 46px; padding: 20px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); box-shadow: none; background: transparent}
-.governance-index a{background: #fff; border: 1px solid var(--line); padding: 8px 12px; font-size: 12px; text-decoration: none}
-.governance-index a:hover{border-color: var(--ink)}
-.governance-index a:focus-visible{border-color: var(--ink)}
 .governance-section{max-width: 830px; padding: 30px 0; border-top: 2px solid var(--ink); scroll-margin-top: 18px}
 .governance-section h2{font: 700 24px/1.3 Montserrat,Arial,sans-serif; margin: 0 0 20px; color: var(--ink)}
 .governance-section h3{font: 700 16px Montserrat,Arial,sans-serif; margin: 25px 0 12px; color: var(--ink)}
@@ -220,13 +216,11 @@ dialog#sourceDialog{max-width: 680px; max-height: min(83vh,850px); overflow-y: a
 .governance-section ul{padding-left: 23px}
 .governance-section ol{padding-left: 23px}
 .governance-section li{margin-bottom: 9px}
-.governance-note{max-width: 830px; font-size: 12px; color: var(--muted)}
 
 @media(max-width:680px){
   .institutional-grid{grid-template-columns: 1fr}
   .institutional-block{padding: 20px}
   .governance-wrap{padding-top: 28px}
-  .governance-index{margin-bottom: 22px}
   .governance-section{padding: 24px 0}
 }
 
@@ -253,7 +247,6 @@ dialog h3{font-size: 27px}
 .nav-inner button[aria-selected="true"]{font-weight: 600}
 .metric label{font-family: var(--font-interface); font-weight: 500}
 .source-detail{font-family: var(--font-interface); font-weight: 500}
-.governance-index a{font-family: var(--font-interface); font-weight: 500}
 h3{font-family: var(--font-interface); font-weight: 600; letter-spacing: -.012em}
 .institutional-block h3{font-family: var(--font-interface); font-weight: 600; letter-spacing: -.012em}
 .governance-section h3{font-family: var(--font-interface); font-weight: 600; letter-spacing: -.012em}
@@ -305,51 +298,29 @@ h3{font-family: var(--font-interface); font-weight: 600; letter-spacing: -.012em
 /* Exibir a apresentação apenas na aba Visão geral, em uma coluna. */
 .intro--overview{grid-template-columns:minmax(0,1fr)}
 
-/* Governança: composição editorial com sumário e leitura linear. */
-.governance-wrap{padding-top:32px;padding-bottom:30px}
+/* Governança institucional: leitura em duas colunas, sem índice duplicado. */
+.governance-wrap{padding-top:32px;padding-bottom:38px}
 .governance-wrap .back-link{margin:0 0 18px}
 .governance-wrap .back-link a{color:#4d6071;text-decoration:none;font-size:13px;font-weight:500}
 .governance-wrap .back-link a:hover{text-decoration:underline}
-.governance-hero{max-width:900px;padding:15px 0 37px;margin-bottom:33px;border-bottom:1px solid var(--line)}
+.governance-hero{max-width:930px;padding:15px 0 34px;margin-bottom:35px;border-bottom:1px solid var(--line)}
 .governance-hero .kicker{display:flex;align-items:center;gap:11px;color:#4c6070;font-weight:600;letter-spacing:.12em}
 .governance-hero .kicker::before{content:"";display:block;width:25px;height:3px;background:var(--yellow)}
 .governance-wrap .governance-hero h1{margin:13px 0 12px;font-size:clamp(40px,5vw,61px);line-height:1.13}
-.governance-wrap .governance-lead{max-width:620px;color:#516274;font-size:16px;line-height:1.7;margin:0}
-.governance-layout{display:grid;grid-template-columns:220px minmax(0,1fr);gap:clamp(36px,5.8vw,90px);align-items:start}
-.governance-sidebar{position:sticky;top:24px}
-.governance-toc{background:transparent;border:0;box-shadow:none}
-.governance-toc-title{font-size:11px;font-weight:600;letter-spacing:.11em;text-transform:uppercase;color:#69798a;margin:5px 0 13px}
-.governance-toc-links{display:grid;gap:1px}
-.governance-toc a{display:flex;align-items:baseline;gap:12px;padding:10px 12px;border-left:2px solid transparent;color:#48596c;text-decoration:none;font-size:13px;line-height:1.45}
-.governance-toc a:hover,.governance-toc a:focus-visible{background:#fff;color:var(--ink);border-left-color:var(--yellow)}
-.governance-toc-num{font-size:10px;color:#8a97a5;font-variant-numeric:tabular-nums}
-.governance-content{min-width:0;background:#fff;border:1px solid var(--line)}
-.governance-content .governance-section{max-width:none;padding:29px 32px 30px;margin:0;border:0;border-bottom:1px solid var(--line);scroll-margin-top:20px}
-.governance-content .governance-section:last-child{border-bottom:0}
-.governance-content .governance-section:target{background:#fffdf6}
-.governance-section-head{display:flex;align-items:baseline;gap:17px;margin-bottom:10px}
-.governance-section-num{font:600 12px/1.5 var(--font-interface);color:#9b7613;font-variant-numeric:tabular-nums}
-.governance-content .governance-section h2{font-size:clamp(23px,2.45vw,30px);line-height:1.22;margin:0}
-.governance-text{padding-left:36px}
-.governance-content .governance-section p{margin:0 0 11px;color:#4b5b6b;font-size:14px;line-height:1.75}
-.governance-content .governance-section p:last-child{margin-bottom:0}
-.governance-content .governance-section a{font-weight:600}
-@media(max-width:860px){
- .governance-layout{grid-template-columns:minmax(0,1fr);gap:12px}
- .governance-sidebar{position:static}
- .governance-hero{margin-bottom:23px;padding-bottom:29px}
- .governance-toc-title{margin:0 0 9px}
- .governance-toc-links{display:flex;overflow-x:auto;gap:8px;padding:2px 1px 12px;scrollbar-width:thin}
- .governance-toc a{flex:0 0 auto;white-space:nowrap;padding:8px 11px;background:#fff;border:1px solid var(--line)}
- .governance-toc a:hover,.governance-toc a:focus-visible{border-color:var(--ink)}
- .governance-toc-num{display:none}
+.governance-wrap .governance-lead{max-width:670px;color:#516274;font-size:16px;line-height:1.7;margin:0}
+.governance-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:clamp(32px,5.4vw,78px);row-gap:34px;align-items:start}
+.governance-grid .governance-section{max-width:none;margin:0;padding:20px 0 0;border:0;border-top:1px solid var(--line);scroll-margin-top:22px}
+.governance-grid .governance-section h2{font-size:clamp(23px,2.4vw,30px);line-height:1.24;margin:0 0 14px}
+.governance-grid .governance-section p{color:#4b5b6b;font-size:14.5px;line-height:1.75;margin:0 0 10px}
+.governance-grid .governance-section p:last-child{margin-bottom:0}
+.governance-grid .governance-section a{font-weight:600}
+@media(max-width:760px){
+ .governance-grid{grid-template-columns:minmax(0,1fr);row-gap:26px}
+ .governance-hero{padding-bottom:28px;margin-bottom:27px}
+ .governance-grid .governance-section{padding-top:18px}
 }
 @media(max-width:480px){
- .governance-wrap{padding-top:22px;padding-bottom:10px}
+ .governance-wrap{padding-top:22px;padding-bottom:18px}
  .governance-wrap .governance-hero h1{font-size:39px}
  .governance-wrap .governance-lead{font-size:15px}
- .governance-content .governance-section{padding:24px 19px}
- .governance-section-head{gap:11px}
- .governance-text{padding-left:27px}
 }
-

@@ -130,16 +130,24 @@ for (const path of ["site/index.html", "site/en/index.html"]) {
 for(const language of ["", "en/"]){
  const governance = fs.readFileSync("site/" + language + "governanca.html","utf8");
  assert.equal((governance.match(/class="governance-section"/g)||[]).length,8);
- assert.match(governance,/class="governance-layout"/);
- assert.match(governance,/class="governance-toc"/);
- assert.match(governance,/class="governance-content"/);
+ assert.match(governance,/class="governance-grid"/);
+ assert.doesNotMatch(governance,/governance-(?:toc|sidebar|layout|section-num|section-head)/);
  const ids=[...governance.matchAll(/<section class="governance-section" id="([^"]+)"/g)].map(m=>m[1]);
- const links=[...governance.matchAll(/<a href="#([^"]+)"><span class="governance-toc-num"/g)].map(m=>m[1]);
- assert.deepEqual(links,ids,"Índice e seções institucionais precisam corresponder");
- assert.equal((governance.match(/class="governance-section-num"/g)||[]).length,8);
+ assert.equal(new Set(ids).size,8,"IDs de seções devem ser únicos");
+ assert.deepEqual(ids,[
+   "sobre-o-oes","identidade-institucional","declaracao-de-independencia",
+   "sobre-a-fundadora","politica-editorial","politica-de-auditoria",
+   "politica-de-transparencia","direitos-autorais-e-licencas"
+ ]);
  assert.ok(governance.length < 8000, "Governança excessivamente longa");
  const homepage = fs.readFileSync("site/" + language + "index.html","utf8");
  assert.doesNotMatch(homepage,/id="updateState"|in phase of prototyping|fase de protótipo/);
 }
 assert.doesNotMatch(fs.readFileSync("site/assets/js/indicators.js","utf8"),
  /indicadores com fonte e documentação disponíveis|indicators with documented sources/);
+
+/* Governança: duas colunas desktop, uma mobile, sem decoração redundante. */
+const governanceCss = fs.readFileSync("site/assets/css/styles.css","utf8");
+assert.match(governanceCss,/\.governance-grid\{display:grid;grid-template-columns:repeat\(2,minmax\(0,1fr\)\)/);
+assert.match(governanceCss,/@media\(max-width:760px\)\{\s*\.governance-grid\{grid-template-columns:minmax\(0,1fr\)/);
+assert.doesNotMatch(governanceCss,/\.governance-toc|\.governance-sidebar|\.governance-section-num/);
