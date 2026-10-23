@@ -1,15 +1,12 @@
 "use strict";
-/* Indicadores públicos: HTML inicial permanece neutro até o JSON ser verificado. */
 const DATA_URL = "data/indicators.json";
 
-/* Instâncias reutilizadas para evitar recriá-las a cada cartão. */
 const numberFormatter = new Intl.NumberFormat("pt-BR", { maximumFractionDigits: 2 });
 const currencyFormatter = new Intl.NumberFormat("pt-BR", {
   style: "currency", currency: "BRL",
   minimumFractionDigits: 2, maximumFractionDigits: 2
 });
 
-/* Formatação é determinada pela unidade oficial do indicador. */
 function formatIndicatorValue(item, includeUnit = false) {
   const value = item.value;
   if (item.unit === "R$") {
@@ -92,7 +89,6 @@ function validDisplayItem(value) {
     value.evidence && typeof value.evidence.sha256 === "string";
 }
 
-/* Indexar o DOM uma só vez: evita varrer todos os cartões para cada indicador. */
 function indexIndicatorCards() {
   const index = new Map();
   document.querySelectorAll("[data-indicator]").forEach(card => {
