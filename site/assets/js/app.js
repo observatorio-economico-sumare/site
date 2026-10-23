@@ -73,7 +73,7 @@ const glossaryEntries = {
   },
   "MEI": {
     "pt": {
-      "title": "MEI — Microempreendedor Individual",
+      "title": "MEI (Microempreendedor Individual)",
       "short": "Pessoa que formalizou um pequeno negócio nessa categoria. Ser MEI não significa trabalhar exclusivamente por conta própria: o titular também pode ter emprego com carteira assinada.",
       "detail": "MEI é uma categoria de registro empresarial e não uma categoria estatística equivalente a todos os trabalhadores autônomos. O registro permite identificar negócios formalizados, mas não autoriza somar automaticamente seus titulares ao número de trabalhadores sem conferir possíveis sobreposições."
     },
@@ -189,9 +189,9 @@ for (const [key, entry] of Object.entries(glossaryEntries)) {
   const details = document.createElement("button");
   details.type = "button";
   details.className = "term-action";
-  details.textContent = appEnglish ? "More details and source →" : "Saiba mais e consulte a fonte →";
+  details.textContent = appEnglish ? "Learn more" : "Saiba mais";
   details.setAttribute("aria-label",
-    (appEnglish ? "Read details and source for " : "Ler explicação e fonte para ") + localized.title);
+    (appEnglish ? "Learn more about " : "Saiba mais sobre ") + localized.title);
   details.addEventListener("click", () => showTerm(key));
   wrapper.append(heading, summary, details);
   glossary.append(wrapper);

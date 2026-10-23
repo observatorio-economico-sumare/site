@@ -98,3 +98,16 @@ for (const path of ["site/index.html", "site/en/index.html"]) {
   assert.match(html, /id="termDialog" aria-labelledby="termTitle"/);
 }
 console.log("Glossário PT/EN: definições, detalhes, fontes e acessibilidade OK");
+
+/* Regressão: títulos, páginas e interface não exibem travessões longos. */
+for (const path of [
+  "site/index.html", "site/en/index.html",
+  "site/governanca.html", "site/en/governanca.html",
+  "site/assets/js/app.js", "site/assets/js/indicators.js"
+]) {
+  const content = fs.readFileSync(path, "utf8");
+  assert.ok(!/[\u2014\u2013\u2015]/u.test(content),
+    path + ": contém travessão longo");
+}
+assert.match(glossaryCode, /appEnglish \? "Learn more" : "Saiba mais"/);
+console.log("Botões Saiba mais / Learn more e pontuação: OK");
