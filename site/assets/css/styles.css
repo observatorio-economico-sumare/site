@@ -345,3 +345,31 @@ h3{font-family: var(--font-interface); font-weight: 600; letter-spacing: -.012em
 .nav-library-link:hover,.nav-library-link:focus-visible{color:var(--ink);border-color:var(--yellow)}
 .glossary-section{margin-top:35px;padding-top:5px;scroll-margin-top:20px}
 @media(max-width:760px){.nav-shell{gap:16px}.nav-library-link{font-size:13px}}
+
+/* Interface responsiva e leitura de dados. */
+.metrics--three{grid-template-columns:repeat(3,minmax(0,1fr));margin-bottom:12px}
+.metrics--three .metric:first-child{border-top:3px solid var(--yellow)}
+.metric label{font-size:13px;min-height:41px}
+.metric .origin,.origin,.footnote,.source p,.source a,.data-table td small,.data-detail dt,.source-detail,.section-title span{font-size:13px}
+.mast-inner .independent-main,.mast-inner .independent-secondary{display:block}
+.nav-shell{display:flex;align-items:stretch;gap:clamp(16px,2.2vw,30px);justify-content:flex-start}
+.nav-shell .nav-inner{display:flex;align-items:stretch;justify-content:flex-start;gap:clamp(16px,2.2vw,30px);flex:0 1 auto;min-width:0;overflow:visible;padding:0}
+.nav-shell .nav-inner button{flex:0 0 auto;white-space:nowrap;line-height:1.35}
+.nav-library-link{display:inline-flex;align-items:center;flex:0 0 auto;white-space:nowrap;text-decoration:none;color:#48576c;font:500 13px/1.35 var(--font-interface);border-bottom:2px solid transparent}
+.nav-library-link:hover,.nav-library-link:focus-visible{color:var(--ink);border-color:var(--yellow)}
+@media(max-width:800px){
+ .metrics--three{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .mast-inner{flex-wrap:wrap;row-gap:8px}
+ .mast-inner .independent{display:block;order:3;flex-basis:100%;max-width:none;padding:0;border:0;font-size:12px;line-height:1.4}
+ .mast-inner .independent-secondary{display:none}
+ .nav-shell{display:block}
+ .nav-shell .nav-inner{flex-wrap:wrap;gap:0 20px;overflow:visible}
+ .nav-shell .nav-inner button{padding:11px 0;white-space:normal;text-align:left}
+ .nav-library-link{padding:11px 0}
+}
+@media(max-width:480px){
+ .metrics--three{grid-template-columns:1fr}
+ .mast-inner .independent{font-size:12px}
+ .nav-shell .nav-inner{gap:0 16px}
+ .nav-shell .nav-inner button,.nav-library-link{font-size:13px}
+}

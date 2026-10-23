@@ -16,3 +16,7 @@
 .library-source:hover{color:var(--ink)}
 .library-disclaimer{max-width:850px;font-size:12px;line-height:1.7;color:var(--muted);margin:32px 0 0}
 @media(max-width:680px){.library{padding-top:22px}.library-back{margin-bottom:22px}.library-hero{padding-bottom:25px}.library-hero h1{font-size:38px}.library-hero p{font-size:15px}.library-entry{padding:21px 0 23px}.library-entry h2{font-size:21px}}
+
+/* Metadados e fontes legíveis. */
+.library-meta,.library-disclaimer{font-size:13px}
+.library-source{font-size:14px}

@@ -162,11 +162,12 @@ for (const [path,names] of [
  assert.ok(menu,path+": missing nav");
  const labels=[...menu.matchAll(/<button[^>]*data-tab="[^"]+"[^>]*>([^<]+)<\/button>/g)].map(x=>x[1]);
  assert.deepEqual(labels,names,path+": nav labels");
- assert.ok(menu.includes('class="nav-scroll-hint"'));
+ assert.ok(!menu.includes('class="nav-scroll-hint"'));
+ assert.match(menu,/class="nav-library-link"/);
 }
 const compactCss=fs.readFileSync("site/assets/css/styles.css","utf8");
-assert.match(compactCss,/\.nav-inner\{align-items:center;justify-content:space-between/);
-assert.match(compactCss,/\.nav-inner button\{flex:0 0 auto;white-space:nowrap/);
+assert.match(compactCss,/\.nav-shell \.nav-inner\{display:flex;align-items:stretch;justify-content:flex-start/);
+assert.match(compactCss,/\.metrics--three\{grid-template-columns:repeat\(3,minmax\(0,1fr\)\)/);
 
 /* Biblioteca: acesso em Estudos e referência à coleção de 26 trabalhos. */
 const libraryHTML = fs.readFileSync("site/biblioteca.html","utf8");
@@ -193,3 +194,17 @@ for(const [, title] of libraryHTML.matchAll(/<article class="library-entry" id="
  const letters=title.replace(/[^A-Za-zÀ-ÿ]/g,"");
  assert.ok(letters!==letters.toUpperCase(),"Título integralmente em caixa alta: "+title);
 }
+
+/* Apresentação dos indicadores efetivamente disponíveis e mobile. */
+for(const page of ["site/index.html","site/en/index.html"]){
+ const html=fs.readFileSync(page,"utf8");
+ const home=html.slice(html.indexOf('<section class="tab" id="inicio" role="tabpanel">'),html.indexOf('<section class="tab" hidden="" id="populacao"'));
+ assert.deepEqual([...home.matchAll(/data-indicator="([^"]+)"/g)].map(x=>x[1]),["populacao-censo-2022","populacao-estimada","pib-per-capita-2023"]);
+ assert.doesNotMatch(home,/id="sectors"|CAGED|Where are the jobs|Onde estão os empregos/);
+ const work=html.slice(html.indexOf('<section class="tab" hidden="" id="trabalho"'),html.indexOf('<section class="tab" hidden="" id="economia"'));
+ assert.doesNotMatch(work,/<table|class="metric"/);
+ assert.ok(work.includes('href="#metodologia"'));
+ assert.ok(html.includes('class="independent-main"'));
+ assert.ok(html.includes('class="independent-secondary"'));
+}
+assert.doesNotMatch(glossaryCode,/getElementById\("sectors"\)/);

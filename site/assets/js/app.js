@@ -197,9 +197,6 @@ for (const [key, entry] of Object.entries(glossaryEntries)) {
   glossary.append(wrapper);
 }
 
-document.getElementById("sectors").textContent =
-  appEnglish ? "Sector breakdown pending verification against the original source." : "Distribuição setorial em validação na fonte original.";
-
 document.querySelectorAll("[data-term]").forEach(button => {
   button.addEventListener("click", () => showTerm(button.dataset.term));
 });
