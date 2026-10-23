@@ -1,0 +1,24 @@
+name: OES | Validação
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Testes automatizados
+        run: python3 -m unittest discover -s tests -v
+      - name: Validar indicadores
+        run: python3 scripts/pipeline.py validate
+      - name: Conferir dados publicados
+        run: |
+          python3 scripts/pipeline.py build
+          git diff --exit-code -- site/data/indicators.json
