@@ -1,0 +1,50 @@
+# Não é executado automaticamente. Exige autorização manual explícita.
+name: OES | Publicação manual
+on:
+  workflow_dispatch:
+    inputs:
+      confirmar_publicacao:
+        description: 'Digite PUBLICAR somente após revisão e decisão de colocar o site no ar'
+        type: string
+        required: true
+permissions:
+  contents: read
+concurrency:
+  group: pages
+  cancel-in-progress: false
+jobs:
+  preparar:
+    if: ${{ github.event.inputs.confirmar_publicacao == 'PUBLICAR' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Validar dados e código
+        run: |
+          python3 -m unittest discover -s tests -v
+          python3 scripts/pipeline.py validate
+          python3 scripts/pipeline.py build
+          python3 scripts/check_site.py
+          node --check site/assets/js/app.js
+          node --check site/assets/js/indicators.js
+          git diff --exit-code -- site/data/indicators.json
+      - name: Publicar artefato estático validado
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site/
+  publicar:
+    if: ${{ github.event.inputs.confirmar_publicacao == 'PUBLICAR' }}
+    needs: preparar
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
