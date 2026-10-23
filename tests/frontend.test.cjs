@@ -229,7 +229,8 @@ for (const [page,expected] of [["site/index.html","Carregando…"],["site/en/ind
  const sections=["inicio","populacao","trabalho","economia","analises","metodologia","sobre"];
  const targets=[...html.matchAll(/<a href="index\.html#([^"]+)">[^<]+<\/a>/g)].map(m=>m[1]);
  assert.deepEqual(targets,sections,"A Biblioteca deve ter os mesmos itens do menu principal");
- assert.doesNotMatch(html,/href="index\.html#analises"|href="en\/index\.html#analises"/);
+ assert.doesNotMatch(html,/href="en\/index\.html#analises"/);
+ assert.ok(html.includes('<a href="index.html#analises">Análises</a>'));
  assert.ok(html.includes('hreflang="en" href="en/index.html"'));
 }
 
