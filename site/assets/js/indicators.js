@@ -155,7 +155,7 @@ async function renderIndicators() {
       name.textContent = localizedIndicator(item).name;
       const period = document.createElement("p");
       period.textContent = item.source.institution + " · " + item.reference_period +
-        " · " + formatIndicatorValue(item, true);
+        " · " + formatIndicatorValue(localizedIndicator(item), true);
       left.append(name, period);
       const button = document.createElement("button");
       button.type = "button";
