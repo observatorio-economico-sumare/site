@@ -14,11 +14,20 @@ publicado ou atualizado em data/processed e site/data.
 - Aba `TABELA 4`, linha 3866: município `355240`, nome `Sumaré`.
 - Sequência de totais da linha (2023/2024/2025):
   **70.984 / 73.410 / 75.421 vínculos**.
-- Os cinco grupos de valores de 2025 somam 75.421, mas os rótulos setoriais
-  precisam ser conferidos no cabeçalho da planilha antes de publicar a decomposição.
-- **Esses totais são vínculos por estabelecimento, não trabalhadores residentes.**
+- Cabeçalhos conferidos na `TABELA 4`, linhas 13–14. RAIS 2025:
+  agropecuária **471**; indústria **18.383**; construção **3.074**;
+  comércio **18.356**; serviços **35.137**; **total 75.421 vínculos**.
+- Conferência aritmética: 471 + 18.383 + 3.074 + 18.356 + 35.137 = 75.421.
+- Os totais se referem a vínculos formais ativos por estabelecimento,
+  não a trabalhadores residentes e não exclusivamente a celetistas.
+- As `TABELAS 6, 7 e 8` contêm remuneração por UF/região, sexo e
+  categoria de trabalhador. Elas **não** oferecem diretamente o cruzamento
+  município de Sumaré × setor necessário para o indicador salarial.
 - A tabela selecionada **não fornece salário médio por setor**. Essa pendência
   não está concluída.
+
+Fonte da conferência dos cabeçalhos: execução exploratória do GitHub Actions
+https://github.com/observatorio-economico-sumare/site/actions/runs/40038000034
 
 ## INEP 2025
 
