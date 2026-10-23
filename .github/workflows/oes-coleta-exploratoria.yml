@@ -13,7 +13,7 @@ permissions:
 jobs:
   coleta-exploratoria:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
     steps:
       - name: Checkout branch de pesquisa
         uses: actions/checkout@v4
@@ -27,6 +27,10 @@ jobs:
         run: python scripts/oes_coleta/coletar.py --output oes-resultado
       - name: Descobrir links de arquivos oficiais
         run: python scripts/oes_coleta/descobrir_fontes.py --output oes-resultado
+      - name: Extrair planilhas municipais oficiais (agregadas)
+        run: |
+          python -m pip install --disable-pip-version-check openpyxl==3.1.5
+          python scripts/oes_coleta/extrair_planilhas.py --output oes-resultado
       - name: Sumario de execucao
         run: |
           python -c 'import json; d=json.load(open("oes-resultado/relatorio.json")); print("Requisicoes:",d["requests"],"Arquivos JSON:",d["downloaded_json"],"Linhas candidatas:",d["candidate_rows"],"Status:",d["status_counts"])'
