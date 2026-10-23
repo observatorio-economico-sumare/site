@@ -115,3 +115,29 @@ dialog#sourceDialog{max-width:680px;max-height:min(83vh,850px);overflow-y:auto;b
 dialog#sourceDialog{padding:20px 18px}
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation-duration:0s!important;transition-duration:0s!important}}
+
+/* OES: apresentação institucional e políticas aprovadas */
+.institutional-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin:32px 0 18px}
+.institutional-block{border:1px solid var(--line);background:#fff;padding:25px 27px}
+.institutional-block h3{margin:0 0 10px;font:700 17px/1.3 Montserrat,Arial,sans-serif;color:var(--ink)}
+.institutional-block p{margin:0;font-size:14px;color:#485a68}
+.institutional-values{margin-bottom:35px}
+.institutional-cta{background:#fff;border-left:4px solid #f3c443;padding:23px 26px;margin:32px 0 0}
+.institutional-cta p{max-width:680px;margin:7px 0 10px;font-size:14px;color:#516274}
+.institutional-cta a{font-weight:700}
+.governance-wrap{padding-top:48px;padding-bottom:24px}
+.governance-wrap h1{font:700 clamp(30px,4vw,48px)/1.15 Montserrat,Arial,sans-serif;letter-spacing:-.04em;color:var(--ink);margin:16px 0}
+.governance-lead{max-width:740px;color:#516274;font-size:15px}
+.back-link a{font-size:13px;font-weight:700}
+.governance-index{display:flex;flex-wrap:wrap;gap:9px;margin:28px 0 46px;padding:20px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);box-shadow:none;background:transparent}
+.governance-index a{background:#fff;border:1px solid var(--line);padding:8px 12px;font-size:12px;font-weight:700;text-decoration:none}
+.governance-index a:hover,.governance-index a:focus-visible{border-color:var(--ink)}
+.governance-section{max-width:830px;padding:30px 0;border-top:2px solid var(--ink);scroll-margin-top:18px}
+.governance-section h2{font:700 24px/1.3 Montserrat,Arial,sans-serif;letter-spacing:-.025em;margin:0 0 20px;color:var(--ink)}
+.governance-section h3{font:700 16px Montserrat,Arial,sans-serif;margin:25px 0 12px;color:var(--ink)}
+.governance-section h4{font:700 15px Montserrat,Arial,sans-serif;margin:20px 0 10px}
+.governance-section p,.governance-section li{font-size:14px;line-height:1.8;color:#47586d}
+.governance-section ul,.governance-section ol{padding-left:23px}
+.governance-section li{margin-bottom:9px}
+.governance-note{max-width:830px;font-size:12px;color:var(--muted)}
+@media(max-width:680px){.institutional-grid{grid-template-columns:1fr}.institutional-block{padding:20px}.governance-wrap{padding-top:28px}.governance-index{margin-bottom:22px}.governance-section{padding:24px 0}}

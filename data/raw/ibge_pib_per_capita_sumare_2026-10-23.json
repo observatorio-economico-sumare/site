@@ -1,0 +1,19 @@
+{
+  "capture_method": "transcricao_assistida_de_pagina_oficial",
+  "source_institution": "IBGE",
+  "source_title": "Sumaré (SP) | Cidades e Estados | IBGE",
+  "source_url": "https://www.ibge.gov.br/cidades-e-estados/sp/sumare.html",
+  "captured_at": "2026-10-23",
+  "municipality_code": "3552403",
+  "original_file_preserved": false,
+  "note": "Registro estruturado de página pública do IBGE; não é download original da base. Consultar a fonte para eventuais revisões.",
+  "measurements": [
+    {
+      "id": "pib-per-capita-2023",
+      "label_on_source": "PIB per capita",
+      "value": 68060.93,
+      "period": "2023",
+      "unit": "R$"
+    }
+  ]
+}

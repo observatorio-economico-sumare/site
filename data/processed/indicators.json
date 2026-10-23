@@ -65,6 +65,39 @@
         "capture_method": "transcricao_assistida_de_pagina_oficial",
         "original_file_preserved": false
       }
+    },
+    {
+      "id": "pib-per-capita-2023",
+      "name": "PIB per capita",
+      "topic": "economia",
+      "unit": "R$",
+      "reference_period": "2023",
+      "definition": "Produto Interno Bruto do município dividido pela população de referência, a preços correntes",
+      "source_institution": "IBGE",
+      "source_dataset": "PIB dos Municípios",
+      "value": 68060.93,
+      "municipality_code": "3552403",
+      "status": "validated",
+      "source": {
+        "institution": "IBGE",
+        "dataset": "PIB dos Municípios",
+        "url": "https://www.ibge.gov.br/cidades-e-estados/sp/sumare.html",
+        "query_id": "IBGE Cidades e Estados | Município 3552403 | PIB per capita | 2023",
+        "release_date": null
+      },
+      "collected_at": "2026-10-23",
+      "updated_at": "2026-10-23",
+      "reviewed_at": "2026-10-23",
+      "reviewed_by": "Verificação técnica assistida do OES (sem revisão humana independente)",
+      "method": "Valor do PIB municipal per capita a preços correntes, referente a 2023, reproduzido da página do IBGE para Sumaré, sem cálculo adicional pelo OES.",
+      "limitations": "Não representa renda média dos moradores nem riqueza distribuída por habitante. A referência é 2023 e o valor não foi deflacionado.",
+      "revisions": "Inclusão inicial em 23/10/2026; sem revisão posterior registrada no OES.",
+      "evidence": {
+        "raw_path": "data/raw/ibge_pib_per_capita_sumare_2026-10-23.json",
+        "sha256": "70e8123213e9199cfea26343a382c2b6db140bf6d144f405fae846676eef0a30",
+        "capture_method": "transcricao_assistida_de_pagina_oficial",
+        "original_file_preserved": false
+      }
     }
   ]
 }

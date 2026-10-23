@@ -10,12 +10,13 @@ from scripts import pipeline
 
 
 class PipelineTests(unittest.TestCase):
-    def test_two_verified_ibge_indicators(self):
+    def test_three_verified_ibge_indicators(self):
         _, indicators = pipeline.validate()
         values = {item["id"]: item["value"] for item in indicators}
         self.assertEqual(values["populacao-censo-2022"], 279545)
         self.assertEqual(values["populacao-estimada"], 292307)
-        self.assertEqual(len(values), 2)
+        self.assertEqual(values["pib-per-capita-2023"], 68060.93)
+        self.assertEqual(len(values), 3)
 
     def test_modified_value_is_rejected_even_with_same_evidence_hash(self):
         _, items = pipeline.validate()

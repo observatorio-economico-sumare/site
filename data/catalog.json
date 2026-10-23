@@ -1,7 +1,7 @@
 {
   "municipality_code": "3552403",
   "municipality_name": "Sumaré (SP)",
-  "note": "Catálogo estrutural. Valores não certificados nesta etapa.",
+  "note": "Catálogo de definições. Só indicadores com evidência e validação técnica aparecem no site.",
   "indicators": [
     {
       "id": "populacao-censo-2022",
@@ -82,6 +82,16 @@
       "definition": "Rendimento médio de ocupados com renda na população definida pela pesquisa",
       "source_institution": "IBGE",
       "source_dataset": "Censo Demográfico"
+    },
+    {
+      "id": "pib-per-capita-2023",
+      "name": "PIB per capita",
+      "topic": "economia",
+      "unit": "R$",
+      "reference_period": "2023",
+      "definition": "Produto Interno Bruto do município dividido pela população de referência, a preços correntes",
+      "source_institution": "IBGE",
+      "source_dataset": "PIB dos Municípios"
     }
   ]
 }

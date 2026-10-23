@@ -38,7 +38,12 @@ assert "assets/js/indicators.js" in doc.scripts
 assert "assets/js/app.js" in doc.scripts
 assert "assets/css/styles.css" in doc.css
 assert {"sourceDialog","sourceDialogTitle","sourceDialogBody","closeSourceDialog"}.issubset(doc.controls)
-assert {"populacao-censo-2022","populacao-estimada"}.issubset(doc.indicator_ids)
+assert {"populacao-censo-2022","populacao-estimada","pib-per-capita-2023"}.issubset(doc.indicator_ids)
+assert 'href="governanca.html"' in html
+policy_page = (SITE / "governanca.html").read_text(encoding="utf-8")
+assert 'id="politica-editorial"' in policy_page
+assert 'id="declaracao-de-independencia"' in policy_page
+assert 'id="sobre-a-fundadora"' in policy_page
 for asset in doc.scripts + doc.css:
     assert not asset.startswith(("http:", "https:", "/")), f"Arquivo precisa ser local: {asset}"
     assert (SITE / asset).is_file(), f"Arquivo inexistente: {asset}"
