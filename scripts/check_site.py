@@ -1,53 +1,108 @@
 #!/usr/bin/env python3
-"""Smoke test simples sem dependências para HTML e dados servidos pelo GitHub Pages."""
+"""Checagem estática de estrutura, links, acessibilidade e dados do OES."""
 import json
-from pathlib import Path
 from html.parser import HTMLParser
+from pathlib import Path
+from urllib.parse import unquote, urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
 SITE = ROOT / "site"
 
+
 class DocumentCheck(HTMLParser):
+    """Inspeciona HTML sem interpretar scripts ou alterar o conteúdo."""
+
     def __init__(self):
         super().__init__()
         self.scripts = []
         self.css = []
+        self.hrefs = []
+        self.ids = []
         self.inline_scripts = 0
-        self.controls = set()
-        self.indicator_ids = set()
         self.bad_events = []
+        self.tabs = []
+        self.panels = []
+        self.indicator_ids = set()
 
     def handle_starttag(self, tag, attrs):
         values = dict(attrs)
         self.bad_events.extend(k for k, _ in attrs if k.startswith("on"))
+        if "id" in values:
+            self.ids.append(values["id"])
         if tag == "script":
-            if not values.get("src"): self.inline_scripts += 1
-            else: self.scripts.append(values["src"])
+            if "src" not in values:
+                self.inline_scripts += 1
+            else:
+                self.scripts.append(values["src"])
         if tag == "link" and values.get("rel") == "stylesheet":
             self.css.append(values.get("href"))
-        if "id" in values: self.controls.add(values["id"])
-        if values.get("data-indicator"): self.indicator_ids.add(values["data-indicator"])
+        if tag == "a" and values.get("href"):
+            self.hrefs.append(values["href"])
+        if values.get("role") == "tab":
+            self.tabs.append(values.get("data-tab"))
+        if values.get("role") == "tabpanel":
+            self.panels.append(values.get("id"))
+        if values.get("data-indicator"):
+            self.indicator_ids.add(values["data-indicator"])
 
-doc = DocumentCheck()
-html = (SITE / "index.html").read_text(encoding="utf-8")
-doc.feed(html)
-assert not doc.bad_events, f"Eventos inline proibidos: {doc.bad_events}"
-assert doc.inline_scripts == 0, "Não usar scripts inline"
-assert "Content-Security-Policy" in html, "CSP ausente"
-assert "assets/js/indicators.js" in doc.scripts
-assert "assets/js/app.js" in doc.scripts
-assert "assets/css/styles.css" in doc.css
-assert {"sourceDialog","sourceDialogTitle","sourceDialogBody","closeSourceDialog"}.issubset(doc.controls)
-assert {"populacao-censo-2022","populacao-estimada","pib-per-capita-2023"}.issubset(doc.indicator_ids)
-assert 'href="governanca.html"' in html
-policy_page = (SITE / "governanca.html").read_text(encoding="utf-8")
-assert 'id="politica-editorial"' in policy_page
-assert 'id="declaracao-de-independencia"' in policy_page
-assert 'id="sobre-a-fundadora"' in policy_page
-for asset in doc.scripts + doc.css:
-    assert not asset.startswith(("http:", "https:", "/")), f"Arquivo precisa ser local: {asset}"
-    assert (SITE / asset).is_file(), f"Arquivo inexistente: {asset}"
-served = json.loads((SITE / "data/indicators.json").read_text(encoding="utf-8"))
-processed = json.loads((ROOT / "data/processed/indicators.json").read_text(encoding="utf-8"))
-assert served == processed, "Indicadores servidos divergem dos validados"
-print("Smoke test da interface e consistência dos dados: OK")
+
+def read_page(name):
+    path = SITE / name
+    html = path.read_text(encoding="utf-8")
+    doc = DocumentCheck()
+    doc.feed(html)
+    assert not doc.bad_events, f"{name}: eventos HTML inline proibidos"
+    assert doc.inline_scripts == 0, f"{name}: JavaScript inline não permitido"
+    assert len(doc.ids) == len(set(doc.ids)), f"{name}: IDs HTML duplicados"
+    assert "Content-Security-Policy" in html, f"{name}: CSP ausente"
+    assert "assets/css/styles.css" in doc.css, f"{name}: CSS principal ausente"
+    for asset in doc.scripts + doc.css:
+        assert asset and not asset.startswith(("http:", "https:", "/")), (
+            f"{name}: recurso não local: {asset}")
+        assert (SITE / asset).is_file(), f"{name}: recurso ausente: {asset}"
+    return doc
+
+
+def check_links(name, doc, pages):
+    for href in doc.hrefs:
+        uri = urlsplit(href)
+        assert uri.scheme in ("", "https", "mailto"), (
+            f"{name}: protocolo não permitido em link: {href}")
+        if uri.scheme or uri.netloc:
+            continue
+        local = unquote(uri.path)
+        target = (SITE / local).resolve() if local else SITE / name
+        assert target.is_relative_to(SITE.resolve()) and target.is_file(), (
+            f"{name}: link interno inexistente: {href}")
+        if uri.fragment and target.suffix == ".html":
+            target_name = target.relative_to(SITE).as_posix()
+            assert target_name in pages, f"{name}: página não verificada: {target_name}"
+            assert unquote(uri.fragment) in pages[target_name].ids, (
+                f"{name}: âncora inexistente: {href}")
+
+
+def main():
+    pages = {name: read_page(name) for name in ("index.html", "governanca.html")}
+    index = pages["index.html"]
+    assert {"assets/js/app.js", "assets/js/indicators.js"}.issubset(index.scripts)
+    assert {"sourceDialog", "sourceDialogTitle", "sourceDialogBody",
+            "closeSourceDialog"}.issubset(index.ids)
+    assert {"populacao-censo-2022", "populacao-estimada",
+            "pib-per-capita-2023"}.issubset(index.indicator_ids)
+    assert len(index.tabs) == len(set(index.tabs)), "Abas com nomes repetidos"
+    assert set(index.tabs) == set(index.panels), "Abas sem painéis correspondentes"
+    governance = pages["governanca.html"]
+    assert {"politica-editorial", "declaracao-de-independencia",
+            "sobre-a-fundadora"}.issubset(governance.ids)
+
+    for name, doc in pages.items():
+        check_links(name, doc, pages)
+
+    published = json.loads((SITE / "data/indicators.json").read_text(encoding="utf-8"))
+    processed = json.loads((ROOT / "data/processed/indicators.json").read_text(encoding="utf-8"))
+    assert published == processed, "Dados servidos divergem dos registros validados"
+    print("HTML, links, acessibilidade e dados: OK")
+
+
+if __name__ == "__main__":
+    main()
