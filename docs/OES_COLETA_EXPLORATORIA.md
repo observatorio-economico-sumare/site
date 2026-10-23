@@ -9,11 +9,20 @@ não executa validação de publicação e não consulta dados pessoais.
   escolaridade e conclusão do ensino médio.
 - IBGE/SIDRA tabela 10261, variável 4090, Censo 2022, município 3552403:
   posição na ocupação, conta própria, trabalho sem carteira.
-- IBGE/SIDRA tabela 5938, referência 2021, variáveis disponíveis segundo os
-  metadados oficiais: valor adicionado por atividade. Cada variável exige revisão.
+- IBGE/SIDRA tabela 5938, anos 2021 e 2023: valores de PIB e composição
+  da atividade econômica. Cada variável exige revisão.
 - MTE/RAIS 2025, INEP Sinopses da Educação Básica e Portal da Transparência
   de Sumaré: verificação de páginas institucionais **apenas**. A extração
   de arquivos de salários por setor, matrículas e servidores não está implementada.
+
+## Manutenção técnica
+
+- O coletor utiliza diretamente `apisidra.ibge.gov.br`, que respondeu nas execuções
+  anteriores; removemos chamadas redundantes ao endpoint que expirava.
+- Evidências brutas são mantidas em artifacts temporários e em pacote de
+  pesquisa preservado separadamente; **não são versionadas na branch do site**.
+- Arquivos temporários e CSVs candidatos não entram em `data/processed/`.
+- Limpeza futura não deve apagar históricos de revisão ou evidências originais.
 
 ## Saída
 
@@ -39,7 +48,7 @@ Retenção dos arquivos: 14 dias.
 ## Executar localmente
 
     python -m unittest discover -s tests -p test_oes_coleta.py -v
-    python scripts/oes_coleta/coletar.py --output ./oes-resultado
+    python scripts/oes_coleta/coletar.py --output /tmp/oes-resultado
 
 A coleta só estará completa quando cada indicador tiver a linha municipal
 da fonte oficial, período, unidade e arquivo original verificável.
