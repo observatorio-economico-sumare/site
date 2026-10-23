@@ -41,7 +41,6 @@ assert.equal(sandbox.dateForTest("não informado"), "não informado");
 
 console.log("Formatação dos indicadores e datas: OK");
 
-/* Regressão: um indicador pode aparecer em mais de um cartão, sem nova varredura. */
 let scans = 0;
 const renderCard = id => {
   const number = {textContent: "", applied: [], classList: {
