@@ -1,49 +1,65 @@
 # Observatório Econômico de Sumaré (OES)
 
-Projeto independente e apartidário, sem vínculo presumido com a Prefeitura Municipal de Sumaré.
+Observatório independente, apartidário e gratuito para divulgação de dados econômicos e sociais de Sumaré (SP). Não possui vínculo presumido com a Prefeitura Municipal.
 
-## Estado do projeto
+## Situação atual (23/10/2026)
 
-**Etapa 1: estrutura técnica.** A interface foi migrada do MVP visual v4 para HTML/CSS/JS modular. Todos os indicadores estão **Em validação** e nenhum valor numérico é publicado como confirmado. Integração das fontes virá depois.
+**Etapa 2: interface revisada e dois indicadores populacionais conferidos no IBGE.**
+- População residente, Censo 2022: **279.545 pessoas**.
+- População estimada em 1º de julho de 2026: **292.307 pessoas**.
+- Fonte primária: [IBGE, Cidades e Estados, Sumaré](https://www.ibge.gov.br/cidades-e-estados/sp/sumare.html).
+- Metodologia das estimativas: [IBGE, Estimativas de População](https://www.ibge.gov.br/estatisticas/sociais/populacao/9103-estimativas-de-population.html).
+- Outros indicadores continuam **em validação**. Não inferir nem publicar dados pendentes.
+- **Site não publicado.** O repositório permanece privado.
 
 ## Testar localmente
 
-É necessário Python 3.10+; não são necessárias dependências externas.
+Requisitos: Python 3.10+; sem pacotes Python adicionais.
 
 ```bash
-python -m http.server 8000 --directory site
+python3 -m http.server 8000 --directory site
 ```
 
-Abra `http://localhost:8000`. Não abra `index.html` diretamente pelo explorador de arquivos: navegadores bloqueiam a leitura de JSON via `file://`.
+Acesse http://localhost:8000 no navegador. Use servidor local (não abra o arquivo HTML diretamente), pois a interface carrega os indicadores por `fetch`.
 
-## Validar os dados
+## Checagem e preparação dos dados
 
 ```bash
-python -m unittest discover -s tests -v
-python scripts/pipeline.py validate
-python scripts/pipeline.py build
+python3 -m unittest discover -s tests -v
+python3 scripts/check_site.py
+python3 scripts/pipeline.py validate
+python3 scripts/pipeline.py build
 ```
 
-A rotina só publica dados com fonte, identificador da consulta, metodologia, revisor, datas, recorte de Sumaré e prova de integridade de arquivo de origem. Se houver falha, a publicação é bloqueada e o JSON previamente validado permanece intacto.
+O validador exige fonte, endereço, identificador de consulta, data, período, metodologia, evidência local com SHA-256, revisão e coincidência do valor publicado com o registro de origem. Qualquer inconsistência cancela a compilação **antes de substituir** o arquivo JSON publicado.
 
-## Estrutura
+**Natureza da evidência:** `data/raw/ibge_cidades_sumare_2026-10-23.json` registra uma *transcrição assistida* dos valores vistos na página oficial, não é o arquivo original da base do IBGE. A revisão técnica assistida está identificada nos metadados e ainda não constitui revisão humana independente. Para auditoria externa, consulte a página do IBGE. O próximo ciclo poderá integrar exportações oficiais originais (SIDRA/planilhas) e registrar revisões.
 
-- `site/`: HTML, CSS, JS e apenas dados para exibição pública. A referência v4 permanece em `docs/mvp_v4_referencia.html`.
-- `data/catalog.json`: catálogo de indicadores, ainda pendentes.
-- `data/raw/`: arquivos oficiais de origem, com versão e hash SHA-256 (não inclua dados pessoais).
-- `data/processed/indicators.json`: indicadores revisados, inicialmente vazio.
-- `scripts/pipeline.py`: validações e montagem de dados publicados.
-- `tests/`: testes automatizados.
-- `.github/workflows/audit.yml`: verificações em PRs e no ramo principal.
-- `GitHub Pages`: publicação ainda não configurada; repositório privado e site fora do ar.
-- `docs/`: políticas editoriais e de segurança.
+## Organização
 
-## Próximas etapas
+| Caminho | Finalidade |
+|---|---|
+| `site/index.html` | Site estático, responsivo |
+| `site/assets/css/` | Paleta e tipografia institucionais |
+| `site/assets/js/` | Navegação, glossário e fichas técnicas |
+| `site/data/indicators.json` | Somente dados validados exibidos |
+| `data/catalog.json` | Indicadores previstos e definições |
+| `data/raw/` | Evidência e registro da fonte |
+| `data/processed/indicators.json` | Dados revisados |
+| `scripts/pipeline.py` | Checagem e geração de JSON |
+| `scripts/check_site.py` | Smoke test HTML/JS/CSS |
+| `tests/` | Testes de regressão |
+| `.github/workflows/audit.yml` | Validação automática por alteração |
+| `.github/workflows/deploy.yml` | Deploy **apenas manual** com confirmação |
+| `docs/` | Segurança, metodologia, decisões e histórico |
 
-1. Criar repositório `observatorio-economico-sumare`, inicialmente privado.
-2. Os arquivos já foram enviados ao repositório privado pelo GitHub conectado.
-3. Ativar 2FA e proteger a branch `main` contra modificações sem revisão (conforme recursos do plano).
-4. Identificar as tabelas e consultas originais para cada indicador, testar extração e somente depois publicar números.
-5. Para GitHub Pages, configurar *Settings → Pages → Build and deployment → GitHub Actions*. Publicar apenas quando estiver pronto, executando manualmente o workflow.
+## Publicação futura
 
-Leia `docs/AUDITORIA.md` e `docs/SEGURANCA.md` antes da primeira publicação pública.
+1. Revisar visualmente no navegador (desktop e celular) e fazer verificação editorial independente.
+2. No GitHub Free, o GitHub Pages requer repositório **público**. Escolha conscientemente quando alterar a visibilidade; não há publicação automática nesta etapa.
+3. Em **Settings → Pages**, selecionar **GitHub Actions** como fonte quando decidir publicar.
+4. Em **Actions → OES | Publicação manual → Run workflow**, preencher **PUBLICAR**. O fluxo só publica quando testes e verificação dos dados passam.
+5. Manter autenticação em duas etapas e revisão de mudanças antes da publicação.
+
+Consulte `docs/AUDITORIA.md`, `docs/SEGURANCA.md` e `docs/PUBLICACAO.md`.
+
