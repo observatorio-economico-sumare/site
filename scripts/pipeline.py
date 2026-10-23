@@ -99,6 +99,26 @@ def validate():
             raise ValueError(f"{key}: arquivo de origem ausente ou fora de data/raw")
         if hashlib.sha256(path.read_bytes()).hexdigest() != ev["sha256"]:
             raise ValueError(f"{key}: hash SHA-256 divergente")
+        # Arquivo de evidência é uma transcrição documentada, não o download original.
+        snapshot = load(path)
+        if snapshot.get("capture_method") != ev.get("capture_method"):
+            raise ValueError(f"{key}: método de captura da evidência divergente")
+        if snapshot.get("municipality_code") != item["municipality_code"]:
+            raise ValueError(f"{key}: município não corresponde à evidência")
+        if snapshot.get("source_institution") != src["institution"]:
+            raise ValueError(f"{key}: instituição não corresponde à evidência")
+        if snapshot.get("source_url") != src["url"]:
+            raise ValueError(f"{key}: URL de fonte não corresponde à evidência")
+        if snapshot.get("original_file_preserved") is not False:
+            raise ValueError(f"{key}: tipo de evidência não documentado")
+        measures = [v for v in snapshot.get("measurements",[]) if v.get("id")==key]
+        if len(measures) != 1:
+            raise ValueError(f"{key}: medição não identificada unicamente na evidência")
+        measurement = measures[0]
+        if (measurement.get("value") != value or
+                measurement.get("period") != item["reference_period"] or
+                measurement.get("unit") != item["unit"]):
+            raise ValueError(f"{key}: valor, período ou unidade divergem da evidência")
     return catalog, items
 
 def build():
