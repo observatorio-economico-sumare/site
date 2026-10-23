@@ -25,6 +25,8 @@ jobs:
         run: python -m unittest discover -s tests -p test_oes_coleta.py -v
       - name: Consultas oficiais (nao publicadas)
         run: python scripts/oes_coleta/coletar.py --output oes-resultado
+      - name: Descobrir links de arquivos oficiais
+        run: python scripts/oes_coleta/descobrir_fontes.py --output oes-resultado
       - name: Sumario de execucao
         run: |
           python -c 'import json; d=json.load(open("oes-resultado/relatorio.json")); print("Requisicoes:",d["requests"],"Arquivos JSON:",d["downloaded_json"],"Linhas candidatas:",d["candidate_rows"],"Status:",d["status_counts"])'
