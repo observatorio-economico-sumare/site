@@ -2,6 +2,28 @@
 /* Indicadores públicos: HTML inicial permanece neutro até o JSON ser verificado. */
 const DATA_URL = "data/indicators.json";
 
+/* Formatação é determinada pela unidade oficial do indicador. */
+function formatIndicatorValue(item, includeUnit = false) {
+  const value = item.value;
+  if (item.unit === "R$") {
+    return new Intl.NumberFormat("pt-BR", {
+      style: "currency", currency: "BRL",
+      minimumFractionDigits: 2, maximumFractionDigits: 2
+    }).format(value);
+  }
+  const number = new Intl.NumberFormat("pt-BR", {
+    maximumFractionDigits: 2
+  }).format(value);
+  if (item.unit === "%") return number + "%";
+  return includeUnit ? number + " " + item.unit : number;
+}
+
+function formatRecordDate(value) {
+  if (typeof value !== "string" || !/^\d{4}-\d{2}-\d{2}$/.test(value)) return value;
+  const [year, month, day] = value.split("-");
+  return day + "/" + month + "/" + year;
+}
+
 function appendField(parent, title, value, url) {
   const row = document.createElement("div");
   row.className = "data-detail";
@@ -36,7 +58,7 @@ function openIndicatorDetail(item) {
   const list = document.createElement("dl");
   list.className = "indicator-detail";
   const info = [
-    ["Valor", new Intl.NumberFormat("pt-BR").format(item.value) + " " + item.unit],
+    ["Valor", formatIndicatorValue(item, true)],
     ["Definição", item.definition],
     ["Município", "Sumaré (SP), IBGE " + item.municipality_code],
     ["Período", item.reference_period],
@@ -44,13 +66,13 @@ function openIndicatorDetail(item) {
     ["Identificador da consulta", item.source.query_id],
     ["Metodologia", item.method],
     ["Limitações", item.limitations],
-    ["Coleta pelo OES", item.collected_at],
-    ["Última atualização no OES", item.updated_at],
-    ["Revisão técnica", item.reviewed_at + " · " + item.reviewed_by],
+    ["Coleta pelo OES", formatRecordDate(item.collected_at)],
+    ["Última atualização no OES", formatRecordDate(item.updated_at)],
+    ["Revisão técnica", formatRecordDate(item.reviewed_at) + " · " + item.reviewed_by],
     ["Histórico de revisões", item.revisions],
     ["Evidência", item.evidence.raw_path],
     ["SHA-256 da evidência", item.evidence.sha256],
-    ["Natureza da evidência", "Transcrição estruturada do conteúdo oficial; não é download original da base"]
+    ["Natureza da evidência", item.evidence.original_file_preserved === true ? "Arquivo original preservado" : "Registro estruturado da fonte, sem arquivo original preservado"]
   ];
   for (const [key, value] of info) appendField(list, key, value);
   appendField(list, "Endereço da fonte", item.source.url, item.source.url);
@@ -74,11 +96,11 @@ function renderItem(item) {
     const number = card.querySelector(".number");
     const provenance = card.querySelector(".origin");
     if (!number || !provenance) return;
-    number.textContent = new Intl.NumberFormat("pt-BR").format(item.value);
+    number.textContent = formatIndicatorValue(item);
     number.classList.add("number--verified");
     provenance.replaceChildren();
     const line = document.createElement("span");
-    line.textContent = item.source.institution + " · " + item.reference_period + " · atualizado no OES em " + item.updated_at;
+    line.textContent = item.source.institution + " · " + item.reference_period + " · atualizado no OES em " + formatRecordDate(item.updated_at);
     const detail = document.createElement("button");
     detail.type = "button";
     detail.className = "source-detail";
@@ -109,7 +131,7 @@ async function renderIndicators() {
       name.textContent = item.name;
       const period = document.createElement("p");
       period.textContent = item.source.institution + " · " + item.reference_period +
-        " · " + new Intl.NumberFormat("pt-BR").format(item.value) + " " + item.unit;
+        " · " + formatIndicatorValue(item, true);
       left.append(name, period);
       const button = document.createElement("button");
       button.type = "button";
