@@ -1,0 +1,38 @@
+name: "OES | Coleta exploratoria oficial (sem publicacao)"
+on:
+  push:
+    branches:
+      - pesquisa/coletor-fontes-oficiais-20261023
+    paths:
+      - .github/workflows/oes-coleta-exploratoria.yml
+      - scripts/oes_coleta/**
+      - tests/test_oes_coleta.py
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  coleta-exploratoria:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout branch de pesquisa
+        uses: actions/checkout@v4
+      - name: Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Testes unitarios sem rede
+        run: python -m unittest discover -s tests -p test_oes_coleta.py -v
+      - name: Consultas oficiais (nao publicadas)
+        run: python scripts/oes_coleta/coletar.py --output oes-resultado
+      - name: Sumario de execucao
+        run: |
+          python -c 'import json; d=json.load(open("oes-resultado/relatorio.json")); print("Requisicoes:",d["requests"],"Arquivos JSON:",d["downloaded_json"],"Linhas candidatas:",d["candidate_rows"],"Status:",d["status_counts"])'
+      - name: Arquivar somente artefatos, sem commit e sem deploy
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: oes-evidencias-exploratorias
+          path: oes-resultado/
+          retention-days: 14
+          if-no-files-found: warn
