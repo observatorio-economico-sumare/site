@@ -223,7 +223,12 @@ for (const [page,expected] of [["site/index.html","Carregando…"],["site/en/ind
 /* A biblioteca tem navegação independente da aba Análises. */
 {
  const html=fs.readFileSync("site/biblioteca.html","utf8");
- assert.ok(html.includes('<p class="library-back"><a href="index.html">← Voltar ao site</a></p>'));
+ assert.doesNotMatch(html,/class="library-back"|Voltar ao site/);
+ assert.ok(html.includes('<nav class="library-nav" aria-label="Navegação principal">'));
+ assert.ok(html.includes('aria-current="page">Biblioteca</a>'));
+ const sections=["inicio","populacao","trabalho","economia","analises","metodologia","sobre"];
+ const targets=[...html.matchAll(/<a href="index\.html#([^"]+)">[^<]+<\/a>/g)].map(m=>m[1]);
+ assert.deepEqual(targets,sections,"A Biblioteca deve ter os mesmos itens do menu principal");
  assert.doesNotMatch(html,/href="index\.html#analises"|href="en\/index\.html#analises"/);
  assert.ok(html.includes('hreflang="en" href="en/index.html"'));
 }

@@ -1,8 +1,5 @@
 /* Biblioteca editorial: estilos isolados da navegação e dos indicadores. */
 .library{max-width:1120px;padding-top:30px}
-.library-back{margin:0 0 27px;font-size:13px}
-.library-back a{color:var(--muted);text-decoration:none}
-.library-back a:hover{text-decoration:underline}
 .library-hero{border-bottom:2px solid var(--ink);padding-bottom:35px;max-width:900px}
 .library-hero .kicker{letter-spacing:.12em}
 .library-hero h1{font:400 clamp(39px,5vw,62px)/1.13 var(--font-editorial);color:var(--ink);letter-spacing:-.035em;margin:14px 0 17px}
@@ -17,3 +14,9 @@
 .library-disclaimer{max-width:850px;font-size:13px;line-height:1.7;color:var(--muted);margin:32px 0 0}
 @media(max-width:680px){.library{padding-top:22px}.library-back{margin-bottom:22px}.library-hero{padding-bottom:25px}.library-hero h1{font-size:38px}.library-hero p{font-size:15px}.library-entry{padding:21px 0 23px}.library-entry h2{font-size:21px}}
 
+
+/* Mesma navegação do OES; na Biblioteca, as abas são links para a página inicial. */
+.library-nav .nav-inner a{display:inline-flex;align-items:center;flex:0 0 auto;white-space:nowrap;padding:16px 0 15px;border-bottom:2px solid transparent;color:#48576c;text-decoration:none;font:500 13px/1.35 var(--font-interface)}
+.library-nav .nav-inner a:hover,.library-nav .nav-inner a:focus-visible{color:var(--ink);border-bottom-color:var(--yellow)}
+.library-nav .nav-library-link[aria-current="page"]{color:var(--ink);font-weight:600;border-bottom:3px solid var(--yellow)}
+@media(max-width:800px){.library-nav .nav-inner a{padding:11px 0;white-space:normal;text-align:left}}
