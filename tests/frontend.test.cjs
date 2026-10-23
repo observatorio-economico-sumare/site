@@ -154,8 +154,8 @@ assert.doesNotMatch(governanceCss,/\.governance-toc|\.governance-sidebar|\.gover
 
 /* Navegação compacta e responsiva, em ambos os idiomas. */
 for (const [path,names] of [
- ["site/index.html",["Visão geral","População","Trabalho e renda","Economia","Análises","Fontes","Institucional"]],
- ["site/en/index.html",["Overview","Population","Jobs & income","Economy","Research","Sources","About"]]
+ ["site/index.html",["Visão geral","População","Trabalho e renda","Economia","Análises","Entenda os dados","Institucional"]],
+ ["site/en/index.html",["Overview","Population","Jobs & income","Economy","Research","Understanding the data","About"]]
 ]){
  const html=fs.readFileSync(path,"utf8");
  const menu=(html.match(/<nav aria-label="(?:Navegação principal|Main navigation)">[\s\S]*?<\/nav>/)||[])[0];
@@ -226,4 +226,21 @@ for (const [page,expected] of [["site/index.html","Carregando…"],["site/en/ind
  assert.ok(html.includes('<p class="library-back"><a href="index.html">← Voltar ao site</a></p>'));
  assert.doesNotMatch(html,/href="index\.html#analises"|href="en\/index\.html#analises"/);
  assert.ok(html.includes('hreflang="en" href="en/index.html"'));
+}
+
+/* Fontes, fichas técnicas e Glossário compartilham uma seção. */
+for (const [path,titles] of [
+ ["site/index.html",["Fontes e metodologia","Fichas técnicas dos indicadores","Glossário"]],
+ ["site/en/index.html",["Sources and methodology","Indicator technical sheets","Glossary"]]
+]){
+ const html=fs.readFileSync(path,"utf8");
+ const section=html.slice(html.indexOf('<section class="tab" hidden="" id="metodologia"'),
+                          html.indexOf('<section class="tab" hidden="" id="sobre"'));
+ let previous=-1;
+ for(const title of titles){
+   const pos=section.indexOf(">"+title+"</h2>");
+   assert.ok(pos>previous,path+": heading missing or out of order: "+title);
+   previous=pos;
+ }
+ assert.ok(section.includes('<section class="glossary-section" id="glossario"'));
 }
