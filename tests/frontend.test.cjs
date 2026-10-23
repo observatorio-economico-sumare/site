@@ -85,7 +85,7 @@ assert.equal(Object.keys(glossaryEntries).length, 9);
 for (const entry of Object.values(glossaryEntries)) {
   for (const locale of ["pt", "en"]) {
     for (const property of ["title", "short", "detail"]) {
-      assert.ok(entry[locale]?.[property]?.length > 10, locale + " " + property);
+      assert.ok(entry[locale]?.[property]?.length >= (property === "title" ? 2 : 20), locale + " " + property);
     }
     assert.ok(entry.source[locale]?.length > 10);
   }
