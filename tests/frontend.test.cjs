@@ -187,3 +187,9 @@ for(const [page,href] of [["site/index.html","biblioteca.html"],["site/en/index.
 }
 
 assert.match(glossaryCode,/hashTab === "glossario" \? "metodologia"/);
+
+/* Os títulos do acervo seguem capitalização editorial, sem caixa alta integral. */
+for(const [, title] of libraryHTML.matchAll(/<article class="library-entry" id="[^"]+">\s*<h2>([^<]+)<\/h2>/g)){
+ const letters=title.replace(/[^A-Za-zÀ-ÿ]/g,"");
+ assert.ok(letters!==letters.toUpperCase(),"Título integralmente em caixa alta: "+title);
+}
