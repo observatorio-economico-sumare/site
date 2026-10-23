@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="assets/css/styles.css">
 <link rel="stylesheet" href="assets/css/biblioteca.css">
 <script src="assets/js/lang-switch.js" defer></script>
+<script src="assets/js/biblioteca.js" defer></script>
 </head>
 <body>
 <header class="mast"><div class="wrap mast-inner"><div class="identity"><div aria-hidden="true" class="monogram">OES</div><div><strong>Observatório Econômico<br>de Sumaré</strong><span>Pesquisa, dados e transparência</span></div></div><div class="independent"><span class="independent-main">Iniciativa independente e apartidária</span><span class="independent-secondary">Sem vínculo com a Prefeitura Municipal</span></div><div class="language-switch" role="group" aria-label="Idioma"><span class="language-current" aria-current="true">PT</span><a lang="en" hreflang="en" href="en/index.html" title="Site em inglês">EN</a></div></div></header>
@@ -32,158 +33,164 @@
     <h1>Biblioteca de Estudos sobre Sumaré</h1>
     <p>Publicações acadêmicas e institucionais sobre o município e estudos regionais que analisam Sumaré.</p>
   </header>
+  <div class="library-filter" id="library-filter" hidden>
+    <label for="library-topic">Tema</label>
+    <select id="library-topic" aria-label="Filtrar estudos por tema">
+      <option value="">Todos os temas</option>
+    </select>
+  </div>
   <section class="library-list" aria-label="Publicações por ano, das mais recentes às mais antigas">
-<article class="library-entry" id="oes-006">
+<article class="library-entry" id="oes-006" data-topic="Economia e trabalho">
   <h2>Ocupações de fábrica e a questão urbana: Flaskô e Vila Operária e Popular</h2>
   <p class="library-meta">Vinícius Martins de Camargo · USP – FAU · 2026 · Dissertação de mestrado</p>
   <p class="library-summary">Investiga a fábrica ocupada Flaskô e a formação e regularização da Vila Operária e Popular na periferia de Sumaré.</p>
   <a class="library-source" href="https://teses.usp.br/teses/disponiveis/16/16137/tde-01072026-131601/pt-br.html" target="_blank" rel="noopener noreferrer">Acessar publicação original <span aria-hidden="true">↗</span></a>
 </article>
-<article class="library-entry" id="oes-011">
+<article class="library-entry" id="oes-011" data-topic="Educação">
   <h2>Síndrome de burnout e qualidade de vida no trabalho: percepção dos professores de educação física escolar em uma rede pública de ensino</h2>
   <p class="library-meta">Pedro Henrique Seleri Barbudo · Unesp · 2026 · Dissertação de mestrado</p>
   <p class="library-summary">Investiga burnout e qualidade de vida profissional de docentes de educação física da rede municipal de Sumaré.</p>
   <a class="library-source" href="https://repositorio.unesp.br/entities/publication/a03de809-623c-4cb5-8821-bb54ed941445/full" target="_blank" rel="noopener noreferrer">Acessar publicação original <span aria-hidden="true">↗</span></a>
 </article>
-<article class="library-entry" id="oes-002">
+<article class="library-entry" id="oes-002" data-topic="Cidade e moradia">
   <h2>Direito à moradia e justiça socioespacial: a regularização fundiária de Vila Soma em Sumaré-SP como política pública de inclusão urbana</h2>
   <p class="library-meta">Joyce Ferreira Bernardes · PUC-Campinas · 2025 · Dissertação de mestrado</p>
   <p class="library-summary">Analisa histórico, disputas judiciais, regularização fundiária e infraestrutura da ocupação Vila Soma.</p>
   <a class="library-source" href="https://repositorio.sis.puc-campinas.edu.br/items/bbffe6a9-be2e-46fc-aaa0-7fb5122824d6" target="_blank" rel="noopener noreferrer">Acessar publicação original <span aria-hidden="true">↗</span></a>
 </article>
-<article class="library-entry" id="oes-016">
+<article class="library-entry" id="oes-016" data-topic="Economia e trabalho">
   <h2>Flaskô, uma trincheira da luta de classes no Brasil: balanços e perspectivas de uma fábrica ocupada entre os meandros do capitalismo tardio</h2>
   <p class="library-meta">Gabriel Augusto Romito · PUC-SP · 2025 · Tese de doutorado</p>
   <p class="library-summary">Analisa a trajetória de ocupação e organização operária da fábrica Flaskô, em Sumaré.</p>
   <a class="library-source" href="https://tede2.pucsp.br/handle/handle/45482" target="_blank" rel="noopener noreferrer">Acessar publicação original <span aria-hidden="true">↗</span></a>
 </article>
-<article class="library-entry" id="oes-021">
+<article class="library-entry" id="oes-021" data-topic="Educação">
   <h2>Processos de inclusão digital no Programa Inova Educação das escolas estaduais de ensino médio integral de Sumaré-SP</h2>
   <p class="library-meta">Adriano Fiuza do Nascimento; Karina Marcon · Revista e-Curriculum / PUC-SP · 2024 · Artigo científico</p>
   <p class="library-summary">Estudo de caso em duas escolas estaduais de ensino médio integral de Sumaré sobre práticas docentes e inclusão digital.</p>
   <a class="library-source" href="https://revistas.pucsp.br/index.php/curriculum/article/view/61568" target="_blank" rel="noopener noreferrer">Acessar publicação original <span aria-hidden="true">↗</span></a>
 </article>
-<article class="library-entry" id="oes-004">
+<article class="library-entry" id="oes-004" data-topic="Meio ambiente">
   <h2>Permeabilidade e planejamento urbano contra os casos de inundação do Ribeirão Quilombo em Sumaré-SP</h2>
   <p class="library-meta">Hayana Ribeiro · Unesp · 2023 · Trabalho de conclusão de curso</p>
   <p class="library-summary">Discute inundações associadas ao Ribeirão Quilombo e propostas de planejamento e parque linear.</p>
   <a class="library-source" href="https://repositorio.unesp.br/entities/publication/b050e4fc-ec29-43ea-82f1-43535723610a" target="_blank" rel="noopener noreferrer">Acessar publicação original <span aria-hidden="true">↗</span></a>
 </article>
-<article class="library-entry" id="oes-018">
+<article class="library-entry" id="oes-018" data-topic="Meio ambiente">
   <h2>Contaminação de chumbo na água subterrânea investigada por isótopos de Pb, O e H: um caso de estudo do município de Sumaré, SP</h2>
   <p class="library-meta">Higor Tadeu da Silva; Veridiana Martins; Ana Paula Queiroz; Ana Paula de Jesus Rios · Águas Subterrâneas / ABAS · 2021 · Artigo em anais científicos</p>
   <p class="library-summary">Analisa fontes e comportamento de chumbo em águas subterrâneas de área industrial no município.</p>
   <a class="library-source" href="https://aguassubterraneas.abas.org/asubterraneas/article/view/29455" target="_blank" rel="noopener noreferrer">Acessar publicação original <span aria-hidden="true">↗</span></a>
 </article>
-<article class="library-entry" id="oes-029">
+<article class="library-entry" id="oes-029" data-topic="Cidade e moradia">
   <h2>Contrarracionalidades pela sobrevivência: o planejamento ascendente no cotidiano da Ocupação Vila Soma (Sumaré/SP)</h2>
   <p class="library-meta">Anderson Sabino · Anais das Semanas de Geografia da Unicamp · 2021 · Artigo em anais científicos</p>
   <p class="library-summary">Analisa práticas cotidianas dos moradores da Vila Soma relacionadas à organização e ao planejamento territorial.</p>
   <a class="library-source" href="https://ocs.ige.unicamp.br/ojs/semanageounicamp/article/view/3416" target="_blank" rel="noopener noreferrer">Acessar publicação original <span aria-hidden="true">↗</span></a>
 </article>
-<article class="library-entry" id="oes-017">
+<article class="library-entry" id="oes-017" data-topic="Meio ambiente">
   <h2>Diagnóstico do uso da água subterrânea como subsídio à gestão municipal de recursos hídricos</h2>
   <p class="library-meta">Thalita Benetello; Sibele Ezaki · Derbyana / Instituto Geológico (SP) · 2021 · Artigo científico</p>
   <p class="library-summary">Avalia a pressão sobre aquíferos e o uso de água subterrânea em Sumaré por meio de cadastros de poços.</p>
   <a class="library-source" href="https://revistaig.emnuvens.com.br/derbyana/article/view/755" target="_blank" rel="noopener noreferrer">Acessar publicação original <span aria-hidden="true">↗</span></a>
 </article>
-<article class="library-entry" id="oes-020">
+<article class="library-entry" id="oes-020" data-topic="Economia e trabalho">
   <h2>Flaskô e o controle operário: formas alternativas de organização do trabalho e formação da consciência de classe</h2>
   <p class="library-meta">Maria Carolina Graciano Sugahara; Sofia Bheatrice Gianeri Spada; João Augusto Pereira do Prado · Atena Editora · 2021 · Capítulo de livro científico</p>
   <p class="library-summary">Estuda a fábrica ocupada Flaskô em Sumaré e experiências educativas vinculadas à organização dos trabalhadores.</p>
   <a class="library-source" href="https://atenaeditora.com.br/catalogo/post/flasko-e-o-controle-operario-formas-alternativas-de-organizacao-do-trabalho-e-formacao-da-consciencia-de-classe" target="_blank" rel="noopener noreferrer">Acessar publicação original <span aria-hidden="true">↗</span></a>
 </article>
-<article class="library-entry" id="oes-014">
+<article class="library-entry" id="oes-014" data-topic="Cidade e moradia">
   <h2>Silenciamentos da luta pelo direito à cidade: representações socioespaciais da ocupação Vila Soma na mídia</h2>
   <p class="library-meta">Maria Luiza Assis; André Pasti; Isadora Garcia · Terra Livre / Associação dos Geógrafos Brasileiros · 2021 · Artigo científico</p>
   <p class="library-summary">Analisa a cobertura midiática da Vila Soma e as representações sobre a ocupação e o direito à cidade.</p>
   <a class="library-source" href="https://publicacoes.agb.org.br/index.php/terralivre/article/view/2221" target="_blank" rel="noopener noreferrer">Acessar publicação original <span aria-hidden="true">↗</span></a>
 </article>
-<article class="library-entry" id="oes-007">
+<article class="library-entry" id="oes-007" data-topic="Cidade e moradia">
   <h2>Luta social e a produção neoliberal do espaço: as trajetórias das ocupações Vila Soma, Zumbi dos Palmares e Pinheirinho</h2>
   <p class="library-meta">André Dal’ Bó da Costa · USP · 2019 · Tese de doutorado</p>
   <p class="library-summary">Analisa comparativamente ocupações urbanas, incluindo Vila Soma, e conflitos em torno da produção do espaço.</p>
   <a class="library-source" href="https://teses.usp.br/teses/disponiveis/102/102132/tde-03082020-151424/pt-br.html" target="_blank" rel="noopener noreferrer">Acessar publicação original <span aria-hidden="true">↗</span></a>
 </article>
-<article class="library-entry" id="oes-003">
+<article class="library-entry" id="oes-003" data-topic="Cidade e moradia">
   <h2>Caracterização dos aspectos físicos e populacionais do bairro Jardim Primavera na cidade de Sumaré, SP: considerações sobre vulnerabilidade a inundações</h2>
   <p class="library-meta">Sophia Helene Marin Rau · Unesp · 2018 · Trabalho de conclusão de curso</p>
   <p class="library-summary">Relaciona características socioeconômicas, demográficas e físicas do Jardim Primavera ao risco de inundação.</p>
   <a class="library-source" href="https://repositorio.unesp.br/items/38381c7d-ddcb-435b-94c7-37dcb98d9402" target="_blank" rel="noopener noreferrer">Acessar publicação original <span aria-hidden="true">↗</span></a>
 </article>
-<article class="library-entry" id="oes-022">
+<article class="library-entry" id="oes-022" data-topic="Educação">
   <h2>Educação ambiental crítica em espaço não formal: mapeamento ambiental da região de São Domingos no município de Sumaré/SP</h2>
   <p class="library-meta">Áurea Cristina Bastos da Costa Pereira; Maria Guiomar Carneiro Tomazello · Ambiente &amp; Educação / FURG · 2018 · Artigo científico</p>
   <p class="library-summary">Relata pesquisa-ação com jovens sobre problemas socioambientais da região de São Domingos.</p>
   <a class="library-source" href="https://periodicos.furg.br/ambeduc/article/view/6237" target="_blank" rel="noopener noreferrer">Acessar publicação original <span aria-hidden="true">↗</span></a>
 </article>
-<article class="library-entry" id="oes-025">
+<article class="library-entry" id="oes-025" data-topic="Economia e trabalho">
   <h2>A importância das vantagens locacionais e dos serviços produtivos nas indústrias automotivas asiáticas no estado de São Paulo: o caso de Piracicaba, Indaiatuba e Sumaré</h2>
   <p class="library-meta">Saulo Teruo Takami; Auro Aparecido Mendes · Sociedade &amp; Natureza / Universidade Federal de Uberlândia · 2017 · Artigo científico</p>
   <p class="library-summary">Compara fatores de localização, serviços produtivos e implantação de montadoras asiáticas, incluindo Honda em Sumaré.</p>
   <a class="library-source" href="https://seer.ufu.br/index.php/sociedadenatureza/article/view/35647" target="_blank" rel="noopener noreferrer">Acessar publicação original <span aria-hidden="true">↗</span></a>
 </article>
-<article class="library-entry" id="oes-026">
+<article class="library-entry" id="oes-026" data-topic="Economia e trabalho">
   <h2>Proximidade geográfica e intensidade tecnológica na indústria: evidências da periferia do eixo São Paulo-Brasília no início do século XXI</h2>
   <p class="library-meta">Fernando Campos Mesquita; Daniel Pereira Sampaio · Revista Brasileira de Estudos Urbanos e Regionais / ANPUR · 2017 · Artigo científico</p>
   <p class="library-summary">Analisa emprego, salários, qualificação e intensidade tecnológica da indústria em regiões do eixo São Paulo-Brasília, incluindo Sumaré.</p>
   <a class="library-source" href="https://rbeur.anpur.org.br/rbeur/article/view/5293" target="_blank" rel="noopener noreferrer">Acessar publicação original <span aria-hidden="true">↗</span></a>
 </article>
-<article class="library-entry" id="oes-028">
+<article class="library-entry" id="oes-028" data-topic="Saúde">
   <h2>Fatores de risco associados ao prognóstico de adultos internados com pneumonia adquirida na comunidade</h2>
   <p class="library-meta">Maria Rita Donalisio; Bertha Siqueira Bernardi de Oliveira; Carlos Henrique Mamud Arca; June Barreiros Freira; Daniela de Oliveira Magro · Revista de Nutrição / PUC-Campinas · 2012 · Artigo científico</p>
   <p class="library-summary">Analisa parâmetros clínicos e nutricionais em 61 adultos internados no Hospital Estadual Sumaré.</p>
   <a class="library-source" href="https://www.scielo.br/j/rn/a/Kp57XqT9FhxWh4qCyc9t55r/" target="_blank" rel="noopener noreferrer">Acessar publicação original <span aria-hidden="true">↗</span></a>
 </article>
-<article class="library-entry" id="oes-024">
+<article class="library-entry" id="oes-024" data-topic="Saúde">
   <h2>Recém-nascido prematuro: suporte materno domiciliar para o cuidado</h2>
   <p class="library-meta">Fabiane Ferreira Couto; Neide de Souza Praça · Revista Brasileira de Enfermagem / Associação Brasileira de Enfermagem · 2012 · Artigo científico</p>
   <p class="library-summary">Pesquisa qualitativa com 12 mães residentes em Sumaré sobre apoio domiciliar após alta neonatal.</p>
   <a class="library-source" href="https://www.scielo.br/j/reben/a/dy5ddPdVgFt33LyTXjksH4f/?format=html&amp;lang=pt" target="_blank" rel="noopener noreferrer">Acessar publicação original <span aria-hidden="true">↗</span></a>
 </article>
-<article class="library-entry" id="oes-027">
+<article class="library-entry" id="oes-027" data-topic="Saúde">
   <h2>Perfil clínico, epidemiológico e etiológico de pacientes com pneumonia adquirida na comunidade internados em um hospital geral da microrregião de Sumaré, SP</h2>
   <p class="library-meta">Maria Rita Donalisio; Carlos Henrique Mamud Arca; Paulo Roberto de Madureira · Jornal Brasileiro de Pneumologia / Sociedade Brasileira de Pneumologia e Tisiologia · 2011 · Artigo científico</p>
   <p class="library-summary">Estuda perfil e desfechos clínicos de pacientes atendidos no Hospital Estadual Sumaré em 2005–2007.</p>
   <a class="library-source" href="https://jbp.org.br/details/111/pt-BR/perfil-clinico--epidemiologico-e-etiologico-de-pacientes-com-pneumonia-adquirida-na-comunidade-internados-em-um-hospital-geral-da-microrregiao-de-suma" target="_blank" rel="noopener noreferrer">Acessar publicação original <span aria-hidden="true">↗</span></a>
 </article>
-<article class="library-entry" id="oes-023">
+<article class="library-entry" id="oes-023" data-topic="Meio ambiente">
   <h2>Diagnóstico geoambiental e avaliação de risco à saúde humana em terminal de abastecimento no município de Sumaré - SP</h2>
   <p class="library-meta">Ronaldo Batista Balthazar · Unesp · 2009 · Trabalho de conclusão de curso</p>
   <p class="library-summary">Avalia riscos à saúde associados à contaminação por hidrocarbonetos em instalação de abastecimento de Sumaré.</p>
   <a class="library-source" href="https://acervodigital.unesp.br/handle/11449/118175" target="_blank" rel="noopener noreferrer">Acessar publicação original <span aria-hidden="true">↗</span></a>
 </article>
-<article class="library-entry" id="oes-001">
+<article class="library-entry" id="oes-001" data-topic="História">
   <h2>A formação do Distrito de Rebouças: origem do município de Sumaré</h2>
   <p class="library-meta">Eliana Cristo de Oliveira · PUC-Campinas · 2008 · Dissertação de mestrado</p>
   <p class="library-summary">Examina a formação do núcleo de Rebouças, o papel da ferrovia e a estruturação urbana que antecedeu o município.</p>
   <a class="library-source" href="https://repositorio.sis.puc-campinas.edu.br/items/a5a220c9-2715-4b44-94b7-f27678234e96" target="_blank" rel="noopener noreferrer">Acessar publicação original <span aria-hidden="true">↗</span></a>
 </article>
-<article class="library-entry" id="oes-008">
+<article class="library-entry" id="oes-008" data-topic="História">
   <h2>Mulheres da terra: história e memória das assentadas de Sumaré II no limiar do século XXI</h2>
   <p class="library-meta">Claudia Delboni · USP – FFLCH · 2008 · Dissertação de mestrado</p>
   <p class="library-summary">Reconstitui trajetórias e mobilização das mulheres do assentamento Sumaré II por meio de história oral.</p>
   <a class="library-source" href="https://teses.usp.br/teses/disponiveis/8/8138/tde-04072008-141411/pt-br.html" target="_blank" rel="noopener noreferrer">Acessar publicação original <span aria-hidden="true">↗</span></a>
 </article>
-<article class="library-entry" id="oes-005">
+<article class="library-entry" id="oes-005" data-topic="Cidade e moradia">
   <h2>Estudo de brownfields e espaços funcionais no município de Sumaré - SP</h2>
   <p class="library-meta">Aldo Francisco Umanzor Ordenes · Unesp · 2007 · Dissertação de mestrado</p>
   <p class="library-summary">Examina áreas industriais e urbanas subutilizadas e diferentes níveis de refuncionalização espacial em Sumaré.</p>
   <a class="library-source" href="https://repositorio.unesp.br/entities/publication/53ae5b64-a9af-41da-821b-4be1288109d4" target="_blank" rel="noopener noreferrer">Acessar publicação original <span aria-hidden="true">↗</span></a>
 </article>
-<article class="library-entry" id="oes-009">
+<article class="library-entry" id="oes-009" data-topic="Meio ambiente">
   <h2>Uma visão ambiental da gênese dos assentamentos rurais no Estado de São Paulo: de Sumaré ao Pontal do Paranapanema</h2>
   <p class="library-meta">Lígia Teresa Paludetto Silva · USP – FAU · 2007 · Dissertação de mestrado</p>
   <p class="library-summary">Compara planejamento e impactos ambientais dos assentamentos Sumaré I e Padre Josimo.</p>
   <a class="library-source" href="https://teses.usp.br/teses/disponiveis/16/16135/tde-08032010-140319/pt-br.html" target="_blank" rel="noopener noreferrer">Acessar publicação original <span aria-hidden="true">↗</span></a>
 </article>
-<article class="library-entry" id="oes-019">
+<article class="library-entry" id="oes-019" data-topic="Meio ambiente">
   <h2>Considerações sobre seleção de áreas para disposição de resíduos. Estudo de caso na média bacia do rio Piracicaba e no município de Sumaré (SP)</h2>
   <p class="library-meta">Maria José Brollo · Revista do Departamento de Geografia / USP · 1998 · Artigo científico</p>
   <p class="library-summary">Examina critérios de seleção de áreas para disposição de resíduos na média bacia do Piracicaba e em Sumaré.</p>
   <a class="library-source" href="https://revistas.usp.br/rdg/en/article/view/53739" target="_blank" rel="noopener noreferrer">Acessar publicação original <span aria-hidden="true">↗</span></a>
 </article>
-<article class="library-entry" id="oes-010">
+<article class="library-entry" id="oes-010" data-topic="Meio ambiente">
   <h2>Desempenho hidráulico de um pivô central de baixa pressão em terreno com topografia variável</h2>
   <p class="library-meta">Claudio Tomazela · USP – ESALQ · 1991 · Dissertação de mestrado</p>
   <p class="library-summary">Avalia em campo o desempenho hidráulico de equipamento de irrigação instalado em Sumaré.</p>

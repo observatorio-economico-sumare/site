@@ -25,6 +25,24 @@ class BibliotecaTests(unittest.TestCase):
         years = [int(r["ano_publicacao"]) for r in records]
         self.assertEqual(years, sorted(years, reverse=True))
 
+    def test_topic_filter_matches_catalog(self):
+        records = library.public_records(self.catalog)
+        self.assertEqual(self.page.count('data-topic="'), len(records))
+        for record in records:
+            self.assertIn(
+                f'id="{record["id"].lower()}" data-topic="{record["categoria"]}"',
+                self.page,
+            )
+        self.assertIn('id="library-topic"', self.page)
+        self.assertIn('src="assets/js/biblioteca.js"', self.page)
+
+    def test_topic_required_to_publish(self):
+        catalog = copy.deepcopy(self.catalog)
+        published = next(r for r in catalog["registros"] if r["publicar_no_site"] == "SIM")
+        published.pop("categoria")
+        with self.assertRaisesRegex(ValueError, "metadados obrigatórios"):
+            library.public_records(catalog)
+
     def test_pending_cannot_be_published(self):
         catalog = copy.deepcopy(self.catalog)
         pending = next(r for r in catalog["registros"] if r["publicar_no_site"] != "SIM")
