@@ -16,6 +16,11 @@ jobs:
           persist-credentials: false
       - name: Testes automatizados
         run: python3 -m unittest discover -s tests -v
+      - name: Conferir arquivos e sintaxe do site
+        run: |
+          python3 scripts/check_site.py
+          node --check site/assets/js/app.js
+          node --check site/assets/js/indicators.js
       - name: Validar indicadores
         run: python3 scripts/pipeline.py validate
       - name: Conferir dados publicados
