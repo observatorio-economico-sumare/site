@@ -247,7 +247,10 @@ function chooseTab(id, updateHash = true) {
 
 function showTabFromLocation() {
   const hashTab = decodeURIComponent(location.hash.slice(1));
-  chooseTab(validTabs.has(hashTab) ? hashTab : "inicio", false);
+  const selectedTab = hashTab === "glossario" ? "metodologia" :
+    validTabs.has(hashTab) ? hashTab : "inicio";
+  chooseTab(selectedTab, false);
+  if (hashTab === "glossario") document.getElementById("glossario")?.scrollIntoView?.();
 }
 
 window.addEventListener("hashchange", showTabFromLocation);

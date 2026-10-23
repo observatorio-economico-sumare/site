@@ -154,8 +154,8 @@ assert.doesNotMatch(governanceCss,/\.governance-toc|\.governance-sidebar|\.gover
 
 /* Navegação compacta e responsiva, em ambos os idiomas. */
 for (const [path,names] of [
- ["site/index.html",["Visão geral","População","Trabalho e renda","Economia","Estudos","Glossário","Fontes","Institucional"]],
- ["site/en/index.html",["Overview","Population","Jobs & income","Economy","Research","Glossary","Sources","About"]]
+ ["site/index.html",["Visão geral","População","Trabalho e renda","Economia","Análises","Fontes","Institucional"]],
+ ["site/en/index.html",["Overview","Population","Jobs & income","Economy","Research","Sources","About"]]
 ]){
  const html=fs.readFileSync(path,"utf8");
  const menu=(html.match(/<nav aria-label="(?:Navegação principal|Main navigation)">[\s\S]*?<\/nav>/)||[])[0];
@@ -178,6 +178,12 @@ assert.equal(libraryLinks.length,26);
 assert.ok(libraryLinks.every(url=>url.startsWith("https://")));
 for(const [page,href] of [["site/index.html","biblioteca.html"],["site/en/index.html","../biblioteca.html"]]){
  const html=fs.readFileSync(page,"utf8");
- assert.ok(html.includes('class="study-link" href="'+href+'"'),page+": falta link para biblioteca");
- assert.match(html,/class="study-count"/);
+ assert.ok(html.includes('class="nav-library-link" href="'+href+'"'),page+": biblioteca ausente do menu");
+ assert.equal((html.match(/class="nav-library-link"/g)||[]).length,1);
+ assert.doesNotMatch(html,/class="tab" hidden="" id="glossario"/);
+ assert.match(html,/<section class="glossary-section" id="glossario"/);
+ assert.match(html,/<div class="glossary" id="glossary"/);
+ assert.match(html,/<section class="tab" hidden="" id="metodologia"[\s\S]*?<section class="glossary-section" id="glossario"/);
 }
+
+assert.match(glossaryCode,/hashTab === "glossario" \? "metodologia"/);
