@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600&family=Source+Serif+4:wght@400;500&display=swap');
 
 :root{--ink:#17252f;--muted:#5a6570;--line:#d9dedc;--paper:#fafaf7;--white:#fff;--accent:#176d66}*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 Arial,Helvetica,sans-serif}a{color:var(--accent);text-underline-offset:3px}.wrap{max-width:1100px;padding:0 28px;margin:auto}.mast{border-bottom:1px solid var(--ink);background:#fff}.mast-inner{display:flex;justify-content:space-between;align-items:center;padding:25px 0;gap:16px}.identity{display:flex;gap:16px;align-items:center}.monogram{font-family:Georgia,serif;border:1px solid var(--ink);width:51px;height:51px;display:grid;place-items:center;font-size:19px;letter-spacing:-2px}.identity strong{font-family:Georgia,serif;font-weight:500;display:block;font-size:22px;line-height:1.16;letter-spacing:-.02em}.identity span{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}.independent{font-size:12px;border-left:2px solid var(--accent);padding-left:11px;color:#44565b}nav{background:#fff;border-bottom:1px solid var(--line)}.nav-inner{display:flex;gap:32px;overflow:auto}.nav-inner button{background:none;border:0;border-bottom:2px solid transparent;padding:16px 0 13px;font:600 13px Arial;cursor:pointer;color:#687078;white-space:nowrap}.nav-inner button.active{border-color:var(--accent);color:var(--ink)}.intro{padding:66px 0 40px;display:grid;grid-template-columns:1.5fr .8fr;gap:55px;align-items:end}.kicker{font-size:11px;color:var(--accent);font-weight:bold;letter-spacing:.16em;text-transform:uppercase}.intro h1{font:normal clamp(37px,5.8vw,65px)/1.06 Georgia,serif;letter-spacing:-.045em;margin:18px 0 17px;max-width:730px}.intro p{font-size:16px;color:#4e5b64;max-width:680px;margin:0}.aside{border-top:2px solid var(--ink);padding-top:15px;font-size:13px;color:var(--muted)}.aside strong{display:block;color:var(--ink);font-size:13px;margin-bottom:8px}.section-title{display:flex;justify-content:space-between;align-items:end;gap:10px;border-top:1px solid var(--ink);padding-top:17px;margin:24px 0 18px}.section-title h2{font:normal 28px/1.2 Georgia,serif;margin:0}.section-title span{font-size:12px;color:var(--muted)}.metrics{display:grid;grid-template-columns:repeat(4,1fr);background:#fff;border:1px solid var(--line)}.metric{padding:23px 20px;border-right:1px solid var(--line)}.metric:last-child{border-right:0}.metric label{display:block;font-size:12px;min-height:43px;color:#475760}.number{font-family:Georgia,serif;font-size:35px;letter-spacing:-.04em;margin:8px 0 6px}.origin{color:var(--muted);font-size:11px}.cols{display:grid;grid-template-columns:1.6fr 1fr;gap:45px;padding-top:15px}h3{font-size:16px;margin:0 0 15px}.sector{display:grid;grid-template-columns:145px 1fr 75px;gap:13px;align-items:center;font-size:13px;border-bottom:1px solid var(--line);padding:13px 0}.bar{height:8px;background:#e7ebe8}.bar i{display:block;background:var(--accent);height:100%}.sector b{text-align:right;font-variant-numeric:tabular-nums}.explain{border-left:2px solid var(--accent);padding:1px 0 1px 20px}.explain p{font-size:14px;color:#46555b;margin:0 0 12px}.explain strong{font-size:14px}.explain button,.glossary button{font:inherit;color:var(--accent);background:none;border:0;padding:0;text-decoration:underline;text-underline-offset:3px;cursor:pointer}.footnote{font-size:11px;color:var(--muted);margin:18px 0 38px}.tab[hidden]{display:none}.prose{max-width:750px;font-size:15px}.prose p{color:#495861}.data-table{border-collapse:collapse;width:100%;background:white}.data-table th,.data-table td{padding:17px;border-bottom:1px solid var(--line);text-align:left;font-size:13px;vertical-align:top}.data-table th{font-size:11px;text-transform:uppercase;letter-spacing:.09em;color:#57636b;background:#f0f2ef}.data-table td:nth-child(2){font-weight:bold;font-size:17px;font-family:Georgia,serif}.data-table td small{display:block;font:12px/1.5 Arial;color:var(--muted)}.glossary{display:grid;grid-template-columns:repeat(2,1fr);gap:0 40px}.term{padding:17px 0;border-bottom:1px solid var(--line)}.term b{display:block;font-size:15px}.term p{font-size:13px;color:#52616a;margin:5px 0}.source{display:flex;justify-content:space-between;gap:24px;padding:18px 0;border-bottom:1px solid var(--line)}.source strong{font-size:14px}.source p{font-size:12px;color:var(--muted);margin:4px 0 0}.source a{white-space:nowrap;font-size:12px}.note{border-left:2px solid var(--ink);padding:10px 0 10px 18px;font-size:13px;color:#50606a;margin:25px 0}.footer{margin-top:85px;border-top:1px solid var(--ink);padding:25px 0 45px;font-size:12px;color:var(--muted)}dialog{border:1px solid #b8c2be;max-width:490px;width:calc(100% - 30px);padding:25px;background:white;color:var(--ink);box-shadow:0 16px 55px #0002}dialog::backdrop{background:#15272b88}dialog h3{font:normal 26px Georgia,serif}dialog p{font-size:14px}dialog .close{float:right;border:0;background:none;font-size:22px;cursor:pointer}button:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:4px}@media(max-width:800px){.intro{grid-template-columns:1fr;gap:25px;padding-top:40px}.metrics{grid-template-columns:repeat(2,1fr)}.metric:nth-child(2){border-right:0}.metric:nth-child(-n+2){border-bottom:1px solid var(--line)}.cols{grid-template-columns:1fr;gap:25px}.independent{display:none}.glossary{grid-template-columns:1fr}}@media(max-width:480px){.wrap{padding:0 18px}.identity strong{font-size:17px}.identity span{font-size:9px}.monogram{width:42px;height:42px;font-size:16px}.nav-inner{gap:18px}.number{font-size:29px}.metric{padding:16px 12px}.sector{grid-template-columns:105px 1fr 60px;gap:8px;font-size:11px}.section-title h2{font-size:24px}}
 
@@ -141,3 +141,112 @@ dialog#sourceDialog{padding:20px 18px}
 .governance-section li{margin-bottom:9px}
 .governance-note{max-width:830px;font-size:12px;color:var(--muted)}
 @media(max-width:680px){.institutional-grid{grid-template-columns:1fr}.institutional-block{padding:20px}.governance-wrap{padding-top:28px}.governance-index{margin-bottom:22px}.governance-section{padding:24px 0}}
+
+
+/* OES | Tipografia institucional 2026-10-23
+ * Linguagem editorial de centro de pesquisa. Evitar pesos 700/800 nos títulos.
+ * Mudança restrita a apresentação, sem alterações de dados, scripts ou paleta.
+ */
+:root {
+  --font-editorial: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+  --font-interface: 'Source Sans 3', 'Segoe UI', Arial, sans-serif;
+}
+body {
+  font-family: var(--font-interface);
+  font-weight: 400;
+  line-height: 1.65;
+}
+.identity strong {
+  font-family: var(--font-editorial);
+  font-size: clamp(19px, 2.1vw, 25px);
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -.025em;
+  max-width: 400px;
+}
+.identity span {
+  font-family: var(--font-interface);
+  font-weight: 500;
+  letter-spacing: .09em;
+}
+.monogram {
+  font-family: var(--font-editorial);
+  font-weight: 500;
+  letter-spacing: -.065em;
+}
+.intro h1 {
+  font-family: var(--font-editorial);
+  font-size: clamp(42px, 5.0vw, 68px);
+  font-weight: 400;
+  letter-spacing: -.035em;
+  line-height: 1.11;
+}
+.intro p {
+  font-family: var(--font-interface);
+  font-weight: 400;
+  line-height: 1.75;
+}
+.section-title h2,
+.governance-wrap h1,
+.governance-section h2,
+dialog h3 {
+  font-family: var(--font-editorial);
+  font-weight: 400;
+  letter-spacing: -.025em;
+  line-height: 1.2;
+}
+.section-title h2 { font-size: clamp(26px, 2.8vw, 33px); }
+.governance-wrap h1 { font-size: clamp(36px, 4.4vw, 55px); }
+.governance-section h2 { font-size: clamp(26px, 2.8vw, 34px); }
+dialog h3 { font-size: 27px; }
+.number,
+.metric .number,
+.data-table td:nth-child(2) {
+  font-family: var(--font-interface);
+  font-weight: 500;
+  letter-spacing: -.035em;
+}
+.nav-inner button {
+  font-family: var(--font-interface);
+  font-weight: 500;
+  letter-spacing: .005em;
+}
+.nav-inner button.active,
+.nav-inner button[aria-selected="true"] { font-weight: 600; }
+.metric label,
+.source-detail,
+.governance-index a { font-family: var(--font-interface); font-weight: 500; }
+h3,
+.institutional-block h3,
+.governance-section h3,
+.governance-section h4 {
+  font-family: var(--font-interface);
+  font-weight: 600;
+  letter-spacing: -.012em;
+}
+.source strong,
+.explain strong,
+.aside strong,
+.institutional-cta strong,
+.term b,
+.data-detail dt { font-weight: 600; }
+.data-table th {
+  font-family: var(--font-interface);
+  font-weight: 600;
+}
+.section-title { margin: 30px 0 21px; padding-top: 21px; }
+.intro { padding-top: 66px; padding-bottom: 48px; }
+.institutional-block { padding: 29px 30px; }
+.governance-section { padding-top: 35px; padding-bottom: 35px; }
+.governance-section p,
+.governance-section li { font-size: 15px; line-height: 1.8; }
+@media (max-width: 800px) {
+  .intro { padding-top: 43px; padding-bottom: 34px; }
+  .intro h1 { font-size: clamp(38px, 7.3vw, 56px); }
+}
+@media (max-width: 480px) {
+  .identity strong { font-size: 18px; }
+  .intro h1 { font-size: 39px; }
+  .section-title h2 { font-size: 27px; }
+  .institutional-block { padding: 22px; }
+}
