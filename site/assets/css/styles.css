@@ -71,3 +71,47 @@ body{background:var(--paper);color:#333B44;font-family:'Open Sans',Arial,sans-se
 .bar i{background:#142D47}
 button:focus-visible,a:focus-visible{outline-color:#142D47}
 .pending{font-weight:600;font-size:18px;color:#516274}
+
+
+/* OES | Etapa 2: refinamento editorial e leitura em telas pequenas */
+:root{--ink:#142D47;--paper:#F7F7F5;--muted:#516274;--yellow:#F3C443;--line:#dce3e9}
+body{font-family:"Open Sans",Arial,sans-serif;background:var(--paper);color:#333B44}
+.identity strong,.intro h1,.section-title h2,.number,dialog h3{font-family:Montserrat,Arial,sans-serif;font-weight:600}
+.identity span{font-family:"Open Sans",Arial,sans-serif}
+.mast,.footer{background:#142D47}
+.nav-inner button{font-family:"Open Sans",Arial,sans-serif}
+.nav-inner button[aria-selected="true"]{border-color:var(--yellow);color:var(--ink)}
+.intro h1{font-size:clamp(34px,4.7vw,63px);line-height:1.12;letter-spacing:-.045em}
+.intro{padding-top:58px;padding-bottom:40px}
+.metrics--two{grid-template-columns:repeat(2,minmax(0,1fr));margin:26px 0}
+.metrics--two .metric{border-top:3px solid var(--yellow)}
+.metric .number{overflow-wrap:anywhere;font-size:clamp(25px,2.9vw,38px)}
+.metric .number--verified{color:#142D47}
+.metric .origin{display:flex;flex-direction:column;align-items:flex-start;gap:9px;line-height:1.6}
+.status-line{font-size:12px;color:#516274;padding:12px 0 2px;margin:0}
+.source-detail{appearance:none;background:transparent;border:0;border-bottom:1px solid #205d87;color:#205d87;font:600 12px/1.45 "Open Sans",Arial,sans-serif;cursor:pointer;text-align:left;padding:1px 0}
+.source-detail:hover{border-bottom-color:#142D47;color:#142D47}
+.source-detail:focus-visible{outline:2px solid #142D47;outline-offset:3px}
+.source--catalog{align-items:center}
+.source--catalog .source-detail{flex-shrink:0}
+dialog#sourceDialog{max-width:680px;max-height:min(83vh,850px);overflow-y:auto;border-radius:3px;border:1px solid #cdd5db;padding:26px 28px}
+#sourceDialogTitle{padding-right:30px;font-size:22px}
+.indicator-detail{margin:0}
+.data-detail{border-top:1px solid var(--line);padding:11px 0;display:grid;grid-template-columns:145px 1fr;gap:18px}
+.data-detail dt{font-size:12px;font-weight:700;color:#516274}
+.data-detail dd{margin:0;font-size:13px;line-height:1.6;overflow-wrap:anywhere;color:#333B44}
+.data-detail dd a{overflow-wrap:anywhere}
+@media(max-width:800px){
+.intro{padding-top:40px}
+.metrics--two{grid-template-columns:repeat(2,minmax(0,1fr))}
+.nav-inner{scrollbar-width:thin}
+}
+@media(max-width:480px){
+.metrics--two{grid-template-columns:1fr}
+.metrics--two .metric{border-right:0;border-bottom:1px solid var(--line)}
+.metric .origin{font-size:11px}
+.source--catalog{align-items:flex-start;flex-direction:column;gap:5px}
+.data-detail{grid-template-columns:1fr;gap:3px}
+dialog#sourceDialog{padding:20px 18px}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation-duration:0s!important;transition-duration:0s!important}}
