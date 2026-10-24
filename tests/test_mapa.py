@@ -40,6 +40,12 @@ class TestMapaDemografico(unittest.TestCase):
             self.assertIn('data-mapa-svg', html)
             self.assertIn('mapa.js', html)
             self.assertIn('mapa.css', html)
+            self.assertLess(
+                html.index('class="mapa-section"'),
+                html.index('class="metrics metrics--two"'),
+                "O mapa deve vir antes dos indicadores"
+            )
+            self.assertIn('class="mapa-region-list"', html)
         self.assertLess(DATA.stat().st_size, 250000)
 
 
