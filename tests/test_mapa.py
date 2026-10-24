@@ -46,6 +46,9 @@ class TestMapaDemografico(unittest.TestCase):
                 "O mapa deve vir antes dos indicadores"
             )
             self.assertIn('class="mapa-region-list"', html)
+            self.assertIn('class="mapa-count"', html)
+            self.assertNotIn('data-mapa-official', html)
+            self.assertEqual(html.count('id="mapa-titulo"'), 1)
             self.assertIn('class="mapa-details"', html)
             self.assertIn('class="mapa-note"', html)
         self.assertLess(DATA.stat().st_size, 250000)

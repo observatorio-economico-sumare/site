@@ -9,7 +9,6 @@
   const status = root.querySelector("[data-mapa-status]");
   const name = root.querySelector("[data-mapa-name]");
   const count = root.querySelector("[data-mapa-pop]");
-  const official = root.querySelector("[data-mapa-official]");
   const labels = english
     ? { people: "people", unavailable: "The map could not be loaded.", invalid: "Invalid Census map data." }
     : { people: "pessoas", unavailable: "Não foi possível carregar o mapa.", invalid: "Dados inválidos do mapa censitário." };
@@ -76,7 +75,6 @@
       if (!selected) return;
       name.textContent = selected.properties.name;
       count.textContent = format.format(selected.properties.population);
-      official.textContent = selected.properties.officialName;
       for (const item of interactive) {
         const active = item.id === id;
         item.path.classList.toggle("is-selected", active);
