@@ -5,7 +5,9 @@ const enIndicatorText = {"populacao-censo-2022":{"name":"Resident population (20
 const enFieldLabels = {"Valor":"Value","Definição":"Definition","Período":"Reference year","Fonte primária":"Source","Metodologia":"Methodology","Limitações":"Limitations","Última atualização no OES":"Last updated by the OES","Consultar fonte original":"Original source","Fonte e metodologia":"Source and methodology","Ver ficha completa":"View indicator details","Endereço inválido":"Invalid URL","Não informado":"Not available"};
 const localizeLabel = label => indicatorsEnglish ? (enFieldLabels[label] || label) : label;
 function localizedIndicator(item) {
-  if (!indicatorsEnglish || !enIndicatorText[item.id]) return item;
+  if (!indicatorsEnglish) return item.id === "populacao-censo-2022" ?
+    {...item, definition:"Número de pessoas que moravam em Sumaré no Censo de 2022."} : item;
+  if (!enIndicatorText[item.id]) return item;
   const words = enIndicatorText[item.id];
   return {...item, name:words.name, definition:words.definition, unit:words.unit,
     method:words.method, limitations:words.limitations,

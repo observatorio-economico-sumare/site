@@ -423,3 +423,12 @@ for (const secret of ["Identificador da consulta","SHA-256 da evidência","Natur
   "Histórico de revisões","Revisão técnica","Coleta pelo OES","Evidência", "reviewed_by"]) {
  assert.ok(!publicJs.includes(secret),"Metadado técnico exposto no JS: "+secret);
 }
+
+/* Definição pública clara, com documentação original preservada. */
+vm.runInContext("this.localizedForTest = localizedIndicator;",sandbox);
+const censusText=sandbox.localizedForTest({
+  id:"populacao-censo-2022",definition:"Total de residentes recenseados",
+  source:{dataset:"Censo Demográfico"}
+});
+assert.equal(censusText.definition,
+  "Número de pessoas que moravam em Sumaré no Censo de 2022.");
