@@ -23,6 +23,9 @@ const currencyFormatter = new Intl.NumberFormat(indicatorsEnglish ? "en-US" : "p
 
 function formatIndicatorValue(item, includeUnit = false) {
   const value = item.value;
+  if (item.id === "pib-municipal-2023" && !includeUnit) {
+    return "R$ " + numberFormatter.format(value / 1e9) + (indicatorsEnglish ? " bn" : " bi");
+  }
   if (item.unit === "R$") {
     return currencyFormatter.format(value);
   }
