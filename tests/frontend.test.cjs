@@ -33,6 +33,8 @@ const value = sandbox.formatForTest;
 const normalize = text => text.replace(/\u00a0/g, " ").replace(/\u202f/g, " ");
 
 assert.equal(normalize(value({ value: 68060.93, unit: "R$" })), "R$ 68.060,93");
+assert.equal(normalize(value({ id: "pib-municipal-2023", value: 19026093000, unit: "R$" })), "R$ 19,03 bi");
+assert.equal(normalize(value({ id: "pib-municipal-2023", value: 19026093000, unit: "R$" }, true)), "R$ 19.026.093.000,00");
 assert.equal(value({ value: 279545, unit: "pessoas" }), "279.545");
 assert.equal(value({ value: 279545, unit: "pessoas" }, true), "279.545 pessoas");
 assert.equal(value({ value: 77.9, unit: "%" }), "77,9%");
@@ -206,8 +208,26 @@ for(const page of ["site/index.html","site/en/index.html"]){
  assert.deepEqual([...home.matchAll(/data-indicator="([^"]+)"/g)].map(x=>x[1]),["populacao-censo-2022","populacao-estimada","pib-per-capita-2023"]);
  assert.doesNotMatch(home,/id="sectors"|CAGED|Where are the jobs|Onde estão os empregos/);
  const work=html.slice(html.indexOf('<section class="tab" hidden="" id="trabalho"'),html.indexOf('<section class="tab" hidden="" id="economia"'));
- assert.doesNotMatch(work,/<table|class="metric"/);
+ assert.doesNotMatch(work,/<table/);
+ const workIds=[...work.matchAll(/data-indicator="([^"]+)"/g)].map(x=>x[1]);
+ assert.deepEqual(workIds,[
+  "rais-vinculos-formais-2025","estoque-vinculos-formais",
+  "saldo-vinculos-formais","saldo-vinculos-formais-2026-08",
+  "pessoas-ocupadas","residentes-conta-propria-2022",
+  "renda-media-ocupados","renda-mediana-ocupados-2022",
+  "rais-vinculos-industria-2025","rais-vinculos-comercio-2025",
+  "rais-vinculos-servicos-2025","rais-vinculos-construcao-2025",
+  "rais-vinculos-agropecuaria-2025"
+ ]);
+ const economy=html.slice(html.indexOf('<section class="tab" hidden="" id="economia"'),
+                          html.indexOf('<section class="tab" hidden="" id="empresas"'));
+ const economyIds=[...economy.matchAll(/data-indicator="([^"]+)"/g)].map(x=>x[1]);
+ assert.deepEqual(economyIds,["pib-municipal-2023","pib-per-capita-2023"]);
+ const approved=new Set(JSON.parse(fs.readFileSync("data/processed/indicators.json","utf8"))
+                        .indicators.map(x=>x.id));
+ for(const id of [...workIds,...economyIds]) assert.ok(approved.has(id), "Dados não auditados: "+id);
  assert.ok(work.includes('href="#metodologia"'));
+ assert.doesNotMatch(work,/Dados em conferência|Data being verified/);
  assert.ok(html.includes('class="independent-main"'));
  assert.doesNotMatch(html,/class="independent-secondary"/);
 }
