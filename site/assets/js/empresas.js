@@ -19,7 +19,7 @@
     try { return new URL(value).protocol === "https:"; } catch { return false; }
   };
   const render = companies => {
-    const matching = companies.filter(c => !filter.value || c.id === filter.value);
+    const matching = companies.filter(c => !filter.value || c.sector.pt === filter.value);
     const fragment = document.createDocumentFragment();
     for (const company of matching) {
       const article = el("article", "empresa-entry");
@@ -50,8 +50,12 @@
         !c.id || !c.name || !c.sector?.[lang] || !c.activity?.[lang] ||
         !c.presence?.[lang] || !validSource(c.source?.url))) throw new Error("Invalid company data");
       companies.sort((a,b) => a.name.localeCompare(b.name, lang));
-      for (const company of companies) filter.append(el("option", "", company.name));
-      [...filter.options].slice(1).forEach((option, index) => { option.value = companies[index].id; });
+      const sectors = new Map(companies.map(c => [c.sector.pt, c.sector[lang]]));
+      for (const [key, label] of [...sectors].sort((a,b) => a[1].localeCompare(b[1],lang))) {
+        const option = el("option", "", label);
+        option.value = key;
+        filter.append(option);
+      }
       filter.addEventListener("change", () => render(companies));
       status.hidden = true;
       render(companies);
