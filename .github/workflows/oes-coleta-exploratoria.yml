@@ -8,6 +8,7 @@ on:
       - scripts/oes_coleta/**
       - tests/test_oes_coleta.py
       - tests/test_sidra_evidence.py
+      - tests/test_evidencias_complementares.py
       - scripts/pipeline.py
   workflow_dispatch:
 permissions:
