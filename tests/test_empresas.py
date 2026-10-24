@@ -17,6 +17,8 @@ class EmpresasTest(unittest.TestCase):
         for company in companies:
             self.assertTrue(company["name"].strip())
             self.assertEqual(urlsplit(company["source"]["url"]).scheme, "https")
+            self.assertEqual(urlsplit(company["website"]).scheme, "https")
+            self.assertNotEqual(company["website"], company["source"]["url"])
             for field in ("sector", "activity", "presence"):
                 for language in ("pt", "en"):
                     self.assertTrue(company[field][language].strip())
@@ -61,6 +63,8 @@ class EmpresasTest(unittest.TestCase):
         self.assertNotIn("data-company-count", js)
         self.assertNotIn("count.textContent", js)
         self.assertIn("company.source.url", js)
+        self.assertIn("company.website", js)
+        self.assertIn("Fonte sobre Sumaré", js)
         self.assertNotIn("selectedSector", js)
         self.assertNotIn("data-company-filter", js)
 
