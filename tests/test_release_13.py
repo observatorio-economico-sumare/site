@@ -24,7 +24,7 @@ class IndicatorReleaseTests(unittest.TestCase):
                               "populacao-65-mais-2022")), 279545)
         self.assertTrue(all(x["status"] == "validated" for x in items))
         self.assertEqual(sum(x["evidence"]["original_file_preserved"] is True
-                             for x in items), 11)
+                             for x in items), 14)
 
     def test_site_feed_exactly_equals_validated_input(self):
         processed = (ROOT / "data/processed/indicators.json").read_bytes()
