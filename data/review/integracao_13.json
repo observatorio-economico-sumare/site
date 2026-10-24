@@ -122,7 +122,7 @@
       "reviewed_by": "Verificação técnica assistida do OES (sem revisão humana independente)",
       "method": "Variação acumulada entre os Censos 2010 e 2022: (279.545 / 241.311 − 1) × 100, arredondada a quatro casas decimais.",
       "limitations": "Crescimento acumulado em 12 anos; não é crescimento anual nem estimativa de 2026.",
-      "revisions": "Primeira revisão técnica de inclusão em 23/10/2026; proposta não publicada.",
+      "revisions": "Registro preparado e revisado tecnicamente em 23/10/2026; alterações posteriores rastreadas no Git.",
       "evidence": {
         "raw_path": "data/raw/ses_sp_sumare_censo_2022_2026-10-23.json",
         "sha256": "a410756ac28efb50ee73640b67a9471ff0804f435bb7a76aeb76b718fa95f88a",
@@ -153,7 +153,7 @@
       "reviewed_by": "Verificação técnica assistida do OES (sem revisão humana independente)",
       "method": "Total de homens residentes no Censo 2022 reproduzido na Tabela 1 do portfólio municipal da SES-SP.",
       "limitations": "Classificação de sexo conforme levantamento censitário; não representa identidade de gênero.",
-      "revisions": "Primeira revisão técnica de inclusão em 23/10/2026; proposta não publicada.",
+      "revisions": "Registro preparado e revisado tecnicamente em 23/10/2026; alterações posteriores rastreadas no Git.",
       "evidence": {
         "raw_path": "data/raw/ses_sp_sumare_censo_2022_2026-10-23.json",
         "sha256": "a410756ac28efb50ee73640b67a9471ff0804f435bb7a76aeb76b718fa95f88a",
@@ -184,7 +184,7 @@
       "reviewed_by": "Verificação técnica assistida do OES (sem revisão humana independente)",
       "method": "Total de mulheres residentes no Censo 2022 reproduzido na Tabela 1 do portfólio municipal da SES-SP.",
       "limitations": "Classificação de sexo conforme levantamento censitário; não representa identidade de gênero.",
-      "revisions": "Primeira revisão técnica de inclusão em 23/10/2026; proposta não publicada.",
+      "revisions": "Registro preparado e revisado tecnicamente em 23/10/2026; alterações posteriores rastreadas no Git.",
       "evidence": {
         "raw_path": "data/raw/ses_sp_sumare_censo_2022_2026-10-23.json",
         "sha256": "a410756ac28efb50ee73640b67a9471ff0804f435bb7a76aeb76b718fa95f88a",
@@ -215,7 +215,7 @@
       "reviewed_by": "Verificação técnica assistida do OES (sem revisão humana independente)",
       "method": "Soma dos grupos de idade 0–4, 5–9 e 10–14 anos da Tabela 1 da SES-SP: 16.743 + 18.981 + 19.047.",
       "limitations": "Faixa etária derivada pelo OES, com grupos de idade do Censo 2022.",
-      "revisions": "Primeira revisão técnica de inclusão em 23/10/2026; proposta não publicada.",
+      "revisions": "Registro preparado e revisado tecnicamente em 23/10/2026; alterações posteriores rastreadas no Git.",
       "evidence": {
         "raw_path": "data/raw/ses_sp_sumare_censo_2022_2026-10-23.json",
         "sha256": "a410756ac28efb50ee73640b67a9471ff0804f435bb7a76aeb76b718fa95f88a",
@@ -246,7 +246,7 @@
       "reviewed_by": "Verificação técnica assistida do OES (sem revisão humana independente)",
       "method": "Soma dos dez grupos quinquenais entre 15–19 e 60–64 anos, na Tabela 1 da SES-SP.",
       "limitations": "Faixa demográfica de 15 a 64 anos, que não equivale à população ocupada ou economicamente ativa.",
-      "revisions": "Primeira revisão técnica de inclusão em 23/10/2026; proposta não publicada.",
+      "revisions": "Registro preparado e revisado tecnicamente em 23/10/2026; alterações posteriores rastreadas no Git.",
       "evidence": {
         "raw_path": "data/raw/ses_sp_sumare_censo_2022_2026-10-23.json",
         "sha256": "a410756ac28efb50ee73640b67a9471ff0804f435bb7a76aeb76b718fa95f88a",
@@ -277,7 +277,7 @@
       "reviewed_by": "Verificação técnica assistida do OES (sem revisão humana independente)",
       "method": "Soma dos grupos etários de 65–69 até 100 anos ou mais, Tabela 1 da SES-SP.",
       "limitations": "Considera 65 anos ou mais; não equivale a todas as definições de população idosa (por exemplo, 60+).",
-      "revisions": "Primeira revisão técnica de inclusão em 23/10/2026; proposta não publicada.",
+      "revisions": "Registro preparado e revisado tecnicamente em 23/10/2026; alterações posteriores rastreadas no Git.",
       "evidence": {
         "raw_path": "data/raw/ses_sp_sumare_censo_2022_2026-10-23.json",
         "sha256": "a410756ac28efb50ee73640b67a9471ff0804f435bb7a76aeb76b718fa95f88a",
@@ -308,7 +308,7 @@
       "reviewed_by": "Verificação técnica assistida do OES (sem revisão humana independente)",
       "method": "Taxa de alfabetização da população com 15 anos ou mais: 216.905 / (216.905 + 7.869) × 100, arredondada a uma casa decimal.",
       "limitations": "Reprodução e cálculo a partir dos números no portfólio da SES-SP com fonte estatística IBGE. A base binária original do relatório ainda não está preservada no OES.",
-      "revisions": "Primeira revisão técnica de inclusão em 23/10/2026; proposta não publicada.",
+      "revisions": "Registro preparado e revisado tecnicamente em 23/10/2026; alterações posteriores rastreadas no Git.",
       "evidence": {
         "raw_path": "data/raw/ses_sp_sumare_censo_2022_2026-10-23.json",
         "sha256": "a410756ac28efb50ee73640b67a9471ff0804f435bb7a76aeb76b718fa95f88a",
@@ -339,7 +339,7 @@
       "reviewed_by": "Verificação técnica assistida do OES (sem revisão humana independente)",
       "method": "Valor publicado diretamente no IBGE Cidades e Estados para Sumaré, Censo 2022. Não recalculado usando área territorial de outro ano.",
       "limitations": "O denominador territorial é aquele empregado na divulgação censitária de 2022.",
-      "revisions": "Primeira revisão técnica de inclusão em 23/10/2026; proposta não publicada.",
+      "revisions": "Registro preparado e revisado tecnicamente em 23/10/2026; alterações posteriores rastreadas no Git.",
       "evidence": {
         "raw_path": "data/raw/ibge_cidades_adicionais_2026-10-23.json",
         "sha256": "146a12b9a7050b6f2c8ad8a02a21dbe099a7447d59a6b26c5ed2bce20d3771db",
@@ -370,7 +370,7 @@
       "reviewed_by": "Verificação técnica assistida do OES (sem revisão humana independente)",
       "method": "Pessoas residentes em Sumaré, com 14 anos ou mais, ocupadas por conta própria (sem empregados) na semana de referência do Censo 2022. Tabela SIDRA 10261, variável 4090, posição 79378, sexo e cor/raça total.",
       "limitations": "Refere-se a residentes, não a vínculos de estabelecimentos locais. A categoria não equivale ao número de CNPJs, MEIs ou de profissionais PJ únicos.",
-      "revisions": "Primeira revisão técnica de inclusão em 23/10/2026; proposta não publicada.",
+      "revisions": "Registro preparado e revisado tecnicamente em 23/10/2026; alterações posteriores rastreadas no Git.",
       "evidence": {
         "raw_path": "data/raw/sidra_10261_ocupacao_2022.json",
         "sha256": "b645ee393a93aa9bcb6e14589c6d82d1d7f40400cd5dc1203c51ab8ac95a7c44",
@@ -410,7 +410,7 @@
       "reviewed_by": "Verificação técnica assistida do OES (sem revisão humana independente)",
       "method": "Valor do PIB de Sumaré em 2023, conforme SIDRA tabela 5938, variável 37. Resposta original em mil reais multiplicada por 1.000 para apresentação em reais.",
       "limitations": "PIB mede a produção econômica local, não a renda pessoal de moradores; valor nominal a preços correntes, sem correção inflacionária.",
-      "revisions": "Primeira revisão técnica de inclusão em 23/10/2026; proposta não publicada.",
+      "revisions": "Registro preparado e revisado tecnicamente em 23/10/2026; alterações posteriores rastreadas no Git.",
       "evidence": {
         "raw_path": "data/raw/sidra_5938_pib_2023.json",
         "sha256": "64b19e9b71f4c0180aaee551567dd82030bb2feb82a99aed9fd591bb23ae99f5",
