@@ -365,7 +365,7 @@ nav{background:#fff;border-bottom:1px solid var(--line)}
   .nav-inner {
     flex-wrap: wrap;
     overflow: visible;
-    column-gap: 12px;
+    column-gap: 8px;
     row-gap: 0;
   }
   .nav-inner button, .nav-inner > a { flex-shrink: 0; }
