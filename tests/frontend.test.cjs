@@ -651,3 +651,16 @@ for(const [path,companySubtitle,analysis,glossaryTerm] of [
   assert.ok(html.includes('class="institutional-grid"'),path+": missão e visão preservadas");
   assert.ok(html.includes('class="glossary" id="glossary"'),path+": glossário preservado");
 }
+
+/* Hero editorial sem ponto final e sem contador redundante de empresas. */
+for(const [page,heading] of [
+ ["site/index.html","Conhecer a cidade começa pelos dados"],
+ ["site/en/index.html","Understanding a city begins with data"]
+]){
+ const html=fs.readFileSync(page,"utf8");
+ assert.ok(html.includes("<h1>"+heading+"</h1>"),page+": título principal");
+ assert.doesNotMatch(html,/data-company-count/);
+ assert.match(html,/data-company-status/);
+ assert.match(html,/data-company-list/);
+}
+assert.doesNotMatch(fs.readFileSync("site/assets/js/empresas.js","utf8"),/data-company-count|count\.textContent/);

@@ -5,7 +5,6 @@
   const english = document.documentElement.lang === "en";
   const lang = english ? "en" : "pt";
   const list = root.querySelector("[data-company-list]");
-  const count = root.querySelector("[data-company-count]");
   const status = root.querySelector("[data-company-status]");
 
   const el = (tag, className, content) => {
@@ -36,7 +35,6 @@
       fragment.append(article);
     }
     list.replaceChildren(fragment);
-    count.textContent = english ? `${companies.length} documented ${companies.length === 1 ? "company" : "companies"}` : `${companies.length} ${companies.length === 1 ? "empresa documentada" : "empresas documentadas"}`;
   };
 
   const dataUrl = english ? "../data/empresas.json" : "data/empresas.json";
