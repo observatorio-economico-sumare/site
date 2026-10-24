@@ -8,7 +8,7 @@
       "topic": "trabalho",
       "unit": "pessoas",
       "reference_period": "2022",
-      "definition": "Pessoas residentes que trabalham por conta própria",
+      "definition": "Pessoas residentes com 14 anos ou mais ocupadas por conta própria, sem empregados, na semana de referência do Censo 2022",
       "value": 32334,
       "municipality_code": "3552403",
       "status": "pending_review",
