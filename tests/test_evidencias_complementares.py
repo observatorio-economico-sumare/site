@@ -44,6 +44,17 @@ class EvidenceTests(unittest.TestCase):
         self.assertEqual(round(216905 / (216905 + 7869) * 100, 1),
                          ms["taxa-alfabetizacao-15-mais-2022"])
 
+    def test_catalog_stages_only_uncontested_candidates(self):
+        from scripts import pipeline
+        catalog = pipeline.load(pipeline.CATALOG)
+        ids = [i["id"] for i in catalog["indicators"]]
+        self.assertEqual(len(ids), len(set(ids)))
+        self.assertEqual(len(ids), 19)
+        self.assertNotIn("escolarizacao-6-14-anos-2022", ids)
+        self.assertIn("residentes-conta-propria-2022", ids)
+        self.assertIn("pib-municipal-2023", ids)
+        self.assertEqual(len(pipeline.validate()[1]), 3)
+
     def test_ibge_schooling_must_keep_discrepancy(self):
         ms = {m["id"]: m for m in self.records[
             "ibge_cidades_adicionais_2026-10-23.json"]["measurements"]}
