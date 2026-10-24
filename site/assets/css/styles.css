@@ -369,7 +369,7 @@ h3{font-family: var(--font-interface); font-weight: 600; letter-spacing: -.012em
 }
 .metric label{font-size:13px;min-height:41px}
 .metric .origin,.origin,.footnote,.source p,.source a,.data-table td small,.data-detail dt,.source-detail,.section-title span{font-size:13px}
-.mast-inner .independent-main,.mast-inner .independent-secondary{display:block}
+.mast-inner .independent-main{display:block}
 .nav-shell{display:flex;align-items:stretch;gap:clamp(16px,2.2vw,30px);justify-content:flex-start}
 .nav-shell .nav-inner{display:flex;align-items:stretch;justify-content:flex-start;gap:clamp(16px,2.2vw,30px);flex:0 1 auto;min-width:0;overflow:visible;padding:0}
 .nav-shell .nav-inner button{flex:0 0 auto;white-space:nowrap;line-height:1.35}
@@ -378,7 +378,6 @@ h3{font-family: var(--font-interface); font-weight: 600; letter-spacing: -.012em
 @media(max-width:800px){
  .mast-inner{flex-wrap:wrap;row-gap:8px}
  .mast-inner .independent{display:block;order:3;flex-basis:100%;max-width:none;padding:0;border:0;font-size:12px;line-height:1.4}
- .mast-inner .independent-secondary{display:none}
  .nav-shell{display:block}
  .nav-shell .nav-inner{flex-wrap:wrap;gap:0 20px;overflow:visible}
  .nav-shell .nav-inner button{padding:11px 0;white-space:normal;text-align:left}

@@ -33,7 +33,8 @@ class BibliotecaTests(unittest.TestCase):
                 f'id="{record["id"].lower()}" data-topic="{record["categoria"]}"',
                 self.page,
             )
-        self.assertIn('id="library-topic"', self.page)
+        self.assertIn('id="library-topics"', self.page)
+        self.assertNotIn("<select", self.page)
         self.assertIn('src="assets/js/biblioteca.js"', self.page)
 
     def test_topic_required_to_publish(self):

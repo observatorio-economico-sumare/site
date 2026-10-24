@@ -207,7 +207,7 @@ for(const page of ["site/index.html","site/en/index.html"]){
  assert.doesNotMatch(work,/<table|class="metric"/);
  assert.ok(work.includes('href="#metodologia"'));
  assert.ok(html.includes('class="independent-main"'));
- assert.ok(html.includes('class="independent-secondary"'));
+ assert.doesNotMatch(html,/class="independent-secondary"/);
 }
 assert.doesNotMatch(glossaryCode,/getElementById\("sectors"\)/);
 
@@ -301,3 +301,24 @@ for(const [page,loading] of [["site/index.html","Carregando…"],["site/en/index
  assert.doesNotMatch(pop+econ,/class="number">Em validação|class="number">Pending validation/);
 }
 assert.doesNotMatch(fs.readFileSync("site/en/index.html","utf8"),/Not equivalent to average personal income/);
+
+/* Cabeçalho uniforme, com o nome em duas linhas e uma única declaração. */
+for (const [path,word,statement] of [
+ ["site/index.html","Econômico","Iniciativa independente e apartidária"],
+ ["site/en/index.html","Economic","Independent, nonpartisan initiative"],
+ ["site/governanca.html","Econômico","Iniciativa independente e apartidária"],
+ ["site/en/governanca.html","Economic","Independent, nonpartisan initiative"],
+ ["site/biblioteca.html","Econômico","Iniciativa independente e apartidária"]
+]){
+ const html=fs.readFileSync(path,"utf8");
+ const mast=html.slice(html.indexOf('<header class="mast">'),html.indexOf('</header>')+9);
+ assert.match(mast,new RegExp(word+'<br\\s*\\/?>'));
+ assert.ok(mast.includes(statement));
+ assert.doesNotMatch(mast,/independent-secondary|Sem vínculo com a Prefeitura Municipal|Not affiliated with the municipal government/);
+}
+const topicMarkup=fs.readFileSync("site/biblioteca.html","utf8");
+const topicScript=fs.readFileSync("site/assets/js/biblioteca.js","utf8");
+assert.match(topicMarkup,/id="library-topics" role="group"/);
+assert.doesNotMatch(topicMarkup,/id="library-topic"|<select/);
+assert.match(topicScript,/aria-pressed/);
+assert.match(topicScript,/filterByTopic/);
