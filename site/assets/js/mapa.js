@@ -58,7 +58,7 @@
       throw new Error(labels.invalid);
     }
 
-    const width = 780, height = 480, padding = 24;
+    const width = 720, height = 390, padding = 18;
     const longitudeFactor = Math.cos(((south + north) / 2) * Math.PI / 180);
     const scale = Math.min((width - 2 * padding) / ((east - west) * longitudeFactor),
       (height - 2 * padding) / (north - south));
@@ -114,11 +114,8 @@
       const button = document.createElement("button");
       button.type = "button";
       button.className = "mapa-choice";
-      const regionName = document.createElement("span");
-      regionName.textContent = short;
-      const regionCount = document.createElement("span");
-      regionCount.textContent = format.format(population);
-      button.append(regionName, regionCount);
+      button.textContent = short;
+      button.setAttribute("aria-label", `${short}: ${format.format(population)} ${labels.people}`);
       button.addEventListener("click", () => select(id));
       buttons.append(button);
       interactive.push({ id, path, button });
