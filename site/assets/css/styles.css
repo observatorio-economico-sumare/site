@@ -11,9 +11,6 @@ a{text-underline-offset: 3px}
 .identity strong{display: block}
 .identity span{text-transform: uppercase}
 .independent{border-left: 2px solid var(--accent); padding-left: 11px}
-nav{border-bottom: 1px solid var(--line)}
-.nav-inner{display: flex; overflow: auto}
-.nav-inner button{background: none; border: 0; border-bottom: 2px solid transparent; cursor: pointer; white-space: nowrap}
 .intro{display: grid}
 .kicker{text-transform: uppercase}
 .intro h1{font: normal clamp(37px,5.8vw,65px)/1.06 Georgia,serif}
@@ -79,10 +76,6 @@ body{font-size: 15px; -webkit-font-smoothing: antialiased}
 .monogram{font-size: 21px; width: 57px; height: 57px; border: 0; border-radius: 3px}
 .identity span{color: #c9d4e2; font-size: 10px; margin-top: 7px; display: block}
 .independent{color: #e3edf6; border-left-color: #f0c843; font-size: 12px; max-width: 245px}
-nav{background: #fff; box-shadow: 0 1px 0 var(--line)}
-.nav-inner{gap: 36px}
-.nav-inner button{color: #48576c; font: 700 13px Arial,Helvetica,sans-serif; padding: 16px 0 15px}
-.nav-inner button.active{color: var(--ink); border-color: #e4b622; border-bottom-width: 3px}
 .intro{padding: 75px 0 56px; grid-template-columns: 1.9fr .65fr; gap: 70px; align-items: start}
 .kicker{color: var(--accent); font-size: 11px; font-weight: 800; letter-spacing: .10em}
 .intro h1{margin: 18px 0 19px; max-width: 850px}
@@ -139,7 +132,6 @@ dialog h3{font: 800 25px Arial,Helvetica,sans-serif}
   .identity strong{font-size: 17px}
   .identity span{font-size: 9px}
   .monogram{width: 44px; height: 44px; font-size: 16px}
-  .nav-inner{gap: 23px}
   .intro h1{font-size: 37px}
   .intro p{font-size: 15px}
   .number{font-size: 27px}
@@ -155,7 +147,6 @@ a:focus-visible{outline-color: #142D47}
 body{background: var(--paper); color: #333B44}
 .mast{background: #142D47}
 .footer{background: #142D47}
-.nav-inner button[aria-selected="true"]{border-color: var(--yellow); color: var(--ink)}
 .metrics--two{grid-template-columns:repeat(2,minmax(0,1fr));margin:20px 0 28px;gap:0;border:0;background:transparent;box-shadow:none}
 .metrics--two .metric{background:transparent;min-width:0;padding:24px 26px;border:0;border-top:1px solid var(--line);border-right:1px solid var(--line)}
 .metrics--two .metric:first-child{padding-left:0}
@@ -180,7 +171,6 @@ dialog#sourceDialog{max-width: 680px; max-height: min(83vh,850px); overflow-y: a
 @media(max-width:800px){
   .intro{padding-top: 40px}
   .metrics--two{grid-template-columns: repeat(2,minmax(0,1fr))}
-  .nav-inner{scrollbar-width: thin}
 }
 
 @media(max-width:680px){
@@ -248,9 +238,6 @@ dialog h3{font-size: 27px}
 .number{font-family: var(--font-interface); font-weight: 500; letter-spacing: -.035em}
 .metric .number{font-family: var(--font-interface); font-weight: 500; letter-spacing: -.035em}
 .data-table td:nth-child(2){font-family: var(--font-interface); font-weight: 500; letter-spacing: -.035em}
-.nav-inner button{font-family: var(--font-interface); font-weight: 500; letter-spacing: .005em}
-.nav-inner button.active{font-weight: 600}
-.nav-inner button[aria-selected="true"]{font-weight: 600}
 .metric label{font-family: var(--font-interface); font-weight: 500}
 .source-detail{font-family: var(--font-interface); font-weight: 500}
 h3{font-family: var(--font-interface); font-weight: 600; letter-spacing: -.012em}
@@ -328,26 +315,8 @@ h3{font-family: var(--font-interface); font-weight: 600; letter-spacing: -.012em
  .governance-wrap .governance-lead{font-size:15px}
 }
 
-/* Navegação: rótulos curtos, leitura em uma linha e descoberta do menu móvel. */
-.nav-inner{align-items:center;justify-content:space-between;gap:clamp(12px,1.8vw,25px);overflow-x:auto;overflow-y:hidden;scrollbar-width:thin}
-.nav-inner button{flex:0 0 auto;white-space:nowrap;line-height:1.35}
-.nav-scroll-hint{display:none}
-@media(max-width:760px){
- .nav-inner{justify-content:flex-start;gap:24px;scroll-snap-type:x proximity}
- .nav-inner button{scroll-snap-align:start}
- .nav-scroll-hint{display:block;margin:0;padding:0 22px 7px;text-align:right;font:500 11px/1.4 var(--font-interface);color:#657589}
-}
-@media(max-width:480px){.nav-scroll-hint{padding-right:18px}}
-
-
-
-/* Biblioteca é uma página própria; glossário integra Fontes. */
-.nav-shell{display:flex;align-items:stretch;gap:clamp(12px,1.7vw,22px)}
-.nav-shell .nav-inner{flex:1;min-width:0;padding:0}
-.nav-library-link{display:inline-flex;align-items:center;flex:0 0 auto;white-space:nowrap;text-decoration:none;color:#48576c;font:500 13px/1.35 var(--font-interface);border-bottom:2px solid transparent}
-.nav-library-link:hover,.nav-library-link:focus-visible{color:var(--ink);border-color:var(--yellow)}
+/* Glossário integrado à seção de fontes. */
 .glossary-section{margin-top:35px;padding-top:5px;scroll-margin-top:20px}
-@media(max-width:760px){.nav-shell{gap:16px}.nav-library-link{font-size:13px}}
 
 /* Interface responsiva e leitura de dados. */
 /* Indicadores com hierarquia editorial, sem cartões decorativos. */
@@ -370,27 +339,27 @@ h3{font-family: var(--font-interface); font-weight: 600; letter-spacing: -.012em
 .metric label{font-size:13px;min-height:41px}
 .metric .origin,.origin,.footnote,.source p,.source a,.data-table td small,.data-detail dt,.source-detail,.section-title span{font-size:13px}
 .mast-inner .independent-main{display:block}
-.nav-shell{display:flex;align-items:stretch;gap:clamp(16px,2.2vw,30px);justify-content:flex-start}
-.nav-shell .nav-inner{display:flex;align-items:stretch;justify-content:flex-start;gap:clamp(16px,2.2vw,30px);flex:0 1 auto;min-width:0;overflow:visible;padding:0}
-.nav-shell .nav-inner button{flex:0 0 auto;white-space:nowrap;line-height:1.35}
-.nav-library-link{display:inline-flex;align-items:center;flex:0 0 auto;white-space:nowrap;text-decoration:none;color:#48576c;font:500 13px/1.35 var(--font-interface);border-bottom:2px solid transparent}
-.nav-library-link:hover,.nav-library-link:focus-visible{color:var(--ink);border-color:var(--yellow)}
 @media(max-width:800px){
  .mast-inner{flex-wrap:wrap;row-gap:8px}
  .mast-inner .independent{display:block;order:3;flex-basis:100%;max-width:none;padding:0;border:0;font-size:12px;line-height:1.4}
- .nav-shell{display:block}
- .nav-shell .nav-inner{flex-wrap:wrap;gap:0 20px;overflow:visible}
- .nav-shell .nav-inner button{padding:11px 0;white-space:normal;text-align:left}
- .nav-library-link{padding:11px 0}
 }
 @media(max-width:480px){
  .mast-inner .independent{font-size:12px}
- .nav-shell .nav-inner{gap:0 16px}
- .nav-shell .nav-inner button,.nav-library-link{font-size:13px}
 }
 
-/* Navegação nas páginas independentes, sem retorno duplicado. */
-.subpage-nav .nav-inner a{display:inline-flex;align-items:center;flex:0 0 auto;white-space:nowrap;padding:16px 0 15px;border-bottom:2px solid transparent;color:#48576c;text-decoration:none;font:500 13px/1.35 var(--font-interface)}
-.subpage-nav .nav-inner a:hover,.subpage-nav .nav-inner a:focus-visible{color:var(--ink);border-bottom-color:var(--yellow)}
-.subpage-nav [aria-current="page"]{color:var(--ink)!important;font-weight:600!important;border-bottom:3px solid var(--yellow)!important}
-@media(max-width:800px){.subpage-nav .nav-inner a{padding:11px 0;white-space:normal;text-align:left}}
+/* Navegação única: oito opções em sequência, com quebra natural no mobile. */
+nav{background:#fff;border-bottom:1px solid var(--line)}
+.nav-shell{display:block}
+.nav-inner{display:flex;flex-wrap:wrap;align-items:center;column-gap:clamp(14px,2.1vw,27px);row-gap:0;min-width:0}
+.nav-inner button,.nav-inner>a{display:inline-flex;align-items:center;flex:0 0 auto;min-height:47px;padding:12px 0 11px;background:transparent;border:0;border-bottom:2px solid transparent;color:#48576c;text-decoration:none;text-align:left;font:500 13px/1.4 var(--font-interface);cursor:pointer;white-space:nowrap}
+.nav-inner button:hover,.nav-inner>a:hover,.nav-inner button:focus-visible,.nav-inner>a:focus-visible{color:var(--ink)}
+.nav-inner button[aria-expanded="true"],.nav-inner>a[aria-current="page"]{color:var(--ink);font-weight:600;border-bottom:3px solid var(--yellow)}
+.nav-inner button:focus-visible,.nav-inner>a:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+@media(max-width:800px){
+ .nav-inner{column-gap:18px}
+ .nav-inner button,.nav-inner>a{min-height:42px;padding:10px 0}
+}
+@media(max-width:390px){
+ .nav-inner{column-gap:14px}
+ .nav-inner button,.nav-inner>a{font-size:12.5px}
+}

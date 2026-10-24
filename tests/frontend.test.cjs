@@ -162,11 +162,13 @@ for (const [path,names] of [
  assert.ok(menu,path+": missing nav");
  const labels=[...menu.matchAll(/<button[^>]*data-tab="[^"]+"[^>]*>([^<]+)<\/button>/g)].map(x=>x[1]);
  assert.deepEqual(labels,names,path+": nav labels");
- assert.ok(!menu.includes('class="nav-scroll-hint"'));
- assert.match(menu,/class="nav-library-link"/);
+ const order=[...menu.matchAll(/data-tab="([^"]+)"|class="nav-library-link"/g)].map(m=>m[1]||"biblioteca");
+ assert.deepEqual(order,["inicio","populacao","trabalho","economia","biblioteca","analises","metodologia","sobre"]);
+ assert.match(menu,/aria-expanded="true"/);
+ assert.doesNotMatch(menu,/role="tablist"|role="tab"|nav-scroll-hint/);
 }
 const compactCss=fs.readFileSync("site/assets/css/styles.css","utf8");
-assert.match(compactCss,/\.nav-shell \.nav-inner\{display:flex;align-items:stretch;justify-content:flex-start/);
+assert.match(compactCss,/\.nav-inner\{display:flex;flex-wrap:wrap;align-items:center/);
 assert.match(compactCss,/\.metrics--three\{grid-template-columns:repeat\(3,minmax\(0,1fr\)\)/);
 
 /* A biblioteca cresce a partir do catálogo, sem contagens fixas. */
@@ -282,6 +284,10 @@ for(const [path,base,labels] of [
  assert.doesNotMatch(html,/class="back-link"/);
  const list=[...html.matchAll(/<a href="index\.html#[^"]+"(?: aria-current="page")?>([^<]+)<\/a>/g)].map(x=>x[1]);
  assert.deepEqual(list,labels);
+ const menu=html.match(/<nav class="subpage-nav"[^>]*>[\s\S]*?<\/nav>/)?.[0];
+ assert.ok(menu);
+ const order=[...menu.matchAll(/href="index\.html#([^"]+)"|class="nav-library-link"/g)].map(m=>m[1]||"biblioteca");
+ assert.deepEqual(order,["inicio","populacao","trabalho","economia","biblioteca","analises","metodologia","sobre"]);
  assert.match(html,/aria-current="page"/);
 }
 const unifiedStyles=fs.readFileSync("site/assets/css/styles.css","utf8");
@@ -352,3 +358,25 @@ assert.match(topicScript,/filterByTopic/);
  created[0].click();
  assert.deepEqual(entries.map(x=>x.hidden),[false,false,false]);
 }
+
+/* Navegação uniforme, acessível e rotulada nos dois idiomas. */
+for(const path of ["site/index.html","site/en/index.html"]){
+ const html=fs.readFileSync(path,"utf8");
+ assert.equal((html.match(/role="region"/g)||[]).length,7);
+ assert.doesNotMatch(html,/role="tabpanel"|role="tablist"/);
+}
+for(const path of ["site/index.html","site/en/index.html","site/governanca.html","site/en/governanca.html","site/biblioteca.html"]){
+ const html=fs.readFileSync(path,"utf8");
+ const menu=html.match(/<nav\b[^>]*>[\s\S]*?<\/nav>/)?.[0];
+ assert.ok(menu);
+ const order=[...menu.matchAll(/data-tab="([^"]+)"|href="index\.html#([^"]+)"|class="nav-library-link"/g)]
+   .map(m=>m[1]||m[2]||"biblioteca");
+ assert.deepEqual(order,["inicio","populacao","trabalho","economia","biblioteca","analises","metodologia","sobre"]);
+}
+for(const path of ["site/en/index.html","site/en/governanca.html"]){
+ assert.match(fs.readFileSync(path,"utf8"),/>Library \(Portuguese\)<\/a>/);
+}
+const cleanedCss=fs.readFileSync("site/assets/css/styles.css","utf8");
+assert.equal((cleanedCss.match(/\.nav-inner\{display:flex/g)||[]).length,1);
+assert.match(cleanedCss,/@media\(max-width:390px\)/);
+assert.doesNotMatch(cleanedCss,/nav-scroll-hint|scroll-snap-type/);

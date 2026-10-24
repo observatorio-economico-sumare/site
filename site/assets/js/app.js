@@ -204,7 +204,7 @@ document.getElementById("closeDialog").addEventListener("click", () =>
   termDialog.close());
 
 const navButtons = [...document.querySelectorAll('nav button[data-tab]')];
-const tabPanels = [...document.querySelectorAll(".tab[role=tabpanel]")];
+const tabPanels = [...document.querySelectorAll(".tab[role=region]")];
 const validTabs = new Set(navButtons.map(button => button.dataset.tab));
 
 navButtons.forEach((button, index) => {
@@ -231,8 +231,7 @@ function chooseTab(id, updateHash = true) {
   navButtons.forEach(button => {
     const selected = button.dataset.tab === id;
     button.classList.toggle("active", selected);
-    button.setAttribute("aria-selected", String(selected));
-    button.tabIndex = selected ? 0 : -1;
+    button.setAttribute("aria-expanded", String(selected));
   });
   tabPanels.forEach(panel => {
     panel.hidden = panel.id !== id;
