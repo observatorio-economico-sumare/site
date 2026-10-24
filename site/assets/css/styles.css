@@ -437,18 +437,19 @@ nav{background:#fff;border-bottom:1px solid var(--line)}
 @media(max-width:680px){.tab .data-subheading{margin-top:20px}.tab .section-context{font-size:13px}}
 
 
-/* RAIS: cinco setores visíveis, com valores alinhados e fichas acessíveis. */
-#trabalho .sector-breakdown{margin-top:8px}
-#trabalho .metrics--sectors{display:grid;grid-template-columns:minmax(0,1fr);gap:0;margin:12px 0 0;max-width:860px}
-#trabalho .metrics--sectors .metric{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;column-gap:14px;padding:11px 0;border:0;border-top:1px solid var(--line);min-width:0}
-#trabalho .metrics--sectors .metric:last-child{border-bottom:1px solid var(--line)}
-#trabalho .metrics--sectors .metric .metric-title{font-size:14px;line-height:1.4;font-weight:500;min-height:0;color:var(--ink)}
-#trabalho .metrics--sectors .metric .number{font-size:clamp(21px,2.5vw,26px);line-height:1.2;margin:0;white-space:nowrap;font-variant-numeric:tabular-nums}
-#trabalho .metrics--sectors .metric .origin{grid-column:1/-1;flex-direction:row;flex-wrap:wrap;align-items:baseline;gap:3px 12px;margin-top:3px;font-size:12px;line-height:1.45}
-#trabalho .sector-breakdown .footnote{margin:10px 0 24px}
+/* RAIS: barras proporcionais, números alinhados e uma única fonte. */
+#trabalho .sector-breakdown{margin:8px 0 24px}
+#trabalho .metrics--sectors{display:grid;grid-template-columns:minmax(0,1fr);max-width:860px;margin:12px 0 0;border-top:1px solid var(--line)}
+#trabalho .metrics--sectors .metric{display:grid;grid-template-columns:minmax(0,130px) minmax(0,1fr) 86px;align-items:center;gap:16px;min-width:0;padding:13px 0;border:0;border-bottom:1px solid var(--line)}
+#trabalho .metrics--sectors .metric .metric-title{font-size:14px;font-weight:500;line-height:1.4;min-height:0;color:var(--ink)}
+#trabalho .metrics--sectors .sector-track{height:11px;background:#e8eef2;overflow:hidden;border-radius:2px}
+#trabalho .metrics--sectors .sector-fill{display:block;height:100%;width:0;background:#57758d;border-radius:2px}
+#trabalho .metrics--sectors .metric .number{font-size:clamp(19px,2.5vw,24px);line-height:1.2;margin:0;white-space:nowrap;text-align:right;font-variant-numeric:tabular-nums}
+#trabalho .sector-source{margin:10px 0 0;font-size:12px;line-height:1.65;color:var(--muted)}
+#trabalho .sector-source .source-detail{font-size:12px}
 @media(max-width:680px){
- #trabalho .metrics--sectors .metric{padding:11px 0;border:0;border-top:1px solid var(--line)}
- #trabalho .metrics--sectors .metric:last-child{border-bottom:1px solid var(--line)}
+ #trabalho .metrics--sectors .metric{grid-template-columns:minmax(0,92px) minmax(0,1fr) 76px;gap:9px;padding:12px 0;border:0;border-bottom:1px solid var(--line)}
  #trabalho .metrics--sectors .metric .metric-title{font-size:13px}
- #trabalho .metrics--sectors .metric .number{font-size:22px}
+ #trabalho .metrics--sectors .sector-track{height:9px}
+ #trabalho .metrics--sectors .metric .number{font-size:19px}
 }

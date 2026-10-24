@@ -730,3 +730,33 @@ for(const page of ["site/index.html","site/en/index.html","site/biblioteca.html"
  for(const page of ["site/governanca.html","site/en/governanca.html"])
    assert.doesNotMatch(fs.readFileSync(page,"utf8"),/não representa as instituições em que ela estudou ou trabalhou|does not represent institutions where she studied or worked/);
 }
+
+
+/* RAIS: barras proporcionais aos valores oficiais, uma única ficha no grupo. */
+for (const page of ["site/index.html","site/en/index.html"]) {
+  const html = fs.readFileSync(page,"utf8");
+  const sector = html.match(/<section class="sector-breakdown"[\s\S]*?<\/section>/)?.[0];
+  assert.ok(sector,page+": distribuição RAIS visível");
+  assert.equal((sector.match(/class="sector-track"/g)||[]).length,5);
+  assert.equal((sector.match(/class="sector-fill"/g)||[]).length,5);
+  assert.equal((sector.match(/data-indicator="/g)||[]).length,5);
+  assert.equal((sector.match(/data-rais-method/g)||[]).length,1);
+  assert.doesNotMatch(sector,/<div class="origin">|<details>/);
+}
+const raisCss=fs.readFileSync("site/assets/css/styles.css","utf8");
+assert.match(raisCss,/\.metrics--sectors \.sector-track/);
+assert.match(raisCss,/\.metrics--sectors \.sector-fill/);
+const sectorNumber={textContent:"",classList:{add(){}}};
+const sectorFill={style:{}};
+sandbox.renderForTest(
+ {id:"rais-vinculos-industria-2025",value:18383,unit:"vínculos"},
+ new Map([["rais-vinculos-industria-2025",[{
+   querySelector(selector){
+     return selector===".number"?sectorNumber:selector===".sector-fill"?sectorFill:null;
+   }
+ }]]]),
+ 35137
+);
+assert.equal(sectorNumber.textContent,"18.383");
+assert.equal(sectorFill.style.width,"52.3%");
+assert.match(code,/sourceButton.addEventListener\("click", \(\) => openIndicatorDetail\(rais\)\)/);

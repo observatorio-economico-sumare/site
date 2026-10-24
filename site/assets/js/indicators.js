@@ -110,13 +110,19 @@ function indexIndicatorCards() {
   return index;
 }
 
-function renderItem(item, cardsById) {
+function renderItem(item, cardsById, maxSectorValue = 0) {
   for (const card of cardsById.get(item.id) || []) {
     const number = card.querySelector(".number");
     const provenance = card.querySelector(".origin");
-    if (!number || !provenance) continue;
+    const sectorFill = card.querySelector(".sector-fill");
+    if (!number || (!provenance && !sectorFill)) continue;
     number.textContent = formatIndicatorValue(item);
     number.classList.add("number--verified");
+    if (sectorFill) {
+      sectorFill.style.width = maxSectorValue > 0
+        ? (item.value / maxSectorValue * 100).toFixed(1) + "%" : "0%";
+      continue;
+    }
     provenance.replaceChildren();
 
     const line = document.createElement("span");
@@ -140,7 +146,16 @@ async function renderIndicators() {
       throw new Error("Estrutura de dados inválida");
     }
     const cardsById = indexIndicatorCards();
-    payload.indicators.forEach(item => renderItem(item, cardsById));
+    const sectorPattern = /^rais-vinculos-(servicos|industria|comercio|construcao|agropecuaria)-2025$/;
+    const maxSectorValue = Math.max(0, ...payload.indicators
+      .filter(item => sectorPattern.test(item.id)).map(item => item.value));
+    payload.indicators.forEach(item => renderItem(item, cardsById, maxSectorValue));
+    const sourceButton = document.querySelector("[data-rais-method]");
+    const rais = payload.indicators.find(item => item.id === "rais-vinculos-formais-2025");
+    if (sourceButton && rais) {
+      sourceButton.addEventListener("click", () => openIndicatorDetail(rais));
+      sourceButton.hidden = false;
+    }
   } catch (error) {
     console.error("OES: não foi possível carregar os indicadores.", error);
     document.querySelectorAll("[data-indicator]").forEach(card => {
