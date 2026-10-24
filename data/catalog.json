@@ -45,11 +45,11 @@
     },
     {
       "id": "pessoas-ocupadas",
-      "name": "Pessoas ocupadas",
+      "name": "Pessoas ocupadas (Censo 2022)",
       "topic": "trabalho",
       "unit": "pessoas",
       "reference_period": "2022",
-      "definition": "Pessoas ocupadas conforme conceito da pesquisa de origem",
+      "definition": "Moradores de 14 anos ou mais que estavam ocupados na semana de referência do Censo 2022",
       "source_institution": "IBGE",
       "source_dataset": "Censo Demográfico"
     },
@@ -192,6 +192,66 @@
       "definition": "Número de habitantes por quilômetro quadrado segundo a divulgação censitária.",
       "source_institution": "IBGE",
       "source_dataset": "IBGE Cidades e Estados"
+    },
+    {
+      "id": "empregados-privados-sem-carteira-2022",
+      "name": "Empregados do setor privado sem carteira",
+      "topic": "trabalho",
+      "unit": "pessoas",
+      "reference_period": "2022",
+      "definition": "Moradores de 14 anos ou mais empregados no setor privado sem carteira assinada; não inclui trabalhadores domésticos",
+      "source_institution": "IBGE",
+      "source_dataset": "Censo Demográfico 2022"
+    },
+    {
+      "id": "trabalhadores-domesticos-sem-carteira-2022",
+      "name": "Trabalhadores domésticos sem carteira",
+      "topic": "trabalho",
+      "unit": "pessoas",
+      "reference_period": "2022",
+      "definition": "Moradores de 14 anos ou mais que trabalhavam como domésticos sem carteira assinada",
+      "source_institution": "IBGE",
+      "source_dataset": "Censo Demográfico 2022"
+    },
+    {
+      "id": "escolaridade-sem-instrucao-fundamental-incompleto-2022",
+      "name": "Sem instrução ou fundamental incompleto",
+      "topic": "educacao",
+      "unit": "pessoas",
+      "reference_period": "2022",
+      "definition": "Moradores de 18 anos ou mais sem instrução ou que não concluíram o ensino fundamental",
+      "source_institution": "IBGE",
+      "source_dataset": "Censo Demográfico 2022"
+    },
+    {
+      "id": "escolaridade-fundamental-completo-medio-incompleto-2022",
+      "name": "Fundamental completo ou médio incompleto",
+      "topic": "educacao",
+      "unit": "pessoas",
+      "reference_period": "2022",
+      "definition": "Moradores de 18 anos ou mais com fundamental completo e médio incompleto",
+      "source_institution": "IBGE",
+      "source_dataset": "Censo Demográfico 2022"
+    },
+    {
+      "id": "escolaridade-medio-completo-superior-incompleto-2022",
+      "name": "Médio completo ou superior incompleto",
+      "topic": "educacao",
+      "unit": "pessoas",
+      "reference_period": "2022",
+      "definition": "Moradores de 18 anos ou mais com médio completo e superior incompleto",
+      "source_institution": "IBGE",
+      "source_dataset": "Censo Demográfico 2022"
+    },
+    {
+      "id": "escolaridade-superior-completo-2022",
+      "name": "Ensino superior completo",
+      "topic": "educacao",
+      "unit": "pessoas",
+      "reference_period": "2022",
+      "definition": "Moradores de 18 anos ou mais que concluíram o ensino superior",
+      "source_institution": "IBGE",
+      "source_dataset": "Censo Demográfico 2022"
     }
   ]
 }
