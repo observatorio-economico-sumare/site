@@ -1,0 +1,94 @@
+{
+  "municipality_code": "3552403",
+  "rais_municipality_code": "355240",
+  "municipality_name": "Sumaré",
+  "source_institution": "MTE",
+  "source_dataset": "RAIS 2025 - Tabelas.xlsx",
+  "source_url": "https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/acoes-e-programas/programas-projetos-acoes-obras-e-atividades/estatisticas-trabalho/rais/rais-2025/rais-2025-tabelas.xlsx",
+  "capture_method": "transcricao_assistida_de_planilha_oficial",
+  "original_file_preserved": false,
+  "original_workbook_sha256": "b53279b80448e4b5545eee3192130215727d066c62dcce7e77337921ea14efff",
+  "original_workbook_bytes": 2732765,
+  "sheet": "TABELA 4",
+  "header_rows": [
+    13,
+    14
+  ],
+  "municipality_row": 3866,
+  "period_years": [
+    2023,
+    2024,
+    2025
+  ],
+  "yearly_values": {
+    "2023": {
+      "agropecuaria": 494,
+      "industria": 17822,
+      "construcao": 2783,
+      "comercio": 17772,
+      "servicos": 32113,
+      "total": 70984
+    },
+    "2024": {
+      "agropecuaria": 487,
+      "industria": 18253,
+      "construcao": 2919,
+      "comercio": 17639,
+      "servicos": 34112,
+      "total": 73410
+    },
+    "2025": {
+      "agropecuaria": 471,
+      "industria": 18383,
+      "construcao": 3074,
+      "comercio": 18356,
+      "servicos": 35137,
+      "total": 75421
+    }
+  },
+  "measurements": [
+    {
+      "id": "rais-vinculos-agropecuaria-2025",
+      "value": 471,
+      "period": "2025",
+      "unit": "vínculos",
+      "source_cell": "G3866"
+    },
+    {
+      "id": "rais-vinculos-industria-2025",
+      "value": 18383,
+      "period": "2025",
+      "unit": "vínculos",
+      "source_cell": "L3866"
+    },
+    {
+      "id": "rais-vinculos-construcao-2025",
+      "value": 3074,
+      "period": "2025",
+      "unit": "vínculos",
+      "source_cell": "Q3866"
+    },
+    {
+      "id": "rais-vinculos-comercio-2025",
+      "value": 18356,
+      "period": "2025",
+      "unit": "vínculos",
+      "source_cell": "V3866"
+    },
+    {
+      "id": "rais-vinculos-servicos-2025",
+      "value": 35137,
+      "period": "2025",
+      "unit": "vínculos",
+      "source_cell": "AA3866"
+    },
+    {
+      "id": "rais-vinculos-formais-2025",
+      "value": 75421,
+      "period": "2025",
+      "unit": "vínculos",
+      "source_cell": "AF3866"
+    }
+  ],
+  "note": "Transcrição auditável a partir de arquivo original verificado em GitHub Actions (2026-10-23); binário XLSX não preservado no repositório. Estoque por estabelecimento em 31/12, inclusive vínculos estatutários; não corresponde a pessoas residentes ou CAGED mensal."
+}
