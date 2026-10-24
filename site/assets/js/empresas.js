@@ -5,9 +5,6 @@
   const english = document.documentElement.lang === "en";
   const lang = english ? "en" : "pt";
   const list = root.querySelector("[data-company-list]");
-  const filters = root.querySelector("[data-company-filters]");
-  const filterPanel = root.querySelector("[data-company-filter]");
-  let selectedSector = "";
   const count = root.querySelector("[data-company-count]");
   const status = root.querySelector("[data-company-status]");
 
@@ -21,9 +18,8 @@
     try { return new URL(value).protocol === "https:"; } catch { return false; }
   };
   const render = companies => {
-    const matching = companies.filter(c => !selectedSector || c.sector.pt === selectedSector);
     const fragment = document.createDocumentFragment();
-    for (const company of matching) {
+    for (const company of companies) {
       const article = el("article", "empresa-entry");
       const sector = el("p", "empresa-sector", company.sector[lang]);
       const title = el("h3", "", company.name);
@@ -40,7 +36,7 @@
       fragment.append(article);
     }
     list.replaceChildren(fragment);
-    count.textContent = english ? `${matching.length} documented ${matching.length === 1 ? "company" : "companies"}` : `${matching.length} ${matching.length === 1 ? "empresa documentada" : "empresas documentadas"}`;
+    count.textContent = english ? `${companies.length} documented ${companies.length === 1 ? "company" : "companies"}` : `${companies.length} ${companies.length === 1 ? "empresa documentada" : "empresas documentadas"}`;
   };
 
   const dataUrl = english ? "../data/empresas.json" : "data/empresas.json";
@@ -52,25 +48,6 @@
         !c.id || !c.name || !c.sector?.[lang] || !c.activity?.[lang] ||
         !c.presence?.[lang] || !validSource(c.source?.url))) throw new Error("Invalid company data");
       companies.sort((a,b) => a.name.localeCompare(b.name, lang));
-      const sectors = new Map(companies.map(c => [c.sector.pt, c.sector[lang]]));
-      const options = [["", english ? "All industries" : "Todas as atividades"],
-        ...[...sectors].sort((a,b) => a[1].localeCompare(b[1], lang))];
-      const buttons = options.map(([key, label]) => {
-        const button = el("button", "empresa-filter-button", label);
-        button.type = "button";
-        button.dataset.sector = key;
-        button.setAttribute("aria-pressed", String(key === selectedSector));
-        button.addEventListener("click", () => {
-          selectedSector = key;
-          for (const item of buttons) {
-            item.setAttribute("aria-pressed", String(item.dataset.sector === selectedSector));
-          }
-          render(companies);
-        });
-        return button;
-      });
-      filters.replaceChildren(...buttons);
-      filterPanel.hidden = false;
       status.hidden = true;
       render(companies);
     })

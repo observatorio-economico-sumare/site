@@ -32,24 +32,24 @@ class EmpresasTest(unittest.TestCase):
             self.assertIn("empresas.js", page)
             self.assertIn("empresas.css", page)
 
-    def test_filtro_horizontal_mesmo_padrao_da_biblioteca(self):
+    def test_lista_simples_de_cinco_empresas(self):
+        empresas = json.loads(DATA.read_text(encoding="utf-8"))["companies"]
+        self.assertEqual(len(empresas), 5)
+        self.assertEqual(len({e["sector"]["pt"] for e in empresas}), 5)
         for path in ("site/index.html", "site/en/index.html"):
             html = (ROOT / path).read_text(encoding="utf-8")
-            self.assertIn('data-company-filters role="group"', html)
-            self.assertIn('data-company-filter hidden', html)
-            self.assertNotIn('data-company-sector', html)
+            self.assertIn('data-company-list', html)
             self.assertIn('data-company-count aria-live="polite"', html)
-
+            self.assertNotIn('data-company-filter', html)
+            self.assertNotIn('data-company-filters', html)
         css = (ROOT / "site/assets/css/empresas.css").read_text(encoding="utf-8")
-        library = (ROOT / "site/assets/css/biblioteca.css").read_text(encoding="utf-8")
-        for rule in ('border-bottom:2px solid transparent', 'border-bottom-color:var(--yellow)',
-                     'flex-wrap:wrap', 'focus-visible'):
-            self.assertIn(rule, css)
-            self.assertIn(rule, library)
+        self.assertNotIn(".empresa-filter-button", css)
         js = (ROOT / "site/assets/js/empresas.js").read_text(encoding="utf-8")
-        self.assertIn('aria-pressed', js)
-        self.assertIn('filters.replaceChildren(...buttons)', js)
-        self.assertIn('selectedSector', js)
+        self.assertIn("for (const company of companies)", js)
+        self.assertIn("companies.sort(", js)
+        self.assertIn("company.source.url", js)
+        self.assertNotIn("selectedSector", js)
+        self.assertNotIn("data-company-filter", js)
 
 if __name__ == "__main__":
     unittest.main()

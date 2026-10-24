@@ -545,3 +545,36 @@ assert.match(fs.readFileSync("site/assets/css/empresas.css","utf8"),
  }
  assert.doesNotMatch(code,/Fonte primária|Consultar fonte original|subject to verification of its release/);
 }
+
+
+/* Semântica dos títulos dos indicadores, sem alterações dos dados ou da navegação. */
+for(const path of ["site/index.html","site/en/index.html"]){
+ const html=fs.readFileSync(path,"utf8");
+ assert.equal((html.match(/<p class="metric-title">/g)||[]).length,24,path+": 24 indicadores");
+ assert.doesNotMatch(html,/<label\b|<\/label>/i,path+": label não associado a formulário");
+ assert.doesNotMatch(html,/data-company-filter(?:s)?/);
+ assert.match(html,/data-company-list/);
+}
+const metricCss=fs.readFileSync("site/assets/css/styles.css","utf8");
+assert.match(metricCss,/\.metric \.metric-title\{display:block;margin:0\}/);
+assert.doesNotMatch(metricCss,/\.metric label/);
+
+/* Metadados OG por página, sem UTM e com URL canônica. */
+for(const [path,url,locale] of [
+ ["site/index.html","https://oes-sumare-beta.vercel.app/","pt_BR"],
+ ["site/en/index.html","https://oes-sumare-beta.vercel.app/en/index.html","en_US"],
+ ["site/biblioteca.html","https://oes-sumare-beta.vercel.app/biblioteca.html","pt_BR"],
+ ["site/governanca.html","https://oes-sumare-beta.vercel.app/governanca.html","pt_BR"],
+ ["site/en/governanca.html","https://oes-sumare-beta.vercel.app/en/governanca.html","en_US"]
+]){
+ const html=fs.readFileSync(path,"utf8");
+ const head=html.slice(0,html.indexOf("</head>"));
+ assert.ok(head.includes('<link rel="canonical" href="'+url+'">'),path);
+ assert.ok(head.includes('<meta property="og:url" content="'+url+'">'),path);
+ assert.ok(head.includes('<meta property="og:locale" content="'+locale+'">'),path);
+ for(const field of ["og:type","og:title","og:description","og:site_name"])
+   assert.ok(head.includes('property="'+field+'"'),path+": "+field);
+ assert.ok(head.includes('<meta name="twitter:card" content="summary">'),path);
+ assert.ok(!head.includes("utm_source="),path);
+}
+assert.match(fs.readFileSync("site/en/index.html","utf8"),/href="\.\.\/biblioteca\.html" title="Library in Portuguese"/);
