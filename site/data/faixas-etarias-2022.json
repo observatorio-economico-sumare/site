@@ -1,0 +1,83 @@
+{
+  "municipality_code": "3552403",
+  "reference_year": 2022,
+  "total": 279545,
+  "source": {
+    "institution": "IBGE",
+    "dataset": "Censo Demográfico 2022",
+    "table": "SIDRA 9514",
+    "variable": "93",
+    "url": "https://apisidra.ibge.gov.br/values/t/9514/n6/3552403/p/2022/v/93/c2/6794/c287/all/c286/113635?formato=json",
+    "method": "Grupos etários formados exclusivamente pela soma de faixas quinquenais oficiais (ambos os sexos, todas as formas de declaração da idade)."
+  },
+  "evidence": {
+    "raw_path": "data/raw/sidra_9514_idades_sumare_2022.json",
+    "sha256": "e9bda4de02448cad2f3bc877c6dc5231e6c3393a53db6e96ffaf89027f7bf1c0",
+    "capture_method": "arquivo_original_api_sidra"
+  },
+  "bands": [
+    {
+      "label": "0-14",
+      "value": 54771,
+      "sidra_age_codes": [
+        "93070",
+        "93084",
+        "93085"
+      ]
+    },
+    {
+      "label": "15-24",
+      "value": 39333,
+      "sidra_age_codes": [
+        "93086",
+        "93087"
+      ]
+    },
+    {
+      "label": "25-34",
+      "value": 44718,
+      "sidra_age_codes": [
+        "93088",
+        "93089"
+      ]
+    },
+    {
+      "label": "35-44",
+      "value": 49496,
+      "sidra_age_codes": [
+        "93090",
+        "93091"
+      ]
+    },
+    {
+      "label": "45-54",
+      "value": 37502,
+      "sidra_age_codes": [
+        "93092",
+        "93093"
+      ]
+    },
+    {
+      "label": "55-64",
+      "value": 28387,
+      "sidra_age_codes": [
+        "93094",
+        "93095"
+      ]
+    },
+    {
+      "label": "65+",
+      "value": 25338,
+      "sidra_age_codes": [
+        "93096",
+        "93097",
+        "93098",
+        "49108",
+        "49109",
+        "60040",
+        "60041",
+        "6653"
+      ]
+    }
+  ]
+}

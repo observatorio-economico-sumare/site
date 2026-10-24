@@ -24,7 +24,9 @@ jobs:
           node --check site/assets/js/indicators.js
           node --check site/assets/js/empresas.js
           node --check site/assets/js/empresas-cempre.js
+          node --check site/assets/js/idades.js
           node tests/frontend.test.cjs
+          node tests/idades.test.cjs
       - name: Validar indicadores
         run: python3 scripts/pipeline.py validate
       - name: Conferir dados publicados
