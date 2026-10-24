@@ -65,7 +65,8 @@ class EvidenceTests(unittest.TestCase):
         path = ROOT.parent / "review" / "sidra_candidates.json"
         proposal = json.loads(path.read_text(encoding="utf-8"))
         self.assertIs(proposal["publication_allowed"], False)
-        self.assertEqual(len(proposal["indicators"]), 2)
+        self.assertEqual({x["id"] for x in proposal["indicators"]},
+                         {"residentes-conta-propria-2022", "pib-municipal-2023"})
         catalog = {x["id"]: x for x in pipeline.load(pipeline.CATALOG)["indicators"]}
         for item in proposal["indicators"]:
             self.assertEqual(item["status"], "pending_review")
