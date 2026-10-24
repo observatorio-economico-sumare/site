@@ -1,0 +1,73 @@
+{
+  "captured_at": "2026-10-23",
+  "municipality_code": "3552403",
+  "original_file_preserved": false,
+  "capture_method": "transcricao_assistida_de_relatorio_oficial",
+  "source_institution": "SES-SP (republicação de dados IBGE)",
+  "source_title": "Portfólio do município de Sumaré (dezembro de 2024)",
+  "source_url": "https://portal.saude.sp.gov.br/resources/ccd/homepage/2025/sim-sinasc/portfolios/gve-17/sumare.pdf",
+  "note": "Conferência visual do PDF oficial; arquivo binário original NÃO está arquivado neste registro. Fonte estatística indicada no documento: IBGE/Censo 2022. Referências são índices de páginas do PDF (iniciando em zero).",
+  "measurements": [
+    {
+      "id": "crescimento-intercensitario-2010-2022",
+      "label_on_source": "População Censo 2010 241.311; Censo 2022 279.545",
+      "value": 15.8443,
+      "period": "2010–2022",
+      "unit": "%",
+      "pdf_page_index": 12,
+      "calculation": "round((279545 / 241311 - 1) * 100, 4)"
+    },
+    {
+      "id": "populacao-homens-2022",
+      "label_on_source": "Tabela 1 – Total da população masculina",
+      "value": 136598,
+      "period": "2022",
+      "unit": "pessoas",
+      "pdf_page_index": 11
+    },
+    {
+      "id": "populacao-mulheres-2022",
+      "label_on_source": "Tabela 1 – Total da população feminina",
+      "value": 142947,
+      "period": "2022",
+      "unit": "pessoas",
+      "pdf_page_index": 11
+    },
+    {
+      "id": "populacao-0-14-anos-2022",
+      "label_on_source": "Tabela 1 – Soma das faixas 0 a 14 anos",
+      "value": 54771,
+      "period": "2022",
+      "unit": "pessoas",
+      "pdf_page_index": 11,
+      "calculation": "16743+18981+19047"
+    },
+    {
+      "id": "populacao-15-64-anos-2022",
+      "label_on_source": "Tabela 1 – Soma das faixas 15 a 64 anos",
+      "value": 199436,
+      "period": "2022",
+      "unit": "pessoas",
+      "pdf_page_index": 11,
+      "calculation": "18774+20559+21420+23298+24842+24654+19670+17832+15210+13177"
+    },
+    {
+      "id": "populacao-65-mais-2022",
+      "label_on_source": "Tabela 1 – Soma das faixas 65 a 100+ anos",
+      "value": 25338,
+      "period": "2022",
+      "unit": "pessoas",
+      "pdf_page_index": 11,
+      "calculation": "10313+6932+4085+2322+1076+469+120+21"
+    },
+    {
+      "id": "taxa-alfabetizacao-15-mais-2022",
+      "label_on_source": "Quadro 5 – Alfabetizados 216.905; não alfabetizados 7.869; taxa 96,5%",
+      "value": 96.5,
+      "period": "2022",
+      "unit": "%",
+      "pdf_page_index": 14,
+      "calculation": "round(216905/(216905+7869)*100, 1)"
+    }
+  ]
+}

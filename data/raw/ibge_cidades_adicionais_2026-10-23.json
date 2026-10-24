@@ -1,0 +1,27 @@
+{
+  "captured_at": "2026-10-23",
+  "municipality_code": "3552403",
+  "original_file_preserved": false,
+  "capture_method": "transcricao_assistida_de_pagina_oficial",
+  "source_institution": "IBGE",
+  "source_title": "Sumaré (SP) – IBGE Cidades e Estados",
+  "source_url": "https://www.ibge.gov.br/cidades-e-estados/sp/sumare.html",
+  "note": "Transcrição dos cartões oficiais; a seção Notas e fontes da própria página cita Censo 2010 para escolarização, embora o cartão exiba 2022: REQUER esclarecimento metodológico antes de aprovação. O arquivo HTML original não foi preservado.",
+  "measurements": [
+    {
+      "id": "densidade-demografica-2022",
+      "label_on_source": "Densidade demográfica [2022]",
+      "value": 1821.56,
+      "period": "2022",
+      "unit": "hab./km²"
+    },
+    {
+      "id": "escolarizacao-6-14-anos-2022",
+      "label_on_source": "Escolarização 6 a 14 anos [2022]",
+      "value": 98.62,
+      "period": "2022",
+      "unit": "%",
+      "methodological_flag": "Cartão [2022], notas citam Censo 2010; não classificar como revisão concluída."
+    }
+  ]
+}
