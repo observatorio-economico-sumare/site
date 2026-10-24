@@ -192,6 +192,66 @@
       "definition": "Número de habitantes por quilômetro quadrado segundo a divulgação censitária.",
       "source_institution": "IBGE",
       "source_dataset": "IBGE Cidades e Estados"
+    },
+    {
+      "id": "rais-vinculos-formais-2025",
+      "name": "Vínculos formais registrados pela RAIS",
+      "topic": "trabalho",
+      "unit": "vínculos",
+      "reference_period": "2025",
+      "definition": "Total de vínculos de trabalho formais ativos em estabelecimentos localizados em Sumaré em 31 de dezembro de 2025",
+      "source_institution": "MTE",
+      "source_dataset": "RAIS 2025 - Tabelas.xlsx"
+    },
+    {
+      "id": "rais-vinculos-agropecuaria-2025",
+      "name": "Vínculos formais na agropecuária",
+      "topic": "trabalho",
+      "unit": "vínculos",
+      "reference_period": "2025",
+      "definition": "Vínculos formais em estabelecimentos agropecuários de Sumaré, em 31 de dezembro de 2025",
+      "source_institution": "MTE",
+      "source_dataset": "RAIS 2025 - Tabelas.xlsx"
+    },
+    {
+      "id": "rais-vinculos-industria-2025",
+      "name": "Vínculos formais na indústria",
+      "topic": "trabalho",
+      "unit": "vínculos",
+      "reference_period": "2025",
+      "definition": "Vínculos formais em estabelecimentos industriais de Sumaré, em 31 de dezembro de 2025",
+      "source_institution": "MTE",
+      "source_dataset": "RAIS 2025 - Tabelas.xlsx"
+    },
+    {
+      "id": "rais-vinculos-construcao-2025",
+      "name": "Vínculos formais na construção",
+      "topic": "trabalho",
+      "unit": "vínculos",
+      "reference_period": "2025",
+      "definition": "Vínculos formais em estabelecimentos da construção de Sumaré, em 31 de dezembro de 2025",
+      "source_institution": "MTE",
+      "source_dataset": "RAIS 2025 - Tabelas.xlsx"
+    },
+    {
+      "id": "rais-vinculos-comercio-2025",
+      "name": "Vínculos formais no comércio",
+      "topic": "trabalho",
+      "unit": "vínculos",
+      "reference_period": "2025",
+      "definition": "Vínculos formais em estabelecimentos comerciais de Sumaré, em 31 de dezembro de 2025",
+      "source_institution": "MTE",
+      "source_dataset": "RAIS 2025 - Tabelas.xlsx"
+    },
+    {
+      "id": "rais-vinculos-servicos-2025",
+      "name": "Vínculos formais nos serviços",
+      "topic": "trabalho",
+      "unit": "vínculos",
+      "reference_period": "2025",
+      "definition": "Vínculos formais em estabelecimentos prestadores de serviços de Sumaré, em 31 de dezembro de 2025",
+      "source_institution": "MTE",
+      "source_dataset": "RAIS 2025 - Tabelas.xlsx"
     }
   ]
 }
