@@ -47,7 +47,8 @@ class EmpresasTest(unittest.TestCase):
         for path in ("site/index.html", "site/en/index.html"):
             html = (ROOT / path).read_text(encoding="utf-8")
             self.assertIn('data-company-list', html)
-            self.assertIn('data-company-count aria-live="polite"', html)
+            self.assertNotIn("data-company-count", html)
+            self.assertIn("data-company-status", html)
             self.assertNotIn('data-company-filter', html)
             self.assertNotIn('data-company-filters', html)
         css = (ROOT / "site/assets/css/empresas.css").read_text(encoding="utf-8")
@@ -55,6 +56,8 @@ class EmpresasTest(unittest.TestCase):
         js = (ROOT / "site/assets/js/empresas.js").read_text(encoding="utf-8")
         self.assertIn("for (const company of companies)", js)
         self.assertIn("companies.sort(", js)
+        self.assertNotIn("data-company-count", js)
+        self.assertNotIn("count.textContent", js)
         self.assertIn("company.source.url", js)
         self.assertNotIn("selectedSector", js)
         self.assertNotIn("data-company-filter", js)
