@@ -1,0 +1,26 @@
+name: "OES | Auditoria Seade Empresas"
+on:
+  push:
+    branches: [pesquisa/empresas-seade-auditoria-20261023]
+    paths: [".github/workflows/empresas-auditoria.yml", "scripts/empresas_auditoria.py"]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verificar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Baixar e auditar dados oficiais sem publicar
+        run: python3 scripts/empresas_auditoria.py
+      - name: Arquivar evidencia original e recortes
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: seade-empresas-evidencias
+          path: auditoria-empresas/
+          if-no-files-found: warn
+          retention-days: 14
