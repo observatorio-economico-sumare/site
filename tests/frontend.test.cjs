@@ -498,7 +498,7 @@ for(const phrase of ["Número de moradores por quilômetro quadrado",
      assert.equal(record.value,68060.93);
    }
  }
- assert.match(fs.readFileSync("site/index.html","utf8"),/PIB por habitante não representa a renda ou o salário/);
+ assert.match(fs.readFileSync("site/index.html","utf8"),/não é o salário médio nem mostra como a renda é distribuída/);
 }
 
 /* Regressão editorial: o PIB inicial deve mostrar a fonte correta sem JS. */
