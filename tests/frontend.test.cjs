@@ -83,7 +83,10 @@ const glossaryCode = fs.readFileSync("site/assets/js/app.js", "utf8");
 const glossaryMatch = glossaryCode.match(/const glossaryEntries = (\{[\s\S]*?\});\nconst appEnglish/);
 assert.ok(glossaryMatch, "Glossário estruturado ausente");
 const glossaryEntries = JSON.parse(glossaryMatch[1]);
-assert.equal(Object.keys(glossaryEntries).length, 9);
+assert.equal(Object.keys(glossaryEntries).length, 10);
+assert.ok(glossaryEntries["Rendimento mediano"]);
+assert.ok(glossaryEntries["PIB por habitante"]);
+assert.ok(!glossaryEntries["Servidor público"]);
 for (const entry of Object.values(glossaryEntries)) {
   for (const locale of ["pt", "en"]) {
     for (const property of ["title", "short", "detail"]) {
@@ -633,4 +636,18 @@ assert.match(navCss,/\.nav-shell\.nav-more-right::after/);
    assert.ok(html.includes('data-mapa-svg'),page+": mapa preservado");
    assert.ok(html.includes('data-cempre-bars'),page+": gráfico de empresas preservado");
  }
+}
+
+
+/* Clareza editorial sem remover fontes e critérios institucionais. */
+for(const [path,companySubtitle,analysis,glossaryTerm] of [
+  ["site/index.html","<span>Sem ranking</span>","Ainda não há análises do OES publicadas.","Em “Saiba mais”"],
+  ["site/en/index.html","<span>Not ranked</span>","No OES research or analysis has been published yet.","Select “Learn more”"]
+]){
+  const html=fs.readFileSync(path,"utf8");
+  assert.ok(html.includes(companySubtitle),path+": indicação de ausência de ranking");
+  assert.ok(html.includes(analysis),path+": indicação de conteúdo não publicado");
+  assert.ok(html.includes(glossaryTerm),path+": fonte acessível no glossário");
+  assert.ok(html.includes('class="institutional-grid"'),path+": missão e visão preservadas");
+  assert.ok(html.includes('class="glossary" id="glossary"'),path+": glossário preservado");
 }
