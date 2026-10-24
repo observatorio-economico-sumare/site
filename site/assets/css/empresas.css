@@ -1,0 +1,15 @@
+/* Empresas: apresentação editorial sem métricas ou ranking não verificados. */
+.empresas-intro{max-width:790px;color:#4b5b6b;margin:0 0 24px;font-size:15px}
+.empresas-toolbar{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;margin:27px 0 8px}
+.empresas-toolbar label{font-size:13px;color:var(--muted);display:flex;align-items:center;gap:10px}
+.empresas-toolbar select{max-width:100%;padding:9px 34px 9px 11px;border:1px solid var(--line);border-radius:3px;background:#fff;color:var(--ink);font:inherit}
+.empresas-count{font-size:13px;color:var(--muted)}
+.empresas-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:clamp(25px,4vw,64px)}
+.empresa-entry{border-top:1px solid var(--line);padding:22px 0 26px;min-width:0}
+.empresa-entry h3{font:500 clamp(22px,2.7vw,28px)/1.25 var(--font-editorial);color:var(--ink);margin:5px 0 10px}
+.empresa-sector{font-size:12px;color:#627387;margin:0;letter-spacing:.03em}
+.empresa-entry p{margin:7px 0;color:#47586d;font-size:14px;line-height:1.65}
+.empresa-entry a{font-size:13px;font-weight:600}
+.empresas-note{border-top:1px solid var(--line);padding-top:16px;margin:20px 0 0;font-size:13px;line-height:1.75;color:var(--muted);max-width:790px}
+.empresas-note a{font-weight:600}
+@media(max-width:680px){.empresas-grid{grid-template-columns:minmax(0,1fr)}.empresas-toolbar{align-items:flex-start}.empresas-toolbar label{width:100%;justify-content:space-between}.empresas-toolbar select{width:min(260px,70%)}}

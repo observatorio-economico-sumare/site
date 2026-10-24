@@ -1,0 +1,105 @@
+{
+  "reviewed_at": "2026-10-23",
+  "companies": [
+    {
+      "id": "3m",
+      "name": "3M",
+      "sector": {
+        "pt": "Materiais e tecnologia",
+        "en": "Materials and technology"
+      },
+      "activity": {
+        "pt": "Produtos e soluções industriais.",
+        "en": "Industrial products and solutions."
+      },
+      "presence": {
+        "pt": "Unidade em Sumaré, identificada nos endereços e nas orientações para fornecedores da empresa.",
+        "en": "Sumaré facility listed in the company's official address and supplier information."
+      },
+      "source": {
+        "name": "3M Brasil",
+        "url": "https://www.3m.com.br/3M/pt_BR/3m-do-brasil/parceiros-e-fornecedores/"
+      }
+    },
+    {
+      "id": "honda",
+      "name": "Honda",
+      "sector": {
+        "pt": "Automotivo",
+        "en": "Automotive"
+      },
+      "activity": {
+        "pt": "Produção de motores e componentes, engenharia e operações administrativas.",
+        "en": "Engine and component production, engineering and administrative operations."
+      },
+      "presence": {
+        "pt": "A produção de automóveis foi transferida para Itirapina até 2021; Sumaré mantém as atividades descritas pela Honda.",
+        "en": "Vehicle assembly moved to Itirapina by 2021; Sumaré retains the operations described by Honda."
+      },
+      "source": {
+        "name": "Honda Brasil",
+        "url": "https://www.honda.com.br/institucional/honda-no-brasil"
+      }
+    },
+    {
+      "id": "ppg",
+      "name": "PPG",
+      "sector": {
+        "pt": "Tintas e revestimentos",
+        "en": "Paints and coatings"
+      },
+      "activity": {
+        "pt": "Fabricação de tintas e revestimentos industriais, incluindo tintas em pó.",
+        "en": "Manufacturing of paints and industrial coatings, including powder coatings."
+      },
+      "presence": {
+        "pt": "A empresa confirmou a ampliação da fábrica de tintas em pó de Sumaré em 2023.",
+        "en": "The company confirmed an expansion of its Sumaré powder coatings facility in 2023."
+      },
+      "source": {
+        "name": "PPG Newsroom, 14/09/2023",
+        "url": "https://news.ppg.com/Press-Releases/news-details/2023/PPG-completes-2-7-million-expansion-of-powder-coatings-factory-in-Sumar-Brazil/default.aspx"
+      }
+    },
+    {
+      "id": "selmi",
+      "name": "Selmi",
+      "sector": {
+        "pt": "Alimentos",
+        "en": "Food"
+      },
+      "activity": {
+        "pt": "Fabricação de alimentos, incluindo biscoitos.",
+        "en": "Food manufacturing, including biscuits and cookies."
+      },
+      "presence": {
+        "pt": "A empresa identifica oficialmente sua fábrica de Sumaré, no bairro Parque da Amizade.",
+        "en": "The company lists its Sumaré factory in the Parque da Amizade neighborhood."
+      },
+      "source": {
+        "name": "Selmi, unidades industriais",
+        "url": "https://en.selmi.com.br/products"
+      }
+    },
+    {
+      "id": "villares",
+      "name": "Villares Metals",
+      "sector": {
+        "pt": "Metalurgia",
+        "en": "Metallurgy"
+      },
+      "activity": {
+        "pt": "Aços e ligas especiais para diversos setores industriais.",
+        "en": "Special steels and alloys for multiple industrial sectors."
+      },
+      "presence": {
+        "pt": "A empresa informa que sua sede fica em Sumaré e que a produção foi transferida para o município em 1996.",
+        "en": "The company identifies Sumaré as its headquarters and states that production moved there in 1996."
+      },
+      "source": {
+        "name": "Villares Metals, sobre nós",
+        "url": "https://www.villaresmetals.com.br/pt-br/empresa/sobre-nos/"
+      }
+    }
+  ]
+}

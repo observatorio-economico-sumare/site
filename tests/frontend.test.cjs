@@ -154,8 +154,8 @@ assert.doesNotMatch(governanceCss,/\.governance-toc|\.governance-sidebar|\.gover
 
 /* Navegação compacta e responsiva, em ambos os idiomas. */
 for (const [path,names] of [
- ["site/index.html",["Visão geral","População","Trabalho e renda","Economia","Análises","Entenda os dados","Institucional"]],
- ["site/en/index.html",["Overview","Population","Jobs & income","Economy","Research","Understanding the data","About"]]
+ ["site/index.html",["Visão geral","População","Trabalho e renda","Economia","Empresas","Análises","Entenda os dados","Institucional"]],
+ ["site/en/index.html",["Overview","Population","Jobs & income","Economy","Businesses","Research","Understanding the data","About"]]
 ]){
  const html=fs.readFileSync(path,"utf8");
  const menu=(html.match(/<nav aria-label="(?:Navegação principal|Main navigation)">[\s\S]*?<\/nav>/)||[])[0];
@@ -163,7 +163,7 @@ for (const [path,names] of [
  const labels=[...menu.matchAll(/<button[^>]*data-tab="[^"]+"[^>]*>([^<]+)<\/button>/g)].map(x=>x[1]);
  assert.deepEqual(labels,names,path+": nav labels");
  const order=[...menu.matchAll(/data-tab="([^"]+)"|class="nav-library-link"/g)].map(m=>m[1]||"biblioteca");
- assert.deepEqual(order,["inicio","populacao","trabalho","economia","biblioteca","analises","metodologia","sobre"]);
+ assert.deepEqual(order,["inicio","populacao","trabalho","economia","empresas","biblioteca","analises","metodologia","sobre"]);
  assert.match(menu,/aria-expanded="true"/);
  assert.doesNotMatch(menu,/role="tablist"|role="tab"|nav-scroll-hint/);
 }
@@ -228,7 +228,7 @@ for (const [page,expected] of [["site/index.html","Carregando…"],["site/en/ind
  assert.doesNotMatch(html,/class="library-back"|Voltar ao site/);
  assert.ok(html.includes('<nav class="subpage-nav library-nav" aria-label="Navegação principal">'));
  assert.ok(html.includes('aria-current="page">Biblioteca</a>'));
- const sections=["inicio","populacao","trabalho","economia","analises","metodologia","sobre"];
+ const sections=["inicio","populacao","trabalho","economia","empresas","analises","metodologia","sobre"];
  const targets=[...html.matchAll(/<a href="index\.html#([^"]+)">[^<]+<\/a>/g)].map(m=>m[1]);
  assert.deepEqual(targets,sections,"A Biblioteca deve ter os mesmos itens do menu principal");
  assert.doesNotMatch(html,/href="en\/index\.html#analises"/);
@@ -276,8 +276,8 @@ assert.doesNotMatch(fs.readFileSync("site/assets/css/styles.css","utf8"),/#inici
 
 /* Unidade visual: mesmo menu nas páginas independentes, linhas discretas. */
 for(const [path,base,labels] of [
- ["site/governanca.html","index.html",["Visão geral","População","Trabalho e renda","Economia","Análises","Entenda os dados","Institucional"]],
- ["site/en/governanca.html","index.html",["Overview","Population","Jobs & income","Economy","Research","Understanding the data","About"]]
+ ["site/governanca.html","index.html",["Visão geral","População","Trabalho e renda","Economia","Empresas","Análises","Entenda os dados","Institucional"]],
+ ["site/en/governanca.html","index.html",["Overview","Population","Jobs & income","Economy","Businesses","Research","Understanding the data","About"]]
 ]){
  const html=fs.readFileSync(path,"utf8");
  assert.match(html,/<nav class="subpage-nav"/);
@@ -287,7 +287,7 @@ for(const [path,base,labels] of [
  const menu=html.match(/<nav class="subpage-nav"[^>]*>[\s\S]*?<\/nav>/)?.[0];
  assert.ok(menu);
  const order=[...menu.matchAll(/href="index\.html#([^"]+)"|class="nav-library-link"/g)].map(m=>m[1]||"biblioteca");
- assert.deepEqual(order,["inicio","populacao","trabalho","economia","biblioteca","analises","metodologia","sobre"]);
+ assert.deepEqual(order,["inicio","populacao","trabalho","economia","empresas","biblioteca","analises","metodologia","sobre"]);
  assert.match(html,/aria-current="page"/);
 }
 const unifiedStyles=fs.readFileSync("site/assets/css/styles.css","utf8");
@@ -362,7 +362,7 @@ assert.match(topicScript,/filterByTopic/);
 /* Navegação uniforme, acessível e rotulada nos dois idiomas. */
 for(const path of ["site/index.html","site/en/index.html"]){
  const html=fs.readFileSync(path,"utf8");
- assert.equal((html.match(/role="region"/g)||[]).length,7);
+ assert.equal((html.match(/role="region"/g)||[]).length,8);
  assert.doesNotMatch(html,/role="tabpanel"|role="tablist"/);
 }
 for(const path of ["site/index.html","site/en/index.html","site/governanca.html","site/en/governanca.html","site/biblioteca.html"]){
@@ -371,7 +371,7 @@ for(const path of ["site/index.html","site/en/index.html","site/governanca.html"
  assert.ok(menu);
  const order=[...menu.matchAll(/data-tab="([^"]+)"|href="index\.html#([^"]+)"|class="nav-library-link"/g)]
    .map(m=>m[1]||m[2]||"biblioteca");
- assert.deepEqual(order,["inicio","populacao","trabalho","economia","biblioteca","analises","metodologia","sobre"]);
+ assert.deepEqual(order,["inicio","populacao","trabalho","economia","empresas","biblioteca","analises","metodologia","sobre"]);
 }
 for(const path of ["site/en/index.html","site/en/governanca.html"]){
  assert.match(fs.readFileSync(path,"utf8"),/>Library \(Portuguese\)<\/a>/);
