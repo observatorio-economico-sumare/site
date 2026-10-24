@@ -11,9 +11,10 @@ não executa validação de publicação e não consulta dados pessoais.
   posição na ocupação, conta própria, trabalho sem carteira.
 - IBGE/SIDRA tabela 5938, anos 2021 e 2023: valores de PIB e composição
   da atividade econômica. Cada variável exige revisão.
-- MTE/RAIS 2025, INEP Sinopses da Educação Básica e Portal da Transparência
-  de Sumaré: verificação de páginas institucionais **apenas**. A extração
-  de arquivos de salários por setor, matrículas e servidores não está implementada.
+- MTE/RAIS 2025: total municipal de 75.421 vínculos formais e recorte por
+  cinco setores conferidos em XLSX oficial; remuneração setorial não identificada.
+- INEP 2025 e portal municipal: matrícula profissional e quadro de pessoal
+  continuam sem extração agregada reproduzível.
 
 ## Manutenção técnica
 
@@ -23,6 +24,19 @@ não executa validação de publicação e não consulta dados pessoais.
   pesquisa preservado separadamente; **não são versionadas na branch do site**.
 - Arquivos temporários e CSVs candidatos não entram em `data/processed/`.
 - Limpeza futura não deve apagar históricos de revisão ou evidências originais.
+
+## Revisão documental complementar
+
+- `data/raw/ses_sp_sumare_censo_2022_2026-10-23.json`: sete medidas
+  conferidas nas páginas 12, 13 e 15 do PDF oficial da SES-SP, incluindo
+  somas demográficas e crescimento intercensitário.
+- `data/raw/ibge_cidades_adicionais_2026-10-23.json`: densidade e
+  escolarização exibidas no IBGE Cidades e Estados.
+- Os arquivos acima são transcrições auditáveis, **não** cópias do PDF ou do
+  HTML original. A escolarização de 2022 permanece bloqueada: o cartão
+  apresenta 2022, mas as notas da página ainda citam o Censo 2010.
+- Todos os onze candidatos à integração continuam `pending_review`.
+  O pipeline e os dados de produção não foram alterados nesta revisão.
 
 ## Saída
 
