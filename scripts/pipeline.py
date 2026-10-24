@@ -10,6 +10,8 @@ from datetime import date
 from pathlib import Path
 from urllib.parse import urlparse
 
+from scripts.oes_coleta.validar_sidra import validate_sidra
+
 ROOT = Path(__file__).resolve().parents[1]
 CATALOG = ROOT / "data/catalog.json"
 INPUT = ROOT / "data/processed/indicators.json"
@@ -101,6 +103,9 @@ def validate():
             raise ValueError(f"{key}: hash SHA-256 divergente")
         # Arquivo de evidência é uma transcrição documentada, não o download original.
         snapshot = load(path)
+        if ev.get("capture_method") == "arquivo_original_api_sidra":
+            validate_sidra(snapshot, item, src)
+            continue
         if snapshot.get("capture_method") != ev.get("capture_method"):
             raise ValueError(f"{key}: método de captura da evidência divergente")
         if snapshot.get("municipality_code") != item["municipality_code"]:
