@@ -72,7 +72,7 @@
       "topic": "economia",
       "unit": "R$",
       "reference_period": "2023",
-      "definition": "Produto Interno Bruto do município dividido pela população de referência, a preços correntes",
+      "definition": "Valor gerado pela produção de bens e serviços em Sumaré, dividido pelo número de habitantes.",
       "source_institution": "IBGE",
       "source_dataset": "PIB dos Municípios",
       "value": 68060.93,

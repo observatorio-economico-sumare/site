@@ -448,3 +448,19 @@ assert.match(publicIndicators,/const ptIndicatorText = /);
 for(const phrase of ["Número de moradores por quilômetro quadrado",
  "Quanto a população de Sumaré mudou entre os Censos",
  "Não é a renda média dos moradores"])assert.ok(publicIndicators.includes(phrase));
+
+/* PIB per capita em linguagem clara no site e nos dados publicados. */
+{
+ const id="pib-per-capita-2023";
+ const definition="Valor gerado pela produção de bens e serviços em Sumaré, dividido pelo número de habitantes.";
+ for(const path of ["data/catalog.json","site/data/catalog.json",
+                   "data/processed/indicators.json","site/data/indicators.json"]){
+   const record=JSON.parse(fs.readFileSync(path,"utf8")).indicators.find(x=>x.id===id);
+   assert.equal(record.definition,definition,path);
+   if(path==="data/processed/indicators.json"){
+     assert.equal(sandbox.localizedForTest(record).definition,definition);
+     assert.equal(record.value,68060.93);
+   }
+ }
+ assert.match(fs.readFileSync("site/index.html","utf8"),/Não é quanto cada pessoa ganha/);
+}
