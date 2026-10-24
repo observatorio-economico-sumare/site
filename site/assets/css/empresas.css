@@ -13,3 +13,24 @@
 .empresas-note{border-top:1px solid var(--line);padding-top:16px;margin:20px 0 0;font-size:13px;line-height:1.75;color:var(--muted);max-width:790px}
 .empresas-note a{font-weight:600}
 @media(max-width:680px){.empresas-grid{grid-template-columns:minmax(0,1fr)}.empresas-toolbar{align-items:flex-start}.empresas-toolbar label{width:100%;justify-content:space-between}.empresas-toolbar select{width:min(260px,70%)}}
+
+/* CEMPRE: poucos números, barras proporcionais e seleção por teclado. */
+.empresas-statistics{margin:18px 0 38px}
+.empresas-numbers{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin:20px 0 38px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.empresas-numbers>div{padding:22px 24px;border-right:1px solid var(--line);min-width:0}
+.empresas-numbers>div:first-child{padding-left:0}
+.empresas-numbers>div:last-child{padding-right:0;border-right:0}
+.empresas-numbers span{display:block;color:var(--muted);font-size:13px;line-height:1.4}
+.empresas-numbers strong{display:block;color:var(--ink);font:500 clamp(29px,3vw,40px)/1.2 var(--font-interface);letter-spacing:-.04em;margin-top:10px;font-variant-numeric:tabular-nums}
+.empresas-bars{display:grid;gap:2px;max-width:900px}
+.empresas-bar{display:grid;grid-template-columns:135px minmax(0,1fr) 70px;align-items:center;gap:18px;width:100%;padding:9px 6px;border:0;border-left:3px solid transparent;background:transparent;cursor:pointer;text-align:left;font:500 14px/1.4 var(--font-interface);color:var(--ink)}
+.empresas-bar:hover{background:#edf1f3}
+.empresas-bar[aria-pressed="true"]{border-left-color:var(--yellow);background:#edf1f3}
+.empresas-bar-label{white-space:nowrap}
+.empresas-bar-track{height:12px;background:#e4e9ed;overflow:hidden;display:block}
+.empresas-bar-fill{display:block;height:100%;background:#536d82}
+.empresas-bar[aria-pressed="true"] .empresas-bar-fill{background:var(--ink)}
+.empresas-bar-value{text-align:right;font-variant-numeric:tabular-nums}
+.empresas-selection{font-size:13px;color:var(--ink);font-weight:600;min-height:23px;margin:16px 0}
+.empresas-method{font-size:12px;line-height:1.75;color:var(--muted);max-width:850px;margin:22px 0 4px}
+@media(max-width:720px){.empresas-numbers{grid-template-columns:1fr}.empresas-numbers>div,.empresas-numbers>div:first-child,.empresas-numbers>div:last-child{border:0;border-bottom:1px solid var(--line);padding:14px 0}.empresas-numbers>div:last-child{border-bottom:0}.empresas-bar{grid-template-columns:95px minmax(0,1fr) 58px;gap:9px;font-size:12px;padding:9px 3px}.empresas-bar-track{height:10px}}
