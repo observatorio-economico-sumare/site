@@ -236,10 +236,10 @@ for (const [page,expected] of [["site/index.html","Carregando…"],["site/en/ind
  assert.ok(html.includes('hreflang="en" href="en/index.html"'));
 }
 
-/* Fontes, fichas técnicas e Glossário compartilham uma seção. */
+/* Fontes oficiais e glossário permanecem acessíveis, sem catálogo repetido. */
 for (const [path,titles] of [
- ["site/index.html",["Fontes e metodologia","Detalhes dos indicadores","Glossário"]],
- ["site/en/index.html",["Sources and methodology","Indicator details","Glossary"]]
+ ["site/index.html",["Fontes e metodologia","Glossário"]],
+ ["site/en/index.html",["Sources and methodology","Glossary"]]
 ]){
  const html=fs.readFileSync(path,"utf8");
  const section=html.slice(html.indexOf('<section class="tab" hidden="" id="metodologia"'),
@@ -251,7 +251,10 @@ for (const [path,titles] of [
    previous=pos;
  }
  assert.ok(section.includes('<section class="glossary-section" id="glossario"'));
+ assert.doesNotMatch(section,/indicator-sources|Detalhes dos indicadores|Indicator details/);
 }
+assert.doesNotMatch(code,/getElementById\("indicator-sources"\)|source--catalog/);
+assert.match(code,/detail.addEventListener\("click", \(\) => openIndicatorDetail\(item\)\)/);
 
 /* Apresentação editorial dos três indicadores verificados. */
 for(const page of ["site/index.html","site/en/index.html"]){
