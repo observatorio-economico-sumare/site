@@ -435,3 +435,20 @@ nav{background:#fff;border-bottom:1px solid var(--line)}
 .tab .economy-related{max-width:850px;margin-top:16px;padding-top:2px;border-top:1px solid var(--line)}
 .tab .economy-related .footnote{margin:8px 0 0}
 @media(max-width:680px){.tab .data-subheading{margin-top:20px}.tab .section-context{font-size:13px}}
+
+
+/* RAIS: cinco setores visíveis, com valores alinhados e fichas acessíveis. */
+#trabalho .sector-breakdown{margin-top:8px}
+#trabalho .metrics--sectors{display:grid;grid-template-columns:minmax(0,1fr);gap:0;margin:12px 0 0;max-width:860px}
+#trabalho .metrics--sectors .metric{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;column-gap:14px;padding:11px 0;border:0;border-top:1px solid var(--line);min-width:0}
+#trabalho .metrics--sectors .metric:last-child{border-bottom:1px solid var(--line)}
+#trabalho .metrics--sectors .metric .metric-title{font-size:14px;line-height:1.4;font-weight:500;min-height:0;color:var(--ink)}
+#trabalho .metrics--sectors .metric .number{font-size:clamp(21px,2.5vw,26px);line-height:1.2;margin:0;white-space:nowrap;font-variant-numeric:tabular-nums}
+#trabalho .metrics--sectors .metric .origin{grid-column:1/-1;flex-direction:row;flex-wrap:wrap;align-items:baseline;gap:3px 12px;margin-top:3px;font-size:12px;line-height:1.45}
+#trabalho .sector-breakdown .footnote{margin:10px 0 24px}
+@media(max-width:680px){
+ #trabalho .metrics--sectors .metric{padding:11px 0;border:0;border-top:1px solid var(--line)}
+ #trabalho .metrics--sectors .metric:last-child{border-bottom:1px solid var(--line)}
+ #trabalho .metrics--sectors .metric .metric-title{font-size:13px}
+ #trabalho .metrics--sectors .metric .number{font-size:22px}
+}
