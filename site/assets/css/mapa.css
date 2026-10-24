@@ -168,7 +168,7 @@
     padding-left: 3px;
     padding-right: 0;
   }
-  #populacao .populacao-indicadores .metric label { font-size: 12px; line-height: 1.35; }
+  #populacao .populacao-indicadores .metric .metric-title { font-size: 12px; line-height: 1.35; }
   #populacao .populacao-indicadores .metric .number {
     font-size: clamp(23px, 6.4vw, 30px);
     margin: 9px 0;

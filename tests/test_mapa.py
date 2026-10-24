@@ -73,6 +73,8 @@ class TestMapaDemografico(unittest.TestCase):
         self.assertNotIn(".mapa-label", css)
         self.assertIn(".mapa-scale", css)
         self.assertIn(".mapa-section { max-width: 900px;", css)
+        self.assertIn(".metric .metric-title { font-size: 12px;", css)
+        self.assertNotIn(".metric label", css)
         self.assertIn("@media (max-width: 790px)", css)
         self.assertIn("button.addEventListener(\"mouseenter\"", js)
         self.assertIn("@media (max-width: 480px)", css)

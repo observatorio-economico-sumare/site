@@ -607,3 +607,30 @@ assert.match(navCss,/\.nav-shell\.nav-more-right::after/);
   menu.scrollWidth=320;menu.scrollLeft=0;handlers.resize();
   assert.equal(states.get("nav-more-right"),false);
 }
+
+
+/* Consistência editorial das grades e leitura mobile, sem alterar dados/estrutura. */
+{
+ const mainCss=fs.readFileSync("site/assets/css/styles.css","utf8");
+ const mapCss=fs.readFileSync("site/assets/css/mapa.css","utf8");
+ const businessCss=fs.readFileSync("site/assets/css/empresas.css","utf8");
+ const libraryCss=fs.readFileSync("site/assets/css/biblioteca.css","utf8");
+ assert.match(mainCss,/\.metrics--two \.metric:nth-child\(odd\)\{padding-left:0\}/);
+ assert.match(mainCss,/\.metrics--two \.metric:nth-child\(even\)\{padding-right:0;border-right:0\}/);
+ assert.match(mainCss,/\.metrics--two \.metric:last-child:nth-child\(odd\)\{grid-column:1\/-1;border-right:0\}/);
+ assert.match(mainCss,/\.metrics--two \.metric:first-child \{ border-top: 1px solid var\(--line\); \}/);
+ assert.match(mainCss,/\.tab section > \.section-title h2 \{ font-size: clamp/);
+ assert.match(mainCss,/\.institutional-block\{padding: 18px 0\}/);
+ assert.match(mapCss,/#populacao \.populacao-indicadores \.metric \.metric-title \{ font-size: 12px/);
+ assert.doesNotMatch(mapCss,/\.metric label\b/);
+ assert.match(businessCss,/\.empresas-numbers>div\{display:flex;flex-direction:column/);
+ assert.match(businessCss,/margin-top:auto;padding-top:10px;font-variant-numeric/);
+ assert.match(businessCss,/\.empresas-bar-label\{white-space:normal/);
+ assert.match(libraryCss,/\.library-topic-button \{ min-height: 40px; \}/);
+ for (const page of ["site/index.html","site/en/index.html"]) {
+   const html=fs.readFileSync(page,"utf8");
+   assert.ok(html.includes('class="metrics metrics--two"'),page+": grade de indicadores preservada");
+   assert.ok(html.includes('data-mapa-svg'),page+": mapa preservado");
+   assert.ok(html.includes('data-cempre-bars'),page+": gráfico de empresas preservado");
+ }
+}

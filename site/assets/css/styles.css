@@ -149,8 +149,9 @@ body{background: var(--paper); color: #333B44}
 .footer{background: #142D47}
 .metrics--two{grid-template-columns:repeat(2,minmax(0,1fr));margin:20px 0 28px;gap:0;border:0;background:transparent;box-shadow:none}
 .metrics--two .metric{background:transparent;min-width:0;padding:24px 26px;border:0;border-top:1px solid var(--line);border-right:1px solid var(--line)}
-.metrics--two .metric:first-child{padding-left:0}
-.metrics--two .metric:last-child{padding-right:0;border-right:0}
+.metrics--two .metric:nth-child(odd){padding-left:0}
+.metrics--two .metric:nth-child(even){padding-right:0;border-right:0}
+.metrics--two .metric:last-child:nth-child(odd){grid-column:1/-1;border-right:0}
 .metric .number{overflow-wrap: anywhere; font-size: clamp(25px,2.9vw,38px)}
 .metric .number--verified{color: #142D47}
 .metric .origin{display: flex; flex-direction: column; align-items: flex-start; gap: 9px; line-height: 1.6}
@@ -176,8 +177,6 @@ dialog#sourceDialog{max-width: 680px; max-height: min(83vh,850px); overflow-y: a
 }
 
 @media(max-width:480px){
-  .metrics--two{grid-template-columns: 1fr}
-  .metrics--two .metric,.metrics--two .metric:first-child,.metrics--two .metric:last-child{border-right:0;border-bottom:1px solid var(--line);padding:21px 0}
   .metric .origin{font-size: 11px}
   .data-detail{grid-template-columns: 1fr; gap: 3px}
   dialog#sourceDialog{padding: 20px 18px}
@@ -264,7 +263,7 @@ h3{font-family: var(--font-interface); font-weight: 600; letter-spacing: -.012em
   .identity strong{font-size: 18px}
   .intro h1{font-size: 39px}
   .section-title h2{font-size: 27px}
-  .institutional-block{padding: 22px}
+  .institutional-block{padding: 18px 0}
 }
 
 /* Bilingual selector; institutional palette and typography unchanged. */
@@ -376,6 +375,20 @@ nav{background:#fff;border-bottom:1px solid var(--line)}
 @media (max-width: 680px) {
   .section-title { align-items: flex-start; flex-wrap: wrap; row-gap: 2px; }
   .section-title > span { flex-basis: 100%; }
+  .tab > .section-title:first-child { margin: 24px 0 14px; }
+  .tab > .section-title h2 { font-size: clamp(26px, 7.2vw, 31px); }
+  .tab section > .section-title h2 { font-size: clamp(21px, 5.8vw, 25px); }
+  .metrics--two .metric,
+  .metrics--two .metric:nth-child(odd),
+  .metrics--two .metric:nth-child(even),
+  .metrics--two .metric:last-child:nth-child(odd) {
+    padding: 14px 0;
+    border: 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .metrics--two .metric:first-child { border-top: 1px solid var(--line); }
+  .footnote { margin: 10px 0 24px; line-height: 1.6; }
+  .footer { margin-top: 36px; }
   .metrics--two .metric, .metrics--two .metric:first-child, .metrics--two .metric:last-child {
     padding: 14px 0;
   }
