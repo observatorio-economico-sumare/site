@@ -7,6 +7,8 @@ on:
       - .github/workflows/oes-coleta-exploratoria.yml
       - scripts/oes_coleta/**
       - tests/test_oes_coleta.py
+      - tests/test_sidra_evidence.py
+      - scripts/pipeline.py
   workflow_dispatch:
 permissions:
   contents: read
@@ -25,7 +27,9 @@ jobs:
         with:
           python-version: "3.11"
       - name: Testes unitarios sem rede
-        run: python -m unittest discover -s tests -p test_oes_coleta.py -v
+        run: |
+          python -m unittest discover -s tests -v
+          python scripts/pipeline.py validate
       - name: Consultas oficiais (nao publicadas)
         run: python scripts/oes_coleta/coletar.py --output oes-resultado
       - name: Extrair planilhas municipais oficiais (agregadas)
