@@ -9,6 +9,10 @@ on:
       - tests/test_oes_coleta.py
       - tests/test_sidra_evidence.py
       - tests/test_evidencias_complementares.py
+      - tests/test_integracao_oes.py
+      - data/review/**
+      - data/catalog.json
+      - data/raw/sidra_*.json
       - scripts/pipeline.py
   workflow_dispatch:
 permissions:
@@ -31,6 +35,8 @@ jobs:
         run: |
           python -m unittest discover -s tests -v
           python scripts/pipeline.py validate
+          python scripts/check_site.py
+          node --check site/assets/js/indicators.js
       - name: Consultas oficiais (nao publicadas)
         run: python scripts/oes_coleta/coletar.py --output oes-resultado
       - name: Extrair planilhas municipais oficiais (agregadas)
