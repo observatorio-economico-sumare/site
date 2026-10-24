@@ -1,0 +1,47 @@
+import json
+import unittest
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+DATA = ROOT / "site/data/mapa-regioes-2022.json"
+
+
+class TestMapaDemografico(unittest.TestCase):
+    def test_ibge_source_geometry_and_totals(self):
+        obj = json.loads(DATA.read_text(encoding="utf8"))
+        m = obj["metadata"]
+        self.assertEqual((m["municipalityCode"], m["year"]), ("3552403", 2022))
+        self.assertEqual(m["field"], "v0001: total de pessoas")
+        self.assertEqual(len(obj["features"]), 6)
+        codes = {f["properties"]["id"] for f in obj["features"]}
+        self.assertEqual(codes, {f"355240300{i}" for i in range(1, 7)})
+        self.assertEqual(sum(f["properties"]["population"] for f in obj["features"]), 276846)
+        self.assertEqual(m["populationInAreas"], 276846)
+        self.assertEqual(m["municipalityTotal"], 279545)
+        self.assertEqual(m["difference"], 2699)
+        for f in obj["features"]:
+            self.assertEqual(f["properties"]["year"], 2022)
+            self.assertGreater(f["properties"]["population"], 0)
+            self.assertIn(f["geometry"]["type"], ("Polygon", "MultiPolygon"))
+            polygons = ([f["geometry"]["coordinates"]]
+                        if f["geometry"]["type"] == "Polygon"
+                        else f["geometry"]["coordinates"])
+            self.assertTrue(polygons)
+            for polygon in polygons:
+                for ring in polygon:
+                    self.assertGreaterEqual(len(ring), 4)
+                    self.assertEqual(ring[0], ring[-1])
+                    for lon, lat in ring:
+                        self.assertTrue(-48 < lon < -47 and -23 < lat < -22)
+
+    def test_files_and_translation(self):
+        for page in ("index.html", "en/index.html"):
+            html = (ROOT / "site" / page).read_text(encoding="utf8")
+            self.assertIn('data-mapa-svg', html)
+            self.assertIn('mapa.js', html)
+            self.assertIn('mapa.css', html)
+        self.assertLess(DATA.stat().st_size, 250000)
+
+
+if __name__ == "__main__":
+    unittest.main()
