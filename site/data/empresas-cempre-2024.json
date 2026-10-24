@@ -1,0 +1,35 @@
+{
+  "municipality_ibge": "3552403",
+  "reference_year": 2024,
+  "total": 12746,
+  "occupied_persons": 85185,
+  "salaried_persons": 70323,
+  "sectors": [
+    {
+      "name": "Serviços",
+      "value": 6000
+    },
+    {
+      "name": "Comércio",
+      "value": 3940
+    },
+    {
+      "name": "Indústria",
+      "value": 1011
+    },
+    {
+      "name": "Construção",
+      "value": 916
+    },
+    {
+      "name": "Agropecuária",
+      "value": 879
+    }
+  ],
+  "source": {
+    "institution": "IBGE",
+    "dataset": "Cadastro Central de Empresas (CEMPRE)",
+    "total_query": "https://apisidra.ibge.gov.br/values/t/9528/n6/3552403/p/2024/v/all?formato=json",
+    "sectors_query": "https://apisidra.ibge.gov.br/values/t/9528/n6/3552403/p/2024/v/706/c12762/116830,116880,116910,117296,117307,117329,117363,117484,117543,117555,117608,117666,117673,117714,117774,117788,117810,117838,117861,117888,117892?formato=json"
+  }
+}
