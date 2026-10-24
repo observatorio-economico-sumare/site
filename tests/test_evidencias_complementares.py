@@ -59,6 +59,24 @@ class EvidenceTests(unittest.TestCase):
                                              "value_multiplier": factor}},
                                {"institution": "IBGE", "url": url})
 
+    def test_review_candidates_cannot_be_published(self):
+        from unittest.mock import patch
+        from scripts import pipeline
+        path = ROOT.parent / "review" / "sidra_candidates.json"
+        proposal = json.loads(path.read_text(encoding="utf-8"))
+        self.assertIs(proposal["publication_allowed"], False)
+        self.assertEqual(len(proposal["indicators"]), 2)
+        catalog = {x["id"]: x for x in pipeline.load(pipeline.CATALOG)["indicators"]}
+        for item in proposal["indicators"]:
+            self.assertEqual(item["status"], "pending_review")
+            self.assertIsNone(item["reviewed_at"])
+            self.assertEqual(item["definition"], catalog[item["id"]]["definition"])
+            raw = (pipeline.ROOT / item["evidence"]["raw_path"]).read_bytes()
+            self.assertEqual(hashlib.sha256(raw).hexdigest(), item["evidence"]["sha256"])
+        with patch.object(pipeline, "INPUT", path):
+            with self.assertRaisesRegex(ValueError, "revisão pendente"):
+                pipeline.validate()
+
     def test_demographic_totals(self):
         ms = {m["id"]: m["value"] for m in self.records[
             "ses_sp_sumare_censo_2022_2026-10-23.json"]["measurements"]}
