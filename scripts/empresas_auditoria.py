@@ -15,12 +15,33 @@ SOURCES = {
 }
 OUT = Path("auditoria-empresas")
 
+
+def ibge():
+    url = "https://apisidra.ibge.gov.br/values/t/9528/n6/3552403/p/2024/v/all?formato=json"
+    print("RECURSO ibge_cempre_9528",url,flush=True)
+    try:
+        with urlopen(Request(url,headers={"User-Agent":"OES/1.0","Accept":"application/json"}),timeout=35) as response:
+            data=response.read(5_000_001)
+            if len(data)>5_000_000: raise ValueError("Resposta maior que 5 MB")
+            if urlparse(response.geturl()).hostname!="apisidra.ibge.gov.br": raise ValueError("Host incorreto")
+        payload=json.loads(data.decode("utf-8-sig"))
+        if not isinstance(payload,list) or len(payload)<2: raise ValueError("Tabela vazia ou inesperada")
+        digest=hashlib.sha256(data).hexdigest()
+        (OUT/"ibge_cempre_9528_original.json").write_bytes(data)
+        print("IBGE_HASH",digest,"IBGE_ROWS",len(payload)-1,flush=True)
+        print("IBGE_HEADER",json.dumps(payload[0],ensure_ascii=False),flush=True)
+        for i,row in enumerate(payload[1:]):
+            if i<85:print("IBGE_ROW",i+1,json.dumps(row,ensure_ascii=False)[:1700],flush=True)
+    except Exception as exc:
+        print("ERRO ibge",type(exc).__name__,str(exc)[:350],flush=True)
+
 def main():
     OUT.mkdir(exist_ok=True)
+    ibge()
     for kind, url in SOURCES.items():
         print("RECURSO", kind, url, flush=True)
         try:
-            with urlopen(Request(url, headers={"User-Agent": "OES/1.0", "Accept": "text/csv,*/*"}), timeout=65) as response:
+            with urlopen(Request(url, headers={"User-Agent": "OES/1.0", "Accept": "text/csv,*/*"}), timeout=8) as response:
                 if urlparse(response.geturl()).hostname != "repositorio.seade.gov.br":
                     raise ValueError("Redirecionamento não oficial")
                 content = response.read(18_000_001)
