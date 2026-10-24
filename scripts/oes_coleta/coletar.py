@@ -21,7 +21,8 @@ DIRECT_QUERIES = [
     ("sidra_5938_pib_2023", "https://apisidra.ibge.gov.br/values/t/5938/n6/3552403/p/2023/v/37?formato=json"),
     ("sidra_6580_desocupacao_2022", "https://apisidra.ibge.gov.br/values/t/6580/n6/3552403/p/2022/v/1641/c629/all?formato=json"),
     ("sidra_10264_previdencia_2022", "https://apisidra.ibge.gov.br/values/t/10264/n6/3552403/p/2022/v/4090/c526/all?formato=json"),
-    ("sidra_10056_metadados", "https://apisidra.ibge.gov.br/desctabapi.aspx?c=10056"),
+    ("sidra_10056_frequencia_escolar", "https://apisidra.ibge.gov.br/values/t/10056/n6/3552403/p/2022/v/all/c58/all?formato=json"),
+    ("sidra_10139_escolarizacao", "https://apisidra.ibge.gov.br/values/t/10139/n6/3552403/p/2022/v/all/c58/all?formato=json"),
 ]
 PAGES = [
     ("rais_2025", "https://www.gov.br/trabalho-e-emprego/pt-br/assuntos/estatisticas-trabalho/rais/rais-2025"),
