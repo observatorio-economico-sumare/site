@@ -324,9 +324,9 @@ assert.doesNotMatch(fs.readFileSync("site/assets/js/indicators.js","utf8"),/last
 for(const [page,loading] of [["site/index.html","Carregando…"],["site/en/index.html","Loading…"]]){
  const html=fs.readFileSync(page,"utf8");
  const pop=html.slice(html.indexOf('<section class="tab" hidden="" id="populacao"'),html.indexOf('<section class="tab" hidden="" id="trabalho"'));
- const econ=html.slice(html.indexOf('<section class="tab" hidden="" id="economia"'),html.indexOf('<section class="tab" hidden="" id="analises"'));
+ const econ=html.slice(html.indexOf('<section class="tab" hidden="" id="economia"'),html.indexOf('<section class="tab" hidden="" id="empresas"'));
  assert.equal((pop.match(new RegExp('<div class="number">'+loading+'</div>','g'))||[]).length,2);
- assert.equal((econ.match(new RegExp('<div class="number">'+loading+'</div>','g'))||[]).length,1);
+ assert.equal((econ.match(new RegExp('<div class="number">'+loading+'</div>','g'))||[]).length,2);
  assert.doesNotMatch(pop+econ,/class="number">Em validação|class="number">Pending validation/);
 }
 assert.doesNotMatch(fs.readFileSync("site/en/index.html","utf8"),/Not equivalent to average personal income/);
