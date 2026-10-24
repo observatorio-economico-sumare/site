@@ -29,9 +29,9 @@
       "topic": "trabalho",
       "unit": "vínculos",
       "reference_period": "2026-08",
-      "definition": "Estoque de vínculos formais de estabelecimentos localizados em Sumaré",
-      "source_institution": "MTE",
-      "source_dataset": "Novo CAGED"
+      "definition": "Total de vínculos formais ativos em estabelecimentos de Sumaré em agosto de 2026, segundo o Novo CAGED",
+      "source_institution": "Prefeitura Municipal de Sumaré (compilação MTE)",
+      "source_dataset": "Boletim municipal do Novo CAGED, agosto de 2026"
     },
     {
       "id": "saldo-vinculos-formais",
@@ -39,9 +39,9 @@
       "topic": "trabalho",
       "unit": "vínculos",
       "reference_period": "2026-01/2026-08",
-      "definition": "Admissões menos desligamentos no período de referência",
-      "source_institution": "MTE",
-      "source_dataset": "Novo CAGED"
+      "definition": "Diferença entre admissões e desligamentos de vínculos formais em Sumaré, de janeiro a agosto de 2026, segundo o Novo CAGED",
+      "source_institution": "Prefeitura Municipal de Sumaré (compilação MTE)",
+      "source_dataset": "Boletim municipal do Novo CAGED, agosto de 2026"
     },
     {
       "id": "pessoas-ocupadas",
@@ -192,6 +192,16 @@
       "definition": "Número de habitantes por quilômetro quadrado segundo a divulgação censitária.",
       "source_institution": "IBGE",
       "source_dataset": "IBGE Cidades e Estados"
+    },
+    {
+      "id": "saldo-vinculos-formais-2026-08",
+      "name": "Saldo mensal de empregos formais",
+      "topic": "trabalho",
+      "unit": "vínculos",
+      "reference_period": "2026-08",
+      "definition": "Admissões menos desligamentos de vínculos formais em Sumaré durante agosto de 2026",
+      "source_institution": "Prefeitura Municipal de Sumaré (compilação MTE)",
+      "source_dataset": "Boletim municipal do Novo CAGED, agosto de 2026"
     }
   ]
 }
