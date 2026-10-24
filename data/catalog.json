@@ -29,9 +29,9 @@
       "topic": "trabalho",
       "unit": "vínculos",
       "reference_period": "2026-08",
-      "definition": "Estoque de vínculos formais de estabelecimentos localizados em Sumaré",
-      "source_institution": "MTE",
-      "source_dataset": "Novo CAGED"
+      "definition": "Total de vínculos formais ativos em estabelecimentos de Sumaré em agosto de 2026, segundo o Novo CAGED",
+      "source_institution": "Prefeitura Municipal de Sumaré (compilação MTE)",
+      "source_dataset": "Boletim municipal do Novo CAGED, agosto de 2026"
     },
     {
       "id": "saldo-vinculos-formais",
@@ -39,17 +39,17 @@
       "topic": "trabalho",
       "unit": "vínculos",
       "reference_period": "2026-01/2026-08",
-      "definition": "Admissões menos desligamentos no período de referência",
-      "source_institution": "MTE",
-      "source_dataset": "Novo CAGED"
+      "definition": "Diferença entre admissões e desligamentos de vínculos formais em Sumaré, de janeiro a agosto de 2026, segundo o Novo CAGED",
+      "source_institution": "Prefeitura Municipal de Sumaré (compilação MTE)",
+      "source_dataset": "Boletim municipal do Novo CAGED, agosto de 2026"
     },
     {
       "id": "pessoas-ocupadas",
-      "name": "Pessoas ocupadas",
+      "name": "Pessoas ocupadas (Censo 2022)",
       "topic": "trabalho",
       "unit": "pessoas",
       "reference_period": "2022",
-      "definition": "Pessoas ocupadas conforme conceito da pesquisa de origem",
+      "definition": "Moradores de 14 anos ou mais que estavam ocupados na semana de referência do Censo 2022",
       "source_institution": "IBGE",
       "source_dataset": "Censo Demográfico"
     },
@@ -75,11 +75,11 @@
     },
     {
       "id": "renda-media-ocupados",
-      "name": "Rendimento mensal médio de ocupados com renda",
+      "name": "Rendimento mensal médio do trabalho",
       "topic": "trabalho",
       "unit": "R$",
       "reference_period": "2022",
-      "definition": "Rendimento médio de ocupados com renda na população definida pela pesquisa",
+      "definition": "Rendimento nominal mensal médio de todos os trabalhos das pessoas de 14 anos ou mais ocupadas e com rendimento em 2022",
       "source_institution": "IBGE",
       "source_dataset": "Censo Demográfico"
     },
@@ -192,6 +192,146 @@
       "definition": "Número de habitantes por quilômetro quadrado segundo a divulgação censitária.",
       "source_institution": "IBGE",
       "source_dataset": "IBGE Cidades e Estados"
+    },
+    {
+      "id": "empregados-privados-sem-carteira-2022",
+      "name": "Empregados do setor privado sem carteira",
+      "topic": "trabalho",
+      "unit": "pessoas",
+      "reference_period": "2022",
+      "definition": "Moradores de 14 anos ou mais empregados no setor privado sem carteira assinada; não inclui trabalhadores domésticos",
+      "source_institution": "IBGE",
+      "source_dataset": "Censo Demográfico 2022"
+    },
+    {
+      "id": "trabalhadores-domesticos-sem-carteira-2022",
+      "name": "Trabalhadores domésticos sem carteira",
+      "topic": "trabalho",
+      "unit": "pessoas",
+      "reference_period": "2022",
+      "definition": "Moradores de 14 anos ou mais que trabalhavam como domésticos sem carteira assinada",
+      "source_institution": "IBGE",
+      "source_dataset": "Censo Demográfico 2022"
+    },
+    {
+      "id": "escolaridade-sem-instrucao-fundamental-incompleto-2022",
+      "name": "Sem instrução ou fundamental incompleto",
+      "topic": "educacao",
+      "unit": "pessoas",
+      "reference_period": "2022",
+      "definition": "Moradores de 18 anos ou mais sem instrução ou que não concluíram o ensino fundamental",
+      "source_institution": "IBGE",
+      "source_dataset": "Censo Demográfico 2022"
+    },
+    {
+      "id": "escolaridade-fundamental-completo-medio-incompleto-2022",
+      "name": "Fundamental completo ou médio incompleto",
+      "topic": "educacao",
+      "unit": "pessoas",
+      "reference_period": "2022",
+      "definition": "Moradores de 18 anos ou mais com fundamental completo e médio incompleto",
+      "source_institution": "IBGE",
+      "source_dataset": "Censo Demográfico 2022"
+    },
+    {
+      "id": "escolaridade-medio-completo-superior-incompleto-2022",
+      "name": "Médio completo ou superior incompleto",
+      "topic": "educacao",
+      "unit": "pessoas",
+      "reference_period": "2022",
+      "definition": "Moradores de 18 anos ou mais com médio completo e superior incompleto",
+      "source_institution": "IBGE",
+      "source_dataset": "Censo Demográfico 2022"
+    },
+    {
+      "id": "escolaridade-superior-completo-2022",
+      "name": "Ensino superior completo",
+      "topic": "educacao",
+      "unit": "pessoas",
+      "reference_period": "2022",
+      "definition": "Moradores de 18 anos ou mais que concluíram o ensino superior",
+      "source_institution": "IBGE",
+      "source_dataset": "Censo Demográfico 2022"
+    },
+    {
+      "id": "rais-vinculos-agropecuaria-2025",
+      "name": "Vínculos formais na agropecuária",
+      "topic": "trabalho",
+      "unit": "vínculos",
+      "reference_period": "2025",
+      "definition": "Vínculos formais em estabelecimentos agropecuários de Sumaré, em 31 de dezembro de 2025",
+      "source_institution": "MTE",
+      "source_dataset": "RAIS 2025 - Tabelas.xlsx"
+    },
+    {
+      "id": "rais-vinculos-industria-2025",
+      "name": "Vínculos formais na indústria",
+      "topic": "trabalho",
+      "unit": "vínculos",
+      "reference_period": "2025",
+      "definition": "Vínculos formais em estabelecimentos industriais de Sumaré, em 31 de dezembro de 2025",
+      "source_institution": "MTE",
+      "source_dataset": "RAIS 2025 - Tabelas.xlsx"
+    },
+    {
+      "id": "rais-vinculos-construcao-2025",
+      "name": "Vínculos formais na construção",
+      "topic": "trabalho",
+      "unit": "vínculos",
+      "reference_period": "2025",
+      "definition": "Vínculos formais em estabelecimentos da construção de Sumaré, em 31 de dezembro de 2025",
+      "source_institution": "MTE",
+      "source_dataset": "RAIS 2025 - Tabelas.xlsx"
+    },
+    {
+      "id": "rais-vinculos-comercio-2025",
+      "name": "Vínculos formais no comércio",
+      "topic": "trabalho",
+      "unit": "vínculos",
+      "reference_period": "2025",
+      "definition": "Vínculos formais em estabelecimentos comerciais de Sumaré, em 31 de dezembro de 2025",
+      "source_institution": "MTE",
+      "source_dataset": "RAIS 2025 - Tabelas.xlsx"
+    },
+    {
+      "id": "rais-vinculos-servicos-2025",
+      "name": "Vínculos formais nos serviços",
+      "topic": "trabalho",
+      "unit": "vínculos",
+      "reference_period": "2025",
+      "definition": "Vínculos formais em estabelecimentos prestadores de serviços de Sumaré, em 31 de dezembro de 2025",
+      "source_institution": "MTE",
+      "source_dataset": "RAIS 2025 - Tabelas.xlsx"
+    },
+    {
+      "id": "rais-vinculos-formais-2025",
+      "name": "Vínculos formais registrados pela RAIS",
+      "topic": "trabalho",
+      "unit": "vínculos",
+      "reference_period": "2025",
+      "definition": "Total de vínculos de trabalho formais ativos em estabelecimentos localizados em Sumaré em 31 de dezembro de 2025",
+      "source_institution": "MTE",
+      "source_dataset": "RAIS 2025 - Tabelas.xlsx"
+    },
+    {
+      "id": "saldo-vinculos-formais-2026-08",
+      "name": "Saldo mensal de empregos formais",
+      "topic": "trabalho",
+      "unit": "vínculos",
+      "reference_period": "2026-08",
+      "definition": "Admissões menos desligamentos de vínculos formais em Sumaré durante agosto de 2026",
+      "source_institution": "Prefeitura Municipal de Sumaré (compilação MTE)",
+      "source_dataset": "Boletim municipal do Novo CAGED, agosto de 2026"
+    },
+    {
+      "id": "renda-mediana-ocupados-2022",
+      "name": "Rendimento mensal mediano do trabalho",
+      "topic": "trabalho",
+      "unit": "R$",
+      "reference_period": "2022",
+      "definition": "Rendimento nominal mensal mediano de todos os trabalhos das pessoas de 14 anos ou mais ocupadas e com rendimento em 2022",
+      "source_institution": "IBGE",
+      "source_dataset": "Censo Demográfico"
     }
   ]
 }
