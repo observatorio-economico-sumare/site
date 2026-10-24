@@ -1,0 +1,304 @@
+{
+  "municipality_code": "3552403",
+  "publication_allowed": false,
+  "candidates": [
+    {
+      "id": "pessoas-ocupadas",
+      "name": "Pessoas ocupadas (Censo 2022)",
+      "topic": "trabalho",
+      "unit": "pessoas",
+      "reference_period": "2022",
+      "definition": "Moradores de 14 anos ou mais que estavam ocupados na semana de referência do Censo 2022",
+      "source_institution": "IBGE",
+      "source_dataset": "Censo Demográfico",
+      "value": 132925,
+      "municipality_code": "3552403",
+      "status": "pending_review",
+      "source": {
+        "institution": "IBGE",
+        "dataset": "Censo Demográfico",
+        "url": "https://apisidra.ibge.gov.br/values/t/10261/n6/3552403/p/2022/v/4090/c11913/all?formato=json",
+        "query_id": "SIDRA t/10261; v/4090; n6/3552403; p/2022; D4C=96165; totais nas demais classificações",
+        "release_date": null
+      },
+      "collected_at": "2026-10-23",
+      "updated_at": "2026-10-23",
+      "reviewed_at": null,
+      "reviewed_by": "Aguardando aprovação editorial",
+      "method": "Ocupados de 14 anos ou mais no Censo 2022; código 96165 corresponde à categoria total da tabela 10261.",
+      "limitations": "Estimativa da amostra do Censo 2022; residentes, não postos de trabalho em Sumaré.",
+      "revisions": "Consulta oficial preservada em 23/10/2026; em revisão; não publicado.",
+      "evidence": {
+        "raw_path": "data/raw/sidra_10261_ocupacao_2022.json",
+        "sha256": "b645ee393a93aa9bcb6e14589c6d82d1d7f40400cd5dc1203c51ab8ac95a7c44",
+        "capture_method": "arquivo_original_api_sidra",
+        "original_file_preserved": true,
+        "row_selector": {
+          "D1C": "3552403",
+          "D2C": "2022",
+          "D3C": "4090",
+          "D5C": "6794",
+          "D6C": "95251",
+          "D4C": "96165"
+        },
+        "value_multiplier": 1
+      }
+    },
+    {
+      "id": "empregados-privados-sem-carteira-2022",
+      "name": "Empregados do setor privado sem carteira",
+      "topic": "trabalho",
+      "unit": "pessoas",
+      "reference_period": "2022",
+      "definition": "Moradores de 14 anos ou mais empregados no setor privado sem carteira assinada; não inclui trabalhadores domésticos",
+      "source_institution": "IBGE",
+      "source_dataset": "Censo Demográfico 2022",
+      "value": 9095,
+      "municipality_code": "3552403",
+      "status": "pending_review",
+      "source": {
+        "institution": "IBGE",
+        "dataset": "Censo Demográfico 2022",
+        "url": "https://apisidra.ibge.gov.br/values/t/10261/n6/3552403/p/2022/v/4090/c11913/all?formato=json",
+        "query_id": "SIDRA t/10261; v/4090; n6/3552403; p/2022; D4C=31723; totais nas demais classificações",
+        "release_date": null
+      },
+      "collected_at": "2026-10-23",
+      "updated_at": "2026-10-23",
+      "reviewed_at": null,
+      "reviewed_by": "Aguardando aprovação editorial",
+      "method": "Seleção de empregados do setor privado sem carteira, exclusive trabalhadores domésticos (categoria 31723).",
+      "limitations": "Não representa todos os trabalhadores informais nem inclui domésticos sem carteira.",
+      "revisions": "Consulta oficial preservada em 23/10/2026; em revisão; não publicado.",
+      "evidence": {
+        "raw_path": "data/raw/sidra_10261_ocupacao_2022.json",
+        "sha256": "b645ee393a93aa9bcb6e14589c6d82d1d7f40400cd5dc1203c51ab8ac95a7c44",
+        "capture_method": "arquivo_original_api_sidra",
+        "original_file_preserved": true,
+        "row_selector": {
+          "D1C": "3552403",
+          "D2C": "2022",
+          "D3C": "4090",
+          "D5C": "6794",
+          "D6C": "95251",
+          "D4C": "31723"
+        },
+        "value_multiplier": 1
+      }
+    },
+    {
+      "id": "trabalhadores-domesticos-sem-carteira-2022",
+      "name": "Trabalhadores domésticos sem carteira",
+      "topic": "trabalho",
+      "unit": "pessoas",
+      "reference_period": "2022",
+      "definition": "Moradores de 14 anos ou mais que trabalhavam como domésticos sem carteira assinada",
+      "source_institution": "IBGE",
+      "source_dataset": "Censo Demográfico 2022",
+      "value": 2103,
+      "municipality_code": "3552403",
+      "status": "pending_review",
+      "source": {
+        "institution": "IBGE",
+        "dataset": "Censo Demográfico 2022",
+        "url": "https://apisidra.ibge.gov.br/values/t/10261/n6/3552403/p/2022/v/4090/c11913/all?formato=json",
+        "query_id": "SIDRA t/10261; v/4090; n6/3552403; p/2022; D4C=79368; totais nas demais classificações",
+        "release_date": null
+      },
+      "collected_at": "2026-10-23",
+      "updated_at": "2026-10-23",
+      "reviewed_at": null,
+      "reviewed_by": "Aguardando aprovação editorial",
+      "method": "Seleção de trabalhadores domésticos sem carteira de trabalho (categoria 79368).",
+      "limitations": "Não inclui empregados privados não domésticos sem carteira e não mede toda informalidade.",
+      "revisions": "Consulta oficial preservada em 23/10/2026; em revisão; não publicado.",
+      "evidence": {
+        "raw_path": "data/raw/sidra_10261_ocupacao_2022.json",
+        "sha256": "b645ee393a93aa9bcb6e14589c6d82d1d7f40400cd5dc1203c51ab8ac95a7c44",
+        "capture_method": "arquivo_original_api_sidra",
+        "original_file_preserved": true,
+        "row_selector": {
+          "D1C": "3552403",
+          "D2C": "2022",
+          "D3C": "4090",
+          "D5C": "6794",
+          "D6C": "95251",
+          "D4C": "79368"
+        },
+        "value_multiplier": 1
+      }
+    },
+    {
+      "id": "escolaridade-sem-instrucao-fundamental-incompleto-2022",
+      "name": "Sem instrução ou fundamental incompleto",
+      "topic": "educacao",
+      "unit": "pessoas",
+      "reference_period": "2022",
+      "definition": "Moradores de 18 anos ou mais sem instrução ou que não concluíram o ensino fundamental",
+      "source_institution": "IBGE",
+      "source_dataset": "Censo Demográfico 2022",
+      "value": 54968,
+      "municipality_code": "3552403",
+      "status": "pending_review",
+      "source": {
+        "institution": "IBGE",
+        "dataset": "Censo Demográfico 2022",
+        "url": "https://apisidra.ibge.gov.br/values/t/10061/n6/3552403/p/2022/v/2667/c1568/all?formato=json",
+        "query_id": "SIDRA t/10061; v/2667; n6/3552403; p/2022; D4C=9493; totais nas demais classificações",
+        "release_date": null
+      },
+      "collected_at": "2026-10-23",
+      "updated_at": "2026-10-23",
+      "reviewed_at": null,
+      "reviewed_by": "Aguardando aprovação editorial",
+      "method": "Pessoas de 18 anos ou mais sem instrução e com fundamental incompleto, categoria 9493.",
+      "limitations": "Amostra do Censo 2022, faixa de 18 anos ou mais; não inclui pessoas mais jovens.",
+      "revisions": "Consulta oficial preservada em 23/10/2026; em revisão; não publicado.",
+      "evidence": {
+        "raw_path": "data/raw/sidra_10061_escolaridade_2022.json",
+        "sha256": "8a8ae482d8f8282a64a81178d0f6c33db9f7a5f5e99438e877cf6ba278fdbe45",
+        "capture_method": "arquivo_original_api_sidra",
+        "original_file_preserved": true,
+        "row_selector": {
+          "D1C": "3552403",
+          "D2C": "2022",
+          "D3C": "2667",
+          "D5C": "6794",
+          "D6C": "95253",
+          "D7C": "95251",
+          "D4C": "9493"
+        },
+        "value_multiplier": 1
+      }
+    },
+    {
+      "id": "escolaridade-fundamental-completo-medio-incompleto-2022",
+      "name": "Fundamental completo ou médio incompleto",
+      "topic": "educacao",
+      "unit": "pessoas",
+      "reference_period": "2022",
+      "definition": "Moradores de 18 anos ou mais com fundamental completo e médio incompleto",
+      "source_institution": "IBGE",
+      "source_dataset": "Censo Demográfico 2022",
+      "value": 32641,
+      "municipality_code": "3552403",
+      "status": "pending_review",
+      "source": {
+        "institution": "IBGE",
+        "dataset": "Censo Demográfico 2022",
+        "url": "https://apisidra.ibge.gov.br/values/t/10061/n6/3552403/p/2022/v/2667/c1568/all?formato=json",
+        "query_id": "SIDRA t/10061; v/2667; n6/3552403; p/2022; D4C=9494; totais nas demais classificações",
+        "release_date": null
+      },
+      "collected_at": "2026-10-23",
+      "updated_at": "2026-10-23",
+      "reviewed_at": null,
+      "reviewed_by": "Aguardando aprovação editorial",
+      "method": "Pessoas de 18 anos ou mais com fundamental completo e médio incompleto, categoria 9494.",
+      "limitations": "Amostra do Censo 2022; escolaridade agrupada conforme definição do IBGE.",
+      "revisions": "Consulta oficial preservada em 23/10/2026; em revisão; não publicado.",
+      "evidence": {
+        "raw_path": "data/raw/sidra_10061_escolaridade_2022.json",
+        "sha256": "8a8ae482d8f8282a64a81178d0f6c33db9f7a5f5e99438e877cf6ba278fdbe45",
+        "capture_method": "arquivo_original_api_sidra",
+        "original_file_preserved": true,
+        "row_selector": {
+          "D1C": "3552403",
+          "D2C": "2022",
+          "D3C": "2667",
+          "D5C": "6794",
+          "D6C": "95253",
+          "D7C": "95251",
+          "D4C": "9494"
+        },
+        "value_multiplier": 1
+      }
+    },
+    {
+      "id": "escolaridade-medio-completo-superior-incompleto-2022",
+      "name": "Médio completo ou superior incompleto",
+      "topic": "educacao",
+      "unit": "pessoas",
+      "reference_period": "2022",
+      "definition": "Moradores de 18 anos ou mais com médio completo e superior incompleto",
+      "source_institution": "IBGE",
+      "source_dataset": "Censo Demográfico 2022",
+      "value": 97609,
+      "municipality_code": "3552403",
+      "status": "pending_review",
+      "source": {
+        "institution": "IBGE",
+        "dataset": "Censo Demográfico 2022",
+        "url": "https://apisidra.ibge.gov.br/values/t/10061/n6/3552403/p/2022/v/2667/c1568/all?formato=json",
+        "query_id": "SIDRA t/10061; v/2667; n6/3552403; p/2022; D4C=9495; totais nas demais classificações",
+        "release_date": null
+      },
+      "collected_at": "2026-10-23",
+      "updated_at": "2026-10-23",
+      "reviewed_at": null,
+      "reviewed_by": "Aguardando aprovação editorial",
+      "method": "Pessoas de 18 anos ou mais com médio completo e superior incompleto, categoria 9495.",
+      "limitations": "Não confundir com somente ensino médio completo: inclui superior incompleto.",
+      "revisions": "Consulta oficial preservada em 23/10/2026; em revisão; não publicado.",
+      "evidence": {
+        "raw_path": "data/raw/sidra_10061_escolaridade_2022.json",
+        "sha256": "8a8ae482d8f8282a64a81178d0f6c33db9f7a5f5e99438e877cf6ba278fdbe45",
+        "capture_method": "arquivo_original_api_sidra",
+        "original_file_preserved": true,
+        "row_selector": {
+          "D1C": "3552403",
+          "D2C": "2022",
+          "D3C": "2667",
+          "D5C": "6794",
+          "D6C": "95253",
+          "D7C": "95251",
+          "D4C": "9495"
+        },
+        "value_multiplier": 1
+      }
+    },
+    {
+      "id": "escolaridade-superior-completo-2022",
+      "name": "Ensino superior completo",
+      "topic": "educacao",
+      "unit": "pessoas",
+      "reference_period": "2022",
+      "definition": "Moradores de 18 anos ou mais que concluíram o ensino superior",
+      "source_institution": "IBGE",
+      "source_dataset": "Censo Demográfico 2022",
+      "value": 28211,
+      "municipality_code": "3552403",
+      "status": "pending_review",
+      "source": {
+        "institution": "IBGE",
+        "dataset": "Censo Demográfico 2022",
+        "url": "https://apisidra.ibge.gov.br/values/t/10061/n6/3552403/p/2022/v/2667/c1568/all?formato=json",
+        "query_id": "SIDRA t/10061; v/2667; n6/3552403; p/2022; D4C=99713; totais nas demais classificações",
+        "release_date": null
+      },
+      "collected_at": "2026-10-23",
+      "updated_at": "2026-10-23",
+      "reviewed_at": null,
+      "reviewed_by": "Aguardando aprovação editorial",
+      "method": "Pessoas de 18 anos ou mais com superior completo, categoria 99713.",
+      "limitations": "Amostra do Censo 2022; contagem de residentes, não de diplomas emitidos em Sumaré.",
+      "revisions": "Consulta oficial preservada em 23/10/2026; em revisão; não publicado.",
+      "evidence": {
+        "raw_path": "data/raw/sidra_10061_escolaridade_2022.json",
+        "sha256": "8a8ae482d8f8282a64a81178d0f6c33db9f7a5f5e99438e877cf6ba278fdbe45",
+        "capture_method": "arquivo_original_api_sidra",
+        "original_file_preserved": true,
+        "row_selector": {
+          "D1C": "3552403",
+          "D2C": "2022",
+          "D3C": "2667",
+          "D5C": "6794",
+          "D6C": "95253",
+          "D7C": "95251",
+          "D4C": "99713"
+        },
+        "value_multiplier": 1
+      }
+    }
+  ]
+}
