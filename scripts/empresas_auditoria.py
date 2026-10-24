@@ -35,10 +35,45 @@ def ibge():
     except Exception as exc:
         print("ERRO ibge",type(exc).__name__,str(exc)[:350],flush=True)
 
+
+def setores_ibge():
+    codes = [
+        116830,116880,116910,117296,117307,117329,117363,117484,
+        117543,117555,117608,117666,117673,117714,117774,117788,
+        117810,117838,117861,117888,117892
+    ]
+    url = ("https://apisidra.ibge.gov.br/values/t/9528/n6/3552403/"
+           "p/2024/v/706/c12762/" + ",".join(map(str,codes)) + "?formato=json")
+    print("RECURSO IBGE_SETORES", url, flush=True)
+    try:
+        with urlopen(Request(url,headers={"User-Agent":"OES/1.0","Accept":"application/json"}),timeout=25) as response:
+            raw=response.read(1_000_001)
+            if len(raw)>1_000_000:raise ValueError("Mais de 1MB")
+        payload=json.loads(raw.decode("utf-8-sig"))
+        data=payload[1:]
+        if len(data)!=len(codes) or {int(row["D4C"]) for row in data}!=set(codes):
+            raise ValueError("Cobertura incompleta das 21 seções CNAE")
+        invalid=[row for row in data if not str(row["V"]).isdigit()]
+        if invalid: raise ValueError("Seções com valores não numéricos: "+str(invalid))
+        groups={"Agropecuária": codes[:1], "Indústria": codes[1:5],
+                "Construção": codes[5:6], "Comércio": codes[6:7],
+                "Serviços": codes[7:]}
+        totals={k:sum(int(row["V"]) for row in data if int(row["D4C"]) in vals)
+                for k,vals in groups.items()}
+        print("IBGE_2024_GRUPOS",json.dumps(totals,ensure_ascii=False), "SOMA",sum(totals.values()),flush=True)
+        if sum(totals.values())!=12746:raise ValueError("Soma setorial diferente do total 12.746")
+        digest=hashlib.sha256(raw).hexdigest()
+        (OUT/"ibge_2024_setores_original.json").write_bytes(raw)
+        print("IBGE_SETORES_HASH",digest,flush=True)
+        for row in data:print("IBGE_SETOR",json.dumps(row,ensure_ascii=False),flush=True)
+    except Exception as exc:
+        print("ERRO ibge_setores",type(exc).__name__,str(exc)[:500],flush=True)
+
 def main():
     OUT.mkdir(exist_ok=True)
     ibge()
-    for kind, url in SOURCES.items():
+    setores_ibge()
+    for kind, url in {}.items():  # Downloads Seade: falharam em duas tentativas; evidência nos logs anteriores.
         print("RECURSO", kind, url, flush=True)
         try:
             with urlopen(Request(url, headers={"User-Agent": "OES/1.0", "Accept": "text/csv,*/*"}), timeout=8) as response:
