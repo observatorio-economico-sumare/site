@@ -12,8 +12,8 @@ class IndicatorReleaseTests(unittest.TestCase):
     def test_sources_periods_and_exact_values(self):
         _, items = pipeline.validate()
         by_id = {item["id"]: item for item in items}
-        self.assertEqual(len(by_id), 31)
-        self.assertNotIn("escolarizacao-6-14-anos-2022", by_id)
+        self.assertEqual(len(by_id), 34)
+        self.assertEqual(by_id["escolarizacao-6-14-anos-2022"]["value"], 98.62)
         self.assertEqual(by_id["residentes-conta-propria-2022"]["value"], 32334)
         self.assertEqual(by_id["pib-municipal-2023"]["value"], 19026093000)
         self.assertEqual(by_id["populacao-homens-2022"]["value"] +
