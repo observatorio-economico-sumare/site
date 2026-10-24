@@ -35,8 +35,18 @@ não executa validação de publicação e não consulta dados pessoais.
 - Os arquivos acima são transcrições auditáveis, **não** cópias do PDF ou do
   HTML original. A escolarização de 2022 permanece bloqueada: o cartão
   apresenta 2022, mas as notas da página ainda citam o Censo 2010.
-- Todos os onze candidatos à integração continuam `pending_review`.
-  O pipeline e os dados de produção não foram alterados nesta revisão.
+- Os 11 candidatos permanecem `pending_review`. As 10 definições sem
+  conflito de período identificado foram acrescentadas somente ao catálogo
+  da branch de pesquisa; escolarização de 6–14 anos fica fora até esclarecer
+  a diferença 2022 (cartão) × 2010 (notas do IBGE).
+- `data/processed/indicators.json` e `site/data/indicators.json` permanecem
+  com os três indicadores anteriores. Nenhum valor foi publicado.
+- A validação de arquivo SIDRA original já possui testes específicos; antes
+  da integração é necessário adicionar os JSONs brutos ao local de evidências,
+  conferir seus SHA-256 e completar a revisão editorial.
+- O front-end em inglês traduz explicitamente apenas os três indicadores
+  atuais; a apresentação bilíngue dos novos registros exigirá ajuste
+  isolado do responsável pelo site, sem alterar a coleta de dados.
 
 ## Saída
 
