@@ -32,6 +32,33 @@ class EvidenceTests(unittest.TestCase):
                 self.assertEqual(len(source["measurements"]),
                                  len({m["id"] for m in source["measurements"]}))
 
+    def test_sidra_originals_have_expected_hashes(self):
+        from scripts.oes_coleta.validar_sidra import validate_sidra
+        candidates = [
+            ("sidra_10261_ocupacao_2022.json",
+             "b645ee393a93aa9bcb6e14589c6d82d1d7f40400cd5dc1203c51ab8ac95a7c44",
+             32334, "pessoas", "2022",
+             {"D1C": "3552403", "D2C": "2022", "D3C": "4090",
+              "D4C": "79378", "D5C": "6794", "D6C": "95251"}, 1,
+             "https://apisidra.ibge.gov.br/values/t/10261/n6/3552403/p/2022/v/4090/c11913/all?formato=json"),
+            ("sidra_5938_pib_2023.json",
+             "64b19e9b71f4c0180aaee551567dd82030bb2feb82a99aed9fd591bb23ae99f5",
+             19026093000, "R$", "2023",
+             {"D1C": "3552403", "D2C": "2023", "D3C": "37"}, 1000,
+             "https://apisidra.ibge.gov.br/values/t/5938/n6/3552403/p/2023/v/37?formato=json")
+        ]
+        for filename, digest, value, unit, period, selector, factor, url in candidates:
+            with self.subTest(file=filename):
+                raw = (ROOT / filename).read_bytes()
+                self.assertEqual(hashlib.sha256(raw).hexdigest(), digest)
+                validate_sidra(json.loads(raw),
+                               {"value": value, "unit": unit, "reference_period": period,
+                                "municipality_code": "3552403",
+                                "evidence": {"original_file_preserved": True,
+                                             "row_selector": selector,
+                                             "value_multiplier": factor}},
+                               {"institution": "IBGE", "url": url})
+
     def test_demographic_totals(self):
         ms = {m["id"]: m["value"] for m in self.records[
             "ses_sp_sumare_censo_2022_2026-10-23.json"]["measurements"]}
