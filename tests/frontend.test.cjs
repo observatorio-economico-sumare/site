@@ -516,7 +516,7 @@ for (const [page, source] of [
 }
 /* Navegação compacta e filtros acessíveis no celular, também nas subpáginas. */
 assert.match(fs.readFileSync("site/assets/css/styles.css","utf8"),
-  /@media \(max-width: 800px\) \{\s*\.nav-inner \{\s*flex-wrap: nowrap;/);
+  /@media \(max-width: 800px\) \{\s*\.nav-inner \{\s*flex-wrap: wrap;/);
 assert.match(fs.readFileSync("site/assets/css/biblioteca.css","utf8"),
   /\.library-topics \{ flex-wrap: nowrap; overflow-x: auto;/);
 assert.match(fs.readFileSync("site/assets/css/empresas.css","utf8"),
