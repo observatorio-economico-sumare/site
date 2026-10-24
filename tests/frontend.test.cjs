@@ -746,6 +746,23 @@ for (const page of ["site/index.html","site/en/index.html"]) {
 const raisCss=fs.readFileSync("site/assets/css/styles.css","utf8");
 assert.match(raisCss,/\.metrics--sectors \.sector-track/);
 assert.match(raisCss,/\.metrics--sectors \.sector-fill/);
+
+/* RAIS usa o mesmo padrão editorial das barras CEMPRE: sem caixa externa. */
+assert.match(raisCss,/#trabalho \.metrics--sectors\{[^}]*border:0;background:transparent;box-shadow:none/);
+assert.match(raisCss,/#trabalho \.metrics--sectors \.metric\{[^}]*border:0;background:transparent/);
+assert.match(raisCss,/#trabalho \.metrics--sectors \.metric \.number\{[^}]*font:500 14px\/1\.4/);
+assert.match(raisCss,/#trabalho \.metrics--sectors \.sector-fill\{[^}]*background:#536d82/);
+assert.match(raisCss,/@media\(max-width:720px\)/);
+for(const [path,oldPhrase,newPhrase] of [
+ ["site/index.html","Barras proporcionais ao maior setor","RAIS 2025 · empregos registrados"],
+ ["site/en/index.html","Bar lengths are relative to the largest sector","RAIS 2025 · employment recorded"]
+]){
+ const html=fs.readFileSync(path,"utf8");
+ const block=html.match(/<section class="sector-breakdown"[\s\S]*?<\/section>/)?.[0]||"";
+ assert.ok(block.includes(newPhrase),path+": contexto da RAIS");
+ assert.ok(!block.includes(oldPhrase),path+": instrução decorativa removida");
+}
+
 const sectorNumber={textContent:"",classList:{add(){}}};
 const sectorFill={style:{}};
 sandbox.renderForTest(
