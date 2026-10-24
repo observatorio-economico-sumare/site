@@ -64,7 +64,7 @@ class ConsolidatedIndicatorsTests(unittest.TestCase):
         self.assertEqual(values["populacao-censo-2022"], 279545)
         self.assertEqual(values["pib-municipal-2023"], 19026093000)
         self.assertEqual(values["residentes-conta-propria-2022"], 32334)
-        self.assertNotIn("escolarizacao-6-14-anos-2022", values)
+        self.assertEqual(values["escolarizacao-6-14-anos-2022"], 98.62)
 
 
 if __name__ == "__main__":
