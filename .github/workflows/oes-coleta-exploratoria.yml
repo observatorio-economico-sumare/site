@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - pesquisa/coletor-fontes-oficiais-20261023
+      - dados/validacao-pendencias-20261023
     paths:
       - .github/workflows/oes-coleta-exploratoria.yml
       - scripts/oes_coleta/**
@@ -40,6 +41,21 @@ jobs:
       - name: Sumario de execucao
         run: |
           python -c 'import json; d=json.load(open("oes-resultado/relatorio.json")); print("Requisicoes:",d["requests"],"Arquivos JSON:",d["downloaded_json"],"Linhas candidatas:",d["candidate_rows"],"Status:",d["status_counts"])'
+      - name: Evidencias SIDRA resumidas no log
+        run: |
+          python - <<'PY'
+          import hashlib, json
+          from pathlib import Path
+          for name in ("sidra_6580_desocupacao_2022", "sidra_10264_previdencia_2022", "sidra_10056_metadados"):
+              path = Path("oes-resultado/raw") / (name + ".json")
+              if path.exists():
+                  raw = path.read_bytes()
+                  print("OES_BEGIN", name, hashlib.sha256(raw).hexdigest(), len(raw))
+                  print(raw.decode("utf-8")[:24000])
+                  print("OES_END", name)
+              else:
+                  print("OES_MISSING", name)
+          PY
       - name: Arquivar somente artefatos, sem commit e sem deploy
         if: always()
         uses: actions/upload-artifact@v4
