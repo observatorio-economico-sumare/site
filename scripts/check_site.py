@@ -83,7 +83,7 @@ def check_links(name, doc, pages):
 
 
 def main():
-    pages = {name: read_page(name) for name in ("index.html", "governanca.html", "biblioteca.html", "en/index.html", "en/governanca.html")}
+    pages = {name: read_page(name) for name in ("index.html", "governanca.html", "biblioteca.html", "en/index.html", "en/governanca.html", "populacao.html", "trabalho.html", "economia.html")}
     index = pages["index.html"]
     assert {"assets/js/app.js", "assets/js/indicators.js"}.issubset(index.scripts)
     assert {"sourceDialog", "sourceDialogTitle", "sourceDialogBody",
@@ -101,6 +101,11 @@ def main():
             "sobre-a-fundadora"}.issubset(governance.ids)
 
     assert set(pages["en/governanca.html"].ids) == set(governance.ids), "Governança divergente"
+    for topic in ("populacao", "trabalho", "economia"):
+        assert "assets/js/indicators.js" in pages[topic + ".html"].scripts, (
+            f"{topic}: página temática sem fonte validada de indicadores")
+        assert pages[topic + ".html"].indicator_ids, (
+            f"{topic}: sem indicadores vinculados")
     for name, doc in pages.items():
         check_links(name, doc, pages)
 

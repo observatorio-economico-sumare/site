@@ -7,7 +7,8 @@ from pathlib import Path
 SITE = Path(__file__).resolve().parents[1] / "site"
 BASE = "https://oesumare.github.io"
 PAGES = ("index.html", "governanca.html", "biblioteca.html",
-         "en/index.html", "en/governanca.html")
+         "en/index.html", "en/governanca.html",
+         "populacao.html", "trabalho.html", "economia.html")
 
 
 class Metadata(HTMLParser):
@@ -36,11 +37,23 @@ class SeoTests(unittest.TestCase):
                 expected = BASE + ("/" if page == "index.html" else "/" + page)
                 self.assertEqual(doc.canonical, expected)
                 self.assertEqual(doc.og_url, expected)
-                if page != "biblioteca.html":
+                if page in ("index.html", "en/index.html", "governanca.html", "en/governanca.html"):
                     stem = "governanca.html" if "governanca" in page else "index.html"
                     pt_url = BASE + ("/" if stem == "index.html" else "/" + stem)
                     self.assertEqual(doc.alternates, {
                         "pt-BR": pt_url, "en": BASE + "/en/" + stem})
+
+
+    def test_topic_pages_share_source_without_new_scripts(self):
+        for topic in ("populacao", "trabalho", "economia"):
+            with self.subTest(topic=topic):
+                html = (SITE / (topic + ".html")).read_text(encoding="utf-8")
+                self.assertIn('src="assets/js/indicators.js"', html)
+                self.assertIn('href="assets/css/styles.css"', html)
+                self.assertIn('href="index.html#' + topic + '"', html)
+                self.assertIn('id="sourceDialog"', html)
+                self.assertIn('data-indicator="', html)
+                self.assertIn('href="' + topic + '.html"', (SITE / "index.html").read_text(encoding="utf-8"))
 
     def test_sitemap_and_robots(self):
         xml = ET.parse(SITE / "sitemap.xml").getroot()
