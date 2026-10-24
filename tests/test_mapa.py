@@ -56,11 +56,13 @@ class TestMapaDemografico(unittest.TestCase):
             self.assertIn('class="mapa-note"', html)
         self.assertLess(DATA.stat().st_size, 250000)
         js = (ROOT / "site/assets/js/mapa.js").read_text(encoding="utf8")
-        self.assertIn("center(polygons(area.geometry)[0][0])", js)
+        self.assertNotIn("center(polygons(area.geometry)[0][0])", js)
         self.assertIn('aria-pressed', js)
         self.assertIn('ranked = [...areas].sort', js)
         css = (ROOT / "site/assets/css/mapa.css").read_text(encoding="utf8")
-        self.assertIn(".mapa-label", css)
+        self.assertNotIn(".mapa-label", css)
+        self.assertIn(".mapa-scale", css)
+        self.assertIn("button.addEventListener(\"mouseenter\"", js)
         self.assertIn("@media (max-width: 480px)", css)
 
 
