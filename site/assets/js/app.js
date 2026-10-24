@@ -139,21 +139,38 @@ const glossaryEntries = {
       "url": "https://anuario.ibge.gov.br/2024/glossario-2024.html"
     }
   },
-  "Servidor público": {
+  "Rendimento mediano": {
     "pt": {
-      "title": "Servidor público",
-      "short": "Pessoa que trabalha na administração pública. Pode ter diferentes tipos de contrato, que precisam ser considerados ao comparar os dados.",
-      "detail": "O trabalho no setor público inclui diferentes regimes, como estatutário, celetista e contratações temporárias. O alcance do termo “servidor público” varia com a base consultada. Ao comparar ou somar dados, é preciso confirmar quais categorias estão incluídas."
+      "title": "Rendimento mediano",
+      "short": "É o rendimento que fica no meio da lista quando os valores são colocados em ordem. Metade das pessoas recebe esse valor ou menos, e metade recebe esse valor ou mais.",
+      "detail": "Ao contrário da média, a mediana é menos afetada por rendimentos muito altos. No OES, confira o grupo de pessoas e o período informados na ficha do indicador."
     },
     "en": {
-      "title": "Public-sector worker",
-      "short": "Someone working in public administration under a legally defined employment arrangement. Statistics may distinguish statutory officials, public employees and temporary workers.",
-      "detail": "Public-sector work includes statutory, CLT and temporary arrangements. The meaning of 'public servant' varies by data source. Before comparing or adding totals, check which categories are included."
+      "title": "Median earnings",
+      "short": "The middle value when people's earnings are arranged in order. Half earn this amount or less, and half earn this amount or more.",
+      "detail": "Unlike the average, the median is less affected by very high earnings. Check the population and reference period in the indicator's details."
     },
     "source": {
-      "pt": "Ministério da Previdência · Regimes de contratação pública",
-      "en": "Brazilian Ministry of Social Security · Public-sector employment regimes",
-      "url": "https://www.gov.br/previdencia/pt-br/assuntos/rpps/julgamentos/julgamentos-stf/adi-2135-regime-juridico-unico-na-administracao-publica"
+      "pt": "IBGE · Glossário estatístico",
+      "en": "IBGE · Statistical glossary",
+      "url": "https://anuario.ibge.gov.br/2024/glossario-2024.html"
+    }
+  },
+  "PIB por habitante": {
+    "pt": {
+      "title": "PIB por habitante",
+      "short": "É o valor produzido na cidade em um ano, dividido pela população de referência. Não é o salário nem a renda de cada morador.",
+      "detail": "O Produto Interno Bruto (PIB) mede o valor dos bens e serviços produzidos. Dividir esse total pelo número de habitantes não mostra como a renda é distribuída. Os valores do OES se referem a 2023, sem correção pela inflação."
+    },
+    "en": {
+      "title": "GDP per capita",
+      "short": "A city's annual economic output divided by its reference population. It is not the salary or income received by each resident.",
+      "detail": "Gross Domestic Product (GDP) measures the value of goods and services produced. Dividing it by the population does not show how income is distributed. The OES figures refer to 2023, without inflation adjustment."
+    },
+    "source": {
+      "pt": "IBGE · PIB dos Municípios",
+      "en": "IBGE · Municipal GDP",
+      "url": "https://www.ibge.gov.br/cidades-e-estados/sp/sumare.html"
     }
   }
 };
