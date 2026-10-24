@@ -19,7 +19,8 @@
       "source": {
         "name": "3M Brasil",
         "url": "https://www.3m.com.br/3M/pt_BR/3m-do-brasil/parceiros-e-fornecedores/"
-      }
+      },
+      "website": "https://www.3m.com.br/"
     },
     {
       "id": "honda",
@@ -39,7 +40,8 @@
       "source": {
         "name": "Honda Brasil",
         "url": "https://www.honda.com.br/institucional/honda-no-brasil"
-      }
+      },
+      "website": "https://www.honda.com.br/"
     },
     {
       "id": "ppg",
@@ -59,7 +61,8 @@
       "source": {
         "name": "PPG Newsroom, 14/09/2023",
         "url": "https://news.ppg.com/Press-Releases/news-details/2023/PPG-completes-2-7-million-expansion-of-powder-coatings-factory-in-Sumar-Brazil/default.aspx"
-      }
+      },
+      "website": "https://www.ppg.com/pt-BR"
     },
     {
       "id": "selmi",
@@ -78,8 +81,9 @@
       },
       "source": {
         "name": "Selmi, unidades industriais",
-        "url": "https://en.selmi.com.br/products"
-      }
+        "url": "https://en.selmi.com.br/mission-vision-and-values"
+      },
+      "website": "https://pt-br.selmi.com.br/"
     },
     {
       "id": "villares",
@@ -99,7 +103,8 @@
       "source": {
         "name": "Villares Metals, sobre nós",
         "url": "https://www.villaresmetals.com.br/pt-br/empresa/sobre-nos/"
-      }
+      },
+      "website": "https://www.villaresmetals.com.br/pt-br/"
     }
   ]
 }
