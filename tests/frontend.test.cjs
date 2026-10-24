@@ -564,11 +564,11 @@ assert.doesNotMatch(metricCss,/\.metric label/);
 
 /* Metadados OG por página, sem UTM e com URL canônica. */
 for(const [path,url,locale] of [
- ["site/index.html","https://oes-sumare-beta.vercel.app/","pt_BR"],
- ["site/en/index.html","https://oes-sumare-beta.vercel.app/en/index.html","en_US"],
- ["site/biblioteca.html","https://oes-sumare-beta.vercel.app/biblioteca.html","pt_BR"],
- ["site/governanca.html","https://oes-sumare-beta.vercel.app/governanca.html","pt_BR"],
- ["site/en/governanca.html","https://oes-sumare-beta.vercel.app/en/governanca.html","en_US"]
+ ["site/index.html","https://oesumare.github.io/","pt_BR"],
+ ["site/en/index.html","https://oesumare.github.io/en/index.html","en_US"],
+ ["site/biblioteca.html","https://oesumare.github.io/biblioteca.html","pt_BR"],
+ ["site/governanca.html","https://oesumare.github.io/governanca.html","pt_BR"],
+ ["site/en/governanca.html","https://oesumare.github.io/en/governanca.html","en_US"]
 ]){
  const html=fs.readFileSync(path,"utf8");
  const head=html.slice(0,html.indexOf("</head>"));
@@ -681,3 +681,31 @@ for (const [page,heading,warning] of [
 const ageSource=JSON.parse(fs.readFileSync("site/data/faixas-etarias-2022.json","utf8"));
 assert.equal(ageSource.source.url,"https://apisidra.ibge.gov.br/values/t/9514/n6/3552403/p/2022/v/93/c2/6794/c287/all/c286/113635?formato=json");
 assert.doesNotMatch(fs.readFileSync("site/assets/css/idades.css","utf8"),/\.age-intro/);
+
+
+/* A hierarquia explica diferenças sem misturar amostras, datas ou séries. */
+for(const [page,headings] of [
+ ["site/index.html",["Empregos nos estabelecimentos da cidade","Trabalho dos moradores","Rendimentos do trabalho","Outros dados econômicos","Empresas com atuação documentada"]],
+ ["site/en/index.html",["Jobs at workplaces in Sumaré","Residents and employment","Earnings from work","Other economic data","Companies with documented operations"]]
+]){
+ const html=fs.readFileSync(page,"utf8");
+ const work=html.slice(html.indexOf('id="trabalho" role="region"'),html.indexOf('id="economia" role="region"'));
+ const economy=html.slice(html.indexOf('id="economia" role="region"'),html.indexOf('id="empresas" role="region"'));
+ for (const heading of headings) assert.ok(html.includes(heading),page+": "+heading);
+ assert.equal((work.match(/class="metrics metrics--two"/g)||[]).length,4,page+": work groups");
+ assert.equal((work.match(/data-indicator="/g)||[]).length,15,page+": validated work values unchanged");
+ assert.equal((economy.match(/data-indicator="/g)||[]).length,2,page+": GDP indicators unchanged");
+ assert.ok(economy.includes('href="#empresas"'),page+": related evidence link");
+ assert.ok(html.includes('href="https://sidra.ibge.gov.br/tabela/9528"'),page+": public CEMPRE table");
+ const sources=html.slice(html.indexOf('id="metodologia" role="region"'),html.indexOf('id="sobre" role="region"'));
+ assert.equal((sources.match(/class="source"/g)||[]).length,5,page+": five official datasets");
+ for(const table of ["5938","9528"])
+   assert.ok(sources.includes('href="https://sidra.ibge.gov.br/tabela/'+table+'"'),page+": SIDRA source "+table);
+ assert.ok(sources.includes("MTE"),page+": differentiated original and republication");
+}
+assert.match(fs.readFileSync("site/assets/css/styles.css","utf8"),/\.tab \.data-subheading\{/);
+/* Metadados apontam ao domínio canônico que os leitores recebem. */
+for(const page of ["site/index.html","site/en/index.html","site/biblioteca.html","site/governanca.html","site/en/governanca.html"]){
+ const head=fs.readFileSync(page,"utf8").split("</head>")[0];
+ assert.doesNotMatch(head,/oes-sumare-beta\.vercel\.app/);
+}
