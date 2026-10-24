@@ -44,7 +44,7 @@ class AgeGroupsCensusTests(unittest.TestCase):
 
     def test_seven_groups_use_all_official_quinquennial_categories_once(self):
         source = {r["D5C"]: r for r in self.rows[1:] if
-                  re.fullmatch(r"\\d+ a \\d+ anos|100 anos ou mais", r.get("D5N", ""))}
+                  re.fullmatch(r"\d+ a \d+ anos|100 anos ou mais", r.get("D5N", ""))}
         # Registros de cinco anos (inclusive a categoria final 100+).
         self.assertEqual(len(source), 21)
         expected = [("0-14", 54771), ("15-24", 39333),
