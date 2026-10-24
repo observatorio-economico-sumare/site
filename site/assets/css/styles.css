@@ -360,15 +360,13 @@ nav{background:#fff;border-bottom:1px solid var(--line)}
  .nav-inner button,.nav-inner>a{font-size:12.5px}
 }
 
-/* Mobile: menu em uma linha e indicadores com leitura mais rápida. */
+/* Mobile: todos os links do menu ficam visíveis, sem rolagem horizontal. */
 @media (max-width: 800px) {
   .nav-inner {
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    overflow-y: hidden;
-    overscroll-behavior-x: contain;
-    scrollbar-width: thin;
-    -webkit-overflow-scrolling: touch;
+    flex-wrap: wrap;
+    overflow: visible;
+    column-gap: 12px;
+    row-gap: 0;
   }
   .nav-inner button, .nav-inner > a { flex-shrink: 0; }
 }
