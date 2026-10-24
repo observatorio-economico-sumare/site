@@ -1,0 +1,83 @@
+{
+  "municipality_code": "3552403",
+  "publication_allowed": false,
+  "indicators": [
+    {
+      "id": "residentes-conta-propria-2022",
+      "name": "Pessoas ocupadas por conta própria",
+      "topic": "trabalho",
+      "unit": "pessoas",
+      "reference_period": "2022",
+      "definition": "Pessoas residentes que trabalham por conta própria",
+      "value": 32334,
+      "municipality_code": "3552403",
+      "status": "pending_review",
+      "source": {
+        "institution": "IBGE",
+        "dataset": "Censo 2022",
+        "url": "https://apisidra.ibge.gov.br/values/t/10261/n6/3552403/p/2022/v/4090/c11913/all?formato=json",
+        "query_id": "SIDRA t/10261 n6/3552403 p/2022 v/4090 c11913/all; categoria 79378",
+        "release_date": null
+      },
+      "collected_at": "2026-10-23",
+      "updated_at": "2026-10-23",
+      "reviewed_at": null,
+      "reviewed_by": "Aguardando aprovação documental",
+      "method": "Pessoas residentes em Sumaré, com 14 anos ou mais, ocupadas por conta própria (sem empregados) na semana de referência do Censo 2022. Tabela SIDRA 10261, variável 4090, posição 79378, sexo e cor/raça total.",
+      "limitations": "Refere-se a residentes, não a vínculos de estabelecimentos locais. A categoria não equivale ao número de CNPJs, MEIs ou de profissionais PJ únicos.",
+      "revisions": "Candidato extraído em 23/10/2026; não publicado.",
+      "evidence": {
+        "raw_path": "data/raw/sidra_10261_ocupacao_2022.json",
+        "sha256": "b645ee393a93aa9bcb6e14589c6d82d1d7f40400cd5dc1203c51ab8ac95a7c44",
+        "capture_method": "arquivo_original_api_sidra",
+        "original_file_preserved": true,
+        "row_selector": {
+          "D1C": "3552403",
+          "D2C": "2022",
+          "D3C": "4090",
+          "D4C": "79378",
+          "D5C": "6794",
+          "D6C": "95251"
+        },
+        "value_multiplier": 1
+      }
+    },
+    {
+      "id": "pib-municipal-2023",
+      "name": "Produto Interno Bruto municipal – preços correntes",
+      "topic": "economia",
+      "unit": "R$",
+      "reference_period": "2023",
+      "definition": "Valor adicionado e tributos líquidos de subsídios, a preços correntes",
+      "value": 19026093000,
+      "municipality_code": "3552403",
+      "status": "pending_review",
+      "source": {
+        "institution": "IBGE",
+        "dataset": "PIB dos Municípios",
+        "url": "https://apisidra.ibge.gov.br/values/t/5938/n6/3552403/p/2023/v/37?formato=json",
+        "query_id": "SIDRA t/5938 n6/3552403 p/2023 v/37; valor original em mil reais",
+        "release_date": null
+      },
+      "collected_at": "2026-10-23",
+      "updated_at": "2026-10-23",
+      "reviewed_at": null,
+      "reviewed_by": "Aguardando aprovação documental",
+      "method": "Valor do PIB de Sumaré em 2023, conforme SIDRA tabela 5938, variável 37. Resposta original em mil reais multiplicada por 1.000 para apresentação em reais.",
+      "limitations": "PIB mede a produção econômica local, não a renda pessoal de moradores; valor nominal a preços correntes, sem correção inflacionária.",
+      "revisions": "Candidato extraído em 23/10/2026; não publicado.",
+      "evidence": {
+        "raw_path": "data/raw/sidra_5938_pib_2023.json",
+        "sha256": "64b19e9b71f4c0180aaee551567dd82030bb2feb82a99aed9fd591bb23ae99f5",
+        "capture_method": "arquivo_original_api_sidra",
+        "original_file_preserved": true,
+        "row_selector": {
+          "D1C": "3552403",
+          "D2C": "2023",
+          "D3C": "37"
+        },
+        "value_multiplier": 1000
+      }
+    }
+  ]
+}
