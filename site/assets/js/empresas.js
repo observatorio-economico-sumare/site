@@ -5,7 +5,9 @@
   const english = document.documentElement.lang === "en";
   const lang = english ? "en" : "pt";
   const list = root.querySelector("[data-company-list]");
-  const filter = root.querySelector("[data-company-sector]");
+  const filters = root.querySelector("[data-company-filters]");
+  const filterPanel = root.querySelector("[data-company-filter]");
+  let selectedSector = "";
   const count = root.querySelector("[data-company-count]");
   const status = root.querySelector("[data-company-status]");
 
@@ -19,7 +21,7 @@
     try { return new URL(value).protocol === "https:"; } catch { return false; }
   };
   const render = companies => {
-    const matching = companies.filter(c => !filter.value || c.sector.pt === filter.value);
+    const matching = companies.filter(c => !selectedSector || c.sector.pt === selectedSector);
     const fragment = document.createDocumentFragment();
     for (const company of matching) {
       const article = el("article", "empresa-entry");
@@ -51,12 +53,24 @@
         !c.presence?.[lang] || !validSource(c.source?.url))) throw new Error("Invalid company data");
       companies.sort((a,b) => a.name.localeCompare(b.name, lang));
       const sectors = new Map(companies.map(c => [c.sector.pt, c.sector[lang]]));
-      for (const [key, label] of [...sectors].sort((a,b) => a[1].localeCompare(b[1],lang))) {
-        const option = el("option", "", label);
-        option.value = key;
-        filter.append(option);
-      }
-      filter.addEventListener("change", () => render(companies));
+      const options = [["", english ? "All industries" : "Todas as atividades"],
+        ...[...sectors].sort((a,b) => a[1].localeCompare(b[1], lang))];
+      const buttons = options.map(([key, label]) => {
+        const button = el("button", "empresa-filter-button", label);
+        button.type = "button";
+        button.dataset.sector = key;
+        button.setAttribute("aria-pressed", String(key === selectedSector));
+        button.addEventListener("click", () => {
+          selectedSector = key;
+          for (const item of buttons) {
+            item.setAttribute("aria-pressed", String(item.dataset.sector === selectedSector));
+          }
+          render(companies);
+        });
+        return button;
+      });
+      filters.replaceChildren(...buttons);
+      filterPanel.hidden = false;
       status.hidden = true;
       render(companies);
     })

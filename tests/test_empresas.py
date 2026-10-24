@@ -32,5 +32,24 @@ class EmpresasTest(unittest.TestCase):
             self.assertIn("empresas.js", page)
             self.assertIn("empresas.css", page)
 
+    def test_filtro_horizontal_mesmo_padrao_da_biblioteca(self):
+        for path in ("site/index.html", "site/en/index.html"):
+            html = (ROOT / path).read_text(encoding="utf-8")
+            self.assertIn('data-company-filters role="group"', html)
+            self.assertIn('data-company-filter hidden', html)
+            self.assertNotIn('data-company-sector', html)
+            self.assertIn('data-company-count aria-live="polite"', html)
+
+        css = (ROOT / "site/assets/css/empresas.css").read_text(encoding="utf-8")
+        library = (ROOT / "site/assets/css/biblioteca.css").read_text(encoding="utf-8")
+        for rule in ('border-bottom:2px solid transparent', 'border-bottom-color:var(--yellow)',
+                     'flex-wrap:wrap', 'focus-visible'):
+            self.assertIn(rule, css)
+            self.assertIn(rule, library)
+        js = (ROOT / "site/assets/js/empresas.js").read_text(encoding="utf-8")
+        self.assertIn('aria-pressed', js)
+        self.assertIn('filters.replaceChildren(...buttons)', js)
+        self.assertIn('selectedSector', js)
+
 if __name__ == "__main__":
     unittest.main()
