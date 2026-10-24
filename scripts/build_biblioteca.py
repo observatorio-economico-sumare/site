@@ -24,6 +24,9 @@ def public_records(catalog):
     ids, urls = set(), set()
     for record in records:
         identifier = record.get("id", "?")
+        source_host = (urlsplit(record.get("url_original", "")).hostname or "").lower()
+        if source_host == "scielo.br" or source_host.endswith(".scielo.br"):
+            raise ValueError(f"{identifier}: link de agregador SciELO não permitido")
         if record.get("status_verificacao_link") not in CONFIRMED:
             raise ValueError(f"{identifier}: registro não confirmado marcado para publicação")
         if any(not str(record.get(key, "")).strip() for key in FIELDS):
