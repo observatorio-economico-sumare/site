@@ -664,3 +664,20 @@ for(const [page,heading] of [
  assert.match(html,/data-company-list/);
 }
 assert.doesNotMatch(fs.readFileSync("site/assets/js/empresas.js","utf8"),/data-company-count|count\.textContent/);
+
+
+/* Distribuição etária: link público legível e API original preservada nas evidências. */
+for (const [page,heading,warning] of [
+  ["site/index.html","Moradores por faixa etária","Selecione uma barra para destacar"],
+  ["site/en/index.html","Population by age group","Select a bar to highlight it"]
+]) {
+  const html=fs.readFileSync(page,"utf8");
+  assert.ok(html.includes(heading),page);
+  assert.ok(html.includes('href="https://sidra.ibge.gov.br/tabela/9514"'),page+": consulta legível do SIDRA");
+  assert.doesNotMatch(html,/<p class="age-intro">/);
+  assert.ok(!html.includes(warning),page+": instrução redundante");
+  assert.match(html,/2\.699 pessoas|2,699 people/);
+}
+const ageSource=JSON.parse(fs.readFileSync("site/data/faixas-etarias-2022.json","utf8"));
+assert.equal(ageSource.source.url,"https://apisidra.ibge.gov.br/values/t/9514/n6/3552403/p/2022/v/93/c2/6794/c287/all/c286/113635?formato=json");
+assert.doesNotMatch(fs.readFileSync("site/assets/css/idades.css","utf8"),/\.age-intro/);
