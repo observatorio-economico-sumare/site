@@ -1,0 +1,22 @@
+/* Distribuição etária: barras horizontais compactas, com seleção acessível. */
+.age-section{max-width:900px;margin:34px 0 32px}
+.age-section .section-title{margin-bottom:6px}
+.age-intro{font-size:13px;color:var(--muted);margin:4px 0 16px}
+.age-list{display:grid;gap:4px}
+.age-row{display:grid;grid-template-columns:120px minmax(0,1fr) 162px;gap:13px;align-items:center;width:100%;min-height:37px;padding:5px 8px;border:1px solid transparent;border-radius:5px;background:transparent;color:var(--ink);font:500 13px/1.4 var(--font-interface);cursor:pointer;text-align:left}
+.age-row:hover,.age-row:focus-visible,.age-row[aria-pressed="true"]{background:#f0f4f6;border-color:#d7e1e8}
+.age-row:focus-visible{outline:2px solid #244b67;outline-offset:2px}
+.age-label{white-space:nowrap}
+.age-track{height:12px;border-radius:2px;background:#e9eef1;overflow:hidden}
+.age-fill{display:block;height:100%;background:#53738c;border-radius:2px}
+.age-row[aria-pressed="true"] .age-fill{background:#173e5a}
+.age-value{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.age-selection{font-size:13px;color:var(--ink);margin:11px 8px 0}
+.age-selection:empty{display:none}
+.age-source{font-size:12px;color:var(--muted);margin:13px 0 0}
+.age-source a{color:#365b73;text-underline-offset:3px}
+@media(max-width:520px){
+  .age-row{grid-template-columns:72px minmax(0,1fr) 118px;gap:8px;padding:5px 3px;font-size:12px}
+  .age-track{height:10px}
+  .age-section{margin:27px 0}
+}
