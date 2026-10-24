@@ -159,7 +159,7 @@
       "topic": "trabalho",
       "unit": "pessoas",
       "reference_period": "2022",
-      "definition": "Pessoas residentes que trabalham por conta própria",
+      "definition": "Pessoas residentes com 14 anos ou mais ocupadas por conta própria, sem empregados, na semana de referência do Censo 2022",
       "source_institution": "IBGE",
       "source_dataset": "Censo 2022"
     },
