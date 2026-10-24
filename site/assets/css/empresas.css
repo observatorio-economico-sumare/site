@@ -1,8 +1,13 @@
 /* Empresas: apresentação editorial sem métricas ou ranking não verificados. */
 .empresas-intro{max-width:790px;color:#4b5b6b;margin:0 0 24px;font-size:15px}
-.empresas-toolbar{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;margin:27px 0 8px}
-.empresas-toolbar label{font-size:13px;color:var(--muted);display:flex;align-items:center;gap:10px}
-.empresas-toolbar select{max-width:100%;padding:9px 34px 9px 11px;border:1px solid var(--line);border-radius:3px;background:#fff;color:var(--ink);font:inherit}
+.empresas-filter{display:flex;flex-direction:column;align-items:flex-start;gap:6px;margin:24px 0 6px}
+.empresas-filter[hidden]{display:none}
+.empresas-filter-label{font:600 13px/1.5 var(--font-interface);color:var(--muted)}
+.empresas-filter-options{display:flex;flex-wrap:wrap;align-items:center;gap:3px 20px}
+.empresa-filter-button{appearance:none;background:transparent;border:0;border-bottom:2px solid transparent;padding:8px 0 7px;cursor:pointer;text-align:left;font:500 14px/1.4 var(--font-interface);color:var(--muted)}
+.empresa-filter-button:hover{color:var(--ink)}
+.empresa-filter-button[aria-pressed="true"]{font-weight:600;color:var(--ink);border-bottom-color:var(--yellow)}
+.empresa-filter-button:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
 .empresas-count{font-size:13px;color:var(--muted)}
 .empresas-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:clamp(25px,4vw,64px)}
 .empresa-entry{border-top:1px solid var(--line);padding:22px 0 26px;min-width:0}
@@ -12,7 +17,7 @@
 .empresa-entry a{font-size:13px;font-weight:600}
 .empresas-note{border-top:1px solid var(--line);padding-top:16px;margin:20px 0 0;font-size:13px;line-height:1.75;color:var(--muted);max-width:790px}
 .empresas-note a{font-weight:600}
-@media(max-width:680px){.empresas-grid{grid-template-columns:minmax(0,1fr)}.empresas-toolbar{align-items:flex-start}.empresas-toolbar label{width:100%;justify-content:space-between}.empresas-toolbar select{width:min(260px,70%)}}
+@media(max-width:680px){.empresas-grid{grid-template-columns:minmax(0,1fr)}.empresas-filter-options{gap:2px 16px}.empresa-filter-button{font-size:13px}}
 
 /* CEMPRE: poucos números, barras proporcionais e seleção por teclado. */
 .empresas-statistics{margin:18px 0 38px}
