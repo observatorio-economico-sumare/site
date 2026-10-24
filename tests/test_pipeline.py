@@ -16,7 +16,7 @@ class PipelineTests(unittest.TestCase):
         self.assertEqual(values["populacao-censo-2022"], 279545)
         self.assertEqual(values["populacao-estimada"], 292307)
         self.assertEqual(values["pib-per-capita-2023"], 68060.93)
-        self.assertEqual(len(values), 31)
+        self.assertEqual(len(values), 34)
 
     def test_modified_value_is_rejected_even_with_same_evidence_hash(self):
         _, items = pipeline.validate()
