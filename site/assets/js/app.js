@@ -6,7 +6,7 @@ const glossaryEntries = {
   "Vínculo formal": {
     "pt": {
       "title": "Vínculo formal",
-      "short": "É uma relação de trabalho registrada oficialmente. Uma pessoa pode ter mais de um vínculo, portanto o número de vínculos não representa necessariamente o número de trabalhadores.",
+      "short": "É um emprego registrado oficialmente. Uma pessoa pode ter mais de um emprego, por isso o total de vínculos pode ser maior que o número de trabalhadores.",
       "detail": "No Novo CAGED, os vínculos são associados ao local do estabelecimento empregador. Uma pessoa pode trabalhar em Sumaré e morar em outra cidade. O indicador não equivale ao total de moradores empregados."
     },
     "en": {
@@ -23,7 +23,7 @@ const glossaryEntries = {
   "Pessoa ocupada": {
     "pt": {
       "title": "Pessoa ocupada",
-      "short": "Pessoa que estava trabalhando ou temporariamente afastada do trabalho no período pesquisado, conforme os critérios do IBGE. Inclui diferentes formas de trabalho, não apenas empregos com carteira assinada.",
+      "short": "Pessoa que estava trabalhando ou temporariamente afastada no período da pesquisa. Inclui quem trabalha sem carteira assinada.",
       "detail": "Na PNAD Contínua, a definição inclui quem trabalhou pelo menos uma hora na semana de referência, em atividades previstas na pesquisa, e algumas situações de afastamento temporário. Os critérios exatos podem variar entre pesquisas, inclusive no Censo."
     },
     "en": {
@@ -40,7 +40,7 @@ const glossaryEntries = {
   "Pessoa desocupada": {
     "pt": {
       "title": "Pessoa desocupada",
-      "short": "Pessoa sem trabalho que procurou uma ocupação e estava disponível para trabalhar, conforme os critérios da pesquisa. Nem toda pessoa sem emprego é classificada como desocupada.",
+      "short": "Pessoa sem trabalho que procurou emprego e podia começar a trabalhar, conforme as regras da pesquisa. Nem toda pessoa sem emprego entra nessa conta.",
       "detail": "O IBGE considera o período de procura e a disponibilidade para assumir trabalho. Existem situações específicas, como pessoas que já conseguiram trabalho para começar em breve. A classificação depende da pesquisa e de sua referência temporal."
     },
     "en": {
@@ -57,7 +57,7 @@ const glossaryEntries = {
   "CLT": {
     "pt": {
       "title": "CLT",
-      "short": "Sigla para Consolidação das Leis do Trabalho. É o conjunto de regras que regulamenta a contratação de empregados nesse regime, geralmente com carteira assinada.",
+      "short": "CLT significa Consolidação das Leis do Trabalho: regras que se aplicam a boa parte dos empregos com carteira assinada no Brasil.",
       "detail": "O regime CLT não abrange todas as formas de trabalho: trabalhadores autônomos e servidores estatutários, por exemplo, seguem regras diferentes. Não se deve confundir emprego celetista com total de pessoas ocupadas."
     },
     "en": {
@@ -108,7 +108,7 @@ const glossaryEntries = {
   "Saldo de empregos": {
     "pt": {
       "title": "Saldo de empregos",
-      "short": "Diferença entre admissões e desligamentos em determinado período. Se as contratações superam os desligamentos, o saldo é positivo.",
+      "short": "Número de contratações menos o de demissões em um período. Quando as contratações são maiores, o saldo é positivo.",
       "detail": "O saldo mostra a variação líquida dos vínculos formais, não o total de empregos existentes. Pode ser divulgado para um mês ou para um período acumulado e está sujeito às atualizações da fonte."
     },
     "en": {
@@ -125,7 +125,7 @@ const glossaryEntries = {
   "Rendimento médio": {
     "pt": {
       "title": "Rendimento médio",
-      "short": "Média dos rendimentos das pessoas incluídas na pesquisa. Não significa que todas recebam esse valor.",
+      "short": "Média do que recebem as pessoas incluídas na pesquisa. Algumas recebem mais, outras menos.",
       "detail": "A média é calculada somando os rendimentos e dividindo pelo número de pessoas consideradas. Pode diferir muito da mediana e é sensível a rendas altas. É fundamental conferir o grupo pesquisado, a unidade, o período e o tipo de rendimento."
     },
     "en": {
@@ -142,7 +142,7 @@ const glossaryEntries = {
   "Servidor público": {
     "pt": {
       "title": "Servidor público",
-      "short": "Pessoa que atua na administração pública sob vínculo definido pela legislação. As estatísticas podem distinguir servidores estatutários, empregados públicos e temporários.",
+      "short": "Pessoa que trabalha na administração pública. Pode ter diferentes tipos de contrato, que precisam ser considerados ao comparar os dados.",
       "detail": "O trabalho no setor público inclui diferentes regimes, como estatutário, celetista e contratações temporárias. O alcance do termo “servidor público” varia com a base consultada. Ao comparar ou somar dados, é preciso confirmar quais categorias estão incluídas."
     },
     "en": {

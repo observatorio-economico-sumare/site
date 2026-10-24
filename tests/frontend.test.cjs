@@ -432,3 +432,19 @@ const censusText=sandbox.localizedForTest({
 });
 assert.equal(censusText.definition,
   "Número de pessoas que moravam em Sumaré no Censo de 2022.");
+
+
+/* Texto público compreensível sem alterar registros técnicos. */
+for(const [page,forbidden] of [
+ ["site/index.html",["recenseado","recenseamento","Rastreabilidade dos indicadores","vínculos formais"]],
+ ["site/governanca.html",["períodos de referência","informações necessárias à interpretação"]],
+ ["site/biblioteca.html",["representa endosso"]]
+]){
+ const content=fs.readFileSync(page,"utf8");
+ for(const word of forbidden)assert.ok(!content.includes(word),page+": linguagem excessivamente técnica: "+word);
+}
+const publicIndicators=fs.readFileSync("site/assets/js/indicators.js","utf8");
+assert.match(publicIndicators,/const ptIndicatorText = /);
+for(const phrase of ["Número de moradores por quilômetro quadrado",
+ "Quanto a população de Sumaré mudou entre os Censos",
+ "Não é a renda média dos moradores"])assert.ok(publicIndicators.includes(phrase));
