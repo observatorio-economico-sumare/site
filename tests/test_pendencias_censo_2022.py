@@ -45,7 +45,7 @@ class PendingCensusEvidenceTests(unittest.TestCase):
     def test_status_and_publication_gates(self):
         self.assertFalse(self.review["publication_allowed"])
         self.assertEqual(self.review["municipality_code"], "3552403")
-        for key in ("pessoas-desocupadas", "previdencia-ocupados"):
+        for key in ("pessoas-desocupadas", "previdencia-ocupados", "escolarizacao-6-14-anos-2022"):
             self.assertIn(key, self.candidates)
             self.assertNotIn(key, self.published)
             self.assertTrue(self.candidates[key]["en"]["definition"])
@@ -78,6 +78,23 @@ class PendingCensusEvidenceTests(unittest.TestCase):
             Decimal("0.01"), rounding=ROUND_HALF_UP
         )
         self.assertEqual(share, Decimal(str(x["value"])))
+
+    def test_school_attendance_2022_matches_two_primary_sidra_tables(self):
+        x = self.candidates["escolarizacao-6-14-anos-2022"]
+        self.assertNotIn(x["id"], self.published)
+        self.assertEqual(x["reference_period"], "2022")
+        a = self.raw_rows(x)
+        b = x["evidence"]["corroboration"]
+        raw = (ROOT / b["raw_path"]).read_bytes()
+        self.assertEqual(hashlib.sha256(raw).hexdigest(), b["sha256"])
+        for rows, selector in ((a, x["evidence"]["row_selector"]),
+                               (json.loads(raw), b["row_selector"])):
+            matches = [row for row in rows[1:] if row.get("NC") == "6" and
+                       all(row.get(field) == value for field, value in selector.items())]
+            self.assertEqual(len(matches), 1)
+            self.assertEqual(matches[0]["MN"], "%")
+            self.assertEqual(matches[0]["D4N"], "6 a 14 anos")
+            self.assertEqual(Decimal(matches[0]["V"]), Decimal(str(x["value"])))
 
     def test_rais_yearly_series_stays_annual_and_reconciled(self):
         series = self.review["historical_series"]
