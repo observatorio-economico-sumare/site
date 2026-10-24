@@ -92,6 +92,106 @@
       "definition": "Produto Interno Bruto do município dividido pela população de referência, a preços correntes",
       "source_institution": "IBGE",
       "source_dataset": "PIB dos Municípios"
+    },
+    {
+      "id": "crescimento-intercensitario-2010-2022",
+      "name": "Crescimento populacional intercensitário – 2010/2022",
+      "topic": "populacao",
+      "unit": "%",
+      "reference_period": "2010–2022",
+      "definition": "Variação percentual acumulada entre dois censos",
+      "source_institution": "SES-SP (republicação de dados IBGE)",
+      "source_dataset": "Portfólio municipal SES-SP / Censo 2022"
+    },
+    {
+      "id": "populacao-homens-2022",
+      "name": "População residente – homens",
+      "topic": "populacao",
+      "unit": "pessoas",
+      "reference_period": "2022",
+      "definition": "Contagem censitária de homens residentes",
+      "source_institution": "SES-SP (republicação de dados IBGE)",
+      "source_dataset": "Portfólio municipal SES-SP / Censo 2022"
+    },
+    {
+      "id": "populacao-mulheres-2022",
+      "name": "População residente – mulheres",
+      "topic": "populacao",
+      "unit": "pessoas",
+      "reference_period": "2022",
+      "definition": "Contagem censitária de mulheres residentes",
+      "source_institution": "SES-SP (republicação de dados IBGE)",
+      "source_dataset": "Portfólio municipal SES-SP / Censo 2022"
+    },
+    {
+      "id": "populacao-0-14-anos-2022",
+      "name": "População de 0 a 14 anos",
+      "topic": "populacao",
+      "unit": "pessoas",
+      "reference_period": "2022",
+      "definition": "Soma de pessoas entre 0 e 14 anos inclusive",
+      "source_institution": "SES-SP (republicação de dados IBGE)",
+      "source_dataset": "Portfólio municipal SES-SP / Censo 2022"
+    },
+    {
+      "id": "populacao-15-64-anos-2022",
+      "name": "População de 15 a 64 anos",
+      "topic": "populacao",
+      "unit": "pessoas",
+      "reference_period": "2022",
+      "definition": "Soma de pessoas entre 15 e 64 anos inclusive",
+      "source_institution": "SES-SP (republicação de dados IBGE)",
+      "source_dataset": "Portfólio municipal SES-SP / Censo 2022"
+    },
+    {
+      "id": "populacao-65-mais-2022",
+      "name": "População com 65 anos ou mais",
+      "topic": "populacao",
+      "unit": "pessoas",
+      "reference_period": "2022",
+      "definition": "Soma de pessoas com pelo menos 65 anos",
+      "source_institution": "SES-SP (republicação de dados IBGE)",
+      "source_dataset": "Portfólio municipal SES-SP / Censo 2022"
+    },
+    {
+      "id": "residentes-conta-propria-2022",
+      "name": "Pessoas ocupadas por conta própria",
+      "topic": "trabalho",
+      "unit": "pessoas",
+      "reference_period": "2022",
+      "definition": "Pessoas residentes que trabalham por conta própria",
+      "source_institution": "IBGE",
+      "source_dataset": "Censo 2022"
+    },
+    {
+      "id": "pib-municipal-2023",
+      "name": "Produto Interno Bruto municipal – preços correntes",
+      "topic": "economia",
+      "unit": "R$",
+      "reference_period": "2023",
+      "definition": "Valor adicionado e tributos líquidos de subsídios, a preços correntes",
+      "source_institution": "IBGE",
+      "source_dataset": "PIB dos Municípios"
+    },
+    {
+      "id": "taxa-alfabetizacao-15-mais-2022",
+      "name": "Taxa de alfabetização – população 15+",
+      "topic": "educacao",
+      "unit": "%",
+      "reference_period": "2022",
+      "definition": "Proporção que declara saber ler e escrever um bilhete simples",
+      "source_institution": "SES-SP (republicação de dados IBGE)",
+      "source_dataset": "Portfólio municipal SES-SP / Censo 2022"
+    },
+    {
+      "id": "densidade-demografica-2022",
+      "name": "Densidade demográfica – Censo 2022",
+      "topic": "populacao",
+      "unit": "hab./km²",
+      "reference_period": "2022",
+      "definition": "Número de habitantes por quilômetro quadrado segundo a divulgação censitária.",
+      "source_institution": "IBGE",
+      "source_dataset": "IBGE Cidades e Estados"
     }
   ]
 }
