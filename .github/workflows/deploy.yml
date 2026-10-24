@@ -29,6 +29,7 @@ jobs:
           python3 scripts/check_site.py
           node --check site/assets/js/app.js
           node --check site/assets/js/indicators.js
+          node --check site/assets/js/empresas.js
           git diff --exit-code -- site/data/indicators.json
       - name: Publicar artefato estático validado
         uses: actions/upload-pages-artifact@v3
