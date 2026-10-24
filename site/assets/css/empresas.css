@@ -6,6 +6,7 @@
 .empresa-sector{font-size:12px;color:#627387;margin:0;letter-spacing:.03em}
 .empresa-entry p{margin:7px 0;color:#47586d;font-size:14px;line-height:1.65}
 .empresa-entry a{font-size:13px;font-weight:600}
+.empresa-links{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:10px}
 .empresas-note{border-top:1px solid var(--line);padding-top:16px;margin:20px 0 0;font-size:13px;line-height:1.75;color:var(--muted);max-width:790px}
 .empresas-note a{font-weight:600}
 @media(max-width:680px){.empresas-grid{grid-template-columns:minmax(0,1fr)}}
