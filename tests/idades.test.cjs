@@ -21,6 +21,6 @@ for (const [page, prefix] of [["site/index.html",""],["site/en/index.html","../"
   const map = html.indexOf('class="mapa-section"');
   const education = html.indexOf('class="populacao-educacao"');
   assert.ok(map < ages && ages < education,page+": ordem das seções");
-  assert.ok(html.includes("apisidra.ibge.gov.br/values/t/9514/"));
+  assert.ok(html.includes("https://sidra.ibge.gov.br/tabela/9514"),page+": consulta pública legível");
 }
 console.log("Faixas etárias: visualização PT/EN, dados e acessibilidade OK");
