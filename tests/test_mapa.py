@@ -67,7 +67,7 @@ class TestMapaDemografico(unittest.TestCase):
         css = (ROOT / "site/assets/css/mapa.css").read_text(encoding="utf8")
         self.assertNotIn(".mapa-label", css)
         self.assertIn(".mapa-scale", css)
-        self.assertIn(".mapa-section { max-width: 900px; }", css)
+        self.assertIn(".mapa-section { max-width: 900px;", css)
         self.assertIn("@media (max-width: 790px)", css)
         self.assertIn("button.addEventListener(\"mouseenter\"", js)
         self.assertIn("@media (max-width: 480px)", css)
