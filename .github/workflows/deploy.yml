@@ -1,6 +1,10 @@
-# Não é executado automaticamente. Exige autorização manual explícita.
-name: OES | Publicação manual
+# Publicação automática somente após testes aprovados na main; opção manual preservada.
+name: OES | Publicação
 on:
+  workflow_run:
+    workflows: ["OES | Validação"]
+    types: [completed]
+    branches: [main]
   workflow_dispatch:
     inputs:
       confirmar_publicacao:
@@ -14,12 +18,21 @@ concurrency:
   cancel-in-progress: false
 jobs:
   preparar:
-    if: ${{ github.event.inputs.confirmar_publicacao == 'PUBLICAR' }}
+    if: >-
+      ${{
+        (github.event_name == 'workflow_run' &&
+         github.event.workflow_run.event == 'push' &&
+         github.event.workflow_run.conclusion == 'success' &&
+         github.event.workflow_run.head_branch == 'main') ||
+        (github.event_name == 'workflow_dispatch' &&
+         github.event.inputs.confirmar_publicacao == 'PUBLICAR')
+      }}
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
         with:
+          ref: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.head_sha || 'main' }}
           persist-credentials: false
       - name: Validar dados e código
         run: |
@@ -36,7 +49,6 @@ jobs:
         with:
           path: site/
   publicar:
-    if: ${{ github.event.inputs.confirmar_publicacao == 'PUBLICAR' }}
     needs: preparar
     runs-on: ubuntu-latest
     permissions:
