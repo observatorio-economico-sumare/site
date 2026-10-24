@@ -1,6 +1,6 @@
 /* Mapa populacional: a geometria do IBGE é o elemento principal. */
 #populacao > .section-title { margin: 28px 0 0; }
-.mapa-section { max-width: 900px; }
+.mapa-section { max-width: 900px; padding-top: 20px; border-top: 1px solid var(--line); }
 .mapa-intro {
   margin: 6px 0 0;
   color: var(--muted);
@@ -117,10 +117,10 @@
 }
 .mapa-details summary:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
 .mapa-details p { max-width: 820px; margin: 9px 0 0; }
-.populacao-indicadores { margin-top: 37px; padding-top: 4px; border-top: 1px solid var(--line); }
-.populacao-indicadores > .section-title { margin: 16px 0 10px; }
+.populacao-indicadores { max-width: 900px; margin-top: 25px; }
+.populacao-indicadores > .section-title { margin: 0 0 10px; }
 .populacao-indicadores > .prose { margin: 0; color: var(--muted); }
-.populacao-indicadores > .footnote { margin: 8px 0 28px; }
+.populacao-indicadores > .footnote { margin: 8px 0 24px; }
 @media (max-width: 790px) {
   .mapa-layout { grid-template-columns: minmax(0, 1fr); gap: 18px; margin-top: 15px; }
   .mapa-figure, .mapa-sidebar { max-width: 650px; }

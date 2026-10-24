@@ -41,9 +41,14 @@ class TestMapaDemografico(unittest.TestCase):
             self.assertIn('mapa.js', html)
             self.assertIn('mapa.css', html)
             self.assertLess(
+                html.index('class="populacao-indicadores"'),
                 html.index('class="mapa-section"'),
+                "Os indicadores municipais devem anteceder o mapa"
+            )
+            self.assertLess(
                 html.index('class="metrics metrics--two"'),
-                "O mapa deve vir antes dos indicadores"
+                html.index('class="mapa-section"'),
+                "Os valores municipais devem ser exibidos antes do mapa"
             )
             self.assertIn('class="mapa-region-list"', html)
             self.assertIn('class="mapa-scale"', html)
@@ -62,7 +67,7 @@ class TestMapaDemografico(unittest.TestCase):
         css = (ROOT / "site/assets/css/mapa.css").read_text(encoding="utf8")
         self.assertNotIn(".mapa-label", css)
         self.assertIn(".mapa-scale", css)
-        self.assertIn(".mapa-section { max-width: 900px; }", css)
+        self.assertIn(".mapa-section { max-width: 900px;", css)
         self.assertIn("@media (max-width: 790px)", css)
         self.assertIn("button.addEventListener(\"mouseenter\"", js)
         self.assertIn("@media (max-width: 480px)", css)
