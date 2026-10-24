@@ -1,0 +1,428 @@
+{
+  "indicators": [
+    {
+      "id": "populacao-censo-2022",
+      "name": "População residente (Censo 2022)",
+      "topic": "populacao",
+      "unit": "pessoas",
+      "reference_period": "2022",
+      "definition": "Total de residentes recenseados",
+      "source_institution": "IBGE",
+      "source_dataset": "Censo Demográfico",
+      "value": 279545,
+      "municipality_code": "3552403",
+      "status": "validated",
+      "source": {
+        "institution": "IBGE",
+        "dataset": "Censo Demográfico",
+        "url": "https://www.ibge.gov.br/cidades-e-estados/sp/sumare.html",
+        "query_id": "IBGE Cidades e Estados | Município 3552403 | População no último censo | 2022",
+        "release_date": null
+      },
+      "collected_at": "2026-10-23",
+      "updated_at": "2026-10-23",
+      "reviewed_at": "2026-10-23",
+      "reviewed_by": "Verificação técnica assistida do OES (sem revisão humana independente)",
+      "method": "Contagem de pessoas residentes no Censo Demográfico 2022, conforme total exibido pelo IBGE para Sumaré.",
+      "limitations": "Total censitário, com referência em 2022. Não equivale ao número atual de habitantes.",
+      "revisions": "Inclusão inicial em 23/10/2026; sem revisão posterior registrada no OES.",
+      "evidence": {
+        "raw_path": "data/raw/ibge_cidades_sumare_2026-10-23.json",
+        "sha256": "239f6a8a5706cf01cb6e061400ae1890b2f9442c477afa13cb9fc0597962dbda",
+        "capture_method": "transcricao_assistida_de_pagina_oficial",
+        "original_file_preserved": false
+      }
+    },
+    {
+      "id": "populacao-estimada",
+      "name": "População estimada",
+      "topic": "populacao",
+      "unit": "pessoas",
+      "reference_period": "2026",
+      "definition": "Estimativa oficial de residentes, sujeita à validação da divulgação e do período",
+      "source_institution": "IBGE",
+      "source_dataset": "Estimativas da População",
+      "value": 292307,
+      "municipality_code": "3552403",
+      "status": "validated",
+      "source": {
+        "institution": "IBGE",
+        "dataset": "Estimativas da População",
+        "url": "https://www.ibge.gov.br/cidades-e-estados/sp/sumare.html",
+        "query_id": "IBGE Cidades e Estados | Município 3552403 | População estimada | 2026",
+        "release_date": "2026-08-28"
+      },
+      "collected_at": "2026-10-23",
+      "updated_at": "2026-10-23",
+      "reviewed_at": "2026-10-23",
+      "reviewed_by": "Verificação técnica assistida do OES (sem revisão humana independente)",
+      "method": "Estimativa oficial do IBGE para 1º de julho de 2026, reproduzida sem cálculo adicional. Método AiBi, conforme documentação do IBGE.",
+      "limitations": "Estimativa demográfica, não contagem. Diferenças entre Censo e estimativa não devem ser tratadas automaticamente como crescimento observado.",
+      "revisions": "Inclusão inicial em 23/10/2026; sem revisão posterior registrada no OES.",
+      "evidence": {
+        "raw_path": "data/raw/ibge_cidades_sumare_2026-10-23.json",
+        "sha256": "239f6a8a5706cf01cb6e061400ae1890b2f9442c477afa13cb9fc0597962dbda",
+        "capture_method": "transcricao_assistida_de_pagina_oficial",
+        "original_file_preserved": false
+      }
+    },
+    {
+      "id": "pib-per-capita-2023",
+      "name": "PIB per capita",
+      "topic": "economia",
+      "unit": "R$",
+      "reference_period": "2023",
+      "definition": "Produto Interno Bruto do município dividido pela população de referência, a preços correntes",
+      "source_institution": "IBGE",
+      "source_dataset": "PIB dos Municípios",
+      "value": 68060.93,
+      "municipality_code": "3552403",
+      "status": "validated",
+      "source": {
+        "institution": "IBGE",
+        "dataset": "PIB dos Municípios",
+        "url": "https://www.ibge.gov.br/cidades-e-estados/sp/sumare.html",
+        "query_id": "IBGE Cidades e Estados | Município 3552403 | PIB per capita | 2023",
+        "release_date": null
+      },
+      "collected_at": "2026-10-23",
+      "updated_at": "2026-10-23",
+      "reviewed_at": "2026-10-23",
+      "reviewed_by": "Verificação técnica assistida do OES (sem revisão humana independente)",
+      "method": "Valor do PIB municipal per capita a preços correntes, referente a 2023, reproduzido da página do IBGE para Sumaré, sem cálculo adicional pelo OES.",
+      "limitations": "Não representa renda média dos moradores nem riqueza distribuída por habitante. A referência é 2023 e o valor não foi deflacionado.",
+      "revisions": "Inclusão inicial em 23/10/2026; sem revisão posterior registrada no OES.",
+      "evidence": {
+        "raw_path": "data/raw/ibge_pib_per_capita_sumare_2026-10-23.json",
+        "sha256": "70e8123213e9199cfea26343a382c2b6db140bf6d144f405fae846676eef0a30",
+        "capture_method": "transcricao_assistida_de_pagina_oficial",
+        "original_file_preserved": false
+      }
+    },
+    {
+      "id": "crescimento-intercensitario-2010-2022",
+      "name": "Crescimento populacional intercensitário – 2010/2022",
+      "topic": "populacao",
+      "unit": "%",
+      "reference_period": "2010–2022",
+      "definition": "Variação percentual acumulada entre dois censos",
+      "value": 15.8443,
+      "municipality_code": "3552403",
+      "status": "validated",
+      "source": {
+        "institution": "SES-SP (republicação de dados IBGE)",
+        "dataset": "Portfólio municipal SES-SP / Censo 2022",
+        "url": "https://portal.saude.sp.gov.br/resources/ccd/homepage/2025/sim-sinasc/portfolios/gve-17/sumare.pdf",
+        "query_id": "Portfólio municipal Sumaré, página 13 do PDF; População Censo 2010 241.311; Censo 2022 279.545",
+        "release_date": null
+      },
+      "collected_at": "2026-10-23",
+      "updated_at": "2026-10-23",
+      "reviewed_at": "2026-10-23",
+      "reviewed_by": "Verificação técnica assistida do OES (sem revisão humana independente)",
+      "method": "Variação acumulada entre os Censos 2010 e 2022: (279.545 / 241.311 − 1) × 100, arredondada a quatro casas decimais.",
+      "limitations": "Crescimento acumulado em 12 anos; não é crescimento anual nem estimativa de 2026.",
+      "revisions": "Primeira revisão técnica de inclusão em 23/10/2026; proposta não publicada.",
+      "evidence": {
+        "raw_path": "data/raw/ses_sp_sumare_censo_2022_2026-10-23.json",
+        "sha256": "a410756ac28efb50ee73640b67a9471ff0804f435bb7a76aeb76b718fa95f88a",
+        "capture_method": "transcricao_assistida_de_relatorio_oficial",
+        "original_file_preserved": false
+      }
+    },
+    {
+      "id": "populacao-homens-2022",
+      "name": "População residente – homens",
+      "topic": "populacao",
+      "unit": "pessoas",
+      "reference_period": "2022",
+      "definition": "Contagem censitária de homens residentes",
+      "value": 136598,
+      "municipality_code": "3552403",
+      "status": "validated",
+      "source": {
+        "institution": "SES-SP (republicação de dados IBGE)",
+        "dataset": "Portfólio municipal SES-SP / Censo 2022",
+        "url": "https://portal.saude.sp.gov.br/resources/ccd/homepage/2025/sim-sinasc/portfolios/gve-17/sumare.pdf",
+        "query_id": "Portfólio municipal Sumaré, página 12 do PDF; Tabela 1 – Total da população masculina",
+        "release_date": null
+      },
+      "collected_at": "2026-10-23",
+      "updated_at": "2026-10-23",
+      "reviewed_at": "2026-10-23",
+      "reviewed_by": "Verificação técnica assistida do OES (sem revisão humana independente)",
+      "method": "Total de homens residentes no Censo 2022 reproduzido na Tabela 1 do portfólio municipal da SES-SP.",
+      "limitations": "Classificação de sexo conforme levantamento censitário; não representa identidade de gênero.",
+      "revisions": "Primeira revisão técnica de inclusão em 23/10/2026; proposta não publicada.",
+      "evidence": {
+        "raw_path": "data/raw/ses_sp_sumare_censo_2022_2026-10-23.json",
+        "sha256": "a410756ac28efb50ee73640b67a9471ff0804f435bb7a76aeb76b718fa95f88a",
+        "capture_method": "transcricao_assistida_de_relatorio_oficial",
+        "original_file_preserved": false
+      }
+    },
+    {
+      "id": "populacao-mulheres-2022",
+      "name": "População residente – mulheres",
+      "topic": "populacao",
+      "unit": "pessoas",
+      "reference_period": "2022",
+      "definition": "Contagem censitária de mulheres residentes",
+      "value": 142947,
+      "municipality_code": "3552403",
+      "status": "validated",
+      "source": {
+        "institution": "SES-SP (republicação de dados IBGE)",
+        "dataset": "Portfólio municipal SES-SP / Censo 2022",
+        "url": "https://portal.saude.sp.gov.br/resources/ccd/homepage/2025/sim-sinasc/portfolios/gve-17/sumare.pdf",
+        "query_id": "Portfólio municipal Sumaré, página 12 do PDF; Tabela 1 – Total da população feminina",
+        "release_date": null
+      },
+      "collected_at": "2026-10-23",
+      "updated_at": "2026-10-23",
+      "reviewed_at": "2026-10-23",
+      "reviewed_by": "Verificação técnica assistida do OES (sem revisão humana independente)",
+      "method": "Total de mulheres residentes no Censo 2022 reproduzido na Tabela 1 do portfólio municipal da SES-SP.",
+      "limitations": "Classificação de sexo conforme levantamento censitário; não representa identidade de gênero.",
+      "revisions": "Primeira revisão técnica de inclusão em 23/10/2026; proposta não publicada.",
+      "evidence": {
+        "raw_path": "data/raw/ses_sp_sumare_censo_2022_2026-10-23.json",
+        "sha256": "a410756ac28efb50ee73640b67a9471ff0804f435bb7a76aeb76b718fa95f88a",
+        "capture_method": "transcricao_assistida_de_relatorio_oficial",
+        "original_file_preserved": false
+      }
+    },
+    {
+      "id": "populacao-0-14-anos-2022",
+      "name": "População de 0 a 14 anos",
+      "topic": "populacao",
+      "unit": "pessoas",
+      "reference_period": "2022",
+      "definition": "Soma de pessoas entre 0 e 14 anos inclusive",
+      "value": 54771,
+      "municipality_code": "3552403",
+      "status": "validated",
+      "source": {
+        "institution": "SES-SP (republicação de dados IBGE)",
+        "dataset": "Portfólio municipal SES-SP / Censo 2022",
+        "url": "https://portal.saude.sp.gov.br/resources/ccd/homepage/2025/sim-sinasc/portfolios/gve-17/sumare.pdf",
+        "query_id": "Portfólio municipal Sumaré, página 12 do PDF; Tabela 1 – Soma das faixas 0 a 14 anos",
+        "release_date": null
+      },
+      "collected_at": "2026-10-23",
+      "updated_at": "2026-10-23",
+      "reviewed_at": "2026-10-23",
+      "reviewed_by": "Verificação técnica assistida do OES (sem revisão humana independente)",
+      "method": "Soma dos grupos de idade 0–4, 5–9 e 10–14 anos da Tabela 1 da SES-SP: 16.743 + 18.981 + 19.047.",
+      "limitations": "Faixa etária derivada pelo OES, com grupos de idade do Censo 2022.",
+      "revisions": "Primeira revisão técnica de inclusão em 23/10/2026; proposta não publicada.",
+      "evidence": {
+        "raw_path": "data/raw/ses_sp_sumare_censo_2022_2026-10-23.json",
+        "sha256": "a410756ac28efb50ee73640b67a9471ff0804f435bb7a76aeb76b718fa95f88a",
+        "capture_method": "transcricao_assistida_de_relatorio_oficial",
+        "original_file_preserved": false
+      }
+    },
+    {
+      "id": "populacao-15-64-anos-2022",
+      "name": "População de 15 a 64 anos",
+      "topic": "populacao",
+      "unit": "pessoas",
+      "reference_period": "2022",
+      "definition": "Soma de pessoas entre 15 e 64 anos inclusive",
+      "value": 199436,
+      "municipality_code": "3552403",
+      "status": "validated",
+      "source": {
+        "institution": "SES-SP (republicação de dados IBGE)",
+        "dataset": "Portfólio municipal SES-SP / Censo 2022",
+        "url": "https://portal.saude.sp.gov.br/resources/ccd/homepage/2025/sim-sinasc/portfolios/gve-17/sumare.pdf",
+        "query_id": "Portfólio municipal Sumaré, página 12 do PDF; Tabela 1 – Soma das faixas 15 a 64 anos",
+        "release_date": null
+      },
+      "collected_at": "2026-10-23",
+      "updated_at": "2026-10-23",
+      "reviewed_at": "2026-10-23",
+      "reviewed_by": "Verificação técnica assistida do OES (sem revisão humana independente)",
+      "method": "Soma dos dez grupos quinquenais entre 15–19 e 60–64 anos, na Tabela 1 da SES-SP.",
+      "limitations": "Faixa demográfica de 15 a 64 anos, que não equivale à população ocupada ou economicamente ativa.",
+      "revisions": "Primeira revisão técnica de inclusão em 23/10/2026; proposta não publicada.",
+      "evidence": {
+        "raw_path": "data/raw/ses_sp_sumare_censo_2022_2026-10-23.json",
+        "sha256": "a410756ac28efb50ee73640b67a9471ff0804f435bb7a76aeb76b718fa95f88a",
+        "capture_method": "transcricao_assistida_de_relatorio_oficial",
+        "original_file_preserved": false
+      }
+    },
+    {
+      "id": "populacao-65-mais-2022",
+      "name": "População com 65 anos ou mais",
+      "topic": "populacao",
+      "unit": "pessoas",
+      "reference_period": "2022",
+      "definition": "Soma de pessoas com pelo menos 65 anos",
+      "value": 25338,
+      "municipality_code": "3552403",
+      "status": "validated",
+      "source": {
+        "institution": "SES-SP (republicação de dados IBGE)",
+        "dataset": "Portfólio municipal SES-SP / Censo 2022",
+        "url": "https://portal.saude.sp.gov.br/resources/ccd/homepage/2025/sim-sinasc/portfolios/gve-17/sumare.pdf",
+        "query_id": "Portfólio municipal Sumaré, página 12 do PDF; Tabela 1 – Soma das faixas 65 a 100+ anos",
+        "release_date": null
+      },
+      "collected_at": "2026-10-23",
+      "updated_at": "2026-10-23",
+      "reviewed_at": "2026-10-23",
+      "reviewed_by": "Verificação técnica assistida do OES (sem revisão humana independente)",
+      "method": "Soma dos grupos etários de 65–69 até 100 anos ou mais, Tabela 1 da SES-SP.",
+      "limitations": "Considera 65 anos ou mais; não equivale a todas as definições de população idosa (por exemplo, 60+).",
+      "revisions": "Primeira revisão técnica de inclusão em 23/10/2026; proposta não publicada.",
+      "evidence": {
+        "raw_path": "data/raw/ses_sp_sumare_censo_2022_2026-10-23.json",
+        "sha256": "a410756ac28efb50ee73640b67a9471ff0804f435bb7a76aeb76b718fa95f88a",
+        "capture_method": "transcricao_assistida_de_relatorio_oficial",
+        "original_file_preserved": false
+      }
+    },
+    {
+      "id": "taxa-alfabetizacao-15-mais-2022",
+      "name": "Taxa de alfabetização – população 15+",
+      "topic": "educacao",
+      "unit": "%",
+      "reference_period": "2022",
+      "definition": "Proporção que declara saber ler e escrever um bilhete simples",
+      "value": 96.5,
+      "municipality_code": "3552403",
+      "status": "validated",
+      "source": {
+        "institution": "SES-SP (republicação de dados IBGE)",
+        "dataset": "Portfólio municipal SES-SP / Censo 2022",
+        "url": "https://portal.saude.sp.gov.br/resources/ccd/homepage/2025/sim-sinasc/portfolios/gve-17/sumare.pdf",
+        "query_id": "Portfólio municipal Sumaré, página 15 do PDF; Quadro 5 – Alfabetizados 216.905; não alfabetizados 7.869; taxa 96,5%",
+        "release_date": null
+      },
+      "collected_at": "2026-10-23",
+      "updated_at": "2026-10-23",
+      "reviewed_at": "2026-10-23",
+      "reviewed_by": "Verificação técnica assistida do OES (sem revisão humana independente)",
+      "method": "Taxa de alfabetização da população com 15 anos ou mais: 216.905 / (216.905 + 7.869) × 100, arredondada a uma casa decimal.",
+      "limitations": "Reprodução e cálculo a partir dos números no portfólio da SES-SP com fonte estatística IBGE. A base binária original do relatório ainda não está preservada no OES.",
+      "revisions": "Primeira revisão técnica de inclusão em 23/10/2026; proposta não publicada.",
+      "evidence": {
+        "raw_path": "data/raw/ses_sp_sumare_censo_2022_2026-10-23.json",
+        "sha256": "a410756ac28efb50ee73640b67a9471ff0804f435bb7a76aeb76b718fa95f88a",
+        "capture_method": "transcricao_assistida_de_relatorio_oficial",
+        "original_file_preserved": false
+      }
+    },
+    {
+      "id": "densidade-demografica-2022",
+      "name": "Densidade demográfica – Censo 2022",
+      "topic": "populacao",
+      "unit": "hab./km²",
+      "reference_period": "2022",
+      "definition": "Número de habitantes por quilômetro quadrado segundo a divulgação censitária.",
+      "value": 1821.56,
+      "municipality_code": "3552403",
+      "status": "validated",
+      "source": {
+        "institution": "IBGE",
+        "dataset": "IBGE Cidades e Estados",
+        "url": "https://www.ibge.gov.br/cidades-e-estados/sp/sumare.html",
+        "query_id": "IBGE Cidades e Estados: Densidade demográfica [2022]",
+        "release_date": null
+      },
+      "collected_at": "2026-10-23",
+      "updated_at": "2026-10-23",
+      "reviewed_at": "2026-10-23",
+      "reviewed_by": "Verificação técnica assistida do OES (sem revisão humana independente)",
+      "method": "Valor publicado diretamente no IBGE Cidades e Estados para Sumaré, Censo 2022. Não recalculado usando área territorial de outro ano.",
+      "limitations": "O denominador territorial é aquele empregado na divulgação censitária de 2022.",
+      "revisions": "Primeira revisão técnica de inclusão em 23/10/2026; proposta não publicada.",
+      "evidence": {
+        "raw_path": "data/raw/ibge_cidades_adicionais_2026-10-23.json",
+        "sha256": "146a12b9a7050b6f2c8ad8a02a21dbe099a7447d59a6b26c5ed2bce20d3771db",
+        "capture_method": "transcricao_assistida_de_pagina_oficial",
+        "original_file_preserved": false
+      }
+    },
+    {
+      "id": "residentes-conta-propria-2022",
+      "name": "Pessoas ocupadas por conta própria",
+      "topic": "trabalho",
+      "unit": "pessoas",
+      "reference_period": "2022",
+      "definition": "Pessoas residentes com 14 anos ou mais ocupadas por conta própria, sem empregados, na semana de referência do Censo 2022",
+      "value": 32334,
+      "municipality_code": "3552403",
+      "status": "validated",
+      "source": {
+        "institution": "IBGE",
+        "dataset": "Censo 2022",
+        "url": "https://apisidra.ibge.gov.br/values/t/10261/n6/3552403/p/2022/v/4090/c11913/all?formato=json",
+        "query_id": "SIDRA t/10261 n6/3552403 p/2022 v/4090 c11913/all; categoria 79378",
+        "release_date": null
+      },
+      "collected_at": "2026-10-23",
+      "updated_at": "2026-10-23",
+      "reviewed_at": "2026-10-23",
+      "reviewed_by": "Verificação técnica assistida do OES (sem revisão humana independente)",
+      "method": "Pessoas residentes em Sumaré, com 14 anos ou mais, ocupadas por conta própria (sem empregados) na semana de referência do Censo 2022. Tabela SIDRA 10261, variável 4090, posição 79378, sexo e cor/raça total.",
+      "limitations": "Refere-se a residentes, não a vínculos de estabelecimentos locais. A categoria não equivale ao número de CNPJs, MEIs ou de profissionais PJ únicos.",
+      "revisions": "Primeira revisão técnica de inclusão em 23/10/2026; proposta não publicada.",
+      "evidence": {
+        "raw_path": "data/raw/sidra_10261_ocupacao_2022.json",
+        "sha256": "b645ee393a93aa9bcb6e14589c6d82d1d7f40400cd5dc1203c51ab8ac95a7c44",
+        "capture_method": "arquivo_original_api_sidra",
+        "original_file_preserved": true,
+        "row_selector": {
+          "D1C": "3552403",
+          "D2C": "2022",
+          "D3C": "4090",
+          "D4C": "79378",
+          "D5C": "6794",
+          "D6C": "95251"
+        },
+        "value_multiplier": 1
+      }
+    },
+    {
+      "id": "pib-municipal-2023",
+      "name": "Produto Interno Bruto municipal – preços correntes",
+      "topic": "economia",
+      "unit": "R$",
+      "reference_period": "2023",
+      "definition": "Valor adicionado e tributos líquidos de subsídios, a preços correntes",
+      "value": 19026093000,
+      "municipality_code": "3552403",
+      "status": "validated",
+      "source": {
+        "institution": "IBGE",
+        "dataset": "PIB dos Municípios",
+        "url": "https://apisidra.ibge.gov.br/values/t/5938/n6/3552403/p/2023/v/37?formato=json",
+        "query_id": "SIDRA t/5938 n6/3552403 p/2023 v/37; valor original em mil reais",
+        "release_date": null
+      },
+      "collected_at": "2026-10-23",
+      "updated_at": "2026-10-23",
+      "reviewed_at": "2026-10-23",
+      "reviewed_by": "Verificação técnica assistida do OES (sem revisão humana independente)",
+      "method": "Valor do PIB de Sumaré em 2023, conforme SIDRA tabela 5938, variável 37. Resposta original em mil reais multiplicada por 1.000 para apresentação em reais.",
+      "limitations": "PIB mede a produção econômica local, não a renda pessoal de moradores; valor nominal a preços correntes, sem correção inflacionária.",
+      "revisions": "Primeira revisão técnica de inclusão em 23/10/2026; proposta não publicada.",
+      "evidence": {
+        "raw_path": "data/raw/sidra_5938_pib_2023.json",
+        "sha256": "64b19e9b71f4c0180aaee551567dd82030bb2feb82a99aed9fd591bb23ae99f5",
+        "capture_method": "arquivo_original_api_sidra",
+        "original_file_preserved": true,
+        "row_selector": {
+          "D1C": "3552403",
+          "D2C": "2023",
+          "D3C": "37"
+        },
+        "value_multiplier": 1000
+      }
+    }
+  ]
+}
