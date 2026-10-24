@@ -238,8 +238,8 @@ for (const [page,expected] of [["site/index.html","Carregando…"],["site/en/ind
 
 /* Fontes, fichas técnicas e Glossário compartilham uma seção. */
 for (const [path,titles] of [
- ["site/index.html",["Fontes e metodologia","Fichas técnicas dos indicadores","Glossário"]],
- ["site/en/index.html",["Sources and methodology","Indicator technical sheets","Glossary"]]
+ ["site/index.html",["Fontes e metodologia","Detalhes dos indicadores","Glossário"]],
+ ["site/en/index.html",["Sources and methodology","Indicator details","Glossary"]]
 ]){
  const html=fs.readFileSync(path,"utf8");
  const section=html.slice(html.indexOf('<section class="tab" hidden="" id="metodologia"'),
