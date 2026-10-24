@@ -1,15 +1,14 @@
 "use strict";
 const indicatorsEnglish = document.documentElement?.lang === "en";
 const DATA_URL = indicatorsEnglish ? "../data/indicators.json" : "data/indicators.json";
-const enIndicatorText = {"populacao-censo-2022":{"name":"Resident population (2022 Census)","definition":"Total residents counted in the 2022 Census.","unit":"people","dataset":"Population Census","method":"The number of residents recorded in the 2022 Population Census, as displayed by IBGE for Sumaré.","limitations":"2022 census count. It is not the current population.","revisions":"First added on October 23, 2026; no subsequent OES revision recorded."},"populacao-estimada":{"name":"Estimated population","definition":"Official resident population estimate, subject to verification of its release and reference period.","unit":"people","dataset":"Population Estimates","method":"Official IBGE estimate for July 1, 2026, reproduced without additional calculations by the OES. IBGE's AiBi method applies.","limitations":"Statistical estimate, not a census count. Differences from the census must not automatically be interpreted as observed population growth.","revisions":"First added on October 23, 2026; no subsequent OES revision recorded."},"pib-per-capita-2023":{"name":"GDP per capita","definition":"Municipal gross domestic product divided by the reference population, at current prices.","unit":"R$","dataset":"Municipal GDP","method":"2023 current-price municipal GDP per capita, reproduced from IBGE's Sumaré page without additional calculation by the OES.","limitations":"Not a measure of average personal income or income distribution. The reference year is 2023, and the figure is not adjusted for inflation.","revisions":"First added on October 23, 2026; no subsequent OES revision recorded."}};
-const enFieldLabels = {"Valor":"Value","Definição":"Definition","Município":"Municipality","Período":"Reference period","Fonte primária":"Primary source","Identificador da consulta":"Original source query identifier","Metodologia":"Methodology","Limitações":"Limitations","Coleta pelo OES":"Collected by the OES","Última atualização no OES":"Last updated by the OES","Revisão técnica":"Technical review","Histórico de revisões":"Revision history","Evidência":"Evidence record","SHA-256 da evidência":"Evidence SHA-256","Natureza da evidência":"Nature of evidence","Endereço da fonte":"Source URL","Arquivo original preservado":"Original source file preserved","Registro estruturado da fonte, sem arquivo original preservado":"Structured record; original source file not preserved","Fonte e metodologia":"Source and methodology","Ver ficha completa":"View technical details","Endereço inválido":"Invalid URL","Não informado":"Not available"};
+const enIndicatorText = {"populacao-censo-2022":{"name":"Resident population (2022 Census)","definition":"Total residents counted in the 2022 Census.","unit":"people","dataset":"Population Census","method":"The number of residents recorded in the 2022 Population Census, as displayed by IBGE for Sumaré.","limitations":"2022 census count. It is not the current population."},"populacao-estimada":{"name":"Estimated population","definition":"Official resident population estimate, subject to verification of its release and reference period.","unit":"people","dataset":"Population Estimates","method":"Official IBGE estimate for July 1, 2026, reproduced without additional calculations by the OES. IBGE's AiBi method applies.","limitations":"Statistical estimate, not a census count. Differences from the census must not automatically be interpreted as observed population growth."},"pib-per-capita-2023":{"name":"GDP per capita","definition":"Municipal gross domestic product divided by the reference population, at current prices.","unit":"R$","dataset":"Municipal GDP","method":"2023 current-price municipal GDP per capita, reproduced from IBGE's Sumaré page without additional calculation by the OES.","limitations":"Not a measure of average personal income or income distribution. The reference year is 2023, and the figure is not adjusted for inflation."}};
+const enFieldLabels = {"Valor":"Value","Definição":"Definition","Período":"Reference year","Fonte primária":"Source","Metodologia":"Methodology","Limitações":"Limitations","Última atualização no OES":"Last updated by the OES","Consultar fonte original":"Original source","Fonte e metodologia":"Source and methodology","Ver ficha completa":"View indicator details","Endereço inválido":"Invalid URL","Não informado":"Not available"};
 const localizeLabel = label => indicatorsEnglish ? (enFieldLabels[label] || label) : label;
 function localizedIndicator(item) {
   if (!indicatorsEnglish || !enIndicatorText[item.id]) return item;
   const words = enIndicatorText[item.id];
   return {...item, name:words.name, definition:words.definition, unit:words.unit,
-    method:words.method, limitations:words.limitations, revisions:words.revisions,
-    reviewed_by:"OES-assisted technical verification (no independent human review)",
+    method:words.method, limitations:words.limitations,
     source:{...item.source,dataset:words.dataset}};
 }
 
@@ -72,22 +71,15 @@ function openIndicatorDetail(item) {
   const info = [
     ["Valor", formatIndicatorValue(localized, true)],
     ["Definição", localized.definition],
-    ["Município", "Sumaré (SP), IBGE " + item.municipality_code],
     ["Período", item.reference_period],
     ["Fonte primária", item.source.institution + " · " + localized.source.dataset],
-    ["Identificador da consulta", item.source.query_id],
     ["Metodologia", localized.method],
     ["Limitações", localized.limitations],
-    ["Coleta pelo OES", formatRecordDate(item.collected_at)],
-    ["Última atualização no OES", formatRecordDate(item.updated_at)],
-    ["Revisão técnica", formatRecordDate(item.reviewed_at) + " · " + localized.reviewed_by],
-    ["Histórico de revisões", localized.revisions],
-    ["Evidência", item.evidence.raw_path],
-    ["SHA-256 da evidência", item.evidence.sha256],
-    ["Natureza da evidência", item.evidence.original_file_preserved === true ? localizeLabel("Arquivo original preservado") : localizeLabel("Registro estruturado da fonte, sem arquivo original preservado")]
+    ["Última atualização no OES", formatRecordDate(item.updated_at)]
   ];
   for (const [key, value] of info) appendField(list, localizeLabel(key), value);
-  appendField(list, localizeLabel("Endereço da fonte"), item.source.url, item.source.url);
+  appendField(list, localizeLabel("Consultar fonte original"),
+    indicatorsEnglish ? "Open official source" : "Acessar fonte oficial", item.source.url);
   body.append(list);
   dialog.showModal();
 }

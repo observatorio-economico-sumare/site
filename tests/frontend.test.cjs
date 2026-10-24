@@ -115,7 +115,7 @@ console.log("Botões Saiba mais / Learn more e pontuação: OK");
 /* A apresentação pertence à aba Visão geral, não é repetida nas demais abas. */
 for (const path of ["site/index.html", "site/en/index.html"]) {
   const html = fs.readFileSync(path, "utf8");
-  const overviewStart = html.indexOf('<section class="tab" id="inicio" role="tabpanel">');
+  const overviewStart = html.indexOf('<section class="tab" id="inicio" role="region">');
   const introStart = html.indexOf('<section class="intro intro--overview">');
   const anotherTab = html.indexOf('<section class="tab" hidden="" id="populacao"');
   assert.ok(overviewStart >= 0 && introStart > overviewStart && introStart < anotherTab,
@@ -202,7 +202,7 @@ for(const [, title] of libraryHTML.matchAll(/<article class="library-entry" id="
 /* Apresentação dos indicadores efetivamente disponíveis e mobile. */
 for(const page of ["site/index.html","site/en/index.html"]){
  const html=fs.readFileSync(page,"utf8");
- const home=html.slice(html.indexOf('<section class="tab" id="inicio" role="tabpanel">'),html.indexOf('<section class="tab" hidden="" id="populacao"'));
+ const home=html.slice(html.indexOf('<section class="tab" id="inicio" role="region">'),html.indexOf('<section class="tab" hidden="" id="populacao"'));
  assert.deepEqual([...home.matchAll(/data-indicator="([^"]+)"/g)].map(x=>x[1]),["populacao-censo-2022","populacao-estimada","pib-per-capita-2023"]);
  assert.doesNotMatch(home,/id="sectors"|CAGED|Where are the jobs|Onde estão os empregos/);
  const work=html.slice(html.indexOf('<section class="tab" hidden="" id="trabalho"'),html.indexOf('<section class="tab" hidden="" id="economia"'));
@@ -216,7 +216,7 @@ assert.doesNotMatch(glossaryCode,/getElementById\("sectors"\)/);
 /* Estados de carregamento não devem apresentar dados validados como pendentes. */
 for (const [page,expected] of [["site/index.html","Carregando…"],["site/en/index.html","Loading…"]]) {
  const html=fs.readFileSync(page,"utf8");
- const home=html.slice(html.indexOf('<section class="tab" id="inicio" role="tabpanel">'),
+ const home=html.slice(html.indexOf('<section class="tab" id="inicio" role="region">'),
                        html.indexOf('<section class="tab" hidden="" id="populacao"'));
  assert.equal(home.split('<div class="number">'+expected+'</div>').length-1,3);
  assert.doesNotMatch(home,/class="number">Em validação|class="number">Pending validation/);
@@ -256,7 +256,7 @@ for (const [path,titles] of [
 /* Apresentação editorial dos três indicadores verificados. */
 for(const page of ["site/index.html","site/en/index.html"]){
  const html=fs.readFileSync(page,"utf8");
- const summary=html.slice(html.indexOf('<section class="tab" id="inicio" role="tabpanel">'),
+ const summary=html.slice(html.indexOf('<section class="tab" id="inicio" role="region">'),
                           html.indexOf('<section class="tab" hidden="" id="populacao"'));
  assert.doesNotMatch(summary,/Indicadores oficiais|Official indicators|Cada indicador apresenta sua fonte e metodologia|Each indicator provides its source and methodology/);
 }
@@ -268,7 +268,7 @@ assert.doesNotMatch(editorialCss,/\.metrics--three \.metric:first-child\{border-
 /* Limitações de um indicador pertencem à sua ficha técnica, não ao rodapé geral. */
 for (const page of ["site/index.html","site/en/index.html"]){
  const html=fs.readFileSync(page,"utf8");
- const intro=html.slice(html.indexOf('<section class="tab" id="inicio" role="tabpanel">'),
+ const intro=html.slice(html.indexOf('<section class="tab" id="inicio" role="region">'),
                        html.indexOf('<section class="tab" hidden="" id="populacao"'));
  assert.doesNotMatch(intro,/PIB per capita não representa|GDP per capita is not average personal income/);
 }
@@ -380,3 +380,46 @@ const cleanedCss=fs.readFileSync("site/assets/css/styles.css","utf8");
 assert.equal((cleanedCss.match(/\.nav-inner\{display:flex/g)||[]).length,1);
 assert.match(cleanedCss,/@media\(max-width:390px\)/);
 assert.doesNotMatch(cleanedCss,/nav-scroll-hint|scroll-snap-type/);
+
+/* Ficha pública resumida: metadados de auditoria permanecem apenas no JSON. */
+{
+ const dom={
+   title:{textContent:""},
+   body:{children:[],replaceChildren(){this.children=[];},append(node){this.children.push(node);}},
+   dialog:{showModal(){this.opened=true;}}
+ };
+ const savedCreate=sandbox.document.createElement;
+ const savedGet=sandbox.document.getElementById;
+ sandbox.document.createElement=()=>({
+   children:[],className:"",textContent:"",
+   append(...children){this.children.push(...children);}
+ });
+ sandbox.document.getElementById=id=>
+   id==="sourceDialog"?dom.dialog:
+   id==="sourceDialogTitle"?dom.title:
+   id==="sourceDialogBody"?dom.body:
+   savedGet(id);
+ vm.runInContext("this.openForTest = openIndicatorDetail;",sandbox);
+ sandbox.openForTest({
+   id:"populacao-censo-2022",name:"População residente",value:279545,
+   unit:"pessoas",definition:"Total de residentes recenseados",
+   reference_period:"2022",source:{institution:"IBGE",dataset:"Censo Demográfico",
+   url:"https://www.ibge.gov.br/cidades-e-estados/sp/sumare.html"},
+   method:"Contagem censitária.",limitations:"Ano de referência 2022.",updated_at:"2026-10-23"
+ });
+ const rows=dom.body.children[0].children;
+ const keys=rows.map(row=>row.children[0].textContent);
+ assert.deepEqual(keys,["Valor","Definição","Período","Fonte primária","Metodologia",
+   "Limitações","Última atualização no OES","Consultar fonte original"]);
+ assert.ok(dom.dialog.opened);
+ assert.equal(rows.at(-1).children[1].children[0].textContent,"Acessar fonte oficial");
+ assert.equal(rows.at(-1).children[1].children[0].href,
+   "https://www.ibge.gov.br/cidades-e-estados/sp/sumare.html");
+ sandbox.document.createElement=savedCreate;
+ sandbox.document.getElementById=savedGet;
+}
+const publicJs=fs.readFileSync("site/assets/js/indicators.js","utf8");
+for (const secret of ["Identificador da consulta","SHA-256 da evidência","Natureza da evidência",
+  "Histórico de revisões","Revisão técnica","Coleta pelo OES","Evidência", "reviewed_by"]) {
+ assert.ok(!publicJs.includes(secret),"Metadado técnico exposto no JS: "+secret);
+}
