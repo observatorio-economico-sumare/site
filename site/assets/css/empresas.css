@@ -1,6 +1,5 @@
 /* Empresas: apresentação editorial sem métricas ou ranking não verificados. */
 .empresas-intro{max-width:790px;color:#4b5b6b;margin:0 0 24px;font-size:15px}
-.empresas-count{font-size:13px;color:var(--muted)}
 .empresas-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:clamp(25px,4vw,64px)}
 .empresa-entry{border-top:1px solid var(--line);padding:22px 0 26px;min-width:0}
 .empresa-entry h3{font:500 clamp(22px,2.7vw,28px)/1.25 var(--font-editorial);color:var(--ink);margin:5px 0 10px}
