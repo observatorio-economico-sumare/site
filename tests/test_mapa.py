@@ -41,9 +41,14 @@ class TestMapaDemografico(unittest.TestCase):
             self.assertIn('mapa.js', html)
             self.assertIn('mapa.css', html)
             self.assertLess(
+                html.index('class="populacao-indicadores"'),
                 html.index('class="mapa-section"'),
+                "Os indicadores municipais devem anteceder o mapa"
+            )
+            self.assertLess(
                 html.index('class="metrics metrics--two"'),
-                "O mapa deve vir antes dos indicadores"
+                html.index('class="mapa-section"'),
+                "Os valores municipais devem ser exibidos antes do mapa"
             )
             self.assertIn('class="mapa-region-list"', html)
             self.assertIn('class="mapa-scale"', html)
