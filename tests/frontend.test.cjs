@@ -216,11 +216,11 @@ for(const page of ["site/index.html","site/en/index.html"]){
  assert.deepEqual(workIds,[
   "rais-vinculos-formais-2025","estoque-vinculos-formais",
   "saldo-vinculos-formais","saldo-vinculos-formais-2026-08",
+  "rais-vinculos-servicos-2025","rais-vinculos-industria-2025",
+  "rais-vinculos-comercio-2025","rais-vinculos-construcao-2025",
+  "rais-vinculos-agropecuaria-2025",
   "pessoas-ocupadas","pessoas-desocupadas","previdencia-ocupados","residentes-conta-propria-2022",
-  "renda-media-ocupados","renda-mediana-ocupados-2022",
-  "rais-vinculos-industria-2025","rais-vinculos-comercio-2025",
-  "rais-vinculos-servicos-2025","rais-vinculos-construcao-2025",
-  "rais-vinculos-agropecuaria-2025"
+  "renda-media-ocupados","renda-mediana-ocupados-2022"
  ]);
  const economy=html.slice(html.indexOf('<section class="tab" hidden="" id="economia"'),
                           html.indexOf('<section class="tab" hidden="" id="empresas"'));
@@ -692,7 +692,11 @@ for(const [page,headings] of [
  const work=html.slice(html.indexOf('id="trabalho" role="region"'),html.indexOf('id="economia" role="region"'));
  const economy=html.slice(html.indexOf('id="economia" role="region"'),html.indexOf('id="empresas" role="region"'));
  for (const heading of headings) assert.ok(html.includes(heading),page+": "+heading);
- assert.equal((work.match(/class="metrics metrics--two"/g)||[]).length,4,page+": work groups");
+ assert.equal((work.match(/class="metrics metrics--two"/g)||[]).length,3,page+": work groups");
+ assert.equal((work.match(/class="metrics metrics--sectors"/g)||[]).length,1,page+": sector list visible");
+ assert.doesNotMatch(work,/<details><summary>(?:Ver vínculos por setor|Employment links by sector)/);
+ assert.ok(work.indexOf('class="sector-breakdown"')<work.indexOf('Trabalho dos moradores') ||
+   work.indexOf('class="sector-breakdown"')<work.indexOf('Residents and employment'),page+": sectors near RAIS");
  assert.equal((work.match(/data-indicator="/g)||[]).length,15,page+": validated work values unchanged");
  assert.equal((economy.match(/data-indicator="/g)||[]).length,2,page+": GDP indicators unchanged");
  assert.ok(economy.includes('href="#empresas"'),page+": related evidence link");
@@ -708,4 +712,21 @@ assert.match(fs.readFileSync("site/assets/css/styles.css","utf8"),/\.tab \.data-
 for(const page of ["site/index.html","site/en/index.html","site/biblioteca.html","site/governanca.html","site/en/governanca.html"]){
  const head=fs.readFileSync(page,"utf8").split("</head>")[0];
  assert.doesNotMatch(head,/oes-sumare-beta\.vercel\.app/);
+}
+
+
+/* Links institucionais e evidências locais devem permanecer distintos. */
+{
+ const companyData=JSON.parse(fs.readFileSync("site/data/empresas.json","utf8"));
+ assert.equal(companyData.companies.length,5);
+ for(const company of companyData.companies){
+   assert.equal(new URL(company.website).protocol,"https:");
+   assert.equal(new URL(company.source.url).protocol,"https:");
+   assert.notEqual(company.website,company.source.url,company.name+": site e evidência são diferentes");
+ }
+ const js=fs.readFileSync("site/assets/js/empresas.js","utf8");
+ for(const phrase of ["company.website","company.source.url","Site oficial","Fonte sobre Sumaré","Official website","Sumaré evidence"])
+   assert.ok(js.includes(phrase),phrase);
+ for(const page of ["site/governanca.html","site/en/governanca.html"])
+   assert.doesNotMatch(fs.readFileSync(page,"utf8"),/não representa as instituições em que ela estudou ou trabalhou|does not represent institutions where she studied or worked/);
 }
