@@ -322,3 +322,33 @@ assert.match(topicMarkup,/id="library-topics" role="group"/);
 assert.doesNotMatch(topicMarkup,/id="library-topic"|<select/);
 assert.match(topicScript,/aria-pressed/);
 assert.match(topicScript,/filterByTopic/);
+
+/* Filtragem por tema: seleção, estado ativo e retorno ao acervo completo. */
+{
+ const created=[];
+ const topicsNode={append(button){created.push(button);}};
+ const filterNode={hidden:true};
+ const entries=[
+   {dataset:{topic:"Educação"},hidden:false},
+   {dataset:{topic:"Saúde"},hidden:false},
+   {dataset:{topic:"Educação"},hidden:false}
+ ];
+ const doc={
+   querySelectorAll(){return entries;},
+   getElementById(id){return id==="library-topics"?topicsNode:filterNode;},
+   createElement(){return {
+     dataset:{},
+     setAttribute(name,value){this[name]=value;},
+     addEventListener(name,fn){this[name]=fn;}
+   };}
+ };
+ vm.runInNewContext(fs.readFileSync("site/assets/js/biblioteca.js","utf8"),{document:doc});
+ assert.equal(filterNode.hidden,false);
+ assert.deepEqual(created.map(button=>button.textContent),["Todos os temas","Educação","Saúde"]);
+ assert.equal(created[0]["aria-pressed"],"true");
+ created[1].click();
+ assert.deepEqual(entries.map(x=>x.hidden),[false,true,false]);
+ assert.deepEqual(created.map(x=>x["aria-pressed"]),["false","true","false"]);
+ created[0].click();
+ assert.deepEqual(entries.map(x=>x.hidden),[false,false,false]);
+}
