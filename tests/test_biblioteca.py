@@ -58,6 +58,16 @@ class BibliotecaTests(unittest.TestCase):
         self.assertIn("<h2>Contaminação", library.render_article(record))
         self.assertNotIn("<h2>CONTAMINAÇÃO", library.render_article(record))
 
+    def test_no_scielo_links_published(self):
+        catalog = copy.deepcopy(self.catalog)
+        record = next(r for r in catalog["registros"] if r["id"] == "OES-024")
+        record["publicar_no_site"] = "SIM"
+        record["url_original"] = record["url_alternativa"]
+        record["status_verificacao_link"] = "Confirmado: página editorial acessível"
+        with self.assertRaisesRegex(ValueError, "agregador SciELO"):
+            library.public_records(catalog)
+        self.assertNotIn('href="https://www.scielo.br/', self.page)
+
     def test_markup_is_escaped(self):
         record = dict(library.public_records(self.catalog)[0])
         record["titulo_original"] = '<img src=x onerror=alert(1)>'
