@@ -58,13 +58,13 @@ class ConsolidatedIndicatorsTests(unittest.TestCase):
 
     def test_compact_catalog_and_unchanged_base_indicators(self):
         catalog, rows = pipeline.validate()
-        self.assertEqual(len(rows), 31)
-        self.assertEqual(len(catalog["indicators"]), 33)
+        self.assertEqual(len(rows), 34)
+        self.assertEqual(len(catalog["indicators"]), 34)
         values = {x["id"]: x["value"] for x in rows}
         self.assertEqual(values["populacao-censo-2022"], 279545)
         self.assertEqual(values["pib-municipal-2023"], 19026093000)
         self.assertEqual(values["residentes-conta-propria-2022"], 32334)
-        self.assertNotIn("escolarizacao-6-14-anos-2022", values)
+        self.assertEqual(values["escolarizacao-6-14-anos-2022"], 98.62)
 
 
 if __name__ == "__main__":

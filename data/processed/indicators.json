@@ -1090,6 +1090,154 @@
         },
         "value_multiplier": 1
       }
+    },
+    {
+      "id": "pessoas-desocupadas",
+      "name": "Pessoas desocupadas",
+      "topic": "trabalho",
+      "unit": "pessoas",
+      "reference_period": "2022",
+      "definition": "Moradores com 14 anos ou mais que estavam na força de trabalho, mas não estavam ocupados na semana de referência do Censo 2022.",
+      "source_institution": "IBGE",
+      "source_dataset": "Censo Demográfico 2022",
+      "value": 8170,
+      "municipality_code": "3552403",
+      "status": "validated",
+      "source": {
+        "institution": "IBGE",
+        "dataset": "Censo Demográfico 2022",
+        "url": "https://apisidra.ibge.gov.br/values/t/6580/n6/3552403/p/2022/v/1641/c629/all?formato=json",
+        "query_id": "t6580 v1641 c629/all; D4C=32446; sexo, idade totais",
+        "release_date": null
+      },
+      "collected_at": "2026-10-23",
+      "updated_at": "2026-10-24",
+      "reviewed_at": "2026-10-24",
+      "reviewed_by": "Verificação técnica assistida do OES (sem revisão humana independente)",
+      "method": "Selecionar a categoria 'Força de trabalho - desocupada' da tabela SIDRA 6580; conferir força de trabalho menos ocupados (141.095 - 132.925 = 8.170).",
+      "limitations": "Estimativa do Censo 2022 sobre pessoas residentes. Não inclui quem estava fora da força de trabalho; não representa desligamentos nem vagas no município.",
+      "revisions": "Origem e seleção verificadas em 23/10/2026; incorporação após auditoria em 24/10/2026.",
+      "evidence": {
+        "raw_path": "data/raw/sidra_6580_desocupacao_2022.json",
+        "sha256": "da9f90cd4647538c4578702d290d93affcfe8a972c92057fdf675575e52a082e",
+        "capture_method": "arquivo_original_api_sidra",
+        "row_selector": {
+          "D1C": "3552403",
+          "D2C": "2022",
+          "D3C": "1641",
+          "D4C": "32446",
+          "D5C": "6794",
+          "D6C": "95253"
+        },
+        "original_file_preserved": true,
+        "value_multiplier": 1
+      }
+    },
+    {
+      "id": "previdencia-ocupados",
+      "name": "Ocupados contribuintes da Previdência",
+      "topic": "trabalho",
+      "unit": "%",
+      "reference_period": "2022",
+      "definition": "Percentual de moradores ocupados com 14 anos ou mais que contribuíam para um instituto de Previdência oficial no trabalho principal.",
+      "source_institution": "IBGE",
+      "source_dataset": "Censo Demográfico 2022",
+      "value": 77.92,
+      "municipality_code": "3552403",
+      "status": "validated",
+      "source": {
+        "institution": "IBGE",
+        "dataset": "Censo Demográfico 2022",
+        "url": "https://apisidra.ibge.gov.br/values/t/10264/n6/3552403/p/2022/v/4090/c526/all?formato=json",
+        "query_id": "t10264 v4090 c526/all; D4C=15350/15349; totais nas demais classificações",
+        "release_date": null
+      },
+      "collected_at": "2026-10-23",
+      "updated_at": "2026-10-24",
+      "reviewed_at": "2026-10-24",
+      "reviewed_by": "Verificação técnica assistida do OES (sem revisão humana independente)",
+      "method": "Dividir 103.576 contribuintes pelos 132.925 ocupados da tabela SIDRA 10264 e multiplicar por 100; arredondamento para duas casas decimais.",
+      "limitations": "Dados do Censo 2022 por residência e trabalho principal. A contribuição previdenciária não é sinônimo de emprego com carteira assinada.",
+      "revisions": "Origem e seleção verificadas em 23/10/2026; incorporação após auditoria em 24/10/2026.",
+      "evidence": {
+        "raw_path": "data/raw/sidra_10264_previdencia_2022.json",
+        "sha256": "54bd2c58b58844740ccd4aa363c8f3ef522cfec022e08ea71d90e86524243ff2",
+        "capture_method": "arquivo_original_api_sidra",
+        "numerator_selector": {
+          "D1C": "3552403",
+          "D2C": "2022",
+          "D3C": "4090",
+          "D4C": "15350",
+          "D5C": "6794",
+          "D6C": "95251",
+          "D7C": "100971"
+        },
+        "denominator_selector": {
+          "D1C": "3552403",
+          "D2C": "2022",
+          "D3C": "4090",
+          "D4C": "15349",
+          "D5C": "6794",
+          "D6C": "95251",
+          "D7C": "100971"
+        },
+        "original_file_preserved": true,
+        "round_digits": 2
+      }
+    },
+    {
+      "id": "escolarizacao-6-14-anos-2022",
+      "name": "Escolarização de 6 a 14 anos",
+      "topic": "educacao",
+      "unit": "%",
+      "reference_period": "2022",
+      "definition": "Percentual de moradores de Sumaré entre 6 e 14 anos que frequentavam a escola no Censo 2022.",
+      "source_institution": "IBGE",
+      "source_dataset": "Censo Demográfico 2022",
+      "value": 98.62,
+      "municipality_code": "3552403",
+      "status": "validated",
+      "source": {
+        "institution": "IBGE",
+        "dataset": "Censo Demográfico 2022",
+        "url": "https://apisidra.ibge.gov.br/values/t/10139/n6/3552403/p/2022/v/all/c58/all?formato=json",
+        "query_id": "t10139; v12805; 6 a 14 anos c58=31615; totais sexo e deficiência",
+        "release_date": null
+      },
+      "collected_at": "2026-10-23",
+      "updated_at": "2026-10-24",
+      "reviewed_at": "2026-10-24",
+      "reviewed_by": "Verificação técnica assistida do OES (sem revisão humana independente)",
+      "method": "Valor publicado diretamente pelo IBGE/SIDRA na tabela 10139, variável 12805, faixa etária 31615, sexo e deficiência totais; conferido também na tabela 10056 (taxa bruta de frequência escolar).",
+      "limitations": "A página IBGE Cidades apresenta o valor com ano 2022, mas mantém uma nota de fonte que menciona Censo 2010. As duas tabelas originais SIDRA de 2022 confirmam 98,62%; trata-se de moradores, não de matrículas na rede escolar do município.",
+      "revisions": "Origem e seleção verificadas em 23/10/2026; incorporação após auditoria em 24/10/2026.",
+      "evidence": {
+        "raw_path": "data/raw/sidra_10139_escolarizacao.json",
+        "sha256": "d89c6058c05b820ea47c525862480f3d9158fa3e78deb071540b61d08ae4505c",
+        "capture_method": "arquivo_original_api_sidra",
+        "row_selector": {
+          "D1C": "3552403",
+          "D2C": "2022",
+          "D3C": "12805",
+          "D4C": "31615",
+          "D5C": "6794",
+          "D6C": "46583"
+        },
+        "corroboration": {
+          "raw_path": "data/raw/sidra_10056_frequencia_escolar.json",
+          "sha256": "1be1cd02a78c2bd3814f2c5ec3bc9fe22a2452567b78c0cca6ba35c594b156a7",
+          "row_selector": {
+            "D1C": "3552403",
+            "D2C": "2022",
+            "D3C": "3795",
+            "D4C": "31615",
+            "D5C": "6794",
+            "D6C": "95251"
+          }
+        },
+        "original_file_preserved": true,
+        "value_multiplier": 1
+      }
     }
   ]
 }

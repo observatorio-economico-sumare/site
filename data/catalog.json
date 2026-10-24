@@ -59,9 +59,9 @@
       "topic": "trabalho",
       "unit": "pessoas",
       "reference_period": "2022",
-      "definition": "Pessoas desocupadas conforme conceito da pesquisa de origem",
+      "definition": "Moradores com 14 anos ou mais que estavam na força de trabalho, mas não estavam ocupados na semana de referência do Censo 2022.",
       "source_institution": "IBGE",
-      "source_dataset": "Censo Demográfico"
+      "source_dataset": "Censo Demográfico 2022"
     },
     {
       "id": "previdencia-ocupados",
@@ -69,9 +69,9 @@
       "topic": "trabalho",
       "unit": "%",
       "reference_period": "2022",
-      "definition": "Participação entre ocupados conforme critérios da pesquisa",
+      "definition": "Percentual de moradores ocupados com 14 anos ou mais que contribuíam para um instituto de Previdência oficial no trabalho principal.",
       "source_institution": "IBGE",
-      "source_dataset": "Censo Demográfico"
+      "source_dataset": "Censo Demográfico 2022"
     },
     {
       "id": "renda-media-ocupados",
@@ -332,6 +332,16 @@
       "definition": "Rendimento nominal mensal mediano de todos os trabalhos das pessoas de 14 anos ou mais ocupadas e com rendimento em 2022",
       "source_institution": "IBGE",
       "source_dataset": "Censo Demográfico"
+    },
+    {
+      "id": "escolarizacao-6-14-anos-2022",
+      "name": "Escolarização de 6 a 14 anos",
+      "topic": "educacao",
+      "unit": "%",
+      "reference_period": "2022",
+      "definition": "Percentual de moradores de Sumaré entre 6 e 14 anos que frequentavam a escola no Censo 2022.",
+      "source_institution": "IBGE",
+      "source_dataset": "Censo Demográfico 2022"
     }
   ]
 }
