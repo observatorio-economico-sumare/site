@@ -1,0 +1,80 @@
+{
+  "municipality": "Sumaré (SP)",
+  "municipality_ibge": "3552403",
+  "reference_year": 2024,
+  "unit": "unidades locais",
+  "total": 12746,
+  "sectors": [
+    {
+      "name": "Serviços",
+      "cnae_sections": [
+        "H",
+        "I",
+        "J",
+        "K",
+        "L",
+        "M",
+        "N",
+        "O",
+        "P",
+        "Q",
+        "R",
+        "S",
+        "T",
+        "U"
+      ],
+      "value": 6000
+    },
+    {
+      "name": "Comércio",
+      "cnae_sections": [
+        "G"
+      ],
+      "value": 3940
+    },
+    {
+      "name": "Indústria",
+      "cnae_sections": [
+        "B",
+        "C",
+        "D",
+        "E"
+      ],
+      "value": 1011
+    },
+    {
+      "name": "Construção",
+      "cnae_sections": [
+        "F"
+      ],
+      "value": 916
+    },
+    {
+      "name": "Agropecuária",
+      "cnae_sections": [
+        "A"
+      ],
+      "value": 879
+    }
+  ],
+  "secondary_context": {
+    "occupied_persons": 85185,
+    "salaried_persons": 70323,
+    "unit": "pessoas"
+  },
+  "source": {
+    "institution": "IBGE",
+    "dataset": "Cadastro Central de Empresas (CEMPRE)",
+    "sidra_table": 9528,
+    "count_variable": 706,
+    "total_query": "https://apisidra.ibge.gov.br/values/t/9528/n6/3552403/p/2024/v/all?formato=json",
+    "sectors_query": "https://apisidra.ibge.gov.br/values/t/9528/n6/3552403/p/2024/v/706/c12762/116830,116880,116910,117296,117307,117329,117363,117484,117543,117555,117608,117666,117673,117714,117774,117788,117810,117838,117861,117888,117892?formato=json",
+    "total_response_sha256": "e65e4da9f6ba82fa22f2e39dd1d980586d0ddab77511eabae3db15a45deec823",
+    "sectors_response_sha256": "4ef8d4f33c4a90384685ba7b21fe40e0334330d86b63c91c5a3c42376e0ae112",
+    "retrieved_local_date": "2026-10-23",
+    "audit_run": "https://github.com/observatorio-economico-sumare/site/actions/runs/40050564433"
+  },
+  "method": "Soma das 21 seções CNAE 2.0 da variável 706 para cinco grupos, sem dupla contagem. No retorno SIDRA, '-' significa zero. A soma foi confrontada com a linha Total (12.746).",
+  "limitations": "CEMPRE compreende empresas e outras organizações formalmente ativas conforme sua metodologia; unidades locais não equivalem a empresas únicas nem ao total de CNPJs ativos de 2026. Não comparar diretamente estes universos.",
+  "status": "validated_research_not_published"
+}
