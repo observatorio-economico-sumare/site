@@ -392,3 +392,26 @@ nav{background:#fff;border-bottom:1px solid var(--line)}
   .governance-grid .governance-section { padding-top: 15px; }
   .governance-wrap .governance-hero h1 { font-size: clamp(30px, 8vw, 36px); }
 }
+
+/* Mobile: indicação discreta de mais opções, sem aumentar o cabeçalho. */
+@media (max-width: 800px) {
+  .nav-shell { position: relative; }
+  .nav-shell.nav-more-right::after {
+    content: "›";
+    position: absolute;
+    top: 0;
+    right: 22px;
+    width: 24px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    background: linear-gradient(90deg, transparent, #fff 50%);
+    color: #142D47;
+    font: 600 24px/1 var(--font-interface);
+    pointer-events: none;
+  }
+}
+@media (max-width: 480px) {
+  .nav-shell.nav-more-right::after { right: 18px; }
+}

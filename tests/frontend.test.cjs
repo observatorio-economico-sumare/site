@@ -578,3 +578,32 @@ for(const [path,url,locale] of [
  assert.ok(!head.includes("utm_source="),path);
 }
 assert.match(fs.readFileSync("site/en/index.html","utf8"),/href="\.\.\/biblioteca\.html" title="Library in Portuguese"/);
+
+/* Descoberta do menu móvel: todos os templates compartilham uma única lógica. */
+for(const [path,prefix] of [
+  ["site/index.html","assets/"],
+  ["site/en/index.html","../assets/"],
+  ["site/biblioteca.html","assets/"],
+  ["site/governanca.html","assets/"],
+  ["site/en/governanca.html","../assets/"]
+]){
+  const head=fs.readFileSync(path,"utf8").split("</head>")[0];
+  assert.ok(head.includes('<script src="'+prefix+'js/nav-scroll-cue.js" defer></script>'),path);
+}
+const navCueCode=fs.readFileSync("site/assets/js/nav-scroll-cue.js","utf8");
+const navCss=fs.readFileSync("site/assets/css/styles.css","utf8");
+assert.match(navCss,/\.nav-shell\.nav-more-right::after/);
+{
+  const states=new Map(),handlers={};
+  const shell={classList:{toggle(name,on){states.set(name,on);}}};
+  const menu={scrollWidth:950,clientWidth:320,scrollLeft:0,
+    addEventListener(name,handler){handlers[name]=handler;}};
+  const doc={querySelector(selector){return selector===".nav-inner"?menu:shell;}};
+  const win={addEventListener(name,handler){handlers[name]=handler;}};
+  vm.runInNewContext(navCueCode,{document:doc,window:win});
+  assert.equal(states.get("nav-more-right"),true);
+  menu.scrollLeft=630; handlers.scroll();
+  assert.equal(states.get("nav-more-right"),false);
+  menu.scrollWidth=320;menu.scrollLeft=0;handlers.resize();
+  assert.equal(states.get("nav-more-right"),false);
+}
