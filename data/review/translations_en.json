@@ -1,0 +1,92 @@
+{
+  "crescimento-intercensitario-2010-2022": {
+    "name": "Population growth between the 2010 and 2022 censuses",
+    "definition": "Cumulative percentage change in resident population between the 2010 and 2022 censuses.",
+    "unit": "%",
+    "dataset": "SES-SP municipal report / 2022 Census",
+    "method": "(279,545 / 241,311 - 1) × 100, rounded to four decimal places.",
+    "limitations": "Cumulative change over 12 years, not an annual rate or a current population estimate.",
+    "revisions": "First prepared for inclusion on October 23, 2026; not yet published."
+  },
+  "populacao-homens-2022": {
+    "name": "Resident population — men",
+    "definition": "Census count of male residents.",
+    "unit": "people",
+    "dataset": "SES-SP municipal report / 2022 Census",
+    "method": "Count published in Table 1 of the SES-SP municipal report based on IBGE census data.",
+    "limitations": "Sex classification according to the census, not a measure of gender identity.",
+    "revisions": "First prepared for inclusion on October 23, 2026; not yet published."
+  },
+  "populacao-mulheres-2022": {
+    "name": "Resident population — women",
+    "definition": "Census count of female residents.",
+    "unit": "people",
+    "dataset": "SES-SP municipal report / 2022 Census",
+    "method": "Count published in Table 1 of the SES-SP municipal report based on IBGE census data.",
+    "limitations": "Sex classification according to the census, not a measure of gender identity.",
+    "revisions": "First prepared for inclusion on October 23, 2026; not yet published."
+  },
+  "populacao-0-14-anos-2022": {
+    "name": "Population aged 0–14",
+    "definition": "Number of residents aged 0 to 14 inclusive.",
+    "unit": "people",
+    "dataset": "SES-SP municipal report / 2022 Census",
+    "method": "Sum of age bands 0–4, 5–9 and 10–14 in Table 1 of the SES-SP report.",
+    "limitations": "An OES aggregate derived from the 2022 census age categories.",
+    "revisions": "First prepared for inclusion on October 23, 2026; not yet published."
+  },
+  "populacao-15-64-anos-2022": {
+    "name": "Population aged 15–64",
+    "definition": "Number of residents aged 15 to 64 inclusive.",
+    "unit": "people",
+    "dataset": "SES-SP municipal report / 2022 Census",
+    "method": "Sum of ten five-year age groups, from 15–19 through 60–64.",
+    "limitations": "This age group is not the labor force or employed population.",
+    "revisions": "First prepared for inclusion on October 23, 2026; not yet published."
+  },
+  "populacao-65-mais-2022": {
+    "name": "Population aged 65 and over",
+    "definition": "Number of residents aged 65 or over.",
+    "unit": "people",
+    "dataset": "SES-SP municipal report / 2022 Census",
+    "method": "Sum of census age bands from 65–69 through 100 and over.",
+    "limitations": "Uses a 65+ cutoff, not alternative definitions such as 60+.",
+    "revisions": "First prepared for inclusion on October 23, 2026; not yet published."
+  },
+  "taxa-alfabetizacao-15-mais-2022": {
+    "name": "Literacy rate — population aged 15+",
+    "definition": "Share of residents aged 15 or over who can read and write a simple note.",
+    "unit": "%",
+    "dataset": "SES-SP municipal report / 2022 Census",
+    "method": "216,905 literate persons divided by 216,905 + 7,869, multiplied by 100 and rounded to one decimal place.",
+    "limitations": "Reproduced from IBGE figures in an SES-SP report; the original report file is not archived in the OES.",
+    "revisions": "First prepared for inclusion on October 23, 2026; not yet published."
+  },
+  "densidade-demografica-2022": {
+    "name": "Population density — 2022 Census",
+    "definition": "Number of residents per square kilometer.",
+    "unit": "people/km²",
+    "dataset": "IBGE Cities and States",
+    "method": "Official density published by IBGE for Sumaré's 2022 Census, without mixing land-area reference years.",
+    "limitations": "Uses the land area applied in the 2022 Census publication.",
+    "revisions": "First prepared for inclusion on October 23, 2026; not yet published."
+  },
+  "residentes-conta-propria-2022": {
+    "name": "Self-employed residents without employees",
+    "definition": "Residents aged 14 or over working on their own account, without employees, in the 2022 Census reference week.",
+    "unit": "people",
+    "dataset": "2022 Census",
+    "method": "SIDRA table 10261, variable 4090, occupation code 79378, municipality 3552403, all sexes and racial groups.",
+    "limitations": "Residents, not local jobs or unique legal entities; includes workers with and without registered businesses.",
+    "revisions": "First prepared for inclusion on October 23, 2026; not yet published."
+  },
+  "pib-municipal-2023": {
+    "name": "Municipal GDP at current prices",
+    "definition": "Municipal gross domestic product at current prices, comprising gross value added and net taxes on products.",
+    "unit": "R$",
+    "dataset": "Municipal GDP",
+    "method": "SIDRA table 5938, variable 37; source value in thousands of reais multiplied by 1,000.",
+    "limitations": "Local output, not residents' personal income; nominal rather than inflation-adjusted.",
+    "revisions": "First prepared for inclusion on October 23, 2026; not yet published."
+  }
+}
