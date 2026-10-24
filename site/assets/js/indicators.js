@@ -122,8 +122,7 @@ function renderItem(item, cardsById) {
     provenance.replaceChildren();
 
     const line = document.createElement("span");
-    line.textContent = item.source.institution + " · " + item.reference_period +
-      (indicatorsEnglish ? " · last updated by the OES on " : " · atualizado no OES em ") + formatRecordDate(item.updated_at);
+    line.textContent = item.source.institution + " · " + item.reference_period;
     const detail = document.createElement("button");
     detail.type = "button";
     detail.className = "source-detail";

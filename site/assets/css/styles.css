@@ -89,7 +89,7 @@ nav{background: #fff; box-shadow: 0 1px 0 var(--line)}
 .intro p{color: #4c5e72; font-size: 17px; max-width: 735px}
 .aside{border-top: 4px solid #e4b622; color: #5d697c; font-size: 13px; padding-top: 18px}
 .aside strong{font-size: 14px}
-.section-title{border-top: 2px solid var(--ink)}
+.section-title{border:0}
 .section-title h2{font: 800 29px/1.2 Arial,Helvetica,sans-serif}
 .section-title span{font-size: 12px}
 .metrics{gap: 1px; background: var(--line); border: 1px solid var(--line); box-shadow: 0 10px 35px #17274208}
@@ -115,8 +115,8 @@ h3{font-size: 18px}
 .source{background: transparent}
 .source strong{font-size: 15px}
 .source a{font-weight: 700}
-.note{background: #fff; border-left: 4px solid #e4b622; padding: 17px 20px; color: #516173}
-.footer{color: #d6e0ea; margin-top: 90px; border: 0; padding: 27px 0 42px}
+.note{background:transparent;border:0;padding:0;color:var(--muted);max-width:800px;line-height:1.7}
+.footer{color:#d6e0ea;margin-top:60px;border:0;padding:25px 0 31px}
 .footer a{color: #fff}
 a{color: #115ebc}
 dialog{border-radius: 5px; border-color: var(--line)}
@@ -156,8 +156,10 @@ body{background: var(--paper); color: #333B44}
 .mast{background: #142D47}
 .footer{background: #142D47}
 .nav-inner button[aria-selected="true"]{border-color: var(--yellow); color: var(--ink)}
-.metrics--two{grid-template-columns: repeat(2,minmax(0,1fr)); margin: 26px 0}
-.metrics--two .metric{border-top: 3px solid var(--yellow)}
+.metrics--two{grid-template-columns:repeat(2,minmax(0,1fr));margin:20px 0 28px;gap:0;border:0;background:transparent;box-shadow:none}
+.metrics--two .metric{background:transparent;min-width:0;padding:24px 26px;border:0;border-top:1px solid var(--line);border-right:1px solid var(--line)}
+.metrics--two .metric:first-child{padding-left:0}
+.metrics--two .metric:last-child{padding-right:0;border-right:0}
 .metric .number{overflow-wrap: anywhere; font-size: clamp(25px,2.9vw,38px)}
 .metric .number--verified{color: #142D47}
 .metric .origin{display: flex; flex-direction: column; align-items: flex-start; gap: 9px; line-height: 1.6}
@@ -181,9 +183,13 @@ dialog#sourceDialog{max-width: 680px; max-height: min(83vh,850px); overflow-y: a
   .nav-inner{scrollbar-width: thin}
 }
 
+@media(max-width:680px){
+ .metrics--two{grid-template-columns:1fr}
+}
+
 @media(max-width:480px){
   .metrics--two{grid-template-columns: 1fr}
-  .metrics--two .metric{border-right: 0; border-bottom: 1px solid var(--line)}
+  .metrics--two .metric,.metrics--two .metric:first-child,.metrics--two .metric:last-child{border-right:0;border-bottom:1px solid var(--line);padding:21px 0}
   .metric .origin{font-size: 11px}
   .source--catalog{align-items: flex-start; flex-direction: column; gap: 5px}
   .data-detail{grid-template-columns: 1fr; gap: 3px}
@@ -195,14 +201,14 @@ dialog#sourceDialog{max-width: 680px; max-height: min(83vh,850px); overflow-y: a
   *{animation-duration: 0s!important; transition-duration: 0s!important}
 }
 
-.institutional-grid{display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 18px; margin: 32px 0 18px}
-.institutional-block{border: 1px solid var(--line); background: #fff}
+.institutional-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(22px,4vw,60px);margin:28px 0 20px}
+.institutional-block{border:0;border-top:1px solid var(--line);background:transparent}
 .institutional-block h3{margin: 0 0 10px; font: 700 17px/1.3 Montserrat,Arial,sans-serif; color: var(--ink)}
 .institutional-block p{margin: 0; font-size: 14px; color: #485a68}
 .institutional-values{margin-bottom: 35px}
-.institutional-cta{background: #fff; border-left: 4px solid #f3c443; padding: 23px 26px; margin: 32px 0 0}
+.institutional-cta{background:transparent;border:0;border-top:1px solid var(--line);padding:24px 0;margin:28px 0 0}
 .institutional-cta p{max-width: 680px; margin: 7px 0 10px; font-size: 14px; color: #516274}
-.institutional-cta a{font-weight: 700}
+.institutional-cta a{font-weight:600}
 .governance-wrap{padding-top: 48px; padding-bottom: 24px}
 .governance-wrap h1{font: 700 clamp(30px,4vw,48px)/1.15 Montserrat,Arial,sans-serif; color: var(--ink); margin: 16px 0}
 .governance-lead{max-width: 740px; color: #516274; font-size: 15px}
@@ -219,7 +225,7 @@ dialog#sourceDialog{max-width: 680px; max-height: min(83vh,850px); overflow-y: a
 
 @media(max-width:680px){
   .institutional-grid{grid-template-columns: 1fr}
-  .institutional-block{padding: 20px}
+  .institutional-block{padding:20px 0}
   .governance-wrap{padding-top: 28px}
   .governance-section{padding: 24px 0}
 }
@@ -258,9 +264,9 @@ h3{font-family: var(--font-interface); font-weight: 600; letter-spacing: -.012em
 .term b{font-weight: 600}
 .data-detail dt{font-weight: 600}
 .data-table th{font-family: var(--font-interface); font-weight: 600}
-.section-title{margin: 30px 0 21px; padding-top: 21px}
+.section-title{margin:36px 0 20px;padding-top:0}
 .intro{padding-top: 66px; padding-bottom: 48px}
-.institutional-block{padding: 29px 30px}
+.institutional-block{padding:22px 0}
 .governance-section{padding-top: 35px; padding-bottom: 35px}
 .governance-section p{font-size: 15px; line-height: 1.8}
 .governance-section li{font-size: 15px; line-height: 1.8}
@@ -300,12 +306,9 @@ h3{font-family: var(--font-interface); font-weight: 600; letter-spacing: -.012em
 
 /* Governança institucional: leitura em duas colunas, sem índice duplicado. */
 .governance-wrap{padding-top:32px;padding-bottom:38px}
-.governance-wrap .back-link{margin:0 0 18px}
-.governance-wrap .back-link a{color:#4d6071;text-decoration:none;font-size:13px;font-weight:500}
-.governance-wrap .back-link a:hover{text-decoration:underline}
 .governance-hero{max-width:930px;padding:15px 0 16px;margin-bottom:20px}
-.governance-hero .kicker{display:flex;align-items:center;gap:11px;color:#4c6070;font-weight:600;letter-spacing:.12em}
-.governance-hero .kicker::before{content:"";display:block;width:25px;height:3px;background:var(--yellow)}
+.governance-hero .kicker{color:var(--muted);font-weight:600;letter-spacing:.1em}
+
 .governance-wrap .governance-hero h1{margin:13px 0 12px;font-size:clamp(40px,5vw,61px);line-height:1.13}
 .governance-wrap .governance-lead{max-width:670px;color:#516274;font-size:16px;line-height:1.7;margin:0}
 .governance-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:clamp(32px,5.4vw,78px);row-gap:34px;align-items:start}
@@ -386,3 +389,9 @@ h3{font-family: var(--font-interface); font-weight: 600; letter-spacing: -.012em
  .nav-shell .nav-inner{gap:0 16px}
  .nav-shell .nav-inner button,.nav-library-link{font-size:13px}
 }
+
+/* Navegação nas páginas independentes, sem retorno duplicado. */
+.subpage-nav .nav-inner a{display:inline-flex;align-items:center;flex:0 0 auto;white-space:nowrap;padding:16px 0 15px;border-bottom:2px solid transparent;color:#48576c;text-decoration:none;font:500 13px/1.35 var(--font-interface)}
+.subpage-nav .nav-inner a:hover,.subpage-nav .nav-inner a:focus-visible{color:var(--ink);border-bottom-color:var(--yellow)}
+.subpage-nav [aria-current="page"]{color:var(--ink)!important;font-weight:600!important;border-bottom:3px solid var(--yellow)!important}
+@media(max-width:800px){.subpage-nav .nav-inner a{padding:11px 0;white-space:normal;text-align:left}}

@@ -224,7 +224,7 @@ for (const [page,expected] of [["site/index.html","Carregando…"],["site/en/ind
 {
  const html=fs.readFileSync("site/biblioteca.html","utf8");
  assert.doesNotMatch(html,/class="library-back"|Voltar ao site/);
- assert.ok(html.includes('<nav class="library-nav" aria-label="Navegação principal">'));
+ assert.ok(html.includes('<nav class="subpage-nav library-nav" aria-label="Navegação principal">'));
  assert.ok(html.includes('aria-current="page">Biblioteca</a>'));
  const sections=["inicio","populacao","trabalho","economia","analises","metodologia","sobre"];
  const targets=[...html.matchAll(/<a href="index\.html#([^"]+)">[^<]+<\/a>/g)].map(m=>m[1]);
@@ -271,3 +271,22 @@ for (const page of ["site/index.html","site/en/index.html"]){
  assert.doesNotMatch(intro,/PIB per capita não representa|GDP per capita is not average personal income/);
 }
 assert.doesNotMatch(fs.readFileSync("site/assets/css/styles.css","utf8"),/#inicio > \.footnote/);
+
+/* Unidade visual: mesmo menu nas páginas independentes, linhas discretas. */
+for(const [path,base,labels] of [
+ ["site/governanca.html","index.html",["Visão geral","População","Trabalho e renda","Economia","Análises","Entenda os dados","Institucional"]],
+ ["site/en/governanca.html","index.html",["Overview","Population","Jobs & income","Economy","Research","Understanding the data","About"]]
+]){
+ const html=fs.readFileSync(path,"utf8");
+ assert.match(html,/<nav class="subpage-nav"/);
+ assert.doesNotMatch(html,/class="back-link"/);
+ const list=[...html.matchAll(/<a href="index\.html#[^"]+"(?: aria-current="page")?>([^<]+)<\/a>/g)].map(x=>x[1]);
+ assert.deepEqual(list,labels);
+ assert.match(html,/aria-current="page"/);
+}
+const unifiedStyles=fs.readFileSync("site/assets/css/styles.css","utf8");
+assert.match(unifiedStyles,/\.institutional-block\{border:0;border-top:1px solid var\(--line\);background:transparent\}/);
+assert.match(unifiedStyles,/\.metrics--two \.metric\{background:transparent;/);
+assert.doesNotMatch(unifiedStyles,/\.note\{background: #fff; border-left: 4px/);
+assert.doesNotMatch(fs.readFileSync("site/assets/css/biblioteca.css","utf8"),/\.library-nav \.nav-inner a/);
+assert.doesNotMatch(fs.readFileSync("site/assets/js/indicators.js","utf8"),/last updated by the OES on/);
