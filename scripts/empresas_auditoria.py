@@ -53,12 +53,12 @@ def setores_ibge():
         data=payload[1:]
         if len(data)!=len(codes) or {int(row["D4C"]) for row in data}!=set(codes):
             raise ValueError("Cobertura incompleta das 21 seções CNAE")
-        invalid=[row for row in data if not str(row["V"]).isdigit()]
+        invalid=[row for row in data if not (str(row["V"]).isdigit() or str(row["V"])=="-")]
         if invalid: raise ValueError("Seções com valores não numéricos: "+str(invalid))
         groups={"Agropecuária": codes[:1], "Indústria": codes[1:5],
                 "Construção": codes[5:6], "Comércio": codes[6:7],
                 "Serviços": codes[7:]}
-        totals={k:sum(int(row["V"]) for row in data if int(row["D4C"]) in vals)
+        totals={k:sum(0 if row["V"]=="-" else int(row["V"]) for row in data if int(row["D4C"]) in vals)
                 for k,vals in groups.items()}
         print("IBGE_2024_GRUPOS",json.dumps(totals,ensure_ascii=False), "SOMA",sum(totals.values()),flush=True)
         if sum(totals.values())!=12746:raise ValueError("Soma setorial diferente do total 12.746")
