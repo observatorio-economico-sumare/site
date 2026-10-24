@@ -1,49 +1,70 @@
-/* OES · Mapa demográfico 2022. SVG nativo, sem bibliotecas de mapas. */
+/* OES: mapa do Censo 2022. SVG nativo e geometria oficial do IBGE. */
 (() => {
   const root = document.querySelector("[data-mapa]");
   if (!root) return;
 
-  const english = document.documentElement.lang === "en";
+  const en = document.documentElement.lang === "en";
   const svg = root.querySelector("[data-mapa-svg]");
   const buttons = root.querySelector("[data-mapa-buttons]");
   const status = root.querySelector("[data-mapa-status]");
-  const name = root.querySelector("[data-mapa-name]");
-  const count = root.querySelector("[data-mapa-pop]");
-  const labels = english
-    ? { people: "people", unavailable: "The map could not be loaded.", invalid: "Invalid Census map data." }
-    : { people: "pessoas", unavailable: "Não foi possível carregar o mapa.", invalid: "Dados inválidos do mapa censitário." };
-  const format = new Intl.NumberFormat(english ? "en-US" : "pt-BR");
-  const namespace = "http://www.w3.org/2000/svg";
+  const announcement = root.querySelector("[data-mapa-selection]");
+  const words = en
+    ? { residents: "residents", unavailable: "The map could not be loaded.", invalid: "Invalid Census map data." }
+    : { residents: "moradores", unavailable: "Não foi possível carregar o mapa.", invalid: "Dados inválidos do mapa censitário." };
+  const format = new Intl.NumberFormat(en ? "en-US" : "pt-BR");
+  const ns = "http://www.w3.org/2000/svg";
   let loaded = false;
   let loading = false;
 
-  function rings(geometry) {
-    return geometry.type === "Polygon"
-      ? [geometry.coordinates]
-      : geometry.type === "MultiPolygon" ? geometry.coordinates : [];
-  }
+  const polygons = geometry => geometry.type === "Polygon"
+    ? [geometry.coordinates]
+    : geometry.type === "MultiPolygon" ? geometry.coordinates : [];
 
-  function visitCoordinates(features, callback) {
-    for (const feature of features) {
-      for (const polygon of rings(feature.geometry)) {
+  function visitCoordinates(areas, callback) {
+    for (const area of areas) {
+      for (const polygon of polygons(area.geometry)) {
         for (const ring of polygon) {
-          for (const point of ring) callback(point);
+          for (const coordinate of ring) callback(coordinate);
         }
       }
     }
+  }
+
+  /* Centro geométrico da região, calculado da malha original. */
+  function center(ring) {
+    let area = 0, x = 0, y = 0;
+    for (let i = 0; i < ring.length - 1; i++) {
+      const [ax, ay] = ring[i];
+      const [bx, by] = ring[i + 1];
+      const cross = ax * by - bx * ay;
+      area += cross;
+      x += (ax + bx) * cross;
+      y += (ay + by) * cross;
+    }
+    if (Math.abs(area) < 1e-12) return ring[0];
+    return [x / (3 * area), y / (3 * area)];
+  }
+
+  function node(tag, text, className) {
+    const element = document.createElementNS(ns, tag);
+    if (text !== undefined) element.textContent = text;
+    if (className) element.setAttribute("class", className);
+    return element;
   }
 
   function draw(collection) {
     const areas = collection.features;
     const meta = collection.metadata;
     if (meta.municipalityCode !== "3552403" || meta.year !== 2022 ||
-        areas.length !== 6 || areas.some(area => !rings(area.geometry).length ||
+        areas.length !== 6 || areas.some(area =>
+          !polygons(area.geometry).length ||
           !Number.isSafeInteger(area.properties.population))) {
-      throw new Error(labels.invalid);
+      throw new Error(words.invalid);
     }
     const total = areas.reduce((sum, area) => sum + area.properties.population, 0);
-    if (total !== meta.populationInAreas || total + meta.difference !== meta.municipalityTotal) {
-      throw new Error(labels.invalid);
+    if (total !== meta.populationInAreas ||
+        total + meta.difference !== meta.municipalityTotal) {
+      throw new Error(words.invalid);
     }
 
     let west = Infinity, east = -Infinity, south = Infinity, north = -Infinity;
@@ -53,53 +74,64 @@
       south = Math.min(south, latitude);
       north = Math.max(north, latitude);
     });
-    if (![west, east, south, north].every(Number.isFinite) || west === east || south === north) {
-      throw new Error(labels.invalid);
-    }
+    if (![west, east, south, north].every(Number.isFinite) ||
+        west === east || south === north) throw new Error(words.invalid);
 
     const width = 720, height = 390, padding = 18;
-    const longitudeFactor = Math.cos(((south + north) / 2) * Math.PI / 180);
-    const scale = Math.min((width - 2 * padding) / ((east - west) * longitudeFactor),
-      (height - 2 * padding) / (north - south));
-    const offsetX = (width - (east - west) * longitudeFactor * scale) / 2;
+    const correction = Math.cos(((south + north) / 2) * Math.PI / 180);
+    const scale = Math.min((width - padding * 2) / ((east - west) * correction),
+      (height - padding * 2) / (north - south));
+    const offsetX = (width - (east - west) * correction * scale) / 2;
     const offsetY = (height - (north - south) * scale) / 2;
-    const point = ([longitude, latitude]) =>
-      [offsetX + (longitude - west) * longitudeFactor * scale,
-        offsetY + (north - latitude) * scale].map(value => value.toFixed(2)).join(" ");
-
-    svg.setAttribute("viewBox", `0 0 ${width} ${height}`);
+    const point = ([longitude, latitude]) => [
+      offsetX + (longitude - west) * correction * scale,
+      offsetY + (north - latitude) * scale
+    ];
+    const pathPoint = coordinate => point(coordinate).map(n => n.toFixed(2)).join(" ");
+    const ranked = [...areas].sort((a, b) => b.properties.population - a.properties.population);
+    const counts = ranked.map(area => area.properties.population);
+    const min = Math.min(...counts), max = Math.max(...counts);
     const interactive = [];
+    const labels = [];
 
     function select(id) {
-      const selected = areas.find(area => area.properties.id === id);
-      if (!selected) return;
-      name.textContent = selected.properties.name;
-      count.textContent = format.format(selected.properties.population);
+      const active = interactive.find(item => item.id === id);
+      if (!active) return;
       for (const item of interactive) {
-        const active = item.id === id;
-        item.path.classList.toggle("is-selected", active);
-        item.path.setAttribute("aria-pressed", String(active));
-        item.button.classList.toggle("is-selected", active);
-        item.button.setAttribute("aria-pressed", String(active));
+        const chosen = item === active;
+        item.path.classList.toggle("is-selected", chosen);
+        item.path.setAttribute("aria-pressed", String(chosen));
+        item.label.classList.toggle("is-selected", chosen);
+        item.button.classList.toggle("is-selected", chosen);
+        item.button.setAttribute("aria-pressed", String(chosen));
       }
+      announcement.textContent =
+        active.name + ": " + format.format(active.population) + " " + words.residents + ".";
     }
 
-    for (const area of areas) {
-      const { id, population, name: short, officialName } = area.properties;
-      const path = document.createElementNS(namespace, "path");
-      const d = rings(area.geometry).flatMap(polygon => polygon.map(ring =>
-        ring.map((coordinate, index) => (index ? "L" : "M") + point(coordinate)).join(" ") + " Z"
+    svg.replaceChildren();
+    buttons.replaceChildren();
+    for (const area of ranked) {
+      const { id, population, name, officialName } = area.properties;
+      const path = node("path");
+      const d = polygons(area.geometry).flatMap(polygon => polygon.map(ring =>
+        ring.map((coordinate, index) => (index ? "L" : "M") + pathPoint(coordinate)).join(" ") + " Z"
       )).join(" ");
       path.setAttribute("d", d);
       path.setAttribute("fill-rule", "evenodd");
-      path.setAttribute("class", "mapa-area mapa-area--" +
-        (population < 40000 ? "low" : population < 50000 ? "mid" : "high"));
+      path.setAttribute("class", "mapa-area");
       path.setAttribute("tabindex", "0");
       path.setAttribute("role", "button");
-      path.setAttribute("aria-label", `${officialName}: ${format.format(population)} ${labels.people}, 2022`);
-      const title = document.createElementNS(namespace, "title");
-      title.textContent = `${short}: ${format.format(population)} ${labels.people}`;
-      path.append(title);
+      path.setAttribute("aria-label", officialName + ": " +
+        format.format(population) + " " + words.residents + ", 2022");
+      const t = (population - min) / (max - min || 1);
+      const rgb = [
+        Math.round(217 - 117 * t),
+        Math.round(229 - 97 * t),
+        Math.round(237 - 77 * t)
+      ];
+      path.style.setProperty("--mapa-tone", "rgb(" + rgb.join(",") + ")");
+      path.append(node("title", name + ": " + format.format(population)));
       path.addEventListener("click", () => select(id));
       path.addEventListener("keydown", event => {
         if (event.key === "Enter" || event.key === " ") {
@@ -109,30 +141,50 @@
       });
       svg.append(path);
 
+      const anchor = point(center(polygons(area.geometry)[0][0]));
+      const label = node("text", undefined, "mapa-label");
+      label.setAttribute("x", anchor[0].toFixed(2));
+      label.setAttribute("y", (anchor[1] - 8).toFixed(2));
+      label.setAttribute("aria-hidden", "true");
+      const nameLine = node("tspan", name);
+      nameLine.setAttribute("x", anchor[0].toFixed(2));
+      const numberLine = node("tspan", format.format(population), "mapa-label-number");
+      numberLine.setAttribute("x", anchor[0].toFixed(2));
+      numberLine.setAttribute("dy", "21");
+      label.append(nameLine, numberLine);
+      labels.push(label);
+
       const button = document.createElement("button");
       button.type = "button";
       button.className = "mapa-choice";
-      button.textContent = short;
-      button.setAttribute("aria-label", `${short}: ${format.format(population)} ${labels.people}`);
+      const title = document.createElement("span");
+      title.textContent = name;
+      const value = document.createElement("span");
+      value.className = "mapa-choice-value";
+      value.textContent = format.format(population);
+      button.append(title, value);
+      button.setAttribute("aria-label", name + ": " +
+        format.format(population) + " " + words.residents);
       button.addEventListener("click", () => select(id));
       buttons.append(button);
-      interactive.push({ id, path, button });
+      interactive.push({ id, name, population, path, label, button });
     }
+    svg.append(...labels);
     status.hidden = true;
-    select(areas[0].properties.id);
+    select(ranked[0].properties.id);
   }
 
   async function load() {
     if (loading || loaded) return;
     loading = true;
     try {
-      const response = await fetch(english ? "../data/mapa-regioes-2022.json" :
+      const response = await fetch(en ? "../data/mapa-regioes-2022.json" :
         "data/mapa-regioes-2022.json");
       if (!response.ok) throw new Error("HTTP " + response.status);
       draw(await response.json());
       loaded = true;
     } catch (error) {
-      status.textContent = labels.unavailable;
+      status.textContent = words.unavailable;
       svg.replaceChildren();
       buttons.replaceChildren();
       console.error("OES map:", error);

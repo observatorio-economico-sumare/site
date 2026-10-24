@@ -46,12 +46,22 @@ class TestMapaDemografico(unittest.TestCase):
                 "O mapa deve vir antes dos indicadores"
             )
             self.assertIn('class="mapa-region-list"', html)
-            self.assertIn('class="mapa-count"', html)
+            self.assertIn('class="mapa-scale"', html)
+            self.assertIn('class="mapa-sidebar-heading"', html)
+            self.assertIn('data-mapa-selection', html)
+            self.assertNotIn('class="mapa-selected"', html)
             self.assertNotIn('data-mapa-official', html)
             self.assertEqual(html.count('id="mapa-titulo"'), 1)
             self.assertIn('class="mapa-details"', html)
             self.assertIn('class="mapa-note"', html)
         self.assertLess(DATA.stat().st_size, 250000)
+        js = (ROOT / "site/assets/js/mapa.js").read_text(encoding="utf8")
+        self.assertIn("center(polygons(area.geometry)[0][0])", js)
+        self.assertIn('aria-pressed', js)
+        self.assertIn('ranked = [...areas].sort', js)
+        css = (ROOT / "site/assets/css/mapa.css").read_text(encoding="utf8")
+        self.assertIn(".mapa-label", css)
+        self.assertIn("@media (max-width: 480px)", css)
 
 
 if __name__ == "__main__":
