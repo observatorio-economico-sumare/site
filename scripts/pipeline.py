@@ -10,7 +10,10 @@ from datetime import date
 from pathlib import Path
 from urllib.parse import urlparse
 
-from scripts.oes_coleta.validar_sidra import validate_sidra
+if __package__:
+    from .oes_coleta.validar_sidra import validate_sidra
+else:
+    from oes_coleta.validar_sidra import validate_sidra
 
 ROOT = Path(__file__).resolve().parents[1]
 CATALOG = ROOT / "data/catalog.json"
