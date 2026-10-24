@@ -1,6 +1,6 @@
 /* Mapa populacional: a geometria do IBGE é o elemento principal. */
 #populacao > .section-title { margin: 28px 0 0; }
-.mapa-section { max-width: 1120px; }
+.mapa-section { max-width: 900px; }
 .mapa-intro {
   margin: 6px 0 0;
   color: var(--muted);
