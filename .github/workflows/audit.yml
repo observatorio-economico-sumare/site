@@ -24,30 +24,11 @@ jobs:
           node --check site/assets/js/indicators.js
           node --check site/assets/js/empresas.js
           node --check site/assets/js/empresas-cempre.js
+          node --check site/assets/js/idades.js
           node tests/frontend.test.cjs
+          node tests/idades.test.cjs
       - name: Validar indicadores
         run: python3 scripts/pipeline.py validate
-      - name: Pesquisa oficial IBGE SIDRA 9514 (somente esta branch)
-        if: github.head_ref == 'dados/faixas-etarias-censo-2022-20261024'
-        run: |
-          python3 - <<'PY'
-          import base64, hashlib, json, urllib.request
-          url = "https://apisidra.ibge.gov.br/values/t/9514/n6/3552403/p/2022/v/93/c2/6794/c287/all/c286/113635?formato=json"
-          req=urllib.request.Request(url, headers={"User-Agent":"OES/0.1 - Public Data Research", "Accept":"application/json"})
-          with urllib.request.urlopen(req,timeout=30) as response:
-              raw=response.read(1000001)
-          rows=json.loads(raw)
-          print("SIDRA9514_URL="+url)
-          print("SIDRA9514_SHA="+hashlib.sha256(raw).hexdigest())
-          print("SIDRA9514_LENGTH="+str(len(raw)))
-          for r in rows[1:]:
-              label=r.get("D5N","")
-              if " a " in label or " anos" in label or label=="Total":
-                  print("AGE_ROW="+json.dumps({k:r.get(k) for k in ["NC","MN","V","D1C","D2C","D3C","D4C","D5C","D5N","D6C"]},ensure_ascii=False))
-          encoded=base64.b64encode(raw).decode("ascii")
-          for i in range(0,len(encoded),3000):
-              print("AGE_RAW_"+str(i//3000)+"="+encoded[i:i+3000])
-          PY
       - name: Conferir dados publicados
         run: |
           python3 scripts/pipeline.py build
