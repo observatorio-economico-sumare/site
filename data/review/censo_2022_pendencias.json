@@ -86,6 +86,54 @@
         "method": "IBGE SIDRA table 10264: 103,576 contributors divided by 132,925 employed people, multiplied by 100.",
         "limitations": "2022 Census estimate by residence and main job; not equivalent to the share of employees holding signed labor contracts."
       }
+    },
+    {
+      "id": "escolarizacao-6-14-anos-2022",
+      "name": "Escolarização de 6 a 14 anos",
+      "topic": "educacao",
+      "unit": "%",
+      "reference_period": "2022",
+      "value": 98.62,
+      "definition": "Percentual de moradores de Sumaré entre 6 e 14 anos que frequentavam a escola no Censo 2022.",
+      "method": "Valor publicado diretamente pelo IBGE/SIDRA na tabela 10139, variável 12805, faixa etária 31615, sexo e deficiência totais; conferido também na tabela 10056 (taxa bruta de frequência escolar).",
+      "limitations": "A página IBGE Cidades apresenta o valor com ano 2022, mas mantém uma nota de fonte que menciona Censo 2010. As duas tabelas originais SIDRA de 2022 confirmam 98,62%; trata-se de moradores, não de matrículas na rede escolar do município.",
+      "source": {
+        "institution": "IBGE",
+        "dataset": "Censo Demográfico 2022",
+        "url": "https://apisidra.ibge.gov.br/values/t/10139/n6/3552403/p/2022/v/all/c58/all?formato=json",
+        "query_id": "t10139; v12805; 6 a 14 anos c58=31615; totais sexo e deficiência"
+      },
+      "evidence": {
+        "raw_path": "data/raw/sidra_10139_escolarizacao.json",
+        "sha256": "d89c6058c05b820ea47c525862480f3d9158fa3e78deb071540b61d08ae4505c",
+        "capture_method": "arquivo_original_api_sidra",
+        "row_selector": {
+          "D1C": "3552403",
+          "D2C": "2022",
+          "D3C": "12805",
+          "D4C": "31615",
+          "D5C": "6794",
+          "D6C": "46583"
+        },
+        "corroboration": {
+          "raw_path": "data/raw/sidra_10056_frequencia_escolar.json",
+          "sha256": "1be1cd02a78c2bd3814f2c5ec3bc9fe22a2452567b78c0cca6ba35c594b156a7",
+          "row_selector": {
+            "D1C": "3552403",
+            "D2C": "2022",
+            "D3C": "3795",
+            "D4C": "31615",
+            "D5C": "6794",
+            "D6C": "95251"
+          }
+        }
+      },
+      "en": {
+        "name": "School attendance, ages 6–14",
+        "definition": "Share of Sumaré residents aged 6–14 attending school in the 2022 Census.",
+        "method": "IBGE SIDRA table 10139, 2022, ages 6–14; corroborated by SIDRA table 10056.",
+        "limitations": "IBGE Cities still mentions the 2010 Census in a legacy source note; both underlying 2022 SIDRA tables confirm 98.62%. This measures residents, not students enrolled in schools located in Sumaré."
+      }
     }
   ],
   "historical_series": {
