@@ -114,7 +114,11 @@
       const button = document.createElement("button");
       button.type = "button";
       button.className = "mapa-choice";
-      button.textContent = `${short} · ${format.format(population)}`;
+      const regionName = document.createElement("span");
+      regionName.textContent = short;
+      const regionCount = document.createElement("span");
+      regionCount.textContent = format.format(population);
+      button.append(regionName, regionCount);
       button.addEventListener("click", () => select(id));
       buttons.append(button);
       interactive.push({ id, path, button });
