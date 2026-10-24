@@ -30,21 +30,6 @@
     }
   }
 
-  /* Centro geométrico da região, calculado da malha original. */
-  function center(ring) {
-    let area = 0, x = 0, y = 0;
-    for (let i = 0; i < ring.length - 1; i++) {
-      const [ax, ay] = ring[i];
-      const [bx, by] = ring[i + 1];
-      const cross = ax * by - bx * ay;
-      area += cross;
-      x += (ax + bx) * cross;
-      y += (ay + by) * cross;
-    }
-    if (Math.abs(area) < 1e-12) return ring[0];
-    return [x / (3 * area), y / (3 * area)];
-  }
-
   function node(tag, text, className) {
     const element = document.createElementNS(ns, tag);
     if (text !== undefined) element.textContent = text;
@@ -92,7 +77,6 @@
     const counts = ranked.map(area => area.properties.population);
     const min = Math.min(...counts), max = Math.max(...counts);
     const interactive = [];
-    const labels = [];
 
     function select(id) {
       const active = interactive.find(item => item.id === id);
@@ -101,7 +85,6 @@
         const chosen = item === active;
         item.path.classList.toggle("is-selected", chosen);
         item.path.setAttribute("aria-pressed", String(chosen));
-        item.label.classList.toggle("is-selected", chosen);
         item.button.classList.toggle("is-selected", chosen);
         item.button.setAttribute("aria-pressed", String(chosen));
       }
@@ -122,13 +105,14 @@
       path.setAttribute("class", "mapa-area");
       path.setAttribute("tabindex", "0");
       path.setAttribute("role", "button");
+      path.setAttribute("aria-pressed", "false");
       path.setAttribute("aria-label", officialName + ": " +
         format.format(population) + " " + words.residents + ", 2022");
       const t = (population - min) / (max - min || 1);
       const rgb = [
-        Math.round(217 - 117 * t),
-        Math.round(229 - 97 * t),
-        Math.round(237 - 77 * t)
+        Math.round(217 - 132 * t),
+        Math.round(229 - 109 * t),
+        Math.round(237 - 87 * t)
       ];
       path.style.setProperty("--mapa-tone", "rgb(" + rgb.join(",") + ")");
       path.append(node("title", name + ": " + format.format(population)));
@@ -141,19 +125,6 @@
       });
       svg.append(path);
 
-      const anchor = point(center(polygons(area.geometry)[0][0]));
-      const label = node("text", undefined, "mapa-label");
-      label.setAttribute("x", anchor[0].toFixed(2));
-      label.setAttribute("y", (anchor[1] - 8).toFixed(2));
-      label.setAttribute("aria-hidden", "true");
-      const nameLine = node("tspan", name);
-      nameLine.setAttribute("x", anchor[0].toFixed(2));
-      const numberLine = node("tspan", format.format(population), "mapa-label-number");
-      numberLine.setAttribute("x", anchor[0].toFixed(2));
-      numberLine.setAttribute("dy", "21");
-      label.append(nameLine, numberLine);
-      labels.push(label);
-
       const button = document.createElement("button");
       button.type = "button";
       button.className = "mapa-choice";
@@ -163,15 +134,22 @@
       value.className = "mapa-choice-value";
       value.textContent = format.format(population);
       button.append(title, value);
+      button.setAttribute("aria-pressed", "false");
       button.setAttribute("aria-label", name + ": " +
         format.format(population) + " " + words.residents);
       button.addEventListener("click", () => select(id));
+      button.addEventListener("mouseenter", () => path.classList.add("is-hovered"));
+      button.addEventListener("mouseleave", () => path.classList.remove("is-hovered"));
+      button.addEventListener("focus", () => path.classList.add("is-hovered"));
+      button.addEventListener("blur", () => path.classList.remove("is-hovered"));
+      path.addEventListener("mouseenter", () => button.classList.add("is-hovered"));
+      path.addEventListener("mouseleave", () => button.classList.remove("is-hovered"));
+      path.addEventListener("focus", () => button.classList.add("is-hovered"));
+      path.addEventListener("blur", () => button.classList.remove("is-hovered"));
       buttons.append(button);
-      interactive.push({ id, name, population, path, label, button });
+      interactive.push({ id, name, population, path, button });
     }
-    svg.append(...labels);
     status.hidden = true;
-    select(ranked[0].properties.id);
   }
 
   async function load() {
