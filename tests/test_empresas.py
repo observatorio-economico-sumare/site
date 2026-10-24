@@ -32,6 +32,14 @@ class EmpresasTest(unittest.TestCase):
             self.assertIn("empresas.js", page)
             self.assertIn("empresas.css", page)
 
+    def test_descricao_de_empresas_sem_redundancia(self):
+        pt = (ROOT / "site/index.html").read_text(encoding="utf-8")
+        en = (ROOT / "site/en/index.html").read_text(encoding="utf-8")
+        self.assertIn("Conheça empresas com atuação documentada em Sumaré.", pt)
+        self.assertIn("Explore companies with documented operations in Sumaré.", en)
+        self.assertNotIn("A seleção não representa todas as empresas", pt)
+        self.assertNotIn("This is neither a complete directory", en)
+
     def test_lista_simples_de_cinco_empresas(self):
         empresas = json.loads(DATA.read_text(encoding="utf-8"))["companies"]
         self.assertEqual(len(empresas), 5)
