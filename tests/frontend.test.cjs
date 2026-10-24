@@ -342,16 +342,17 @@ assert.doesNotMatch(fs.readFileSync("site/en/index.html","utf8"),/Not equivalent
 
 /* Cabeçalho uniforme, com o nome em duas linhas e uma única declaração. */
 for (const [path,word,statement] of [
- ["site/index.html","Econômico","Iniciativa independente e apartidária"],
- ["site/en/index.html","Economic","Independent, nonpartisan initiative"],
- ["site/governanca.html","Econômico","Iniciativa independente e apartidária"],
- ["site/en/governanca.html","Economic","Independent, nonpartisan initiative"],
- ["site/biblioteca.html","Econômico","Iniciativa independente e apartidária"]
+ ["site/index.html","Econômico","Iniciativa independente"],
+ ["site/en/index.html","Economic","Independent initiative"],
+ ["site/governanca.html","Econômico","Iniciativa independente"],
+ ["site/en/governanca.html","Economic","Independent initiative"],
+ ["site/biblioteca.html","Econômico","Iniciativa independente"]
 ]){
  const html=fs.readFileSync(path,"utf8");
  const mast=html.slice(html.indexOf('<header class="mast">'),html.indexOf('</header>')+9);
  assert.match(mast,new RegExp(word+'<br\\s*\\/?>'));
- assert.ok(mast.includes(statement));
+ assert.ok(mast.includes(`<span class="independent-main">${statement}</span>`));
+ assert.doesNotMatch(mast,/apartidária|nonpartisan/i);
  assert.doesNotMatch(mast,/independent-secondary|Sem vínculo com a Prefeitura Municipal|Not affiliated with the municipal government/);
 }
 const topicMarkup=fs.readFileSync("site/biblioteca.html","utf8");
