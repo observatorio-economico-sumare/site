@@ -442,10 +442,10 @@ assert.doesNotMatch(cleanedCss,/nav-scroll-hint|scroll-snap-type/);
  });
  const rows=dom.body.children[0].children;
  const keys=rows.map(row=>row.children[0].textContent);
- assert.deepEqual(keys,["Valor","Definição","Período","Fonte primária","Metodologia",
-   "Limitações","Última atualização no OES","Consultar fonte original"]);
+ assert.deepEqual(keys,["Valor","Definição","Período","Fonte consultada","Metodologia",
+   "Limitações","Última atualização no OES","Consultar fonte"]);
  assert.ok(dom.dialog.opened);
- assert.equal(rows.at(-1).children[1].children[0].textContent,"Acessar fonte oficial");
+ assert.equal(rows.at(-1).children[1].children[0].textContent,"Abrir fonte consultada");
  assert.equal(rows.at(-1).children[1].children[0].href,
    "https://www.ibge.gov.br/cidades-e-estados/sp/sumare.html");
  sandbox.document.createElement=savedCreate;
@@ -518,3 +518,30 @@ assert.match(fs.readFileSync("site/assets/css/biblioteca.css","utf8"),
   /\.library-topics \{ flex-wrap: nowrap; overflow-x: auto;/);
 assert.match(fs.readFileSync("site/assets/css/empresas.css","utf8"),
   /\.empresas-numbers \{ grid-template-columns: repeat\(3, minmax\(0, 1fr\)\)/);
+
+
+/* Regressoes: textos de validacao, fonte consultada e PIB sem Javascript. */
+{
+ const validos=JSON.parse(fs.readFileSync("site/data/indicators.json","utf8")).indicators;
+ for(const id of ["saldo-vinculos-formais","estoque-vinculos-formais","saldo-vinculos-formais-2026-08"]){
+   const item=validos.find(v=>v.id===id);
+   assert.equal(item?.status,"validated",id);
+   assert.match(item.source.institution,/Prefeitura Municipal de Sumaré/);
+ }
+ for(const [page,label] of [
+   ["site/index.html","Fonte: IBGE · PIB dos Municípios 2023"],
+   ["site/en/index.html","Source: IBGE · Municipal GDP 2023"]
+ ]){
+   const html=fs.readFileSync(page,"utf8");
+   const econ=html.slice(html.indexOf('<section class="tab" hidden="" id="economia"'),
+                         html.indexOf('<section class="tab" hidden="" id="empresas"'));
+   assert.equal(econ.split(label).length-1,2,page+": PIB correto antes do JS");
+   assert.doesNotMatch(econ,/Censo 2022|2022 Census/);
+   const methodology=html.slice(html.indexOf('<section class="tab" hidden="" id="metodologia"'),
+                                html.indexOf('<section class="tab" hidden="" id="sobre"'));
+   assert.match(methodology,/sumare-lidera-saldo-de-empregos/);
+   assert.match(methodology,/rais-2025-tabelas\.xlsx/);
+   assert.doesNotMatch(methodology,/Esses números ainda estão sendo conferidos|Indicators remain unverified|Dados não conferidos na fonte original/);
+ }
+ assert.doesNotMatch(code,/Fonte primária|Consultar fonte original|subject to verification of its release/);
+}
