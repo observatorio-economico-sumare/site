@@ -213,7 +213,7 @@ for(const page of ["site/index.html","site/en/index.html"]){
  assert.deepEqual(workIds,[
   "rais-vinculos-formais-2025","estoque-vinculos-formais",
   "saldo-vinculos-formais","saldo-vinculos-formais-2026-08",
-  "pessoas-ocupadas","residentes-conta-propria-2022",
+  "pessoas-ocupadas","pessoas-desocupadas","previdencia-ocupados","residentes-conta-propria-2022",
   "renda-media-ocupados","renda-mediana-ocupados-2022",
   "rais-vinculos-industria-2025","rais-vinculos-comercio-2025",
   "rais-vinculos-servicos-2025","rais-vinculos-construcao-2025",
@@ -225,7 +225,16 @@ for(const page of ["site/index.html","site/en/index.html"]){
  assert.deepEqual(economyIds,["pib-municipal-2023","pib-per-capita-2023"]);
  const approved=new Set(JSON.parse(fs.readFileSync("data/processed/indicators.json","utf8"))
                         .indicators.map(x=>x.id));
- for(const id of [...workIds,...economyIds]) assert.ok(approved.has(id), "Dados não auditados: "+id);
+ 
+ const population=html.slice(html.indexOf('<section class="tab" hidden="" id="populacao"'),
+                             html.indexOf('<section class="tab" hidden="" id="trabalho"'));
+ const populationIds=[...population.matchAll(/data-indicator="([^"]+)"/g)].map(x=>x[1]);
+ assert.ok(populationIds.includes("escolarizacao-6-14-anos-2022"));
+ assert.ok(populationIds.includes("taxa-alfabetizacao-15-mais-2022"));
+ for(const id of [...workIds,...economyIds,...populationIds]) {
+   assert.ok(approved.has(id), "Dados não auditados: "+id);
+ }
+
  assert.ok(work.includes('href="#metodologia"'));
  assert.doesNotMatch(work,/Dados em conferência|Data being verified/);
  assert.ok(html.includes('class="independent-main"'));
@@ -325,7 +334,7 @@ for(const [page,loading] of [["site/index.html","Carregando…"],["site/en/index
  const html=fs.readFileSync(page,"utf8");
  const pop=html.slice(html.indexOf('<section class="tab" hidden="" id="populacao"'),html.indexOf('<section class="tab" hidden="" id="trabalho"'));
  const econ=html.slice(html.indexOf('<section class="tab" hidden="" id="economia"'),html.indexOf('<section class="tab" hidden="" id="empresas"'));
- assert.equal((pop.match(new RegExp('<div class="number">'+loading+'</div>','g'))||[]).length,2);
+ assert.equal((pop.match(new RegExp('<div class="number">'+loading+'</div>','g'))||[]).length,4);
  assert.equal((econ.match(new RegExp('<div class="number">'+loading+'</div>','g'))||[]).length,2);
  assert.doesNotMatch(pop+econ,/class="number">Em validação|class="number">Pending validation/);
 }
