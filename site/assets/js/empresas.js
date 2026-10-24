@@ -25,13 +25,18 @@
       const activity = el("p", "", company.activity[lang]);
       const presence = el("p", "", company.presence[lang]);
       article.append(sector, title, activity, presence);
-      if (validSource(company.source.url)) {
-        const link = el("a", "", english ? "Official source ↗" : "Fonte original ↗");
-        link.href = company.source.url;
+      const links = el("div", "empresa-links");
+      for (const [url, label] of [
+        [company.website, english ? "Official website ↗" : "Site oficial ↗"],
+        [company.source.url, english ? "Sumaré evidence ↗" : "Fonte sobre Sumaré ↗"]
+      ]) {
+        const link = el("a", "", label);
+        link.href = url;
         link.target = "_blank";
         link.rel = "noopener noreferrer";
-        article.append(link);
+        links.append(link);
       }
+      article.append(links);
       fragment.append(article);
     }
     list.replaceChildren(fragment);
@@ -44,7 +49,7 @@
       const companies = data.companies;
       if (!Array.isArray(companies) || companies.some(c =>
         !c.id || !c.name || !c.sector?.[lang] || !c.activity?.[lang] ||
-        !c.presence?.[lang] || !validSource(c.source?.url))) throw new Error("Invalid company data");
+        !c.presence?.[lang] || !validSource(c.source?.url) || !validSource(c.website))) throw new Error("Invalid company data");
       companies.sort((a,b) => a.name.localeCompare(b.name, lang));
       status.hidden = true;
       render(companies);
