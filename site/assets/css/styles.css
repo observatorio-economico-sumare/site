@@ -357,7 +357,6 @@ h3{font-family: var(--font-interface); font-weight: 600; letter-spacing: -.012em
 .metrics--three .metric .number{font-size:clamp(30px,3.3vw,44px);font-weight:500;line-height:1.18;letter-spacing:-.04em;overflow-wrap:normal;margin:15px 0 17px}
 .metrics--three .metric .origin{font-size:13px;line-height:1.5;gap:8px;color:#596a79}
 .metrics--three .metric .source-detail{font-size:13px;color:#365b73;font-weight:500;border-color:#8a9daa}
-#inicio > .footnote{margin:12px 0 42px;color:#596a79;line-height:1.6}
 @media(max-width:900px){
  .metrics--three{grid-template-columns:1fr}
  .metrics--three .metric,.metrics--three .metric:first-child,.metrics--three .metric:last-child{padding:22px 0;border:0;border-bottom:1px solid var(--line)}

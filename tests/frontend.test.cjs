@@ -262,3 +262,12 @@ const editorialCss=fs.readFileSync("site/assets/css/styles.css","utf8");
 assert.match(editorialCss,/\.metrics--three\{grid-template-columns:repeat\(3,minmax\(0,1fr\)\);gap:0;border:0;background:transparent;box-shadow:none/);
 assert.match(editorialCss,/\.metrics--three \.metric:first-child\{padding-left:0;border-top:1px solid var\(--line\)\}/);
 assert.doesNotMatch(editorialCss,/\.metrics--three \.metric:first-child\{border-top:3px solid var\(--yellow\)\}/);
+
+/* Limitações de um indicador pertencem à sua ficha técnica, não ao rodapé geral. */
+for (const page of ["site/index.html","site/en/index.html"]){
+ const html=fs.readFileSync(page,"utf8");
+ const intro=html.slice(html.indexOf('<section class="tab" id="inicio" role="tabpanel">'),
+                       html.indexOf('<section class="tab" hidden="" id="populacao"'));
+ assert.doesNotMatch(intro,/PIB per capita não representa|GDP per capita is not average personal income/);
+}
+assert.doesNotMatch(fs.readFileSync("site/assets/css/styles.css","utf8"),/#inicio > \.footnote/);
