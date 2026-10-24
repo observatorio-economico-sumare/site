@@ -1,0 +1,108 @@
+{
+  "municipality_code": "3552403",
+  "publication_allowed": false,
+  "status": "validated_research_not_published",
+  "indicators": [
+    {
+      "id": "pessoas-desocupadas",
+      "name": "Pessoas desocupadas",
+      "topic": "trabalho",
+      "unit": "pessoas",
+      "reference_period": "2022",
+      "value": 8170,
+      "definition": "Moradores com 14 anos ou mais que estavam na força de trabalho, mas não estavam ocupados na semana de referência do Censo 2022.",
+      "method": "Selecionar a categoria 'Força de trabalho - desocupada' da tabela SIDRA 6580; conferir força de trabalho menos ocupados (141.095 - 132.925 = 8.170).",
+      "limitations": "Estimativa do Censo 2022 sobre pessoas residentes. Não inclui quem estava fora da força de trabalho; não representa desligamentos nem vagas no município.",
+      "source": {
+        "institution": "IBGE",
+        "dataset": "Censo Demográfico 2022",
+        "url": "https://apisidra.ibge.gov.br/values/t/6580/n6/3552403/p/2022/v/1641/c629/all?formato=json",
+        "query_id": "t6580 v1641 c629/all; D4C=32446; sexo, idade totais"
+      },
+      "evidence": {
+        "raw_path": "data/raw/sidra_6580_desocupacao_2022.json",
+        "sha256": "da9f90cd4647538c4578702d290d93affcfe8a972c92057fdf675575e52a082e",
+        "capture_method": "arquivo_original_api_sidra",
+        "row_selector": {
+          "D1C": "3552403",
+          "D2C": "2022",
+          "D3C": "1641",
+          "D4C": "32446",
+          "D5C": "6794",
+          "D6C": "95253"
+        }
+      },
+      "en": {
+        "name": "Unemployed residents",
+        "definition": "Residents aged 14 or over in the labor force who were unemployed in the 2022 Census reference week.",
+        "method": "IBGE SIDRA table 6580, unemployed labor-force category; cross-checked against labor force minus employed.",
+        "limitations": "Census sample estimate for residents, not local layoffs or job vacancies."
+      }
+    },
+    {
+      "id": "previdencia-ocupados",
+      "name": "Ocupados contribuintes da Previdência",
+      "topic": "trabalho",
+      "unit": "%",
+      "reference_period": "2022",
+      "value": 77.92,
+      "numerator": 103576,
+      "denominator": 132925,
+      "definition": "Percentual de moradores ocupados com 14 anos ou mais que contribuíam para um instituto de Previdência oficial no trabalho principal.",
+      "method": "Dividir 103.576 contribuintes pelos 132.925 ocupados da tabela SIDRA 10264 e multiplicar por 100; arredondamento para duas casas decimais.",
+      "limitations": "Dados do Censo 2022 por residência e trabalho principal. A contribuição previdenciária não é sinônimo de emprego com carteira assinada.",
+      "source": {
+        "institution": "IBGE",
+        "dataset": "Censo Demográfico 2022",
+        "url": "https://apisidra.ibge.gov.br/values/t/10264/n6/3552403/p/2022/v/4090/c526/all?formato=json",
+        "query_id": "t10264 v4090 c526/all; D4C=15350/15349; totais nas demais classificações"
+      },
+      "evidence": {
+        "raw_path": "data/raw/sidra_10264_previdencia_2022.json",
+        "sha256": "54bd2c58b58844740ccd4aa363c8f3ef522cfec022e08ea71d90e86524243ff2",
+        "capture_method": "arquivo_original_api_sidra",
+        "numerator_selector": {
+          "D1C": "3552403",
+          "D2C": "2022",
+          "D3C": "4090",
+          "D4C": "15350",
+          "D5C": "6794",
+          "D6C": "95251",
+          "D7C": "100971"
+        },
+        "denominator_selector": {
+          "D1C": "3552403",
+          "D2C": "2022",
+          "D3C": "4090",
+          "D4C": "15349",
+          "D5C": "6794",
+          "D6C": "95251",
+          "D7C": "100971"
+        }
+      },
+      "en": {
+        "name": "Employed residents contributing to social security",
+        "definition": "Share of employed residents aged 14 or over contributing to an official pension scheme through their main job.",
+        "method": "IBGE SIDRA table 10264: 103,576 contributors divided by 132,925 employed people, multiplied by 100.",
+        "limitations": "2022 Census estimate by residence and main job; not equivalent to the share of employees holding signed labor contracts."
+      }
+    }
+  ],
+  "historical_series": {
+    "id": "rais-vinculos-formais-serie-anual",
+    "name": "Vínculos formais por estabelecimento (RAIS, 31/12)",
+    "unit": "vínculos",
+    "reference_years": [
+      2023,
+      2024,
+      2025
+    ],
+    "values": [
+      70984,
+      73410,
+      75421
+    ],
+    "source_raw_path": "data/raw/rais_2025_sumare_tabela4_2026-10-23.json",
+    "note": "Série anual exclusivamente RAIS, sem comparações ou concatenação com estoques mensais do Novo CAGED."
+  }
+}
