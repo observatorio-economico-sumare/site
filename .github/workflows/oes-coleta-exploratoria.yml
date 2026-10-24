@@ -46,7 +46,7 @@ jobs:
           python - <<'PY'
           import hashlib, json
           from pathlib import Path
-          for name in ("sidra_6580_desocupacao_2022", "sidra_10264_previdencia_2022", "sidra_10056_metadados"):
+          for name in ("sidra_6580_desocupacao_2022", "sidra_10264_previdencia_2022", "sidra_10056_frequencia_escolar", "sidra_10139_escolarizacao"):
               path = Path("oes-resultado/raw") / (name + ".json")
               if path.exists():
                   raw = path.read_bytes()
