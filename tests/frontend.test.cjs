@@ -497,3 +497,24 @@ for(const phrase of ["Número de moradores por quilômetro quadrado",
  }
  assert.match(fs.readFileSync("site/index.html","utf8"),/Não é quanto cada pessoa ganha/);
 }
+
+/* Regressão editorial: o PIB inicial deve mostrar a fonte correta sem JS. */
+for (const [page, source] of [
+  ["site/index.html", "Fonte: IBGE · PIB dos Municípios 2023"],
+  ["site/en/index.html", "Source: IBGE · Municipal GDP 2023"]
+]) {
+  const html = fs.readFileSync(page, "utf8");
+  for (const id of ["pib-municipal-2023", "pib-per-capita-2023"]) {
+    const match = html.match(new RegExp('<article class="metric" data-indicator="' + id + '">([\\s\\S]*?)<\\/article>'));
+    assert.ok(match, page + ": missing PIB " + id);
+    assert.ok(match[1].includes(source), page + ": PIB initial source is wrong");
+    assert.doesNotMatch(match[1], /Censo 2022/);
+  }
+}
+/* Navegação compacta e filtros acessíveis no celular, também nas subpáginas. */
+assert.match(fs.readFileSync("site/assets/css/styles.css","utf8"),
+  /@media \(max-width: 800px\) \{\s*\.nav-inner \{\s*flex-wrap: nowrap;/);
+assert.match(fs.readFileSync("site/assets/css/biblioteca.css","utf8"),
+  /\.library-topics \{ flex-wrap: nowrap; overflow-x: auto;/);
+assert.match(fs.readFileSync("site/assets/css/empresas.css","utf8"),
+  /\.empresas-numbers \{ grid-template-columns: repeat\(3, minmax\(0, 1fr\)\)/);

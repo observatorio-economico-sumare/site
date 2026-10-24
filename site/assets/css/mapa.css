@@ -145,3 +145,39 @@
   .populacao-indicadores { margin-top: 27px; }
 }
 @media (prefers-reduced-motion: reduce) { .mapa-area { transition: none; } }
+
+/* Mobile: duas estatísticas lado a lado, mapa logo abaixo; educação depois. */
+.populacao-educacao { max-width: 900px; margin: 30px 0 0; }
+.populacao-educacao > .section-title { margin-bottom: 10px; }
+@media (max-width: 680px) {
+  .populacao-indicadores { margin-top: 15px; }
+  .populacao-indicadores > .section-title { margin-bottom: 7px; }
+  #populacao .populacao-indicadores > .metrics--two {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin: 10px 0 0;
+  }
+  #populacao .populacao-indicadores > .metrics--two .metric {
+    padding: 12px 9px 10px 0;
+    border-bottom: 0;
+    border-right: 1px solid var(--line);
+  }
+  #populacao .populacao-indicadores > .metrics--two .metric:last-child {
+    border-right: 0;
+    padding-left: 3px;
+    padding-right: 0;
+  }
+  #populacao .populacao-indicadores .metric label { font-size: 12px; line-height: 1.35; }
+  #populacao .populacao-indicadores .metric .number {
+    font-size: clamp(23px, 6.4vw, 30px);
+    margin: 9px 0;
+    overflow-wrap: normal;
+  }
+  #populacao .populacao-indicadores .origin { font-size: 11px; gap: 4px; }
+  #populacao .populacao-indicadores .source-detail { font-size: 12px; }
+  .populacao-indicadores > .footnote { margin: 8px 0 19px; }
+  .mapa-section { padding-top: 16px; }
+  .mapa-layout { margin-top: 12px; }
+  .populacao-educacao { margin-top: 23px; }
+}
