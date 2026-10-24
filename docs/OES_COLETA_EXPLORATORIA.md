@@ -1,7 +1,7 @@
 # OES | Coleta exploratória de dados oficiais
 
-**Escopo:** pesquisa isolada; não altera as bases do site, não faz commit de dados,
-não executa validação de publicação e não consulta dados pessoais.
+**Escopo:** pesquisa isolada; preserva apenas evidências agregadas na branch
+de pesquisa, sem modificar arquivos de publicação nem consultar dados pessoais.
 
 ## Fontes efetivamente testadas
 
@@ -20,8 +20,9 @@ não executa validação de publicação e não consulta dados pessoais.
 
 - O coletor utiliza diretamente `apisidra.ibge.gov.br`, que respondeu nas execuções
   anteriores; removemos chamadas redundantes ao endpoint que expirava.
-- Evidências brutas são mantidas em artifacts temporários e em pacote de
-  pesquisa preservado separadamente; **não são versionadas na branch do site**.
+- Arquivos SIDRA usados nos candidatos de ocupação e PIB estão preservados
+  em `data/raw/` **somente na branch de pesquisa**; outras extrações ficam
+  em artefatos temporários e pacote histórico, sem duplicação no repositório.
 - Arquivos temporários e CSVs candidatos não entram em `data/processed/`.
 - Limpeza futura não deve apagar históricos de revisão ou evidências originais.
 
@@ -35,15 +36,17 @@ não executa validação de publicação e não consulta dados pessoais.
 - Os arquivos acima são transcrições auditáveis, **não** cópias do PDF ou do
   HTML original. A escolarização de 2022 permanece bloqueada: o cartão
   apresenta 2022, mas as notas da página ainda citam o Censo 2010.
-- Os 11 candidatos permanecem `pending_review`. As 10 definições sem
-  conflito de período identificado foram acrescentadas somente ao catálogo
-  da branch de pesquisa; escolarização de 6–14 anos fica fora até esclarecer
-  a diferença 2022 (cartão) × 2010 (notas do IBGE).
+- Das 11 propostas de pesquisa, 10 definições foram incorporadas ao catálogo
+  exclusivamente na branch de pesquisa; a escolarização de 6–14 anos permanece
+  bloqueada por conflito entre cartão (2022) e notas do IBGE (2010).
+- Dois registros completos de SIDRA estão isolados em
+  `data/review/sidra_candidates.json` com status `pending_review`.
+  A aprovação editorial e os demais registros continuam pendentes.
 - `data/processed/indicators.json` e `site/data/indicators.json` permanecem
   com os três indicadores anteriores. Nenhum valor foi publicado.
-- A validação de arquivo SIDRA original já possui testes específicos; antes
-  da integração é necessário adicionar os JSONs brutos ao local de evidências,
-  conferir seus SHA-256 e completar a revisão editorial.
+- Os dois arquivos originais `data/raw/sidra_10261_ocupacao_2022.json` e
+  `data/raw/sidra_5938_pib_2023.json` passaram na verificação de SHA-256,
+  seleção municipal e conversão de unidade. A revisão editorial continua pendente.
 - O front-end em inglês traduz explicitamente apenas os três indicadores
   atuais; a apresentação bilíngue dos novos registros exigirá ajuste
   isolado do responsável pelo site, sem alterar a coleta de dados.
