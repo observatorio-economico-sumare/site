@@ -75,11 +75,11 @@
     },
     {
       "id": "renda-media-ocupados",
-      "name": "Rendimento mensal médio de ocupados com renda",
+      "name": "Rendimento mensal médio do trabalho",
       "topic": "trabalho",
       "unit": "R$",
       "reference_period": "2022",
-      "definition": "Rendimento médio de ocupados com renda na população definida pela pesquisa",
+      "definition": "Rendimento nominal mensal médio de todos os trabalhos das pessoas de 14 anos ou mais ocupadas e com rendimento em 2022",
       "source_institution": "IBGE",
       "source_dataset": "Censo Demográfico"
     },
@@ -202,6 +202,16 @@
       "definition": "Admissões menos desligamentos de vínculos formais em Sumaré durante agosto de 2026",
       "source_institution": "Prefeitura Municipal de Sumaré (compilação MTE)",
       "source_dataset": "Boletim municipal do Novo CAGED, agosto de 2026"
+    },
+    {
+      "id": "renda-mediana-ocupados-2022",
+      "name": "Rendimento mensal mediano do trabalho",
+      "topic": "trabalho",
+      "unit": "R$",
+      "reference_period": "2022",
+      "definition": "Rendimento nominal mensal mediano de todos os trabalhos das pessoas de 14 anos ou mais ocupadas e com rendimento em 2022",
+      "source_institution": "IBGE",
+      "source_dataset": "Censo Demográfico"
     }
   ]
 }
