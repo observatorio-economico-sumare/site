@@ -31,7 +31,7 @@ def validate_sidra(rows, indicator, source):
     try:
         if (segments[3:5] != ["n6", selector["D1C"]] or
                 segments[segments.index("p") + 1] != selector["D2C"] or
-                segments[segments.index("v") + 1] != selector["D3C"]):
+                segments[segments.index("v") + 1] not in (selector["D3C"], "all")):
             raise ValueError("SIDRA: URL não corresponde à seleção")
     except (ValueError, IndexError) as exc:
         raise ValueError("SIDRA: consulta incompleta") from exc
