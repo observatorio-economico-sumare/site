@@ -1,0 +1,59 @@
+{
+  "municipality_code": "3552403",
+  "name": "Sumaré (SP)",
+  "source_institution": "Prefeitura Municipal de Sumaré (compilação MTE)",
+  "source_dataset": "Boletim municipal do Novo CAGED, agosto de 2026",
+  "source_url": "https://www.sumare.sp.gov.br/cidadao/noticia/sumare-lidera-saldo-de-empregos-na-rpt-ocupa-a-2-posicao-na-rmc-e-e-14-no-estado",
+  "publication_date": "2026-10-01",
+  "capture_method": "transcricao_assistida_de_pagina_oficial",
+  "original_file_preserved": false,
+  "reference": "Novo CAGED até agosto/2026, compilado pelo Departamento de Economia da Secretaria Municipal do Trabalho e Desenvolvimento Econômico",
+  "periods": {
+    "2026-01/2026-08": {
+      "admissoes": 29576,
+      "desligamentos": 26273,
+      "saldo": 3303,
+      "saldo_setores": {
+        "servicos": 2754,
+        "agropecuaria": 217,
+        "comercio": 178,
+        "construcao": 92,
+        "industria": 62
+      }
+    },
+    "2026-08": {
+      "admissoes": 3531,
+      "desligamentos": 3157,
+      "saldo": 374,
+      "estoque": 67739,
+      "estoque_setores": {
+        "servicos": 26918,
+        "comercio": 18527,
+        "industria": 18441,
+        "construcao": 3165,
+        "agropecuaria": 688
+      }
+    }
+  },
+  "measurements": [
+    {
+      "id": "saldo-vinculos-formais",
+      "value": 3303,
+      "period": "2026-01/2026-08",
+      "unit": "vínculos"
+    },
+    {
+      "id": "estoque-vinculos-formais",
+      "value": 67739,
+      "period": "2026-08",
+      "unit": "vínculos"
+    },
+    {
+      "id": "saldo-vinculos-formais-2026-08",
+      "value": 374,
+      "period": "2026-08",
+      "unit": "vínculos"
+    }
+  ],
+  "limitations": "Fonte oficial secundária: boletim municipal que reproduz a análise dos dados do MTE. A extração original em microdados do Novo CAGED não está preservada neste registro. O estoque municipal é de agosto/2026 e não se confunde com vínculos RAIS 2025."
+}
