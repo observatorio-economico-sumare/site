@@ -126,7 +126,8 @@ function renderItem(item, cardsById, maxSectorValue = 0) {
     provenance.replaceChildren();
 
     const line = document.createElement("span");
-    line.textContent = item.source.institution + " · " + item.reference_period;
+    const sourceLabel = card.dataset.sourceLabel || `${item.source.institution} · ${item.reference_period}`;
+    line.textContent = sourceLabel;
     const detail = document.createElement("button");
     detail.type = "button";
     detail.className = "source-detail";
