@@ -20,7 +20,7 @@
   };
 
   const show = data => {
-    for (const field of ["total", "occupied_persons", "salaried_persons"]) {
+    for (const field of ["total"]) {
       root.querySelector('[data-cempre-number="' + field + '"]').textContent = format.format(data[field]);
     }
     const buttons = [];
@@ -32,8 +32,8 @@
       const share = percent.format(sector.value / data.total * 100) + "%";
       const label = names[sector.name] || sector.name;
       selected.textContent = en
-        ? label + ": " + format.format(sector.value) + " local units (" + share + " of the total)."
-        : label + ": " + format.format(sector.value) + " unidades locais (" + share + " do total).";
+        ? label + ": " + format.format(sector.value) + " (" + share + " of the total)."
+        : label + ": " + format.format(sector.value) + " (" + share + " do total).";
     }
     const fragment = document.createDocumentFragment();
     for (const [index, sector] of data.sectors.entries()) {

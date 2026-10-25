@@ -27,8 +27,7 @@
       article.append(sector, title, activity, presence);
       const links = el("div", "empresa-links");
       for (const [url, label] of [
-        [company.website, english ? "Official website ↗" : "Site oficial ↗"],
-        [company.source.url, english ? "Sumaré evidence ↗" : "Fonte sobre Sumaré ↗"]
+        [company.website, english ? "Official website ↗" : "Site oficial ↗"]
       ]) {
         const link = el("a", "", label);
         link.href = url;
