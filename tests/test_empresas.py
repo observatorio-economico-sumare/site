@@ -37,10 +37,10 @@ class EmpresasTest(unittest.TestCase):
     def test_descricao_de_empresas_sem_redundancia(self):
         pt = (ROOT / "site/index.html").read_text(encoding="utf-8")
         en = (ROOT / "site/en/index.html").read_text(encoding="utf-8")
-        self.assertIn("<h2>Empresas com atuação documentada</h2>", pt)
-        self.assertNotIn("Conheça empresas com atuação documentada em Sumaré.", pt)
-        self.assertIn("<h2>Companies with documented operations</h2>", en)
-        self.assertNotIn("Explore companies with documented operations in Sumaré.", en)
+        self.assertIn("<h2>O que algumas empresas fazem em Sumaré</h2>", pt)
+        self.assertNotIn("Sem ranking", pt)
+        self.assertIn("<h2>What some companies do in Sumaré</h2>", en)
+        self.assertNotIn("Not ranked", en)
         self.assertNotIn("A seleção não representa todas as empresas", pt)
         self.assertNotIn("This is neither a complete directory", en)
 
@@ -62,9 +62,9 @@ class EmpresasTest(unittest.TestCase):
         self.assertIn("companies.sort(", js)
         self.assertNotIn("data-company-count", js)
         self.assertNotIn("count.textContent", js)
-        self.assertIn("company.source.url", js)
+        self.assertNotIn("company.source.url", js)
         self.assertIn("company.website", js)
-        self.assertIn("Fonte sobre Sumaré", js)
+        self.assertNotIn("Fonte sobre Sumaré", js)
         self.assertNotIn("selectedSector", js)
         self.assertNotIn("data-company-filter", js)
 
