@@ -220,7 +220,7 @@ for(const page of ["site/index.html","site/en/index.html"]){
   "rais-vinculos-comercio-2025","rais-vinculos-construcao-2025",
   "rais-vinculos-agropecuaria-2025",
   "pessoas-ocupadas","pessoas-desocupadas","previdencia-ocupados","residentes-conta-propria-2022",
-  "renda-media-ocupados","renda-mediana-ocupados-2022"
+  "renda-mediana-ocupados-2022"
  ]);
  const economy=html.slice(html.indexOf('<section class="tab" hidden="" id="economia"'),
                           html.indexOf('<section class="tab" hidden="" id="empresas"'));
@@ -553,7 +553,7 @@ assert.match(fs.readFileSync("site/assets/css/empresas.css","utf8"),
 /* Semântica dos títulos dos indicadores, sem alterações dos dados ou da navegação. */
 for(const path of ["site/index.html","site/en/index.html"]){
  const html=fs.readFileSync(path,"utf8");
- assert.equal((html.match(/<p class="metric-title">/g)||[]).length,24,path+": 24 indicadores");
+ assert.equal((html.match(/<p class="metric-title">/g)||[]).length,23,path+": 23 indicadores");
  assert.doesNotMatch(html,/<label\b|<\/label>/i,path+": label não associado a formulário");
  assert.doesNotMatch(html,/data-company-filter(?:s)?/);
  assert.match(html,/data-company-list/);
@@ -685,8 +685,8 @@ assert.doesNotMatch(fs.readFileSync("site/assets/css/idades.css","utf8"),/\.age-
 
 /* A hierarquia explica diferenças sem misturar amostras, datas ou séries. */
 for(const [page,headings] of [
- ["site/index.html",["Empregos nos estabelecimentos da cidade","Trabalho dos moradores","Rendimentos do trabalho","Outros dados econômicos","Empresas com atuação documentada"]],
- ["site/en/index.html",["Jobs at workplaces in Sumaré","Residents and employment","Earnings from work","Other economic data","Companies with documented operations"]]
+ ["site/index.html",["Empregos formais nos estabelecimentos de Sumaré","Trabalho dos moradores","Rendimentos do trabalho","Outros dados econômicos","Empresas com atuação documentada"]],
+ ["site/en/index.html",["Formal jobs at establishments in Sumaré","Residents and employment","Earnings from work","Other economic data","Companies with documented operations"]]
 ]){
  const html=fs.readFileSync(page,"utf8");
  const work=html.slice(html.indexOf('id="trabalho" role="region"'),html.indexOf('id="economia" role="region"'));
@@ -697,7 +697,7 @@ for(const [page,headings] of [
  assert.doesNotMatch(work,/<details><summary>(?:Ver vínculos por setor|Employment links by sector)/);
  assert.ok(work.indexOf('class="sector-breakdown"')<work.indexOf('Trabalho dos moradores') ||
    work.indexOf('class="sector-breakdown"')<work.indexOf('Residents and employment'),page+": sectors near RAIS");
- assert.equal((work.match(/data-indicator="/g)||[]).length,15,page+": validated work values unchanged");
+ assert.equal((work.match(/data-indicator="/g)||[]).length,14,page+": validated work values unchanged");
  assert.equal((economy.match(/data-indicator="/g)||[]).length,2,page+": GDP indicators unchanged");
  assert.ok(economy.includes('href="#empresas"'),page+": related evidence link");
  assert.ok(html.includes('href="https://sidra.ibge.gov.br/tabela/9528"'),page+": public CEMPRE table");
