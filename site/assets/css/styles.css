@@ -393,6 +393,7 @@ nav{background:#fff;border-bottom:1px solid var(--line)}
   .metrics--two .metric, .metrics--two .metric:first-child, .metrics--two .metric:last-child {
     padding: 14px 0;
   }
+  .metrics--two .metric:last-child:nth-child(even) { padding-left: 12px; }
   .metric .metric-title { min-height: 0; line-height: 1.4; }
   .metric .number { margin: 8px 0 7px; }
   .metric .origin { gap: 4px; line-height: 1.4; }
