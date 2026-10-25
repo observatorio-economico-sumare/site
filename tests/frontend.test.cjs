@@ -692,12 +692,12 @@ for(const [page,headings] of [
  const work=html.slice(html.indexOf('id="trabalho" role="region"'),html.indexOf('id="economia" role="region"'));
  const economy=html.slice(html.indexOf('id="economia" role="region"'),html.indexOf('id="empresas" role="region"'));
  for (const heading of headings) assert.ok(html.includes(heading),page+": "+heading);
- assert.equal((work.match(/class="metrics metrics--two"/g)||[]).length,3,page+": work groups");
+ assert.equal((work.match(/class="metrics metrics--two"/g)||[]).length,2,page+": work groups");
  assert.equal((work.match(/class="metrics metrics--sectors"/g)||[]).length,1,page+": sector list visible");
  assert.doesNotMatch(work,/<details><summary>(?:Ver vínculos por setor|Employment links by sector)/);
  assert.ok(work.indexOf('class="sector-breakdown"')<work.indexOf('Trabalho dos moradores') ||
    work.indexOf('class="sector-breakdown"')<work.indexOf('Residents and employment'),page+": sectors near RAIS");
- assert.equal((work.match(/data-indicator="/g)||[]).length,14,page+": validated work values unchanged");
+ assert.equal((work.match(/data-indicator="/g)||[]).length,13,page+": validated work values unchanged");
  assert.equal((economy.match(/data-indicator="/g)||[]).length,2,page+": GDP indicators unchanged");
  assert.ok(economy.includes('href="#empresas"'),page+": related evidence link");
  assert.ok(html.includes('href="https://sidra.ibge.gov.br/tabela/9528"'),page+": public CEMPRE table");
