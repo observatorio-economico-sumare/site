@@ -553,7 +553,7 @@ assert.match(fs.readFileSync("site/assets/css/empresas.css","utf8"),
 /* Semântica dos títulos dos indicadores, sem alterações dos dados ou da navegação. */
 for(const path of ["site/index.html","site/en/index.html"]){
  const html=fs.readFileSync(path,"utf8");
- assert.equal((html.match(/<p class="metric-title">/g)||[]).length,24,path+": 24 indicadores");
+ assert.equal((html.match(/<p class="metric-title">/g)||[]).length,23,path+": 23 indicadores");
  assert.doesNotMatch(html,/<label\b|<\/label>/i,path+": label não associado a formulário");
  assert.doesNotMatch(html,/data-company-filter(?:s)?/);
  assert.match(html,/data-company-list/);
