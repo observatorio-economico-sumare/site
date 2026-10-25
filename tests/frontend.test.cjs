@@ -220,7 +220,7 @@ for(const page of ["site/index.html","site/en/index.html"]){
   "rais-vinculos-comercio-2025","rais-vinculos-construcao-2025",
   "rais-vinculos-agropecuaria-2025",
   "pessoas-ocupadas","pessoas-desocupadas","previdencia-ocupados","residentes-conta-propria-2022",
-  "renda-media-ocupados","renda-mediana-ocupados-2022"
+  "renda-mediana-ocupados-2022"
  ]);
  const economy=html.slice(html.indexOf('<section class="tab" hidden="" id="economia"'),
                           html.indexOf('<section class="tab" hidden="" id="empresas"'));
