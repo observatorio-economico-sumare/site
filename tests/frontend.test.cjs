@@ -639,13 +639,13 @@ assert.match(navCss,/\.nav-shell\.nav-more-right::after/);
 }
 
 
-/* Clareza editorial sem remover fontes e critérios institucionais. */
+/* Clareza editorial da página e dos critérios institucionais. */
 for(const [path,companySubtitle,analysis,glossaryTerm] of [
-  ["site/index.html","<span>Sem ranking</span>","Ainda não há análises do OES publicadas.","Em “Saiba mais”"],
-  ["site/en/index.html","<span>Not ranked</span>","No OES research or analysis has been published yet.","Select “Learn more”"]
+  ["site/index.html","<h2>O que algumas empresas fazem em Sumaré</h2>","Ainda não há análises do OES publicadas.","Em “Saiba mais”"],
+  ["site/en/index.html","<h2>What some companies do in Sumaré</h2>","No OES research or analysis has been published yet.","Select “Learn more”"]
 ]){
   const html=fs.readFileSync(path,"utf8");
-  assert.ok(html.includes(companySubtitle),path+": indicação de ausência de ranking");
+  assert.ok(html.includes(companySubtitle),path+": título da seção de empresas");
   assert.ok(html.includes(analysis),path+": indicação de conteúdo não publicado");
   assert.ok(html.includes(glossaryTerm),path+": fonte acessível no glossário");
   assert.ok(html.includes('class="institutional-grid"'),path+": missão e visão preservadas");
