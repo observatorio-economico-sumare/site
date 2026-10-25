@@ -55,12 +55,13 @@ def read_page(name):
     assert doc.inline_scripts == 0, f"{name}: JavaScript inline não permitido"
     assert len(doc.ids) == len(set(doc.ids)), f"{name}: IDs HTML duplicados"
     assert "Content-Security-Policy" in html, f"{name}: CSP ausente"
-    assert any(asset.endswith("assets/css/styles.css") for asset in doc.css), f"{name}: CSS principal ausente"
+    assert any(urlsplit(asset).path.endswith("assets/css/styles.css") for asset in doc.css), f"{name}: CSS principal ausente"
     for asset in doc.scripts + doc.css:
-        assert asset and not asset.startswith(("http:", "https:", "/")), (
+        asset_path = urlsplit(asset).path
+        assert asset_path and not asset_path.startswith(("/", "//")), (
             f"{name}: recurso não local: {asset}")
-        assert (path.parent / asset).resolve().is_relative_to(SITE.resolve()), f"{name}: recurso fora de site/: {asset}"
-        assert (path.parent / asset).is_file(), f"{name}: recurso ausente: {asset}"
+        assert (path.parent / asset_path).resolve().is_relative_to(SITE.resolve()), f"{name}: recurso fora de site/: {asset}"
+        assert (path.parent / asset_path).is_file(), f"{name}: recurso ausente: {asset}"
     return doc
 
 
