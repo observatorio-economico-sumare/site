@@ -173,7 +173,7 @@ dialog#sourceDialog{max-width: 680px; max-height: min(83vh,850px); overflow-y: a
 }
 
 @media(max-width:680px){
- .metrics--two{grid-template-columns:1fr}
+ .metrics--two{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 
 @media(max-width:480px){
@@ -380,10 +380,13 @@ nav{background:#fff;border-bottom:1px solid var(--line)}
   .metrics--two .metric:nth-child(odd),
   .metrics--two .metric:nth-child(even),
   .metrics--two .metric:last-child:nth-child(odd) {
-    padding: 14px 0;
+    padding: 14px 12px;
     border: 0;
-    border-bottom: 1px solid var(--line);
+    border-top: 1px solid var(--line);
   }
+  .metrics--two .metric:nth-child(odd) { padding-left: 0; border-right: 1px solid var(--line); }
+  .metrics--two .metric:nth-child(even) { padding-right: 0; border-right: 0; }
+  .metrics--two .metric:last-child:nth-child(odd) { grid-column: 1 / -1; padding-right: 0; border-right: 0; }
   .metrics--two .metric:first-child { border-top: 1px solid var(--line); }
   .footnote { margin: 10px 0 24px; line-height: 1.6; }
   .footer { margin-top: 36px; }
