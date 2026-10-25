@@ -214,7 +214,7 @@ for(const page of ["site/index.html","site/en/index.html"]){
  assert.doesNotMatch(work,/<table/);
  const workIds=[...work.matchAll(/data-indicator="([^"]+)"/g)].map(x=>x[1]);
  assert.deepEqual(workIds,[
-  "rais-vinculos-formais-2025","estoque-vinculos-formais",
+  "estoque-vinculos-formais",
   "saldo-vinculos-formais","saldo-vinculos-formais-2026-08",
   "rais-vinculos-servicos-2025","rais-vinculos-industria-2025",
   "rais-vinculos-comercio-2025","rais-vinculos-construcao-2025",
