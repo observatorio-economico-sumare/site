@@ -685,7 +685,7 @@ assert.doesNotMatch(fs.readFileSync("site/assets/css/idades.css","utf8"),/\.age-
 
 /* A hierarquia explica diferenças sem misturar amostras, datas ou séries. */
 for(const [page,headings] of [
- ["site/index.html",["Empregos formais nos estabelecimentos de Sumaré","Trabalho dos moradores","Rendimentos do trabalho","Outros dados econômicos","Empresas com atuação documentada"]],
+ ["site/index.html",["Empregos formais nos estabelecimentos de Sumaré","Trabalho dos moradores","Rendimentos do trabalho","Empresas com atuação documentada"]],
  ["site/en/index.html",["Formal jobs at establishments in Sumaré","Residents and employment","Earnings from work","Other economic data","Companies with documented operations"]]
 ]){
  const html=fs.readFileSync(page,"utf8");
