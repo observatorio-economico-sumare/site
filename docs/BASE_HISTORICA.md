@@ -12,7 +12,7 @@ A organização e as regras de expansão estão em [`data/historico/README.md`](
 | Tema | Indicador | Anos cobertos | Fonte e observação |
 |---|---|---:|---|
 | População | Estimativa residente | 2001–2026, com lacunas | SIDRA 6579 até 2024; estimativas IBGE 2025 e 2026 em fontes próprias. Os anos sem resposta permanecem ausentes. |
-| População | População censitária | 2010 e 2022 | 2010 reaproveitado do registro SES-SP já usado pelo OES; 2022 reaproveitado do IBGE Cidades. |
+| População | População censitária | 1960, 1980, 1991, 2000, 2010 e 2022 | Pontos de 1960, 1980, 1991 e 2000 acrescentados nesta etapa; 2010 reaproveitado do registro SES-SP já usado pelo OES, com divergência frente a tabela IBGE; 2022 é o Censo mais recente. 1970 segue pendente de reconciliação. |
 | Empresas | Unidades locais ativas do CEMPRE | 2006; 2007–2021; 2022–2024 | SIDRA 6450 até 2021 e SIDRA 9528 a partir de 2022. Os intervalos não devem ser apresentados como uma série contínua comparável. |
 | Economia | PIB municipal a preços correntes | 2002–2023 | SIDRA 5938, unidade original mantida: mil reais. Valores nominais, sem deflator. |
 | Trabalho | Vínculos formais RAIS por setor e total | 2023–2025 | Tabela 4 da planilha original RAIS 2025. Estoque em 31 de dezembro por estabelecimento. |
@@ -33,7 +33,7 @@ A organização e as regras de expansão estão em [`data/historico/README.md`](
 Nenhum valor da série existente foi alterado. Na pesquisa de recuo histórico, foram encontradas divergências que precisam de reconciliação antes da inclusão de novos pontos ou da substituição de valores já validados:
 
 - **População 2010:** a observação validada que o OES reaproveitou é 241.311 habitantes. Uma tabela oficial de resultados do Censo 2010 para São Paulo registra 241.437 para Sumaré (diferença de 126 pessoas). Manter 241.311 sem alteração até confirmar edição, data de referência e revisão de cada publicação. Fontes: [registro reaproveitado pelo OES](../data/raw/ses_sp_sumare_censo_2022_2026-10-23.json) e [tabela estadual do Censo 2010/IBGE](https://ftp.ibge.gov.br/Censos/Censo_Demografico_2010/resultados/tabelas_pdf/total_populacao_sao_paulo.pdf).
-- **População 1970:** a tabela histórica do IBGE apresenta 23.054 habitantes; o Plano Diretor municipal, que atribui seus números aos Censos do IBGE, apresenta 23.074. Não incorporar até conferir a publicação censitária original e a definição territorial. Fontes: [IBGE — resultados do Censo 1970](https://seculoxx.ibge.gov.br/images/seculoxx/arquivos_download/populacao/1971/populacao_m_1971aeb_017_a_043.pdf) e [Plano Diretor de Sumaré](https://www.sumare.sp.gov.br/plano_diretor/arquivos/mapVol1/VOLUME01COMPLETO.pdf).
+- **População 1970:** a tabela histórica do IBGE apresenta 23.054 habitantes; o Plano Diretor municipal, que atribui seus números aos Censos do IBGE, apresenta 23.074. Não incorporar até conferir a publicação censitária original e a definição territorial. Os pontos de 1960 (10.663, resultado preliminar), 1980 (101.851), 1991 (139.168) e 2000 (196.723) foram incorporados com fonte e ressalvas próprias. Os valores de 1980 e 1991 foram transcritos da tabela do Plano Diretor, que cita os Censos do IBGE; os endereços e hashes dos documentos originais foram registrados; os PDFs estaduais não foram adicionados ao Git para conter o tamanho do repositório. Não foram interpolados os anos ausentes. Fontes: [IBGE — resultados do Censo 1970](https://seculoxx.ibge.gov.br/images/seculoxx/arquivos_download/populacao/1971/populacao_m_1971aeb_017_a_043.pdf) e [Plano Diretor de Sumaré](https://www.sumare.sp.gov.br/plano_diretor/arquivos/mapVol1/VOLUME01COMPLETO.pdf).
 
 O salto metodológico do CEMPRE em 2022 permanece documentado acima.
 
@@ -44,6 +44,7 @@ O salto metodológico do CEMPRE em 2022 permanece documentado acima.
 - `data/raw/historico/ibge_sidra_6450_cempre_2006-2021.json` e `data/raw/historico/ibge_sidra_9528_cempre_2022-2024.json` — respostas originais das tabelas do CEMPRE.
 - `data/raw/historico/ibge_sidra_5938_pib_2002-2023.json` — resposta original da série anual do PIB municipal.
 - `data/raw/historico/ibge_estimativa_populacao_2025.xls` — arquivo original de estimativas municipais do IBGE.
+- `data/raw/historico/ibge_censo_1960_sumare.pdf`, `ibge_censo_1980_sumare.pdf`, `ibge_censo_1991_sp_sumare.pdf` e `ibge_censo_2010_sp_sumare.pdf` — publicações oficiais do IBGE consultadas para os pontos censitários. Os arquivos não foram copiados para o repositório para conter seu tamanho; os endereços oficiais e hashes SHA-256 dos documentos consultados estão registrados na base.
 - `data/raw/historico/mte_rais_2025_tabelas.xlsx` — planilha original da RAIS que contém os anos 2023–2025.
 - `data/historico/README.md` — estrutura, regras de expansão por indicador e política para arquivos de grande porte.
 - `data/historico/marcos.json` — registro separado da data oficial de fundação da localidade (1868) e da criação legal do município (1953).
