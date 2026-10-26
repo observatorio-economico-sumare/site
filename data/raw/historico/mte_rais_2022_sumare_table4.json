@@ -1,0 +1,28 @@
+{
+  "source_institution": "Ministério do Trabalho e Emprego",
+  "source_dataset": "RAIS 2022",
+  "source_file": "4-tabelas_rais-2022.xlsx",
+  "source_url": "https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/acoes-e-programas/programas-projetos-acoes-obras-e-atividades/estatisticas-trabalho/rais/rais-2022/4-tabelas_rais-2022.xlsx",
+  "source_file_sha256": "43ec36950a6ec9598682990bf5ff5ad9bfb9b0f6ee15e1ae68de820cbc5b3684",
+  "extracted_at": "2026-10-26",
+  "sheet": "TABELA 4",
+  "row_number": 3866,
+  "table_period": "Ano 2022",
+  "note": "Valores absolutos por município; distribuições percentuais descartadas da série de contagem.",
+  "row": {
+    "UF": "SP",
+    "Município": "Sumaré",
+    "Vínculos agropecuária": 496,
+    "Distribuição agropecuária": 0.007501058617143549,
+    "Vínculos indústria": 16123,
+    "Distribuição indústria": 0.2438297743633174,
+    "Vínculos construção": 2569,
+    "Distribuição construção": 0.038851249168229386,
+    "Vínculos comércio": 18482,
+    "Distribuição comércio": 0.2795051721009013,
+    "Vínculos serviços": 28454,
+    "Distribuição serviços": 0.43031274575040834,
+    "Vínculos total": 66124,
+    "Distribuição total": 1
+  }
+}

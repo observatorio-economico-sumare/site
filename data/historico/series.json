@@ -885,6 +885,372 @@
         "note": "Valor na coluna de 2000 da tabela oficial de população por município do Censo 2010."
       },
       "limitations": "Contagem censitária com referência em 1º de agosto de 2000; mantida como ponto censitário, sem interpolação."
+    },
+    {
+      "id": "rais-vinculos-agropecuaria-2022",
+      "name": "Vínculos formais — Agropecuária (RAIS 2022)",
+      "topic": "trabalho",
+      "unit": "vínculos",
+      "observations": [
+        {
+          "year": "2022",
+          "value": 496
+        }
+      ],
+      "source": {
+        "institution": "MTE",
+        "dataset": "Relação Anual de Informações Sociais — RAIS 2022",
+        "table_or_file": "TABELA 4, linha 3866, Sumaré; estoque de vínculos por grande setor",
+        "url": "https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/acoes-e-programas/programas-projetos-acoes-obras-e-atividades/estatisticas-trabalho/rais/rais-2022/4-tabelas_rais-2022.xlsx",
+        "raw_file": "data/raw/historico/mte_rais_2022_sumare_table4.json",
+        "sha256": "e64cadd16d101fcc7b205f9c64c16df527b6f580335a2349e08ed58699aed525",
+        "original_file_sha256": "43ec36950a6ec9598682990bf5ff5ad9bfb9b0f6ee15e1ae68de820cbc5b3684",
+        "extracted_at": "2026-10-26"
+      },
+      "limitations": "Estoque em 31 de dezembro por estabelecimento em Sumaré; não equivale a pessoas residentes. A edição de 2022 consolidou dados captados pelo eSocial e pelo GDRAIS, após mudança de obrigação declaratória; manter como ponto separado, sem assumir continuidade metodológica automática com 2023–2025."
+    },
+    {
+      "id": "rais-vinculos-industria-2022",
+      "name": "Vínculos formais — Indústria (RAIS 2022)",
+      "topic": "trabalho",
+      "unit": "vínculos",
+      "observations": [
+        {
+          "year": "2022",
+          "value": 16123
+        }
+      ],
+      "source": {
+        "institution": "MTE",
+        "dataset": "Relação Anual de Informações Sociais — RAIS 2022",
+        "table_or_file": "TABELA 4, linha 3866, Sumaré; estoque de vínculos por grande setor",
+        "url": "https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/acoes-e-programas/programas-projetos-acoes-obras-e-atividades/estatisticas-trabalho/rais/rais-2022/4-tabelas_rais-2022.xlsx",
+        "raw_file": "data/raw/historico/mte_rais_2022_sumare_table4.json",
+        "sha256": "e64cadd16d101fcc7b205f9c64c16df527b6f580335a2349e08ed58699aed525",
+        "original_file_sha256": "43ec36950a6ec9598682990bf5ff5ad9bfb9b0f6ee15e1ae68de820cbc5b3684",
+        "extracted_at": "2026-10-26"
+      },
+      "limitations": "Estoque em 31 de dezembro por estabelecimento em Sumaré; não equivale a pessoas residentes. A edição de 2022 consolidou dados captados pelo eSocial e pelo GDRAIS, após mudança de obrigação declaratória; manter como ponto separado, sem assumir continuidade metodológica automática com 2023–2025."
+    },
+    {
+      "id": "rais-vinculos-construcao-2022",
+      "name": "Vínculos formais — Construção (RAIS 2022)",
+      "topic": "trabalho",
+      "unit": "vínculos",
+      "observations": [
+        {
+          "year": "2022",
+          "value": 2569
+        }
+      ],
+      "source": {
+        "institution": "MTE",
+        "dataset": "Relação Anual de Informações Sociais — RAIS 2022",
+        "table_or_file": "TABELA 4, linha 3866, Sumaré; estoque de vínculos por grande setor",
+        "url": "https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/acoes-e-programas/programas-projetos-acoes-obras-e-atividades/estatisticas-trabalho/rais/rais-2022/4-tabelas_rais-2022.xlsx",
+        "raw_file": "data/raw/historico/mte_rais_2022_sumare_table4.json",
+        "sha256": "e64cadd16d101fcc7b205f9c64c16df527b6f580335a2349e08ed58699aed525",
+        "original_file_sha256": "43ec36950a6ec9598682990bf5ff5ad9bfb9b0f6ee15e1ae68de820cbc5b3684",
+        "extracted_at": "2026-10-26"
+      },
+      "limitations": "Estoque em 31 de dezembro por estabelecimento em Sumaré; não equivale a pessoas residentes. A edição de 2022 consolidou dados captados pelo eSocial e pelo GDRAIS, após mudança de obrigação declaratória; manter como ponto separado, sem assumir continuidade metodológica automática com 2023–2025."
+    },
+    {
+      "id": "rais-vinculos-comercio-2022",
+      "name": "Vínculos formais — Comércio (RAIS 2022)",
+      "topic": "trabalho",
+      "unit": "vínculos",
+      "observations": [
+        {
+          "year": "2022",
+          "value": 18482
+        }
+      ],
+      "source": {
+        "institution": "MTE",
+        "dataset": "Relação Anual de Informações Sociais — RAIS 2022",
+        "table_or_file": "TABELA 4, linha 3866, Sumaré; estoque de vínculos por grande setor",
+        "url": "https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/acoes-e-programas/programas-projetos-acoes-obras-e-atividades/estatisticas-trabalho/rais/rais-2022/4-tabelas_rais-2022.xlsx",
+        "raw_file": "data/raw/historico/mte_rais_2022_sumare_table4.json",
+        "sha256": "e64cadd16d101fcc7b205f9c64c16df527b6f580335a2349e08ed58699aed525",
+        "original_file_sha256": "43ec36950a6ec9598682990bf5ff5ad9bfb9b0f6ee15e1ae68de820cbc5b3684",
+        "extracted_at": "2026-10-26"
+      },
+      "limitations": "Estoque em 31 de dezembro por estabelecimento em Sumaré; não equivale a pessoas residentes. A edição de 2022 consolidou dados captados pelo eSocial e pelo GDRAIS, após mudança de obrigação declaratória; manter como ponto separado, sem assumir continuidade metodológica automática com 2023–2025."
+    },
+    {
+      "id": "rais-vinculos-servicos-2022",
+      "name": "Vínculos formais — Serviços (RAIS 2022)",
+      "topic": "trabalho",
+      "unit": "vínculos",
+      "observations": [
+        {
+          "year": "2022",
+          "value": 28454
+        }
+      ],
+      "source": {
+        "institution": "MTE",
+        "dataset": "Relação Anual de Informações Sociais — RAIS 2022",
+        "table_or_file": "TABELA 4, linha 3866, Sumaré; estoque de vínculos por grande setor",
+        "url": "https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/acoes-e-programas/programas-projetos-acoes-obras-e-atividades/estatisticas-trabalho/rais/rais-2022/4-tabelas_rais-2022.xlsx",
+        "raw_file": "data/raw/historico/mte_rais_2022_sumare_table4.json",
+        "sha256": "e64cadd16d101fcc7b205f9c64c16df527b6f580335a2349e08ed58699aed525",
+        "original_file_sha256": "43ec36950a6ec9598682990bf5ff5ad9bfb9b0f6ee15e1ae68de820cbc5b3684",
+        "extracted_at": "2026-10-26"
+      },
+      "limitations": "Estoque em 31 de dezembro por estabelecimento em Sumaré; não equivale a pessoas residentes. A edição de 2022 consolidou dados captados pelo eSocial e pelo GDRAIS, após mudança de obrigação declaratória; manter como ponto separado, sem assumir continuidade metodológica automática com 2023–2025."
+    },
+    {
+      "id": "rais-vinculos-total-2022",
+      "name": "Vínculos formais — Total (RAIS 2022)",
+      "topic": "trabalho",
+      "unit": "vínculos",
+      "observations": [
+        {
+          "year": "2022",
+          "value": 66124
+        }
+      ],
+      "source": {
+        "institution": "MTE",
+        "dataset": "Relação Anual de Informações Sociais — RAIS 2022",
+        "table_or_file": "TABELA 4, linha 3866, Sumaré; estoque de vínculos por grande setor",
+        "url": "https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/acoes-e-programas/programas-projetos-acoes-obras-e-atividades/estatisticas-trabalho/rais/rais-2022/4-tabelas_rais-2022.xlsx",
+        "raw_file": "data/raw/historico/mte_rais_2022_sumare_table4.json",
+        "sha256": "e64cadd16d101fcc7b205f9c64c16df527b6f580335a2349e08ed58699aed525",
+        "original_file_sha256": "43ec36950a6ec9598682990bf5ff5ad9bfb9b0f6ee15e1ae68de820cbc5b3684",
+        "extracted_at": "2026-10-26"
+      },
+      "limitations": "Estoque em 31 de dezembro por estabelecimento em Sumaré; não equivale a pessoas residentes. A edição de 2022 consolidou dados captados pelo eSocial e pelo GDRAIS, após mudança de obrigação declaratória; manter como ponto separado, sem assumir continuidade metodológica automática com 2023–2025."
+    },
+    {
+      "id": "rais-vinculos-agropecuaria-2020-2021",
+      "name": "Vínculos formais — Agropecuária (RAIS 2020–2021)",
+      "topic": "trabalho",
+      "unit": "vínculos",
+      "observations": [
+        {
+          "year": "2020",
+          "value": 474
+        },
+        {
+          "year": "2021",
+          "value": 504
+        }
+      ],
+      "source": {
+        "institution": "MTE",
+        "dataset": "Relação Anual de Informações Sociais — RAIS 2021",
+        "table_or_file": "TABELA 4, linha 3866, Sumaré; estoque de vínculos por grande setor; colunas 2020 e 2021",
+        "url": "https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/acoes-e-programas/programas-projetos-acoes-obras-e-atividades/estatisticas-trabalho/rais/rais-2021/3-tabelas.xlsx",
+        "raw_file": "data/raw/historico/mte_rais_2020-2021_sumare_table4.json",
+        "sha256": "ef37d3586f8a5c3022a7413af64c1374c134097186f4ad32f978a02749eeda24",
+        "original_file_sha256": "241c9df34d30c76411b3a0eb969062c4a24ec2c089e5feeeffced2befe893b87",
+        "extracted_at": "2026-10-26"
+      },
+      "limitations": "Estoque em 31 de dezembro por estabelecimento em Sumaré; não equivale a pessoas residentes. Manter separado da RAIS 2022 e de 2023–2025, que têm edições e processos de captação distintos."
+    },
+    {
+      "id": "rais-vinculos-industria-2020-2021",
+      "name": "Vínculos formais — Indústria (RAIS 2020–2021)",
+      "topic": "trabalho",
+      "unit": "vínculos",
+      "observations": [
+        {
+          "year": "2020",
+          "value": 17093
+        },
+        {
+          "year": "2021",
+          "value": 17628
+        }
+      ],
+      "source": {
+        "institution": "MTE",
+        "dataset": "Relação Anual de Informações Sociais — RAIS 2021",
+        "table_or_file": "TABELA 4, linha 3866, Sumaré; estoque de vínculos por grande setor; colunas 2020 e 2021",
+        "url": "https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/acoes-e-programas/programas-projetos-acoes-obras-e-atividades/estatisticas-trabalho/rais/rais-2021/3-tabelas.xlsx",
+        "raw_file": "data/raw/historico/mte_rais_2020-2021_sumare_table4.json",
+        "sha256": "ef37d3586f8a5c3022a7413af64c1374c134097186f4ad32f978a02749eeda24",
+        "original_file_sha256": "241c9df34d30c76411b3a0eb969062c4a24ec2c089e5feeeffced2befe893b87",
+        "extracted_at": "2026-10-26"
+      },
+      "limitations": "Estoque em 31 de dezembro por estabelecimento em Sumaré; não equivale a pessoas residentes. Manter separado da RAIS 2022 e de 2023–2025, que têm edições e processos de captação distintos."
+    },
+    {
+      "id": "rais-vinculos-construcao-2020-2021",
+      "name": "Vínculos formais — Construção (RAIS 2020–2021)",
+      "topic": "trabalho",
+      "unit": "vínculos",
+      "observations": [
+        {
+          "year": "2020",
+          "value": 2884
+        },
+        {
+          "year": "2021",
+          "value": 2079
+        }
+      ],
+      "source": {
+        "institution": "MTE",
+        "dataset": "Relação Anual de Informações Sociais — RAIS 2021",
+        "table_or_file": "TABELA 4, linha 3866, Sumaré; estoque de vínculos por grande setor; colunas 2020 e 2021",
+        "url": "https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/acoes-e-programas/programas-projetos-acoes-obras-e-atividades/estatisticas-trabalho/rais/rais-2021/3-tabelas.xlsx",
+        "raw_file": "data/raw/historico/mte_rais_2020-2021_sumare_table4.json",
+        "sha256": "ef37d3586f8a5c3022a7413af64c1374c134097186f4ad32f978a02749eeda24",
+        "original_file_sha256": "241c9df34d30c76411b3a0eb969062c4a24ec2c089e5feeeffced2befe893b87",
+        "extracted_at": "2026-10-26"
+      },
+      "limitations": "Estoque em 31 de dezembro por estabelecimento em Sumaré; não equivale a pessoas residentes. Manter separado da RAIS 2022 e de 2023–2025, que têm edições e processos de captação distintos."
+    },
+    {
+      "id": "rais-vinculos-comercio-2020-2021",
+      "name": "Vínculos formais — Comércio (RAIS 2020–2021)",
+      "topic": "trabalho",
+      "unit": "vínculos",
+      "observations": [
+        {
+          "year": "2020",
+          "value": 13834
+        },
+        {
+          "year": "2021",
+          "value": 14659
+        }
+      ],
+      "source": {
+        "institution": "MTE",
+        "dataset": "Relação Anual de Informações Sociais — RAIS 2021",
+        "table_or_file": "TABELA 4, linha 3866, Sumaré; estoque de vínculos por grande setor; colunas 2020 e 2021",
+        "url": "https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/acoes-e-programas/programas-projetos-acoes-obras-e-atividades/estatisticas-trabalho/rais/rais-2021/3-tabelas.xlsx",
+        "raw_file": "data/raw/historico/mte_rais_2020-2021_sumare_table4.json",
+        "sha256": "ef37d3586f8a5c3022a7413af64c1374c134097186f4ad32f978a02749eeda24",
+        "original_file_sha256": "241c9df34d30c76411b3a0eb969062c4a24ec2c089e5feeeffced2befe893b87",
+        "extracted_at": "2026-10-26"
+      },
+      "limitations": "Estoque em 31 de dezembro por estabelecimento em Sumaré; não equivale a pessoas residentes. Manter separado da RAIS 2022 e de 2023–2025, que têm edições e processos de captação distintos."
+    },
+    {
+      "id": "rais-vinculos-servicos-2020-2021",
+      "name": "Vínculos formais — Serviços (RAIS 2020–2021)",
+      "topic": "trabalho",
+      "unit": "vínculos",
+      "observations": [
+        {
+          "year": "2020",
+          "value": 21678
+        },
+        {
+          "year": "2021",
+          "value": 23807
+        }
+      ],
+      "source": {
+        "institution": "MTE",
+        "dataset": "Relação Anual de Informações Sociais — RAIS 2021",
+        "table_or_file": "TABELA 4, linha 3866, Sumaré; estoque de vínculos por grande setor; colunas 2020 e 2021",
+        "url": "https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/acoes-e-programas/programas-projetos-acoes-obras-e-atividades/estatisticas-trabalho/rais/rais-2021/3-tabelas.xlsx",
+        "raw_file": "data/raw/historico/mte_rais_2020-2021_sumare_table4.json",
+        "sha256": "ef37d3586f8a5c3022a7413af64c1374c134097186f4ad32f978a02749eeda24",
+        "original_file_sha256": "241c9df34d30c76411b3a0eb969062c4a24ec2c089e5feeeffced2befe893b87",
+        "extracted_at": "2026-10-26"
+      },
+      "limitations": "Estoque em 31 de dezembro por estabelecimento em Sumaré; não equivale a pessoas residentes. Manter separado da RAIS 2022 e de 2023–2025, que têm edições e processos de captação distintos."
+    },
+    {
+      "id": "rais-vinculos-total-2020-2021",
+      "name": "Vínculos formais — Total (RAIS 2020–2021)",
+      "topic": "trabalho",
+      "unit": "vínculos",
+      "observations": [
+        {
+          "year": "2020",
+          "value": 55963
+        },
+        {
+          "year": "2021",
+          "value": 58677
+        }
+      ],
+      "source": {
+        "institution": "MTE",
+        "dataset": "Relação Anual de Informações Sociais — RAIS 2021",
+        "table_or_file": "TABELA 4, linha 3866, Sumaré; estoque de vínculos por grande setor; colunas 2020 e 2021",
+        "url": "https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/acoes-e-programas/programas-projetos-acoes-obras-e-atividades/estatisticas-trabalho/rais/rais-2021/3-tabelas.xlsx",
+        "raw_file": "data/raw/historico/mte_rais_2020-2021_sumare_table4.json",
+        "sha256": "ef37d3586f8a5c3022a7413af64c1374c134097186f4ad32f978a02749eeda24",
+        "original_file_sha256": "241c9df34d30c76411b3a0eb969062c4a24ec2c089e5feeeffced2befe893b87",
+        "extracted_at": "2026-10-26"
+      },
+      "limitations": "Estoque em 31 de dezembro por estabelecimento em Sumaré; não equivale a pessoas residentes. Manter separado da RAIS 2022 e de 2023–2025, que têm edições e processos de captação distintos."
+    },
+    {
+      "id": "renda-media-trabalho-principal-2000",
+      "name": "Rendimento nominal médio mensal do trabalho principal — Censo 2000",
+      "topic": "renda",
+      "unit": "R$ nominais de 2000",
+      "observations": [
+        {
+          "year": "2000",
+          "value": 611.57
+        }
+      ],
+      "source": {
+        "institution": "IBGE",
+        "dataset": "Censo Demográfico 2000, SIDRA",
+        "table_or_file": "Tabela 2927; município 3552403; período 2000; sexo total; seção de atividade total; variável 1621",
+        "url": "https://apisidra.ibge.gov.br/values/t/2927/n6/3552403/p/2000?formato=json",
+        "raw_file": "data/raw/historico/ibge_sidra_2927_renda_trabalho_2000.json",
+        "sha256": "470d9f48a17ae3d9336c568a3dd71803d807948e3dc6c4aa0ad8894d88774a4c",
+        "extracted_at": "2026-10-26"
+      },
+      "limitations": "Média entre pessoas de 10 anos ou mais, ocupadas na semana de referência e com rendimento no trabalho principal. Valor nominal de 2000. Conceito e universo não coincidem com a série de 2022 (pessoas de 14 anos ou mais, rendimento de todos os trabalhos); não comparar nem encadear diretamente."
+    },
+    {
+      "id": "renda-mediana-trabalho-principal-2000",
+      "name": "Rendimento nominal mediano mensal do trabalho principal — Censo 2000",
+      "topic": "renda",
+      "unit": "R$ nominais de 2000",
+      "observations": [
+        {
+          "year": "2000",
+          "value": 403.0
+        }
+      ],
+      "source": {
+        "institution": "IBGE",
+        "dataset": "Censo Demográfico 2000, SIDRA",
+        "table_or_file": "Tabela 2927; município 3552403; período 2000; sexo total; seção de atividade total; variável 1622",
+        "url": "https://apisidra.ibge.gov.br/values/t/2927/n6/3552403/p/2000?formato=json",
+        "raw_file": "data/raw/historico/ibge_sidra_2927_renda_trabalho_2000.json",
+        "sha256": "470d9f48a17ae3d9336c568a3dd71803d807948e3dc6c4aa0ad8894d88774a4c",
+        "extracted_at": "2026-10-26"
+      },
+      "limitations": "Mediana entre pessoas de 10 anos ou mais, ocupadas na semana de referência e com rendimento no trabalho principal. Valor nominal de 2000. Conceito e universo não coincidem com a série de 2022 (pessoas de 14 anos ou mais, rendimento de todos os trabalhos); não comparar nem encadear diretamente."
+    },
+    {
+      "id": "pessoas-ocupadas-com-rendimento-trabalho-principal-2000",
+      "name": "Pessoas de 10 anos ou mais ocupadas com rendimento no trabalho principal — Censo 2000",
+      "topic": "trabalho",
+      "unit": "pessoas",
+      "observations": [
+        {
+          "year": "2000",
+          "value": 77920
+        }
+      ],
+      "source": {
+        "institution": "IBGE",
+        "dataset": "Censo Demográfico 2000, SIDRA",
+        "table_or_file": "Tabela 2927; município 3552403; período 2000; sexo total; seção de atividade total; variável 784",
+        "url": "https://apisidra.ibge.gov.br/values/t/2927/n6/3552403/p/2000?formato=json",
+        "raw_file": "data/raw/historico/ibge_sidra_2927_renda_trabalho_2000.json",
+        "sha256": "470d9f48a17ae3d9336c568a3dd71803d807948e3dc6c4aa0ad8894d88774a4c",
+        "extracted_at": "2026-10-26"
+      },
+      "limitations": "Pessoas residentes de 10 anos ou mais ocupadas na semana de referência e com rendimento no trabalho principal. Não representa vínculos formais nem usa o mesmo universo etário da tabela de ocupação do Censo 2022."
     }
   ]
 }

@@ -15,19 +15,20 @@ A organização e as regras de expansão estão em [`data/historico/README.md`](
 | População | População censitária | 1960, 1980, 1991, 2000, 2010 e 2022 | Pontos de 1960, 1980, 1991 e 2000 acrescentados nesta etapa; 2010 reaproveitado do registro SES-SP já usado pelo OES, com divergência frente a tabela IBGE; 2022 é o Censo mais recente. 1970 segue pendente de reconciliação. |
 | Empresas | Unidades locais ativas do CEMPRE | 2006; 2007–2021; 2022–2024 | SIDRA 6450 até 2021 e SIDRA 9528 a partir de 2022. Os intervalos não devem ser apresentados como uma série contínua comparável. |
 | Economia | PIB municipal a preços correntes | 2002–2023 | SIDRA 5938, unidade original mantida: mil reais. Valores nominais, sem deflator. |
-| Trabalho | Vínculos formais RAIS por setor e total | 2023–2025 | Tabela 4 da planilha original RAIS 2025. Estoque em 31 de dezembro por estabelecimento. |
+| Trabalho | Vínculos formais RAIS por setor e total | 2020–2021; 2022; 2023–2025 | 2020–2021 da tabela 4 da edição RAIS 2021; 2022 da tabela 4 da edição RAIS 2022; 2023–2025 da tabela 4 da edição RAIS 2025. Estoque em 31 de dezembro por estabelecimento; manter cada bloco separado pelas mudanças de edição e captação. |
 | Trabalho | Pessoas ocupadas e desocupadas | 2022 | Censo Demográfico, dados já validados e preservados nos arquivos SIDRA existentes. Pessoas residentes, não vínculos por estabelecimento. |
+| Trabalho | Pessoas ocupadas com rendimento no trabalho principal | 2000 | SIDRA 2927, população de 10 anos ou mais; conceito e universo próprios. Não se confunde com o Censo 2022 nem com vínculos RAIS. |
 | Trabalho | Estoque e saldo Novo CAGED | ago/2026; jan–ago/2026 | Boletim municipal já registrado. É um retrato pontual e um acumulado, sem série mensal completa nesta base. |
-| Renda | Rendimento médio e mediano do trabalho | 2022 | Censo Demográfico, registros validados já existentes. Não há série municipal anual contínua preparada. |
+| Renda | Rendimento médio e mediano do trabalho | 2000; 2022 | Censo 2000: trabalho principal, pessoas de 10 anos ou mais. Censo 2022: todos os trabalhos, pessoas de 14 anos ou mais. Pontos preservados em blocos separados; não comparar diretamente. Não há série municipal anual contínua preparada. |
 
 ## Quebras, divergências e lacunas
 
 - **CEMPRE:** o IBGE declara que os dados de 2022 em diante não são comparáveis aos de 2007–2021, devido à mudança metodológica e à incorporação de estabelecimentos ativos do CNPJ. O critério também foi ajustado a partir de 2019 durante a substituição gradativa da RAIS pelo eSocial. O ano de 2006 fica isolado porque a metodologia de unidades ativas foi reformulada na divulgação de 2007. Os valores anteriores foram preservados, sem encadear a variação de 2021 para 2022. Fonte: [página e notas técnicas do CEMPRE/IBGE](https://www.ibge.gov.br/estatisticas/economicas/servicos/9016-estatisticas-do-cadastro-central-de-empresas.html).
 - **CEMPRE 2024:** 12.746 unidades locais, igual ao registro já validado em `data/processed/empresas_cempre_2024.json`. A conferência não alterou esse arquivo.
 - **PIB 2023:** SIDRA informa 19.026.093 mil reais. Convertido apenas para conferência de escala, equivale a R$ 19.026.093.000, igual ao registro já validado em `data/processed/indicators.json`. A base histórica conserva a unidade original da tabela: mil reais.
-- **RAIS:** os valores de 2023–2025 foram lidos da planilha original preservada e conferem com a transcrição existente em `data/raw/rais_2025_sumare_tabela4_2026-10-23.json`. Nenhuma divergência foi encontrada.
+- **RAIS:** os valores de 2023–2025 foram lidos da planilha original preservada e conferem com a transcrição existente em `data/raw/rais_2025_sumare_tabela4_2026-10-23.json`. Nenhuma divergência foi encontrada. Os dados de 2020–2021 foram extraídos da tabela 4 da edição RAIS 2021. O ponto de 2022 foi extraído da tabela 4 da edição RAIS 2022; por mudanças de edição e captação (eSocial e GDRAIS), os blocos foram separados e não alteram os valores posteriores.
 - **População:** a consulta à tabela SIDRA 6579 não retornou observações para 2007, 2010, 2022 e 2023. Os censos de 2010 e 2022 e as estimativas de 2025 e 2026 estão registrados como pontos separados, com suas próprias fontes. O IBGE alerta que a série de estimativas deve ser comparada considerando as revisões das projeções e as bases censitárias; não se interpolaram lacunas.
-- **Renda:** os pontos de 2022 foram reaproveitados. A cobertura de outros Censos e a comparabilidade de conceitos ainda precisam ser avaliadas antes de ampliar essa série.
+- **Renda:** os pontos de 2022 foram reaproveitados. O Censo 2000 acrescenta média e mediana do rendimento do trabalho principal, mas com universo etário de 10 anos ou mais; o Censo 2022 considera o rendimento de todos os trabalhos para pessoas de 14 anos ou mais. São blocos separados e não formam uma série diretamente comparável.
 - **Trabalho:** a RAIS mede vínculos em estabelecimentos; o Censo mede pessoas residentes. O estoque RAIS não deve ser somado ao Novo CAGED nem comparado como se tivesse o mesmo universo. A coleta de salário médio municipal por setor permanece pendente.
 
 Nenhum valor da série existente foi alterado. Na pesquisa de recuo histórico, foram encontradas divergências que precisam de reconciliação antes da inclusão de novos pontos ou da substituição de valores já validados:
@@ -46,6 +47,9 @@ O salto metodológico do CEMPRE em 2022 permanece documentado acima.
 - `data/raw/historico/ibge_estimativa_populacao_2025.xls` — arquivo original de estimativas municipais do IBGE.
 - `data/raw/historico/ibge_censo_1960_sumare.pdf`, `ibge_censo_1980_sumare.pdf`, `ibge_censo_1991_sp_sumare.pdf` e `ibge_censo_2010_sp_sumare.pdf` — publicações oficiais do IBGE consultadas para os pontos censitários. Os arquivos não foram copiados para o repositório para conter seu tamanho; os endereços oficiais e hashes SHA-256 dos documentos consultados estão registrados na base.
 - `data/raw/historico/mte_rais_2025_tabelas.xlsx` — planilha original da RAIS que contém os anos 2023–2025.
+- `data/raw/historico/ibge_sidra_2927_renda_trabalho_2000.json` — resposta bruta da tabela SIDRA 2927 para rendimento do trabalho principal e pessoas com rendimento, Censo 2000.
+- `data/raw/historico/mte_rais_2020-2021_sumare_table4.json` — linha de Sumaré extraída da tabela 4 da RAIS 2021, com URL e hash da planilha oficial original.
+- `data/raw/historico/mte_rais_2022_sumare_table4.json` — linha de Sumaré extraída da tabela 4 da RAIS 2022, com URL e hash da planilha oficial original. A edição de 2022 usa dados do eSocial e do GDRAIS; o ponto fica separado de 2023–2025.
 - `data/historico/README.md` — estrutura, regras de expansão por indicador e política para arquivos de grande porte.
 - `data/historico/marcos.json` — registro separado da data oficial de fundação da localidade (1868) e da criação legal do município (1953).
 
