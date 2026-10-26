@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "municipality": {
+    "name": "Sumaré",
+    "state": "SP",
+    "ibge_code": "3552403"
+  },
+  "status": "referência histórica interna; não publicada no site",
+  "events": [
+    {
+      "id": "fundacao-localidade-1868",
+      "date": "1868-07-26",
+      "title": "Data oficial de fundação da localidade",
+      "description": "A Prefeitura de Sumaré registra 26 de julho de 1868 como a data oficial de fundação da cidade.",
+      "source": {
+        "institution": "Prefeitura Municipal de Sumaré — Pró-Memória",
+        "title": "História do Pró-Memória",
+        "url": "https://sumare.atende.net/cidadao/pagina/historia-do-promemoria",
+        "checked_at": "2026-10-26"
+      },
+      "limitations": "Marco histórico da localidade. Não representa o início de uma série estatística municipal nem comprova que os dados anteriores a 1953 usem os limites atuais de Sumaré."
+    },
+    {
+      "id": "criacao-municipio-1953",
+      "date": "1953-12-30",
+      "title": "Criação do município de Sumaré",
+      "description": "A Lei Estadual nº 2.456, de 30 de dezembro de 1953, desmembrou Sumaré do município de Campinas e elevou o distrito à categoria de município.",
+      "source": {
+        "institution": "IBGE",
+        "title": "Sumaré — Histórico (Divisão Territorial Brasileira)",
+        "url": "https://www.ibge.gov.br/biblioteca/visualizacao/dtb/saopaulo/sumare.pdf",
+        "checked_at": "2026-10-26"
+      },
+      "limitations": "A criação legal do município é posterior à data de fundação da localidade. Séries anteriores podem refletir Campinas, o distrito de Rebouças ou limites territoriais distintos."
+    }
+  ]
+}
