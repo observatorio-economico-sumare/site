@@ -30,7 +30,12 @@ A organização e as regras de expansão estão em [`data/historico/README.md`](
 - **Renda:** os pontos de 2022 foram reaproveitados. A cobertura de outros Censos e a comparabilidade de conceitos ainda precisam ser avaliadas antes de ampliar essa série.
 - **Trabalho:** a RAIS mede vínculos em estabelecimentos; o Censo mede pessoas residentes. O estoque RAIS não deve ser somado ao Novo CAGED nem comparado como se tivesse o mesmo universo. A coleta de salário médio municipal por setor permanece pendente.
 
-Não foram encontrados valores anteriores divergentes que justificassem alterar registros validados. O único salto metodológico claramente identificado nesta etapa é o do CEMPRE em 2022, documentado acima.
+Nenhum valor da série existente foi alterado. Na pesquisa de recuo histórico, foram encontradas divergências que precisam de reconciliação antes da inclusão de novos pontos ou da substituição de valores já validados:
+
+- **População 2010:** a observação validada que o OES reaproveitou é 241.311 habitantes. Uma tabela oficial de resultados do Censo 2010 para São Paulo registra 241.437 para Sumaré (diferença de 126 pessoas). Manter 241.311 sem alteração até confirmar edição, data de referência e revisão de cada publicação. Fontes: [registro reaproveitado pelo OES](../data/raw/ses_sp_sumare_censo_2022_2026-10-23.json) e [tabela estadual do Censo 2010/IBGE](https://ftp.ibge.gov.br/Censos/Censo_Demografico_2010/resultados/tabelas_pdf/total_populacao_sao_paulo.pdf).
+- **População 1970:** a tabela histórica do IBGE apresenta 23.054 habitantes; o Plano Diretor municipal, que atribui seus números aos Censos do IBGE, apresenta 23.074. Não incorporar até conferir a publicação censitária original e a definição territorial. Fontes: [IBGE — resultados do Censo 1970](https://seculoxx.ibge.gov.br/images/seculoxx/arquivos_download/populacao/1971/populacao_m_1971aeb_017_a_043.pdf) e [Plano Diretor de Sumaré](https://www.sumare.sp.gov.br/plano_diretor/arquivos/mapVol1/VOLUME01COMPLETO.pdf).
+
+O salto metodológico do CEMPRE em 2022 permanece documentado acima.
 
 ## Arquivos preparados
 
@@ -51,7 +56,7 @@ O núcleo priorizado é completar a cobertura oficial disponível a partir de 20
 
 | Tema | Pista de fonte anterior a 2000 | Situação para esta base |
 |---|---|---|
-| População | Censo de Sumaré em [1960](https://seculoxx.ibge.gov.br/images/seculoxx/arquivos_download/populacao/1961/populacao_m_1961aeb_01a24.pdf); estimativas municipais do IBGE desde [1975](https://www.ibge.gov.br/estatisticas/sociais/populacao/9103-estimativas-de-populacao.html). | Ainda não incorporados ao JSON histórico; conferir geografia e vintage dos arquivos antes de incluir. |
+| População | Censo de Sumaré em [1960](https://seculoxx.ibge.gov.br/images/seculoxx/arquivos_download/populacao/1961/populacao_m_1961aeb_01a24.pdf); estimativas municipais do IBGE desde [1975](https://www.ibge.gov.br/estatisticas/sociais/populacao/9103-estimativas-de-populacao.html). | Ainda não incorporados ao JSON histórico; há divergência de 1970 e uma diferença de publicação para 2010 registrada acima. Conferir geografia, edição e vintage antes de incluir. |
 | Empresas | O [CEMPRE](https://www.ibge.gov.br/estatisticas/economicas/servicos/9016-estatisticas-do-cadastro-central-de-empresas.html) tem origem nos Censos Econômicos de 1985. | A existência do cadastro desde 1985 não confirma, por si só, valores anuais municipais publicados; manter 2006 como primeiro valor carregado até confirmar a cobertura de Sumaré. |
 | Economia | A publicação oficial [PIB dos Municípios 1999–2002](https://biblioteca.ibge.gov.br/visualizacao/livros/liv62930.pdf) antecede a série atual com referência 2002. | Tratar a edição antiga como vintage distinto e comparar os anos sobrepostos antes de qualquer encadeamento. |
 | Trabalho | O MTE disponibiliza [microdados da RAIS desde 1985](https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/acoes-e-programas/programas-projetos-acoes-obras-e-atividades/estatisticas-trabalho/comunicados/1651-07-07-2016-comunicado-mtb-205-16-novos-anos-bases-disponibilizados-em-txt-2). | Não carregar microdados nacionais; extrair apenas agregados de Sumaré e registrar alterações de classificação/cobertura. |
