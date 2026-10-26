@@ -1251,6 +1251,43 @@
         "extracted_at": "2026-10-26"
       },
       "limitations": "Pessoas residentes de 10 anos ou mais ocupadas na semana de referência e com rendimento no trabalho principal. Não representa vínculos formais nem usa o mesmo universo etário da tabela de ocupação do Censo 2022."
+    },
+    {
+      "id": "pib-municipal-nominal-vintage-2005-1999-2002",
+      "name": "PIB municipal a preços correntes — vintage 2005",
+      "topic": "economia",
+      "unit": "mil R$",
+      "observations": [
+        {
+          "year": "1999",
+          "value": 1841269
+        },
+        {
+          "year": "2000",
+          "value": 1995885
+        },
+        {
+          "year": "2001",
+          "value": 2254595
+        },
+        {
+          "year": "2002",
+          "value": 2446480
+        }
+      ],
+      "source": {
+        "institution": "IBGE",
+        "dataset": "Produto Interno Bruto dos Municípios 1999–2002 (publicação 2005)",
+        "table_or_file": "Tabela 1, linha Sumaré, coluna PIB a preços de mercado correntes; valores em mil R$",
+        "url": "https://biblioteca.ibge.gov.br/visualizacao/livros/liv62930.pdf",
+        "raw_file": "data/raw/historico/ibge_pib_municipal_1999-2002_sumare.json",
+        "sha256": "a06c3a4fac2b0c8bced34d4ff8a09f16f1f8fae7d0873f590a6412475212577d",
+        "original_file_sha256": "5ee12b957f8bf56fa9c31b030f7a25bc22503e3675e7fb3bbf6e45c4a6d911e9",
+        "extracted_at": "2026-10-26",
+        "accessed_copy_url": "https://www.ipeadata.gov.br/doc/Metodologia%20PIB%20Municipal%20-%201999-2002.pdf",
+        "note": "Publicação do IBGE consultada por cópia-espelho hospedada no IPEA; o hash registrado é da cópia consultada."
+      },
+      "limitations": "Valores nominais da publicação de 2005, calculados em vintage metodológico anterior à série atual com referência 2002. Manter como bloco separado; não concatenar automaticamente com SIDRA 5938. Em 2002, esta edição registra R$ 2.446.480 mil, enquanto SIDRA 5938 registra R$ 2.574.506 mil; diferença documentada sem substituição de nenhum dos valores."
     }
   ]
 }
