@@ -1,9 +1,11 @@
 # Base histórica do OES
 
 **Status:** base de pesquisa preparada para revisão; não integrada ao site.
-**Extração desta etapa:** 25/10/2026.
+**Última organização:** 26/10/2026.
 
 Os valores e metadados normalizados estão em [`data/historico/series.json`](../data/historico/series.json). As respostas brutas das consultas SIDRA e os arquivos originais baixados nesta etapa ficam em `data/raw/historico/`. Registros que já estavam validados foram reaproveitados e mantêm a referência ao arquivo de evidência existente.
+
+A organização e as regras de expansão estão em [`data/historico/README.md`](../data/historico/README.md). Os marcos de história local estão em [`data/historico/marcos.json`](../data/historico/marcos.json), separados dos indicadores quantitativos para não sugerir uma série numérica contínua desde a fundação.
 
 ## Cobertura
 
@@ -38,5 +40,21 @@ Não foram encontrados valores anteriores divergentes que justificassem alterar 
 - `data/raw/historico/ibge_sidra_5938_pib_2002-2023.json` — resposta original da série anual do PIB municipal.
 - `data/raw/historico/ibge_estimativa_populacao_2025.xls` — arquivo original de estimativas municipais do IBGE.
 - `data/raw/historico/mte_rais_2025_tabelas.xlsx` — planilha original da RAIS que contém os anos 2023–2025.
+- `data/historico/README.md` — estrutura, regras de expansão por indicador e política para arquivos de grande porte.
+- `data/historico/marcos.json` — registro separado da data oficial de fundação da localidade (1868) e da criação legal do município (1953).
 
 As observações extraídas diretamente nesta etapa incluem SHA-256 no JSON. Os arquivos brutos são evidência; `series.json` é a camada de leitura, não uma nova fonte. Atualizações devem preservar as versões anteriores e registrar qualquer revisão antes de substituir valores.
+
+## Expansão planejada
+
+O núcleo priorizado é completar a cobertura oficial disponível a partir de 2000. O recuo anterior será feito por indicador, sem exigir o mesmo ano inicial para todos:
+
+| Tema | Pista de fonte anterior a 2000 | Situação para esta base |
+|---|---|---|
+| População | Censo de Sumaré em [1960](https://seculoxx.ibge.gov.br/images/seculoxx/arquivos_download/populacao/1961/populacao_m_1961aeb_01a24.pdf); estimativas municipais do IBGE desde [1975](https://www.ibge.gov.br/estatisticas/sociais/populacao/9103-estimativas-de-populacao.html). | Ainda não incorporados ao JSON histórico; conferir geografia e vintage dos arquivos antes de incluir. |
+| Empresas | O [CEMPRE](https://www.ibge.gov.br/estatisticas/economicas/servicos/9016-estatisticas-do-cadastro-central-de-empresas.html) tem origem nos Censos Econômicos de 1985. | A existência do cadastro desde 1985 não confirma, por si só, valores anuais municipais publicados; manter 2006 como primeiro valor carregado até confirmar a cobertura de Sumaré. |
+| Economia | A publicação oficial [PIB dos Municípios 1999–2002](https://biblioteca.ibge.gov.br/visualizacao/livros/liv62930.pdf) antecede a série atual com referência 2002. | Tratar a edição antiga como vintage distinto e comparar os anos sobrepostos antes de qualquer encadeamento. |
+| Trabalho | O MTE disponibiliza [microdados da RAIS desde 1985](https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/acoes-e-programas/programas-projetos-acoes-obras-e-atividades/estatisticas-trabalho/comunicados/1651-07-07-2016-comunicado-mtb-205-16-novos-anos-bases-disponibilizados-em-txt-2). | Não carregar microdados nacionais; extrair apenas agregados de Sumaré e registrar alterações de classificação/cobertura. |
+| Renda | Publicação do [Censo 1991 — mão de obra em São Paulo](https://biblioteca.ibge.gov.br/visualizacao/periodicos/79/cd_1991_n21_mao_de_obra_sp.pdf) inclui os municípios paulistas. | Trabalhar como pontos censitários, com conceito e universo documentados; confirmar as tabelas de rendimento de Sumaré antes de transcrever; não apresentar como série anual. |
+
+A data histórica local adotada pela Prefeitura é 26/07/1868. A criação legal do município ocorreu em 1953. Portanto, a linha do tempo pode começar em 1868, enquanto os indicadores começam no primeiro registro verificável de cada fonte. Fontes e ressalvas desses marcos estão em `data/historico/marcos.json`.
