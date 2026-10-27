@@ -134,15 +134,15 @@ for (const path of ["site/index.html", "site/en/index.html"]) {
 /* Resumo institucional objetivo e sem texto de bastidores na interface. */
 for(const language of ["", "en/"]){
  const governance = fs.readFileSync("site/" + language + "governanca.html","utf8");
- assert.equal((governance.match(/class="governance-section"/g)||[]).length,8);
+ assert.equal((governance.match(/class="governance-section"/g)||[]).length,9);
  assert.match(governance,/class="governance-grid"/);
  assert.doesNotMatch(governance,/governance-(?:toc|sidebar|layout|section-num|section-head)/);
  const ids=[...governance.matchAll(/<section class="governance-section" id="([^"]+)"/g)].map(m=>m[1]);
- assert.equal(new Set(ids).size,8,"IDs de seções devem ser únicos");
+ assert.equal(new Set(ids).size,9,"IDs de seções devem ser únicos");
  assert.deepEqual(ids,[
    "sobre-o-oes","identidade-institucional","declaracao-de-independencia",
    "sobre-a-fundadora","politica-editorial","politica-de-auditoria",
-   "politica-de-transparencia","direitos-autorais-e-licencas"
+   "politica-de-transparencia","privacidade-e-protecao-de-dados","direitos-autorais-e-licencas"
  ]);
  assert.ok(governance.length < 8000, "Governança excessivamente longa");
  const homepage = fs.readFileSync("site/" + language + "index.html","utf8");
