@@ -268,8 +268,7 @@ h3{font-family: var(--font-interface); font-weight: 600; letter-spacing: -.012em
 /* Governança: leitura editorial em linhas, sem cartões ou índice duplicado. */
 .governance-wrap{padding-top:clamp(32px,4.5vw,60px);padding-bottom:48px}
 .governance-hero{max-width:980px;margin:0;padding:0 0 37px}
-.governance-hero .kicker{color:var(--muted);font-weight:600;letter-spacing:.13em}
-.governance-wrap .governance-hero h1{margin:12px 0 13px;color:var(--ink);font:400 clamp(39px,4.7vw,60px)/1.14 var(--font-editorial);letter-spacing:-.025em}
+.governance-wrap .governance-hero h1{margin:0 0 13px;color:var(--ink);font:400 clamp(39px,4.7vw,60px)/1.14 var(--font-editorial);letter-spacing:-.025em}
 .governance-wrap .governance-lead{max-width:690px;margin:0;color:var(--muted);font-size:17px;line-height:1.7}
 .governance-hero::after{content:"";display:block;width:48px;height:3px;margin-top:27px;background:var(--yellow)}
 .governance-grid{display:block;max-width:1050px;border-bottom:1px solid var(--line)}
