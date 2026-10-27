@@ -1,6 +1,6 @@
-# Checklist da primeira publicação
+# Checklist da primeira publicação (arquivo histórico)
 
-Estado: **NÃO PUBLICADO**, repositório privado, GitHub Pages ainda não configurado pelo OES.
+**Atualização em 27/10/2026:** o site foi publicado em 24/10/2026. Este checklist preserva o registro da preparação inicial. Hoje, o GitHub Pages é atualizado automaticamente após testes aprovados na `main`, conforme `.github/workflows/deploy.yml`.
 
 ## Pré-condições
 - [ ] Revisar interface no navegador com resoluções desktop e mobile, contraste e navegação por teclado.
