@@ -98,10 +98,15 @@ def main():
     assert set(english.indicator_ids) == set(index.indicator_ids), "Indicadores divergentes entre idiomas"
     assert '<html lang="en"' in (SITE / "en/index.html").read_text(encoding="utf-8"), "Idioma EN ausente"
     governance = pages["governanca.html"]
-    assert {"politica-editorial", "declaracao-de-independencia",
-            "sobre-a-fundadora"}.issubset(governance.ids)
+    policies = {"declaracao-de-independencia", "politica-editorial", "politica-de-auditoria",
+                "politica-de-transparencia", "privacidade-e-protecao-de-dados",
+                "direitos-autorais-e-licencas"}
+    assert policies.issubset(governance.ids), "Políticas institucionais ausentes"
+    assert not {"sobre-o-oes", "identidade-institucional", "sobre-a-fundadora"}.intersection(
+        governance.ids
+    ), "Informações repetidas na página de políticas"
 
-    assert set(pages["en/governanca.html"].ids) == set(governance.ids), "Governança divergente"
+    assert set(pages["en/governanca.html"].ids) == set(governance.ids), "Políticas divergentes entre idiomas"
     for name, doc in pages.items():
         check_links(name, doc, pages)
 
