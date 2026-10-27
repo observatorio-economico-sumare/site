@@ -720,7 +720,7 @@ for(const page of ["site/index.html","site/en/index.html","site/biblioteca.html"
 const publicContactForm = "https://deluxe-mask-0a2.notion.site/50be564b68a744d1a137b06023974d03";
 for (const page of ["site/index.html", "site/governanca.html", "site/biblioteca.html", "site/en/index.html", "site/en/governanca.html"]) {
   const html = fs.readFileSync(page, "utf8");
-  const footer = html.match(/<footer class="footer">[\\s\\S]*?<\\/footer>/)?.[0] || "";
+  const footer = html.split('<footer class="footer">')[1]?.split("</footer>")[0] || "";
   assert.equal(footer.split(publicContactForm).length, 2, page + ": um único link ao formulário público");
   assert.match(footer, /target="_blank" rel="noopener noreferrer"/, page + ": link externo seguro");
 }
