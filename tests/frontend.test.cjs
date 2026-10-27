@@ -331,10 +331,10 @@ for(const [path,base,labels] of [
  const html=fs.readFileSync(path,"utf8");
  assert.match(html,/<nav class="subpage-nav"/);
  assert.doesNotMatch(html,/class="back-link"/);
- const list=[...html.matchAll(/<a href="index\.html#[^"]+"(?: aria-current="page")?>([^<]+)<\/a>/g)].map(x=>x[1]);
- assert.deepEqual(list,labels);
  const menu=html.match(/<nav class="subpage-nav"[^>]*>[\s\S]*?<\/nav>/)?.[0];
  assert.ok(menu);
+ const list=[...menu.matchAll(/<a href="index\.html#[^"]+"(?: aria-current="page")?>([^<]+)<\/a>/g)].map(x=>x[1]);
+ assert.deepEqual(list,labels);
  const order=[...menu.matchAll(/href="index\.html#([^"]+)"|class="nav-library-link"/g)].map(m=>m[1]||"biblioteca");
  assert.deepEqual(order,["inicio","populacao","trabalho","economia","empresas","biblioteca","analises","metodologia","sobre"]);
  assert.match(html,/aria-current="page"/);
