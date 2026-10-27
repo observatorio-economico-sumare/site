@@ -194,7 +194,6 @@ dialog#sourceDialog{max-width: 680px; max-height: min(83vh,850px); overflow-y: a
 .institutional-block p{margin: 0; font-size: 14px; color: #485a68}
 .institutional-values{margin-bottom: 35px}
 .institutional-cta{background:transparent;border:0;border-top:1px solid var(--line);padding:24px 0;margin:28px 0 0}
-.institutional-cta p{max-width: 680px; margin: 7px 0 10px; font-size: 14px; color: #516274}
 .institutional-cta a{font-weight:600}
 .back-link a{font-size: 13px; font-weight: 700}
 
@@ -224,7 +223,6 @@ h3{font-family: var(--font-interface); font-weight: 600; letter-spacing: -.012em
 .source strong{font-weight: 600}
 .explain strong{font-weight: 600}
 .aside strong{font-weight: 600}
-.institutional-cta strong{display:block;margin-bottom:8px;font-weight:600}
 .term b{font-weight: 600}
 .data-detail dt{font-weight: 600}
 .data-table th{font-family: var(--font-interface); font-weight: 600}
