@@ -152,6 +152,12 @@ for (const language of ["", "en/"]) {
  assert.doesNotMatch(governance, /<section class="governance-section" id="(?:sobre-o-oes|identidade-institucional|sobre-a-fundadora)"/);
  assert.match(governance, /id="privacidade-e-protecao-de-dados"/);
  assert.match(governance, /12 months|12 meses/);
+ const backText = language ? "← Back to About the OES" : "← Voltar para Sobre o OES";
+ assert.ok(governance.includes('<a href="index.html#sobre">' + backText + '</a>'));
+ assert.equal((governance.match(/class="governance-return"/g) || []).length, 1);
+ const footer = governance.split('<footer class="footer">')[1] || "";
+ assert.doesNotMatch(footer, /Página inicial|>Home<\/a>/);
+ assert.ok(governance.indexOf('class="governance-return"') < governance.indexOf("</main>"));
  assert.ok(governance.length < 8000, "Página de políticas excessivamente longa");
  assert.doesNotMatch(homepage, /id="updateState"|in phase of prototyping|fase de protótipo/);
 }
