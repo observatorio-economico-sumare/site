@@ -224,7 +224,7 @@ h3{font-family: var(--font-interface); font-weight: 600; letter-spacing: -.012em
 .source strong{font-weight: 600}
 .explain strong{font-weight: 600}
 .aside strong{font-weight: 600}
-.institutional-cta strong{font-weight: 600}
+.institutional-cta strong{display:block;margin-bottom:8px;font-weight:600}
 .term b{font-weight: 600}
 .data-detail dt{font-weight: 600}
 .data-table th{font-family: var(--font-interface); font-weight: 600}
