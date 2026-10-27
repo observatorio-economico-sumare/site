@@ -151,10 +151,11 @@ for(const language of ["", "en/"]){
 assert.doesNotMatch(fs.readFileSync("site/assets/js/indicators.js","utf8"),
  /indicadores com fonte e documentação disponíveis|indicators with documented sources/);
 
-/* Governança: duas colunas desktop, uma mobile, sem decoração redundante. */
+/* Governança: linhas editoriais no desktop, seção empilhada no mobile. */
 const governanceCss = fs.readFileSync("site/assets/css/styles.css","utf8");
-assert.match(governanceCss,/\.governance-grid\{display:grid;grid-template-columns:repeat\(2,minmax\(0,1fr\)\)/);
-assert.match(governanceCss,/@media\(max-width:760px\)\{\s*\.governance-grid\{grid-template-columns:minmax\(0,1fr\)/);
+assert.match(governanceCss,/\.governance-grid\{display:block/);
+assert.match(governanceCss,/\.governance-grid \.governance-section\{display:grid;grid-template-columns:/);
+assert.match(governanceCss,/@media\(max-width:760px\)\{[\s\S]*?\.governance-grid \.governance-section\{display:block/);
 assert.doesNotMatch(governanceCss,/\.governance-toc|\.governance-sidebar|\.governance-section-num/);
 
 /* Navegação compacta e responsiva, em ambos os idiomas. */
