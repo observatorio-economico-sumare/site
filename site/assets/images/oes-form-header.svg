@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1348 270" role="img" aria-labelledby="title desc">
+  <title id="title">Observatório Econômico de Sumaré</title>
+  <desc id="desc">Pesquisa, dados e transparência. Iniciativa independente.</desc>
+  <rect width="1348" height="270" fill="#142D47"/>
+  <rect x="28" y="75" width="118" height="120" rx="5" fill="#F3C443"/>
+  <text x="87" y="153" fill="#142D47" font-family="Georgia, 'Times New Roman', serif" font-size="40" text-anchor="middle">OES</text>
+  <text x="183" y="108" fill="#FFFFFF" font-family="Georgia, 'Times New Roman', serif" font-size="50" font-weight="600" letter-spacing="-1.2">Observatório Econômico</text>
+  <text x="183" y="165" fill="#FFFFFF" font-family="Georgia, 'Times New Roman', serif" font-size="50" font-weight="600" letter-spacing="-1.2">de Sumaré</text>
+  <text x="183" y="221" fill="#C9D4E2" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="600" letter-spacing="2.1">PESQUISA, DADOS E TRANSPARÊNCIA</text>
+  <rect x="817" y="119" width="3" height="40" fill="#F3C443"/>
+  <text x="842" y="145" fill="#E3EDF6" font-family="Arial, Helvetica, sans-serif" font-size="22">Iniciativa independente</text>
+</svg>
