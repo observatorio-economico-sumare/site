@@ -202,10 +202,10 @@ body{font-family:var(--font-interface);font-size:15px;font-weight:400;line-heigh
 .identity strong{font-family: var(--font-editorial); font-size: clamp(19px, 2.1vw, 25px); font-weight: 500; line-height: 1.15; letter-spacing: -.025em; max-width: 400px}
 .identity span{font-family: var(--font-interface); font-weight: 500; letter-spacing: .09em}
 .monogram{font-family: var(--font-editorial); font-weight: 500; letter-spacing: -.065em}
-.intro h1,.library-hero h1,.governance-wrap .governance-hero h1{font:400 var(--type-title)/1.14 var(--font-editorial);letter-spacing:-.03em;color:var(--ink)}
+.intro h1{font:400 var(--type-title)/1.14 var(--font-editorial);letter-spacing:-.03em;color:var(--ink)}
 .intro p{font-family:var(--font-interface);font-weight:400;line-height:1.75}
 .intro p,.library-hero p,.governance-wrap .governance-lead{font-size:var(--type-lead)}
-.section-title h2,.governance-grid .governance-section h2{font:400 var(--type-section)/1.2 var(--font-editorial);letter-spacing:-.025em;color:var(--ink)}
+.section-title h2,.library-hero h1,.governance-wrap .governance-hero h1,.governance-grid .governance-section h2{font:400 var(--type-section)/1.2 var(--font-editorial);letter-spacing:-.025em;color:var(--ink)}
 dialog h3{font-family: var(--font-editorial); font-weight: 400; letter-spacing: -.025em; line-height: 1.2}
 dialog h3{font-size: 27px}
 .number{font-family: var(--font-interface); font-weight: 500; letter-spacing: -.035em}
