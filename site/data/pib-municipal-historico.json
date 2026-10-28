@@ -1,0 +1,119 @@
+{
+  "id": "pib-municipal-nominal-2002-2023",
+  "name": "PIB municipal a preços correntes",
+  "municipality": {
+    "name": "Sumaré",
+    "state": "SP",
+    "ibge_code": "3552403"
+  },
+  "period": "2002-2023",
+  "unit": "mil R$",
+  "display_unit": "R$ bilhões",
+  "status": "validated",
+  "validation": {
+    "validated_at": "2026-10-28",
+    "validated_by": "OES · verificação técnica assistida, sem revisão humana independente",
+    "method": "As 22 observações foram comparadas com a resposta original da API oficial do SIDRA; códigos de município (3552403), variável (37) e anos (2002-2023) conferidos. Valores e unidade coincidem com a fonte.",
+    "raw_file": "data/raw/historico/ibge_sidra_5938_pib_2002-2023.json",
+    "raw_sha256": "25d6696b752e783a009bdcad8eddfa8156b2f5130d043f17d1d71a3ead6b6e66"
+  },
+  "source": {
+    "institution": "IBGE",
+    "dataset": "Produto Interno Bruto dos Municípios",
+    "table": "SIDRA 5938",
+    "variable": "37 · Produto Interno Bruto a preços correntes",
+    "url": "https://apisidra.ibge.gov.br/values/t/5938/n6/3552403/p/2002-2023/v/37?formato=json",
+    "extracted_at": "2026-10-25"
+  },
+  "limitations": "Valores nominais, sem deflacionamento; não representam crescimento real da produção. A série de 1999-2002 publicada em edição metodológica anterior foi mantida separada e não foi encadeada.",
+  "observations": [
+    {
+      "year": 2002,
+      "value": 2574506
+    },
+    {
+      "year": 2003,
+      "value": 3163860
+    },
+    {
+      "year": 2004,
+      "value": 4470077
+    },
+    {
+      "year": 2005,
+      "value": 5139537
+    },
+    {
+      "year": 2006,
+      "value": 5703731
+    },
+    {
+      "year": 2007,
+      "value": 7034905
+    },
+    {
+      "year": 2008,
+      "value": 9053874
+    },
+    {
+      "year": 2009,
+      "value": 8856544
+    },
+    {
+      "year": 2010,
+      "value": 9488102
+    },
+    {
+      "year": 2011,
+      "value": 9507709
+    },
+    {
+      "year": 2012,
+      "value": 11180730
+    },
+    {
+      "year": 2013,
+      "value": 11674930
+    },
+    {
+      "year": 2014,
+      "value": 11646358
+    },
+    {
+      "year": 2015,
+      "value": 12258170
+    },
+    {
+      "year": 2016,
+      "value": 12237213
+    },
+    {
+      "year": 2017,
+      "value": 13615800
+    },
+    {
+      "year": 2018,
+      "value": 14438510
+    },
+    {
+      "year": 2019,
+      "value": 14913287
+    },
+    {
+      "year": 2020,
+      "value": 13672590
+    },
+    {
+      "year": 2021,
+      "value": 16179892
+    },
+    {
+      "year": 2022,
+      "value": 17753219
+    },
+    {
+      "year": 2023,
+      "value": 19026093
+    }
+  ]
+}

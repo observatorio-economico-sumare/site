@@ -1,0 +1,29 @@
+/* Série histórica do PIB municipal: componente nativo em SVG, sem biblioteca adicional. */
+.pib-chart{margin:30px 0 22px;padding-top:0;border-top:1px solid var(--line)}
+.pib-chart__heading{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin:21px 0 3px}
+.pib-chart__heading h3{margin:0;color:var(--ink);font:600 20px/1.35 var(--font-interface)}
+.pib-chart__period,.pib-chart__source{margin:4px 0 0;color:var(--muted);font-size:13px;line-height:1.55}
+.pib-chart__source{flex:0 0 auto;text-align:right}
+.pib-chart__source a{color:inherit;text-decoration-thickness:1px;text-underline-offset:3px}
+.pib-chart__plot{display:block;width:100%;height:auto;overflow:visible;touch-action:pan-y}
+.pib-chart__grid{stroke:var(--line);stroke-width:1;vector-effect:non-scaling-stroke}
+.pib-chart__axis-label{fill:var(--muted);font:12px/1.4 var(--font-interface)}
+.pib-chart__axis-label--y{font-size:12px}
+.pib-chart__interaction{fill:transparent;pointer-events:all}
+.pib-chart__series{fill:none;stroke:var(--ink);stroke-width:4;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke;pointer-events:none}
+.pib-chart__marker{fill:var(--yellow);stroke:var(--ink);stroke-width:1.5;vector-effect:non-scaling-stroke;pointer-events:none}
+.pib-chart__plot:focus-visible{outline:2px solid var(--ink);outline-offset:4px;border-radius:2px}
+.pib-chart__readout{margin:7px 0 10px;color:var(--ink);font:600 13px/1.5 var(--font-interface);font-variant-numeric:tabular-nums}
+.pib-chart__note,.pib-chart__status{max-width:900px;margin:5px 0;color:var(--muted);font-size:12px;line-height:1.6}
+.pib-chart__instructions{margin:0 0 7px;color:var(--muted);font-size:11px;line-height:1.5}
+@media(max-width:680px){
+ .pib-chart{margin-top:24px}
+ .pib-chart__heading{display:block;margin-top:18px}
+ .pib-chart__heading h3{font-size:18px}
+ .pib-chart__source{text-align:left}
+ .pib-chart__series{stroke-width:3}
+ .pib-chart__axis-label{font-size:11px}
+ .pib-chart__axis-label--y{font-size:10px}
+ .pib-chart__readout{margin:5px 0 9px;font-size:12px}
+}
+@media(prefers-reduced-motion:reduce){.pib-chart__plot{scroll-behavior:auto}}
