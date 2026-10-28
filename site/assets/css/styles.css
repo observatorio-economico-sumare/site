@@ -32,7 +32,8 @@ h3{margin: 0 0 15px}
 .explain button{font: inherit; background: none; border: 0; padding: 0; text-decoration: underline; text-underline-offset: 3px; cursor: pointer}
 .glossary button{font: inherit; background: none; border: 0; padding: 0; text-decoration: underline; text-underline-offset: 3px; cursor: pointer}
 .footnote{font-size: 11px; color: var(--muted); margin: 18px 0 38px}
-.tab[hidden]{display: none}
+.tab{scroll-margin-top:24px}
+.tab + .tab{margin-top:clamp(32px,5vw,58px);padding-top:clamp(28px,4vw,48px);border-top:1px solid var(--line)}
 .prose{font-size: 15px}
 .data-table{border-collapse: collapse; width: 100%; background: white}
 .data-table th{padding: 17px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top}
@@ -328,7 +329,7 @@ nav{background:var(--ink);border-bottom:1px solid var(--ink)}
 .nav-inner{display:flex;flex-wrap:wrap;align-items:center;column-gap:clamp(14px,2.1vw,27px);row-gap:0;min-width:0}
 .nav-inner button,.nav-inner>a{display:inline-flex;align-items:center;flex:0 0 auto;min-height:47px;padding:12px 0 11px;background:transparent;border:0;border-bottom:2px solid transparent;color:#f7f7f5;text-decoration:none;text-align:left;font:500 13px/1.4 var(--font-interface);cursor:pointer;white-space:nowrap}
 .nav-inner button:hover,.nav-inner>a:hover,.nav-inner button:focus-visible,.nav-inner>a:focus-visible{color:#fff}
-.nav-inner button[aria-expanded="true"],.nav-inner>a[aria-current="page"]{color:#fff;font-weight:600;border-bottom:3px solid var(--yellow)}
+.nav-inner>a[aria-current="location"],.nav-inner>a[aria-current="page"]{color:#fff;font-weight:600;border-bottom:3px solid var(--yellow)}
 .nav-inner button:focus-visible,.nav-inner>a:focus-visible{outline:2px solid var(--yellow);outline-offset:3px}
 @media(max-width:800px){
  .nav-inner{column-gap:18px}

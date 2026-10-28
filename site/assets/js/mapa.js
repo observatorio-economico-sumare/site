@@ -176,4 +176,16 @@
     if (location.hash === "#populacao") load();
   });
   if (location.hash === "#populacao") load();
+  // O mapa também carrega quando a pessoa se aproxima da seção ao rolar.
+  if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver(entries => {
+      if (entries.some(entry => entry.isIntersecting)) {
+        observer.disconnect();
+        load();
+      }
+    }, {rootMargin: "250px 0px"});
+    observer.observe(root);
+  } else {
+    load();
+  }
 })();

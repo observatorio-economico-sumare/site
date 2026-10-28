@@ -38,7 +38,7 @@ class DocumentCheck(HTMLParser):
             self.css.append(values.get("href"))
         if tag == "a" and values.get("href"):
             self.hrefs.append(values["href"])
-        if tag == "button" and values.get("data-tab"):
+        if tag == "a" and values.get("data-tab"):
             self.tabs.append(values.get("data-tab"))
         if values.get("role") == "region" and "tab" in values.get("class", "").split():
             self.panels.append(values.get("id"))
@@ -86,7 +86,8 @@ def check_links(name, doc, pages):
 def main():
     pages = {name: read_page(name) for name in ("index.html", "governanca.html", "biblioteca.html", "en/index.html", "en/governanca.html")}
     index = pages["index.html"]
-    assert {"assets/js/app.js", "assets/js/indicators.js"}.issubset(index.scripts)
+    assert {"assets/js/app.js", "assets/js/indicators.js"}.issubset(
+        {urlsplit(asset).path for asset in index.scripts})
     assert {"sourceDialog", "sourceDialogTitle", "sourceDialogBody",
             "closeSourceDialog"}.issubset(index.ids)
     assert {"populacao-censo-2022", "populacao-estimada",
