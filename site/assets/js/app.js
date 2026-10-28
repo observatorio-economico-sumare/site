@@ -220,51 +220,33 @@ document.querySelectorAll("[data-term]").forEach(button => {
 document.getElementById("closeDialog").addEventListener("click", () =>
   termDialog.close());
 
-const navButtons = [...document.querySelectorAll('nav button[data-tab]')];
-const tabPanels = [...document.querySelectorAll(".tab[role=region]")];
-const validTabs = new Set(navButtons.map(button => button.dataset.tab));
+/* Navegação contínua: âncoras nativas sem ocultar as seções. */
+const navLinks = [...document.querySelectorAll('nav a[data-tab]')];
+const sectionIds = new Set(navLinks.map(link => link.dataset.tab));
 
-navButtons.forEach((button, index) => {
-  button.id = "tab-" + button.dataset.tab;
-  button.setAttribute("aria-controls", button.dataset.tab);
-  const panel = document.getElementById(button.dataset.tab);
-  if (panel) panel.setAttribute("aria-labelledby", button.id);
-
-  button.addEventListener("click", () => chooseTab(button.dataset.tab));
-  button.addEventListener("keydown", event => {
+navLinks.forEach((link, index) => {
+  link.id = "nav-" + link.dataset.tab;
+  document.getElementById(link.dataset.tab)?.setAttribute("aria-labelledby", link.id);
+  link.addEventListener("keydown", event => {
     if (!["ArrowRight", "ArrowLeft", "Home", "End"].includes(event.key)) return;
     event.preventDefault();
-    const nextIndex = event.key === "Home" ? 0 :
-      event.key === "End" ? navButtons.length - 1 :
-      (index + (event.key === "ArrowRight" ? 1 : -1) +
-       navButtons.length) % navButtons.length;
-    navButtons[nextIndex].focus();
-    chooseTab(navButtons[nextIndex].dataset.tab);
+    const next = event.key === "Home" ? 0 :
+      event.key === "End" ? navLinks.length - 1 :
+      (index + (event.key === "ArrowRight" ? 1 : -1) + navLinks.length) % navLinks.length;
+    navLinks[next].focus();
+    navLinks[next].click();
   });
 });
 
-function chooseTab(id, updateHash = true) {
-  if (!validTabs.has(id)) return;
-  navButtons.forEach(button => {
-    const selected = button.dataset.tab === id;
-    button.classList.toggle("active", selected);
-    button.setAttribute("aria-expanded", String(selected));
+function updateCurrentSection() {
+  const hash = decodeURIComponent(location.hash.slice(1));
+  const id = hash === "glossario" ? "metodologia" :
+    sectionIds.has(hash) ? hash : "inicio";
+  navLinks.forEach(link => {
+    if (link.dataset.tab === id) link.setAttribute("aria-current", "location");
+    else link.removeAttribute("aria-current");
   });
-  tabPanels.forEach(panel => {
-    panel.hidden = panel.id !== id;
-  });
-  if (updateHash && location.hash !== "#" + id) {
-    location.hash = id;
-  }
 }
 
-function showTabFromLocation() {
-  const hashTab = decodeURIComponent(location.hash.slice(1));
-  const selectedTab = hashTab === "glossario" ? "metodologia" :
-    validTabs.has(hashTab) ? hashTab : "inicio";
-  chooseTab(selectedTab, false);
-  if (hashTab === "glossario") document.getElementById("glossario")?.scrollIntoView?.();
-}
-
-window.addEventListener("hashchange", showTabFromLocation);
-showTabFromLocation();
+window.addEventListener("hashchange", updateCurrentSection);
+updateCurrentSection();
