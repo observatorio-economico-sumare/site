@@ -262,6 +262,7 @@ h3{font-family: var(--font-interface); font-weight: 600; letter-spacing: -.012em
 .governance-wrap .governance-lead{max-width:690px;margin:0;color:var(--muted);line-height:1.7}
 .governance-hero::after{content:"";display:block;width:48px;height:3px;margin-top:27px;background:var(--yellow)}
 .governance-grid{display:block;max-width:1050px;border-bottom:1px solid var(--line)}
+nav.governance-return{background:transparent;border:0}
 .governance-return{margin:22px 0 0;font-size:14px;line-height:1.5}
 .governance-return a{font-weight:600}
 .governance-grid .governance-section{display:grid;grid-template-columns:minmax(190px,.64fr) minmax(0,1.36fr);column-gap:clamp(28px,4vw,70px);max-width:none;margin:0;padding:26px 0;border:0;border-top:1px solid var(--line);scroll-margin-top:22px;align-items:start}
@@ -434,4 +435,5 @@ nav{background:#fff;border-bottom:1px solid var(--line)}
  #trabalho .metrics--sectors .sector-track{height:10px}
  #trabalho .sector-source{margin:14px 3px 0}
 }
+
 
