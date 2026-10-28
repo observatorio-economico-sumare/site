@@ -164,6 +164,20 @@ for (const language of ["", "en/"]) {
 assert.doesNotMatch(fs.readFileSync("site/assets/js/indicators.js","utf8"),
  /indicadores com fonte e documentação disponíveis|indicators with documented sources/);
 
+/* Tipografia editorial única entre Visão geral, Biblioteca e políticas. */
+const typeCss = fs.readFileSync("site/assets/css/styles.css","utf8");
+const libraryCss = fs.readFileSync("site/assets/css/biblioteca.css","utf8");
+assert.match(typeCss,/--type-title:clamp\(40px,4\.7vw,60px\)/);
+assert.match(typeCss,/--type-section:clamp\(28px,2\.8vw,32px\)/);
+assert.match(typeCss,/--type-lead:16px/);
+assert.match(typeCss,/--type-title:clamp\(36px,9vw,40px\);--type-section:26px/);
+assert.match(typeCss,/\.intro h1,\.library-hero h1,\.governance-wrap \.governance-hero h1\{font:400 var\(--type-title\)/);
+assert.match(typeCss,/\.section-title h2,\.governance-grid \.governance-section h2\{font:400 var\(--type-section\)/);
+assert.doesNotMatch(libraryCss,/\.library-hero h1\{font(?::|-size:)/);
+for(const page of ["site/index.html","site/en/index.html","site/governanca.html","site/en/governanca.html","site/biblioteca.html"]){
+ assert.match(fs.readFileSync(page,"utf8"),/styles\.css\?v=20261027-type-scale/);
+}
+
 /* Governança: linhas editoriais no desktop, seção empilhada no mobile. */
 const governanceCss = fs.readFileSync("site/assets/css/styles.css","utf8");
 assert.match(governanceCss,/\.governance-grid\{display:block/);
