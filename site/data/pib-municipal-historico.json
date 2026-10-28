@@ -6,14 +6,14 @@
     "state": "SP",
     "ibge_code": "3552403"
   },
-  "period": "2002–2023",
+  "period": "2002-2023",
   "unit": "mil R$",
   "display_unit": "R$ bilhões",
   "status": "validated",
   "validation": {
     "validated_at": "2026-10-28",
     "validated_by": "OES · verificação técnica assistida, sem revisão humana independente",
-    "method": "As 22 observações foram comparadas com a resposta original da API oficial do SIDRA; códigos de município (3552403), variável (37) e anos (2002–2023) conferidos. Valores e unidade coincidem com a fonte.",
+    "method": "As 22 observações foram comparadas com a resposta original da API oficial do SIDRA; códigos de município (3552403), variável (37) e anos (2002-2023) conferidos. Valores e unidade coincidem com a fonte.",
     "raw_file": "data/raw/historico/ibge_sidra_5938_pib_2002-2023.json",
     "raw_sha256": "25d6696b752e783a009bdcad8eddfa8156b2f5130d043f17d1d71a3ead6b6e66"
   },
@@ -25,7 +25,7 @@
     "url": "https://apisidra.ibge.gov.br/values/t/5938/n6/3552403/p/2002-2023/v/37?formato=json",
     "extracted_at": "2026-10-25"
   },
-  "limitations": "Valores nominais, sem deflacionamento; não representam crescimento real da produção. A série de 1999–2002 publicada em edição metodológica anterior foi mantida separada e não foi encadeada.",
+  "limitations": "Valores nominais, sem deflacionamento; não representam crescimento real da produção. A série de 1999-2002 publicada em edição metodológica anterior foi mantida separada e não foi encadeada.",
   "observations": [
     {
       "year": 2002,
