@@ -86,7 +86,8 @@ def check_links(name, doc, pages):
 def main():
     pages = {name: read_page(name) for name in ("index.html", "governanca.html", "biblioteca.html", "en/index.html", "en/governanca.html")}
     index = pages["index.html"]
-    assert {"assets/js/app.js", "assets/js/indicators.js"}.issubset(\n        {urlsplit(asset).path for asset in index.scripts})
+    assert {"assets/js/app.js", "assets/js/indicators.js"}.issubset(
+        {urlsplit(asset).path for asset in index.scripts})
     assert {"sourceDialog", "sourceDialogTitle", "sourceDialogBody",
             "closeSourceDialog"}.issubset(index.ids)
     assert {"populacao-censo-2022", "populacao-estimada",
