@@ -175,7 +175,7 @@ assert.match(typeCss,/\.intro h1\{font:400 var\(--type-title\)/);
 assert.match(typeCss,/\.section-title h2,\.library-hero h1,\.governance-wrap \.governance-hero h1,\.governance-grid \.governance-section h2\{font:400 var\(--type-section\)/);
 assert.doesNotMatch(libraryCss,/\.library-hero h1\{font(?::|-size:)/);
 for(const page of ["site/index.html","site/en/index.html","site/governanca.html","site/en/governanca.html","site/biblioteca.html"]){
- assert.match(fs.readFileSync(page,"utf8"),/styles\.css\?v=20261028-governance-return/);
+ assert.match(fs.readFileSync(page,"utf8"),/styles\.css\?v=20261028-identity-hybrid/);
 }
 assert.match(typeCss,/@media\(max-width:800px\)[\s\S]*?\.mast-inner \.independent\{[^}]*padding:0 0 0 75px/);
 assert.match(typeCss,/@media\(max-width:480px\)[\s\S]*?\.mast-inner \.independent\{padding-left:54px/);
@@ -608,7 +608,8 @@ for(const [path,url,locale] of [
  assert.ok(head.includes('<meta property="og:locale" content="'+locale+'">'),path);
  for(const field of ["og:type","og:title","og:description","og:site_name"])
    assert.ok(head.includes('property="'+field+'"'),path+": "+field);
- assert.ok(head.includes('<meta name="twitter:card" content="summary">'),path);
+ assert.ok(head.includes('<meta name="twitter:card" content="summary_large_image">'),path);
+ assert.ok(head.includes('<meta property="og:image" content="https://oesumare.github.io/assets/images/oes-social.png">'),path);
  assert.ok(!head.includes("utm_source="),path);
 }
 assert.match(fs.readFileSync("site/en/index.html","utf8"),/href="\.\.\/biblioteca\.html" title="Library in Portuguese"/);
