@@ -122,7 +122,7 @@ for (const path of ["site/index.html", "site/en/index.html"]) {
   const html = fs.readFileSync(path, "utf8");
   const overviewStart = html.indexOf('<section class="tab" id="inicio" role="region">');
   const introStart = html.indexOf('<section class="intro intro--overview">');
-  const anotherTab = html.indexOf('<section class="tab" id="populacao"');
+  const anotherTab = html.indexOf('<section class="tab" hidden="" id="populacao"');
   assert.ok(overviewStart >= 0 && introStart > overviewStart && introStart < anotherTab,
     path + ": apresentação deve aparecer somente na Visão geral");
   assert.equal(html.split('class="intro intro--overview"').length, 2,
@@ -168,7 +168,8 @@ assert.doesNotMatch(fs.readFileSync("site/assets/js/indicators.js","utf8"),
 const typeCss = fs.readFileSync("site/assets/css/styles.css","utf8");
 /* Rolagem suave global, respeitando a configuração de movimento reduzido. */
 assert.match(typeCss,/html\{scroll-behavior:smooth\}/);
-assert.match(typeCss,/\.tab \+ \.tab\{margin-top:/);
+assert.match(typeCss,/\.tab:not\(\[hidden\]\)\{animation:oes-tab-fade \.18s ease-out\}/);
+assert.match(typeCss,/@media\(prefers-reduced-motion:reduce\)\{[\s\S]*?\*\{animation-duration: 0s!important/);
 assert.match(typeCss,/@media\(prefers-reduced-motion:reduce\)\{[\s\S]*?html\{scroll-behavior: auto\}/);
 const libraryCss = fs.readFileSync("site/assets/css/biblioteca.css","utf8");
 assert.match(typeCss,/--type-title:clamp\(40px,4\.7vw,60px\)/);
@@ -179,7 +180,7 @@ assert.match(typeCss,/\.intro h1\{font:400 var\(--type-title\)/);
 assert.match(typeCss,/\.section-title h2,\.library-hero h1,\.governance-wrap \.governance-hero h1,\.governance-grid \.governance-section h2\{font:400 var\(--type-section\)/);
 assert.doesNotMatch(libraryCss,/\.library-hero h1\{font(?::|-size:)/);
 for(const page of ["site/index.html","site/en/index.html","site/governanca.html","site/en/governanca.html","site/biblioteca.html"]){
- assert.match(fs.readFileSync(page,"utf8"),/styles\.css\?v=20261028-continuous/);
+ assert.match(fs.readFileSync(page,"utf8"),/styles\.css\?v=20261028-tabs-fade/);
 }
 assert.match(typeCss,/@media\(max-width:800px\)[\s\S]*?\.mast-inner \.independent\{[^}]*padding:0 0 0 75px/);
 assert.match(typeCss,/@media\(max-width:480px\)[\s\S]*?\.mast-inner \.independent\{padding-left:54px/);
@@ -200,16 +201,11 @@ for (const [path,names] of [
  const html=fs.readFileSync(path,"utf8");
  const menu=(html.match(/<nav aria-label="(?:Navegação principal|Main navigation)">[\s\S]*?<\/nav>/)||[])[0];
  assert.ok(menu,path+": missing nav");
- const labels=[...menu.matchAll(/<a href="#[^"]+" data-tab="[^"]+"[^>]*>([^<]+)<\/a>/g)].map(x=>x[1]);
+ const labels=[...menu.matchAll(/<button[^>]*data-tab="[^"]+"[^>]*>([^<]+)<\/button>/g)].map(x=>x[1]);
  assert.deepEqual(labels,names,path+": nav labels");
  const order=[...menu.matchAll(/data-tab="([^"]+)"|class="nav-library-link"/g)].map(m=>m[1]||"biblioteca");
  assert.deepEqual(order,["inicio","populacao","trabalho","economia","empresas","biblioteca","analises","metodologia","sobre"]);
- assert.deepEqual([...html.matchAll(/<section class="tab" id="([^"]+)" role="region"/g)].map(m=>m[1]),
-   ["inicio","populacao","trabalho","economia","empresas","analises","metodologia","sobre"]);
- assert.doesNotMatch(html,/<section class="tab"[^>]*hidden/);
- assert.match(menu,/href="#populacao" data-tab="populacao"/);
- assert.match(menu,/aria-current="location"/);
- assert.doesNotMatch(menu,/aria-expanded=/);
+ assert.match(menu,/aria-expanded="true"/);
  assert.doesNotMatch(menu,/role="tablist"|role="tab"|nav-scroll-hint/);
 }
 const compactCss=fs.readFileSync("site/assets/css/styles.css","utf8");
@@ -230,14 +226,18 @@ for(const [page,href] of [["site/index.html","biblioteca.html"],["site/en/index.
  const html=fs.readFileSync(page,"utf8");
  assert.ok(html.includes('class="nav-library-link" href="'+href+'"'),page+": biblioteca ausente do menu");
  assert.equal((html.match(/class="nav-library-link"/g)||[]).length,1);
- assert.doesNotMatch(html,/class="tab" id="glossario"/);
+ assert.doesNotMatch(html,/class="tab" hidden="" id="glossario"/);
  assert.match(html,/<section class="glossary-section" id="glossario"/);
  assert.match(html,/<div class="glossary" id="glossary"/);
- assert.match(html,/<section class="tab" id="metodologia"[\s\S]*?<section class="glossary-section" id="glossario"/);
+ assert.match(html,/<section class="tab" hidden="" id="metodologia"[\s\S]*?<section class="glossary-section" id="glossario"/);
 }
 
-assert.match(glossaryCode,/hash === "glossario" \? "metodologia"/);
-assert.doesNotMatch(glossaryCode,/tabPanels|chooseTab|\.hidden = panel/);
+assert.match(glossaryCode,/hashTab === "glossario" \? "metodologia"/);
+/* Alternância das abas sem salto de âncora, com fade discreto. */
+assert.match(glossaryCode,/history\.pushState\(null, "", "#" \+ id\)/);
+assert.doesNotMatch(glossaryCode,/location\.hash = id/);
+assert.match(glossaryCode,/addEventListener\("popstate", showTabFromLocation\)/);
+
 
 /* Os títulos do acervo seguem capitalização editorial, sem caixa alta integral. */
 for(const [, title] of libraryHTML.matchAll(/<article class="library-entry" id="[^"]+" data-topic="[^"]+">\s*<h2>([^<]+)<\/h2>/g)){
@@ -248,10 +248,10 @@ for(const [, title] of libraryHTML.matchAll(/<article class="library-entry" id="
 /* Apresentação dos indicadores efetivamente disponíveis e mobile. */
 for(const page of ["site/index.html","site/en/index.html"]){
  const html=fs.readFileSync(page,"utf8");
- const home=html.slice(html.indexOf('<section class="tab" id="inicio" role="region">'),html.indexOf('<section class="tab" id="populacao"'));
+ const home=html.slice(html.indexOf('<section class="tab" id="inicio" role="region">'),html.indexOf('<section class="tab" hidden="" id="populacao"'));
  assert.deepEqual([...home.matchAll(/data-indicator="([^"]+)"/g)].map(x=>x[1]),["populacao-censo-2022","populacao-estimada","pib-per-capita-2023"]);
  assert.doesNotMatch(home,/id="sectors"|CAGED|Where are the jobs|Onde estão os empregos/);
- const work=html.slice(html.indexOf('<section class="tab" id="trabalho"'),html.indexOf('<section class="tab" id="economia"'));
+ const work=html.slice(html.indexOf('<section class="tab" hidden="" id="trabalho"'),html.indexOf('<section class="tab" hidden="" id="economia"'));
  assert.doesNotMatch(work,/<table/);
  const workIds=[...work.matchAll(/data-indicator="([^"]+)"/g)].map(x=>x[1]);
  assert.deepEqual(workIds,[
@@ -263,15 +263,15 @@ for(const page of ["site/index.html","site/en/index.html"]){
   "pessoas-ocupadas","pessoas-desocupadas","previdencia-ocupados","residentes-conta-propria-2022",
   "renda-mediana-ocupados-2022"
  ]);
- const economy=html.slice(html.indexOf('<section class="tab" id="economia"'),
-                          html.indexOf('<section class="tab" id="empresas"'));
+ const economy=html.slice(html.indexOf('<section class="tab" hidden="" id="economia"'),
+                          html.indexOf('<section class="tab" hidden="" id="empresas"'));
  const economyIds=[...economy.matchAll(/data-indicator="([^"]+)"/g)].map(x=>x[1]);
  assert.deepEqual(economyIds,["pib-municipal-2023","pib-per-capita-2023"]);
  const approved=new Set(JSON.parse(fs.readFileSync("data/processed/indicators.json","utf8"))
                         .indicators.map(x=>x.id));
  
- const population=html.slice(html.indexOf('<section class="tab" id="populacao"'),
-                             html.indexOf('<section class="tab" id="trabalho"'));
+ const population=html.slice(html.indexOf('<section class="tab" hidden="" id="populacao"'),
+                             html.indexOf('<section class="tab" hidden="" id="trabalho"'));
  const populationIds=[...population.matchAll(/data-indicator="([^"]+)"/g)].map(x=>x[1]);
  assert.ok(populationIds.includes("escolarizacao-6-14-anos-2022"));
  assert.ok(populationIds.includes("taxa-alfabetizacao-15-mais-2022"));
@@ -290,7 +290,7 @@ assert.doesNotMatch(glossaryCode,/getElementById\("sectors"\)/);
 for (const [page,expected] of [["site/index.html","Carregando…"],["site/en/index.html","Loading…"]]) {
  const html=fs.readFileSync(page,"utf8");
  const home=html.slice(html.indexOf('<section class="tab" id="inicio" role="region">'),
-                       html.indexOf('<section class="tab" id="populacao"'));
+                       html.indexOf('<section class="tab" hidden="" id="populacao"'));
  assert.equal(home.split('<div class="number">'+expected+'</div>').length-1,3);
  assert.doesNotMatch(home,/class="number">Em validação|class="number">Pending validation/);
 }
@@ -315,8 +315,8 @@ for (const [path,titles] of [
  ["site/en/index.html",["Sources and methodology","Glossary"]]
 ]){
  const html=fs.readFileSync(path,"utf8");
- const section=html.slice(html.indexOf('<section class="tab" id="metodologia"'),
-                          html.indexOf('<section class="tab" id="sobre"'));
+ const section=html.slice(html.indexOf('<section class="tab" hidden="" id="metodologia"'),
+                          html.indexOf('<section class="tab" hidden="" id="sobre"'));
  let previous=-1;
  for(const title of titles){
    const pos=section.indexOf(">"+title+"</h2>");
@@ -333,7 +333,7 @@ assert.match(code,/detail.addEventListener\("click", \(\) => openIndicatorDetail
 for(const page of ["site/index.html","site/en/index.html"]){
  const html=fs.readFileSync(page,"utf8");
  const summary=html.slice(html.indexOf('<section class="tab" id="inicio" role="region">'),
-                          html.indexOf('<section class="tab" id="populacao"'));
+                          html.indexOf('<section class="tab" hidden="" id="populacao"'));
  assert.doesNotMatch(summary,/Indicadores oficiais|Official indicators|Cada indicador apresenta sua fonte e metodologia|Each indicator provides its source and methodology/);
 }
 const editorialCss=fs.readFileSync("site/assets/css/styles.css","utf8");
@@ -345,7 +345,7 @@ assert.doesNotMatch(editorialCss,/\.metrics--three \.metric:first-child\{border-
 for (const page of ["site/index.html","site/en/index.html"]){
  const html=fs.readFileSync(page,"utf8");
  const intro=html.slice(html.indexOf('<section class="tab" id="inicio" role="region">'),
-                       html.indexOf('<section class="tab" id="populacao"'));
+                       html.indexOf('<section class="tab" hidden="" id="populacao"'));
  assert.doesNotMatch(intro,/PIB per capita não representa|GDP per capita is not average personal income/);
 }
 assert.doesNotMatch(fs.readFileSync("site/assets/css/styles.css","utf8"),/#inicio > \.footnote/);
@@ -376,8 +376,8 @@ assert.doesNotMatch(fs.readFileSync("site/assets/js/indicators.js","utf8"),/last
 /* Os três painéis validados têm estado de carregamento, não de validação pendente. */
 for(const [page,loading] of [["site/index.html","Carregando…"],["site/en/index.html","Loading…"]]){
  const html=fs.readFileSync(page,"utf8");
- const pop=html.slice(html.indexOf('<section class="tab" id="populacao"'),html.indexOf('<section class="tab" id="trabalho"'));
- const econ=html.slice(html.indexOf('<section class="tab" id="economia"'),html.indexOf('<section class="tab" id="empresas"'));
+ const pop=html.slice(html.indexOf('<section class="tab" hidden="" id="populacao"'),html.indexOf('<section class="tab" hidden="" id="trabalho"'));
+ const econ=html.slice(html.indexOf('<section class="tab" hidden="" id="economia"'),html.indexOf('<section class="tab" hidden="" id="empresas"'));
  assert.equal((pop.match(new RegExp('<div class="number">'+loading+'</div>','g'))||[]).length,4);
  assert.equal((econ.match(new RegExp('<div class="number">'+loading+'</div>','g'))||[]).length,2);
  assert.doesNotMatch(pop+econ,/class="number">Em validação|class="number">Pending validation/);
@@ -577,12 +577,12 @@ assert.match(fs.readFileSync("site/assets/css/empresas.css","utf8"),
    ["site/en/index.html","Source: IBGE · Municipal GDP 2023"]
  ]){
    const html=fs.readFileSync(page,"utf8");
-   const econ=html.slice(html.indexOf('<section class="tab" id="economia"'),
-                         html.indexOf('<section class="tab" id="empresas"'));
+   const econ=html.slice(html.indexOf('<section class="tab" hidden="" id="economia"'),
+                         html.indexOf('<section class="tab" hidden="" id="empresas"'));
    assert.equal(econ.split(label).length-1,2,page+": PIB correto antes do JS");
    assert.doesNotMatch(econ,/Censo 2022|2022 Census/);
-   const methodology=html.slice(html.indexOf('<section class="tab" id="metodologia"'),
-                                html.indexOf('<section class="tab" id="sobre"'));
+   const methodology=html.slice(html.indexOf('<section class="tab" hidden="" id="metodologia"'),
+                                html.indexOf('<section class="tab" hidden="" id="sobre"'));
    assert.match(methodology,/sumare-lidera-saldo-de-empregos/);
    assert.match(methodology,/rais-2025-tabelas\.xlsx/);
    assert.doesNotMatch(methodology,/Esses números ainda estão sendo conferidos|Indicators remain unverified|Dados não conferidos na fonte original/);

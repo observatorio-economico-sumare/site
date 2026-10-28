@@ -38,7 +38,7 @@ class DocumentCheck(HTMLParser):
             self.css.append(values.get("href"))
         if tag == "a" and values.get("href"):
             self.hrefs.append(values["href"])
-        if tag == "a" and values.get("data-tab"):
+        if tag == "button" and values.get("data-tab"):
             self.tabs.append(values.get("data-tab"))
         if values.get("role") == "region" and "tab" in values.get("class", "").split():
             self.panels.append(values.get("id"))
