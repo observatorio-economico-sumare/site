@@ -314,10 +314,10 @@ h3{font-family: var(--font-interface); font-weight: 600; letter-spacing: -.012em
 .mast-inner .independent-main{display:block}
 @media(max-width:800px){
  .mast-inner{flex-wrap:wrap;row-gap:8px}
- .mast-inner .independent{display:block;order:3;flex-basis:100%;max-width:none;padding:0;border:0;font-size:12px;line-height:1.4}
+ .mast-inner .independent{display:block;order:3;flex-basis:100%;max-width:none;padding:0 0 0 75px;border:0;font-size:12px;line-height:1.4}
 }
 @media(max-width:480px){
- .mast-inner .independent{font-size:12px}
+ .mast-inner .independent{padding-left:54px;font-size:12px}
 }
 
 /* Navegação única: oito opções em sequência, com quebra natural no mobile. */
@@ -434,3 +434,4 @@ nav{background:#fff;border-bottom:1px solid var(--line)}
  #trabalho .metrics--sectors .sector-track{height:10px}
  #trabalho .sector-source{margin:14px 3px 0}
 }
+
