@@ -608,7 +608,8 @@ for(const [path,url,locale] of [
  assert.ok(head.includes('<meta property="og:locale" content="'+locale+'">'),path);
  for(const field of ["og:type","og:title","og:description","og:site_name"])
    assert.ok(head.includes('property="'+field+'"'),path+": "+field);
- assert.ok(head.includes('<meta name="twitter:card" content="summary">'),path);
+ assert.ok(head.includes('<meta name="twitter:card" content="summary_large_image">'),path);
+ assert.ok(head.includes('<meta property="og:image" content="https://oesumare.github.io/assets/images/oes-social.png">'),path);
  assert.ok(!head.includes("utm_source="),path);
 }
 assert.match(fs.readFileSync("site/en/index.html","utf8"),/href="\.\.\/biblioteca\.html" title="Library in Portuguese"/);
