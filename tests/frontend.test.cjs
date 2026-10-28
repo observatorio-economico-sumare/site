@@ -175,7 +175,7 @@ assert.match(typeCss,/\.intro h1\{font:400 var\(--type-title\)/);
 assert.match(typeCss,/\.section-title h2,\.library-hero h1,\.governance-wrap \.governance-hero h1,\.governance-grid \.governance-section h2\{font:400 var\(--type-section\)/);
 assert.doesNotMatch(libraryCss,/\.library-hero h1\{font(?::|-size:)/);
 for(const page of ["site/index.html","site/en/index.html","site/governanca.html","site/en/governanca.html","site/biblioteca.html"]){
- assert.match(fs.readFileSync(page,"utf8"),/styles\.css\?v=20261028-governance-return/);
+ assert.match(fs.readFileSync(page,"utf8"),/styles\.css\?v=20261028-identity-hybrid/);
 }
 assert.match(typeCss,/@media\(max-width:800px\)[\s\S]*?\.mast-inner \.independent\{[^}]*padding:0 0 0 75px/);
 assert.match(typeCss,/@media\(max-width:480px\)[\s\S]*?\.mast-inner \.independent\{padding-left:54px/);
