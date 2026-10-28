@@ -3,6 +3,7 @@
 /* OES | Estilos consolidados. Ordem de cascata e responsividade preservadas. */
 *{box-sizing: border-box}
 body{margin:0}
+html{scroll-behavior:smooth}
 a{text-underline-offset: 3px}
 .wrap{padding: 0 28px; margin: auto}
 .mast-inner{display: flex; justify-content: space-between; align-items: center; gap: 16px}
