@@ -9,11 +9,15 @@
 .pib-chart__grid{stroke:var(--line);stroke-width:1;vector-effect:non-scaling-stroke}
 .pib-chart__axis-label{fill:var(--muted);font:12px/1.4 var(--font-interface)}
 .pib-chart__axis-label--y{font-size:12px}
+.pib-chart__axis-tick{stroke:var(--line);stroke-width:1;vector-effect:non-scaling-stroke}
+.pib-chart__axis-label--early{font-size:10px}
 .pib-chart__interaction{fill:transparent;pointer-events:all}
 .pib-chart__series{fill:none;stroke:var(--ink);stroke-width:4;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke;pointer-events:none}
 .pib-chart__marker{fill:var(--yellow);stroke:var(--ink);stroke-width:1.5;vector-effect:non-scaling-stroke;pointer-events:none}
-.pib-chart__plot:focus-visible{outline:2px solid var(--ink);outline-offset:4px;border-radius:2px}
-.pib-chart__readout{margin:7px 0 10px;color:var(--ink);font:600 13px/1.5 var(--font-interface);font-variant-numeric:tabular-nums}
+.pib-chart__tooltip{fill:var(--muted);font:600 18px/1.4 var(--font-interface);paint-order:stroke;stroke:var(--paper);stroke-width:5px;stroke-linejoin:round;pointer-events:none}
+.pib-chart__plot:focus-visible{outline:2px solid var(--yellow);outline-offset:4px;border-radius:2px}
+.pib-chart__plot.is-pointer-focused:focus{outline:none}
+.pib-chart__readout{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 .pib-chart__note,.pib-chart__status{max-width:900px;margin:5px 0;color:var(--muted);font-size:12px;line-height:1.6}
 .pib-chart__instructions{margin:0 0 7px;color:var(--muted);font-size:11px;line-height:1.5}
 @media(max-width:680px){
@@ -24,6 +28,7 @@
  .pib-chart__series{stroke-width:3}
  .pib-chart__axis-label{font-size:11px}
  .pib-chart__axis-label--y{font-size:10px}
- .pib-chart__readout{margin:5px 0 9px;font-size:12px}
+ .pib-chart__axis-label--early{font-size:11px}
+ .pib-chart__tooltip{font-size:20px}
 }
 @media(prefers-reduced-motion:reduce){.pib-chart__plot{scroll-behavior:auto}}

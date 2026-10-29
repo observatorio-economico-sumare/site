@@ -1,0 +1,35 @@
+{
+  "institution": "IBGE, Diretoria de Pesquisas, Coordenação de Contas Nacionais",
+  "document_title": "Produto Interno Bruto dos Municípios 1999–2002",
+  "publication_year": 2005,
+  "source_file": "Produto Interno Bruto dos Municípios 1999-2002.pdf",
+  "source_url": "https://biblioteca.ibge.gov.br/visualizacao/livros/liv62930.pdf",
+  "source_file_sha256": "5ee12b957f8bf56fa9c31b030f7a25bc22503e3675e7fb3bbf6e45c4a6d911e9",
+  "extracted_at": "2026-10-26",
+  "table": "Tabela 1 — Produto Interno Bruto a preço de mercado e Produto Interno Bruto per capita; São Paulo; município Sumaré",
+  "source_unit": "mil R$ correntes",
+  "observations": [
+    {
+      "year": "1999",
+      "gdp_thousand_brl": 1841269,
+      "gdp_per_capita_brl": 9482
+    },
+    {
+      "year": "2000",
+      "gdp_thousand_brl": 1995885,
+      "gdp_per_capita_brl": 9964
+    },
+    {
+      "year": "2001",
+      "gdp_thousand_brl": 2254595,
+      "gdp_per_capita_brl": 10919
+    },
+    {
+      "year": "2002",
+      "gdp_thousand_brl": 2446480,
+      "gdp_per_capita_brl": 11502
+    }
+  ],
+  "note": "Publicação do IBGE (2005), consultada por cópia-espelho hospedada no IPEA porque o arquivo no domínio do IBGE não respondeu ao download direto. O hash corresponde à cópia consultada.",
+  "accessed_copy_url": "https://www.ipeadata.gov.br/doc/Metodologia%20PIB%20Municipal%20-%201999-2002.pdf"
+}
