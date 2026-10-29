@@ -1,19 +1,19 @@
 {
-  "id": "pib-municipal-nominal-2002-2023",
+  "id": "pib-municipal-nominal-1999-2023-com-quebra-em-2002",
   "name": "PIB municipal a preços correntes",
   "municipality": {
     "name": "Sumaré",
     "state": "SP",
     "ibge_code": "3552403"
   },
-  "period": "2002-2023",
+  "period": "1999-2023",
   "unit": "mil R$",
   "display_unit": "R$ bilhões",
   "status": "validated",
   "validation": {
     "validated_at": "2026-10-28",
     "validated_by": "OES · verificação técnica assistida, sem revisão humana independente",
-    "method": "As 22 observações foram comparadas com a resposta original da API oficial do SIDRA; códigos de município (3552403), variável (37) e anos (2002-2023) conferidos. Valores e unidade coincidem com a fonte.",
+    "method": "As 22 observações foram comparadas com a resposta original da API oficial do SIDRA; códigos de município (3552403), variável (37) e anos (2002-2023) conferidos. Valores e unidade coincidem com a fonte. Para 1999-2001, os valores foram conferidos na Tabela 1 da publicação do IBGE de 2005 e mantidos como segmento separado; o valor de 2002 daquela edição não foi usado, pois difere da série SIDRA atual.",
     "raw_file": "data/raw/historico/ibge_sidra_5938_pib_2002-2023.json",
     "raw_sha256": "25d6696b752e783a009bdcad8eddfa8156b2f5130d043f17d1d71a3ead6b6e66"
   },
@@ -25,95 +25,146 @@
     "url": "https://apisidra.ibge.gov.br/values/t/5938/n6/3552403/p/2002-2023/v/37?formato=json",
     "extracted_at": "2026-10-25"
   },
-  "limitations": "Valores nominais, sem deflacionamento; não representam crescimento real da produção. A série de 1999-2002 publicada em edição metodológica anterior foi mantida separada e não foi encadeada.",
+  "limitations": "Valores nominais, sem deflacionamento; não representam crescimento real da produção. O trecho de 1999-2001 usa edição metodológica anterior do IBGE e é exibido separado da série SIDRA 5938 iniciada em 2002.",
   "observations": [
     {
+      "year": 1999,
+      "value": 1841269,
+      "series": "ibge-vintage-2005"
+    },
+    {
+      "year": 2000,
+      "value": 1995885,
+      "series": "ibge-vintage-2005"
+    },
+    {
+      "year": 2001,
+      "value": 2254595,
+      "series": "ibge-vintage-2005"
+    },
+    {
       "year": 2002,
-      "value": 2574506
+      "value": 2574506,
+      "series": "sidra-5938-reference-2010"
     },
     {
       "year": 2003,
-      "value": 3163860
+      "value": 3163860,
+      "series": "sidra-5938-reference-2010"
     },
     {
       "year": 2004,
-      "value": 4470077
+      "value": 4470077,
+      "series": "sidra-5938-reference-2010"
     },
     {
       "year": 2005,
-      "value": 5139537
+      "value": 5139537,
+      "series": "sidra-5938-reference-2010"
     },
     {
       "year": 2006,
-      "value": 5703731
+      "value": 5703731,
+      "series": "sidra-5938-reference-2010"
     },
     {
       "year": 2007,
-      "value": 7034905
+      "value": 7034905,
+      "series": "sidra-5938-reference-2010"
     },
     {
       "year": 2008,
-      "value": 9053874
+      "value": 9053874,
+      "series": "sidra-5938-reference-2010"
     },
     {
       "year": 2009,
-      "value": 8856544
+      "value": 8856544,
+      "series": "sidra-5938-reference-2010"
     },
     {
       "year": 2010,
-      "value": 9488102
+      "value": 9488102,
+      "series": "sidra-5938-reference-2010"
     },
     {
       "year": 2011,
-      "value": 9507709
+      "value": 9507709,
+      "series": "sidra-5938-reference-2010"
     },
     {
       "year": 2012,
-      "value": 11180730
+      "value": 11180730,
+      "series": "sidra-5938-reference-2010"
     },
     {
       "year": 2013,
-      "value": 11674930
+      "value": 11674930,
+      "series": "sidra-5938-reference-2010"
     },
     {
       "year": 2014,
-      "value": 11646358
+      "value": 11646358,
+      "series": "sidra-5938-reference-2010"
     },
     {
       "year": 2015,
-      "value": 12258170
+      "value": 12258170,
+      "series": "sidra-5938-reference-2010"
     },
     {
       "year": 2016,
-      "value": 12237213
+      "value": 12237213,
+      "series": "sidra-5938-reference-2010"
     },
     {
       "year": 2017,
-      "value": 13615800
+      "value": 13615800,
+      "series": "sidra-5938-reference-2010"
     },
     {
       "year": 2018,
-      "value": 14438510
+      "value": 14438510,
+      "series": "sidra-5938-reference-2010"
     },
     {
       "year": 2019,
-      "value": 14913287
+      "value": 14913287,
+      "series": "sidra-5938-reference-2010"
     },
     {
       "year": 2020,
-      "value": 13672590
+      "value": 13672590,
+      "series": "sidra-5938-reference-2010"
     },
     {
       "year": 2021,
-      "value": 16179892
+      "value": 16179892,
+      "series": "sidra-5938-reference-2010"
     },
     {
       "year": 2022,
-      "value": 17753219
+      "value": 17753219,
+      "series": "sidra-5938-reference-2010"
     },
     {
       "year": 2023,
-      "value": 19026093
+      "value": 19026093,
+      "series": "sidra-5938-reference-2010"
     }
-  ]
+  ],
+  "historical_series": {
+    "status": "validated",
+    "period_used": "1999-2001",
+    "dataset": "Produto Interno Bruto dos Municípios 1999–2002",
+    "publication_year": 2005,
+    "table": "Tabela 1 — Produto Interno Bruto a preço de mercado e Produto Interno Bruto per capita; São Paulo; município Sumaré",
+    "unit": "mil R$ correntes",
+    "source_url": "https://biblioteca.ibge.gov.br/visualizacao/livros/liv62930.pdf",
+    "source_file_sha256": "5ee12b957f8bf56fa9c31b030f7a25bc22503e3675e7fb3bbf6e45c4a6d911e9",
+    "extracted_data_file": "data/raw/historico/ibge_pib_municipal_1999-2002_sumare.json",
+    "extracted_data_sha256": "e0d5cd714ddb294f464f60ee2285c4cd45297b3937b6420f9df872dad0f5b51e",
+    "validation_method": "Valores de 1999-2001 conferidos na Tabela 1, linha Sumaré, coluna PIB a preços de mercado correntes. A publicação também informa 2002, mas esse valor foi excluído do gráfico porque não coincide com SIDRA 5938; não se conectam as duas edições.",
+    "limitations": "Edição do IBGE de 2005, consultada por cópia-espelho hospedada no IPEA. O hash do arquivo consultado está registrado no dado bruto."
+  }
 }

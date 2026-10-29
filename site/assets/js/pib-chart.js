@@ -7,7 +7,7 @@
   const svg = section.querySelector("[data-pib-svg]");
   const readout = section.querySelector("[data-pib-value]");
   const status = section.querySelector("[data-pib-status]");
-  const sourceUrl = "data/pib-municipal-historico.json";
+  const sourceUrl = "data/pib-municipal-historico.json?v=20261028-1999-2023";
   const ns = "http://www.w3.org/2000/svg";
   const width = 900;
   const height = 330;
@@ -45,6 +45,14 @@
     marker.setAttribute("cx", String(xFor(selectedIndex)));
     marker.setAttribute("cy", String(yFor(observation.value)));
     marker.removeAttribute("hidden");
+
+    const tooltip = svg.querySelector("[data-pib-tooltip]");
+    const pointX = xFor(selectedIndex);
+    const pointY = yFor(observation.value);
+    tooltip.textContent = `${observation.year} · ${formatBillions(observation.value)}`;
+    tooltip.setAttribute("x", String(pointX < 500 ? pointX + 12 : pointX - 220));
+    tooltip.setAttribute("y", String(Math.max(22, pointY - 15)));
+    tooltip.removeAttribute("hidden");
   };
 
   const nearestIndex = (event) => {
@@ -68,7 +76,7 @@
     const description = svgElement(
       "desc",
       { id: "pib-chart-svg-description" },
-      "Série anual a preços correntes, de 2002 a 2023. Use as setas esquerda e direita para percorrer os anos."
+      "Série anual a preços correntes, de 1999 a 2023. Há uma separação entre os dados anteriores e posteriores a 2002. Ao selecionar um ano, seu valor aparece junto ao ponto no gráfico. Use as setas esquerda e direita para percorrer os anos."
     );
     svg.append(title, description);
 
@@ -79,12 +87,18 @@
       svg.append(svgElement("text", { x: plot.left - 12, y: y + 4, class: "pib-chart__axis-label pib-chart__axis-label--y", "text-anchor": "end" }, label));
     });
 
-    [0, 5, 10, 15, observations.length - 1].forEach((index) => {
+    [0, 1, 2, 3, 8, 13, 18, observations.length - 1].forEach((index) => {
       const observation = observations[index];
+      const earlyYear = index < 4;
+      const labelRow = earlyYear ? Math.floor(index / 2) : 0;
+      svg.append(svgElement("line", {
+        x1: xFor(index), y1: plot.bottom, x2: xFor(index), y2: plot.bottom + 4,
+        class: "pib-chart__axis-tick", "aria-hidden": "true"
+      }));
       svg.append(svgElement("text", {
         x: xFor(index),
-        y: plot.bottom + 26,
-        class: "pib-chart__axis-label",
+        y: plot.bottom + 24 + labelRow * 17,
+        class: `pib-chart__axis-label${earlyYear ? " pib-chart__axis-label--early" : ""}`,
         "text-anchor": "middle"
       }, String(observation.year)));
     });
@@ -102,6 +116,7 @@
     svg.append(svgElement("polyline", { points, class: "pib-chart__series", "aria-hidden": "true" }));
     svg.append(svgElement("circle", { cx: xFor(0), cy: yFor(observations[0].value), r: 5, class: "pib-chart__marker", "data-pib-marker": "" }));
     svg.querySelector(".pib-chart__marker").setAttribute("hidden", "");
+    svg.append(svgElement("text", { class: "pib-chart__tooltip", "data-pib-tooltip": "", "aria-hidden": "true", hidden: "" }));
     svg.removeAttribute("hidden");
     status.hidden = true;
     setSelection(observations.length - 1);
@@ -112,11 +127,14 @@
   });
   svg.addEventListener("pointerdown", (event) => {
     if (!observations.length) return;
+    svg.classList.add("is-pointer-focused");
     svg.setPointerCapture?.(event.pointerId);
     setSelection(nearestIndex(event));
   });
+  svg.addEventListener("blur", () => svg.classList.remove("is-pointer-focused"));
   svg.addEventListener("keydown", (event) => {
     if (!observations.length) return;
+    svg.classList.remove("is-pointer-focused");
     let next = selectedIndex;
     if (event.key === "ArrowLeft" || event.key === "ArrowDown") next -= 1;
     else if (event.key === "ArrowRight" || event.key === "ArrowUp") next += 1;
