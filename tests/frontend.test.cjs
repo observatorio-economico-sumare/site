@@ -728,7 +728,7 @@ assert.doesNotMatch(fs.readFileSync("site/assets/css/idades.css","utf8"),/\.age-
 /* A hierarquia explica diferenças sem misturar amostras, datas ou séries. */
 for(const [page,headings] of [
  ["site/index.html",["Empregos formais nos estabelecimentos de Sumaré","Trabalho dos moradores","Rendimentos do trabalho","O que algumas empresas fazem em Sumaré"]],
- ["site/en/index.html",["Formal jobs at establishments in Sumaré","Residents and employment","Earnings from work","Other economic data","What some companies do in Sumaré"]]
+ ["site/en/index.html",["Formal jobs at establishments in Sumaré","Residents and employment","Earnings from work","What some companies do in Sumaré"]]
 ]){
  const html=fs.readFileSync(page,"utf8");
  const work=html.slice(html.indexOf('id="trabalho" role="region"'),html.indexOf('id="economia" role="region"'));
@@ -741,7 +741,7 @@ for(const [page,headings] of [
    work.indexOf('class="sector-breakdown"')<work.indexOf('Residents and employment'),page+": sectors near RAIS");
  assert.equal((work.match(/data-indicator="/g)||[]).length,13,page+": validated work values unchanged");
  assert.equal((economy.match(/data-indicator="/g)||[]).length,2,page+": GDP indicators unchanged");
- assert.ok(economy.includes('href="#empresas"'),page+": related evidence link");
+ assert.doesNotMatch(economy,/class="economy-related"|href="#empresas"/,page+": economy-related block removed");
  assert.ok(html.includes('href="https://sidra.ibge.gov.br/tabela/9528"'),page+": public CEMPRE table");
  const sources=html.slice(html.indexOf('id="metodologia" role="region"'),html.indexOf('id="sobre" role="region"'));
  assert.equal((sources.match(/class="source"/g)||[]).length,5,page+": five official datasets");
